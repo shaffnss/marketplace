@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Marketplace</title>
+  <title>Anggota</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -46,9 +46,9 @@
     <!-- Logo -->
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>V</b>D</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Marketplace</b></span>
+      <span class="logo-lg"><b>VokasiDev</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -98,35 +98,43 @@
         <div class="pull-left image">
           <img src="<?php echo base_url('AdminLTE/dist/img/user2-160x160.jpg') ?>" class="img-circle" alt="User Image">
         </div>
-        <div class="pull-left  info">
-          <p>Alexander Pierce</p>
-        </div>
+        <div class="pull-left info">
+          <p>ANGGOTA</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
+    </div>
      
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MENU</li>
 
         <li>
-          <a href="<?php echo site_url('Dashboard') ?>">
+          <a href="<?php echo site_url('Anggota_dashboard') ?>">
             <i class="fa fa-dashboard"></i> 
             <span>Dashboard</span>
           </a>
         </li>
 
         <li>
-          <a href="<?php echo site_url('Profile_anggota') ?>">
-            <i class="fa fa-files-o"></i>
+          <a href="<?php echo site_url('Anggota_profile') ?>">
+            <i class="fa fa-user"></i>
             <span>Profile</span>
           </a>
         </li>
         
         <li>
-          <a href="<?php echo site_url('Proyek_anggota') ?>">
-            <i class="fa fa-pie-chart"></i>
+          <a href="<?php echo site_url('Anggota_proyek') ?>">
+            <i class="fa fa-tasks"></i>
             <span>Proyek</span>
           </a>
         </li>
+
+        <li>
+          <a href="<?php echo site_url('Anggota_uploadProduk') ?>">
+            <i class="fa fa-upload"></i>
+            <span>Upload Produk</span>
+          </a>
+        </li>       
       </ul>
     </section>
   </aside>

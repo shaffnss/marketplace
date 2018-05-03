@@ -6,8 +6,14 @@ $this->load->view('klien/head_klien');
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>Selamat Datang, NAMA KLIEN!</h1>
+      <h1>Profil<small>Klien</small></h1>
     </section>
+
+     <?php 
+    
+                foreach ($profile as $data) {
+                  # code...
+                ?>
 
      <!-- Main content -->
  	<section class="content">
@@ -19,7 +25,7 @@ $this->load->view('klien/head_klien');
             <div class="box-body box-profile">
               <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url('AdminLTE/dist') ?>/img/user4-128x128.jpg" alt="User profile picture">
 
-              <h3 class="profile-username text-center">(NAMA KLIEN)</h3>
+              <h3 class="profile-username text-center"><?php echo $data->nama_users?></h3>
             </div>
             <!-- /.box-body -->
           </div>
@@ -37,25 +43,25 @@ $this->load->view('klien/head_klien');
             <div class="box-body">
               <strong><i class="fa fa-book margin-r-5"></i> Nama</strong>
 
-              <p class="text-muted">Fira</p>
+              <p class="text-muted"><?php echo $data->nama_users?></p>
 
               <hr>
 
               <strong><i class="fa fa-pencil margin-r-5"></i> Email</strong>
 
-              <p class="text-muted"> fira@gmail.com</p>
+              <p class="text-muted"><?php echo $data->email?></p>
 
               <hr>
 
               <strong><i class="fa fa-map-marker margin-r-5"></i> No Telfon</strong>
 
-              <p class="text-muted">082138657982</p>
+              <p class="text-muted"><?php echo $data->no_telpon?></p>
 
               <hr>
 
               <strong><i class="fa fa-file-text-o margin-r-5"></i> Nama Instansi</strong>
 
-              <p class="text-muted"> blavlavla</p>
+              <p class="text-muted"><?php echo $data->instansi?></p>
 
               <div>
                     <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#ubah-data">
@@ -113,6 +119,7 @@ $this->load->view('klien/head_klien');
         <!-- /.col -->
 
     </section>
+    <?php  } ?>
 
   <!-- /.content -->
   </div>

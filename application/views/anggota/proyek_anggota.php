@@ -16,7 +16,7 @@ $this->load->view('anggota/head_anggota');
      <div class="col-md-6">
       <div class="box box-primary">
         <div class="box-header">
-          <h3 class="box-title">Daftar Proyek Terbaru</h3>
+          <h3 class="box-title">Daftar Proyek Dikerjakan</h3>
         </div>
 
         <!-- /.box-header -->
@@ -34,9 +34,9 @@ $this->load->view('anggota/head_anggota');
               <tr>
                 <td>01</td>
                 <td>Aya</td>
-                <td><span class="label label-success">Approved</span></td>
+                <td><span class="label label-danger">Proses</span></td>
                 <td>
-                  <a class="btn btn-primary"> Dikerjakan</a>
+                  <a href="<?php echo site_url('Anggota_proyek/proyek')?>" type="button" class="btn btn-primary" />Lihat Detail</a>
                 </td>
               </tr>
             </tbody>
@@ -52,7 +52,7 @@ $this->load->view('anggota/head_anggota');
     <div class="col-md-6">
       <div class="box box-primary">
         <div class="box-header">
-          <h3 class="box-title">Daftar Proyek Dikerjakan</h3>
+          <h3 class="box-title">Daftar Proyek Selesai Dikerjakan</h3>
         </div>
 
         <!-- /.box-header -->
@@ -70,9 +70,9 @@ $this->load->view('anggota/head_anggota');
               <tr>
                 <td>01</td>
                 <td>Aya</td>
-                <td><span class="label label-success">Approved</span></td>
+                <td><span class="label label-success">Selesai</span></td>
                 <td>
-                  <a href="<?php echo site_url('Proyek_anggota/proyek')?>" type="button" class="btn btn-primary" />Lihat Detail</a>
+                  
                 </td>
               </tr>
             </tbody>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Marketplace</title>
+  <title>Admin</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -42,14 +42,13 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
   <header class="main-header">
     <!-- Logo -->
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>V</b>D</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Marketplace</b></span>
+      <span class="logo-lg"><b>VokasiDev</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -68,7 +67,6 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 <p>
                   ADMIN
                 </p>
@@ -94,75 +92,97 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
-      
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
+            <div class="user-panel">
+        <div class="pull-left image">
+          <img src="<?php echo base_url('AdminLTE/dist/img/user2-160x160.jpg') ?>" class="img-circle" alt="User Image">
         </div>
-      </form>
+        <div class="pull-left info">
+          <p>ADMIN</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
   
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MENU</li>
 
         <li>
-          <a href="<?php echo site_url('Halaman_utama') ?>">
+          <a href="<?php echo site_url('Admin_dashboard') ?>">
             <i class="fa fa-dashboard"></i> 
-            <span>Halaman Utama</span>
+            <span>Dashboard</span>
           </a>
         </li>
 
          <li class="treeview">
           <a href="#">
-            <i class="fa fa-share"></i> <span>Pemesanan</span>
+            <i class="fa fa-file-text-o"></i> <span>Pemesanan</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo site_url('Pemesanan')?>"><i class="fa fa-circle-o"></i> Pemesanan Diproses</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Pemesanan Diterima</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Pemesanan Ditolak</a></li>
+            <li><a href="<?php echo site_url('Admin_pemesanan')?>"><i class="fa fa-list-alt"></i> Pemesanan Diproses</a></li>
+            <li><a href="<?php echo site_url('Admin_pemesanan/pemesananDiterima')?>"><i class="fa fa-check"></i> Pemesanan Diterima</a></li>
+            <li><a href="<?php echo site_url('Admin_pemesanan/pemesananDitolak')?>"><i class="fa fa-close"></i> Pemesanan Ditolak</a></li>
           </ul>
         </li>
         
-        <li>
-          <a href="<?php echo site_url('Pembelian') ?>">
-            <i class="fa fa-pie-chart"></i>
-            <span>Pembelian</span>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-money"></i> <span>Transaksi</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
+          <ul class="treeview-menu">
+            <li class="treeview">
+              <a href="">
+              <i class="fa fa-file-text-o"></i>Pemesanan
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+              </a>
+              <ul class="treeview-menu">
+                  <li><a href="<?php echo site_url('Admin_transaksi_pemesanan/statusProses')?>"><i class="fa fa-list-alt"></i>Diproses</a></li>
+                  <li><a href="<?php echo site_url('Admin_transaksi_pemesanan/statusSelesai')?>"><i class="fa fa-check"></i>Selesai</a></li>
+              </ul>
+            </li>
+      
+            <li class="treeview">
+              <a href="">
+              <i class="fa fa-navicon"></i> Pembelian
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+              </a>
+              <ul class="treeview-menu">
+                  <li><a href="<?php echo site_url('Admin_pembelian')?>"><i class="fa fa-list-alt"></i> Diproses</a></li>
+                  <li><a href="<?php echo site_url('Admin_pembelian/pembelianSelesai')?>"><i class="fa fa-check"></i> Selesai</a></li>
+              </ul>
+            </li>
+          </ul>
         </li>
 
         <li>
-          <a href="<?php echo site_url('Produk') ?>">
+          <a href="<?php echo site_url('Admin_produk') ?>">
             <i class="fa fa-laptop"></i>
             <span>Produk</span>
           </a>
         </li>
 
-        <li>
-          <a href="<?php echo site_url('Pelamar') ?>">
-            <i class="fa fa-file"></i>
-            <span>Pelamar</span>
-          </a>
-        </li>
 
          <li class="treeview">
-          <a href="<?php echo site_url('User') ?>">
-            <i class="fa fa-user"></i> <span>Pengguna </span>
+          <a href="<?php echo site_url('') ?>">
+            <i class="fa fa-users"></i> <span>Pengguna </span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?php echo site_url('User_klien') ?>"><i class="fa fa-circle-o"></i> Daftar Klien </a></li>
-            <li><a href="<?php echo site_url('User_anggota') ?>"><i class="fa fa-circle-o"></i> Daftar Anggota </a></li>
-            <li><a href="<?php echo site_url('User_team') ?>"><i class="fa fa-circle-o"></i> Daftar Team </a></li>  
+            <li class="active"><a href="<?php echo site_url('Admin_klien') ?>"><i class="fa fa-user"></i> Klien </a></li>
+            <li><a href="<?php echo site_url('Admin_anggota') ?>"><i class="fa fa-user"></i> Anggota Tim </a></li>
+            <li><a href="<?php echo site_url('Admin_team') ?>"><i class="fa fa-user"></i> Tim </a></li>
+            <li><a href="<?php echo site_url('Admin_pelamar') ?>"><i class="fa fa-user"></i> Pelamar</a></li>  
           </ul>
         </li>   
     </section>

@@ -12,7 +12,56 @@ $this->load->view('anggota/head_anggota');
   <!-- Main content -->
   <section class="content">
     <div class="row">
-     <!-- Form Data Klien start -->
+         <div class="col-md-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Anggota Team</h3>
+              <h5>Nama Team : halo</h5>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+                <tr>
+                  <th>ID</th>
+                  <th>Nama Anggota</th>
+                  <th>Email</th>
+                  <th>No Telfon</th>
+                  <th>Posisi</th>
+                </tr>
+                <tr>
+                  <td>183</td>
+                  <td>John Doe</td>
+                  <td>email@gmail.com</td>
+                  <td>08214657885</td>
+                  <td>Bacon</td>
+                </tr>
+                <tr>
+                  <td>219</td>
+                  <td>Alexander Pierce</td>
+                  <td>email@gmail.com</td>
+                  <td>08214657885</td>
+                  <td>Bacon</td>
+                </tr>
+                <tr>
+                  <td>657</td>
+                  <td>Bob Doe</td>
+                  <td>email@gmail.com</td>
+                  <td>08214657885</td>
+                  <td>Bacon</td>
+                </tr>
+                <tr>
+                  <td>175</td>
+                  <td>Mike Doe</td>
+                  <td>email@gmail.com</td>
+                  <td>08214657885</td>
+                  <td>Bacon</td>
+                </tr>
+              </table>
+            </div>
+         
+        </div>
+      </div>
+     <!-- Form Data Proyek start -->
       <div class="col-md-6">
         <div class="box box-primary">
           <div class="box-header with-border">
@@ -127,7 +176,7 @@ $this->load->view('anggota/head_anggota');
         <!-- Form Bisnis Rules end -->
 
         <div class="box-footer">
-          <a href="<?php echo site_url('Proyek_anggota')?>" type="button" class="btn btn-primary" >
+          <a href="<?php echo site_url('Anggota_proyek')?>" type="button" class="btn btn-primary" >
             <i class="glyphicon glyphicon-chevron-left"></i> Kembali
           </a>
         </div> 

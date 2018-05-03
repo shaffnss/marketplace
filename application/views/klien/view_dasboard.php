@@ -6,7 +6,7 @@ $this->load->view('klien/head_klien');
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>Selamat Datang, NAMA KLIEN!</h1>
+      <h1>Selamat Datang, Nama Klien!</h1>
     </section>
 
      <!-- Main content -->
