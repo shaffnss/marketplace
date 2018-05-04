@@ -81,7 +81,7 @@ $this->load->view('admin/head_admin');
               <div class="form-group">
                 <label for="inputEmail" class="col-sm-2 control-label">Link Demo</label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" name="link_demo" placeholder="Harga" required="">
+                  <input type="text" name="link_demo" placeholder="Harga" required="">
                 </div>
               </div>
 

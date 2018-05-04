@@ -19,59 +19,47 @@ $this->load->view('anggota/head_anggota');
           <h2 class="box-title">Form Pengisian Data Unggah Produk</h2>
         </div>
 
-        <form role="form">
+        <form id="form" role="form" class="form-horizontal" method="POST" action="<?php echo site_url('Anggota_uploadProduk/inputProduk') ?>" enctype="multipart/form-data">
           <div class="box-body">
+
             <div class="form-group">
-              <label for="inputName" class="">Nama Produk</label>
-              <input type="email" class="form-control" id="inputName" placeholder="">
+              <label for="inputName" class="form-control">Nama Produk</label>
+              <input type="text" class="form-control" name="nama_produk" placeholder="Nama Produk<">
             </div>
 
             <div class="form-group">
               <label for="inputEmail" class="">Jenis Produk</label>
               <div>            
-                <select class="form-control">
+                <select class="form-control" name="jenis_produk">
                   <option disabled selected="">---Pilih Jenis Produk---</option>
-                  <option>WEB</option>
-                  <option>Mobile Apps</option>
-                  <option>Game</option>
-                  <option>AI</option>
-                </select>
-              </div>
-            </div>
-
-              <div class="form-group">
-              <label for="inputTipeProyek" class="">Tipe Proyek</label>
-              <div>            
-                <select class="form-control">
-                  <option disabled selected="">---Pilih Tipe Proyek---</option>
-                  <option>Individu (ex : TA)</option>
-                  <option>Tim</option>
+                  <option value="Website">WEB</option>
+                  <option value="Mobile Apps">Mobile Apps</option>
+                  <option value="Game">Game</option>
+                  <option value="Artificial Intelegent(AI)">Artificial Intelegent(AI)</option>
                 </select>
               </div>
             </div>
 
             <div class="form-group">
               <label for="inputHarga" class="">Harga</label>
-              <input type="Harga" class="form-control" id="inputHarga" placeholder="Harga">
+              <input type="text" class="form-control" name="harga_produk" placeholder="Harga">
             </div>
 
             <div class="form-group">
               <label for="inputPosisi" class="">Deskripsi Produk</label>
-              <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+              <textarea class="form-control" rows="3" name="deskripsi Produk" placeholder="Enter ..."></textarea>
             </div>
 
             <div class="form-group">
               <label for="inputLink" class="">Link Demo</label>
-              <input type="Link" class="form-control" id="inputLink" placeholder="Link URL">
+              <input type="text" class="form-control" name="link_demo" placeholder="Link Demo">
             </div>
 
             <br>
 
             <div class="form-group">
               <label for="exampleInputFile">Upload Screenshot Tampilan Sistem</label>
-              <input type="file" id="exampleInputFile">
-
-              <p class="help-block">Example block-level help text here.</p>
+              <input type="file" id="exampleInputFile" name="mockup_produk" required="">
             </div>
 
           </div>
@@ -81,7 +69,7 @@ $this->load->view('anggota/head_anggota');
 
         <div class="box-footer">
           <a href="<?php echo site_url('Anggota_uploadProduk') ?>" type="button" class="btn btn-primary"> Kembali</a>
-          <a href=" " type="button" class="btn btn-success pull-right"> Kirim</a>
+         <input type="submit" name="Simpan" value="Tambah" class="btn btn-success pull-right">
         </div> 
 
       </div>

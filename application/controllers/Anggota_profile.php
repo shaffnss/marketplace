@@ -12,6 +12,9 @@ class Anggota_profile extends CI_Controller {
 	public function index()
 	{
 		$data["profile"]=$this->anggota_profile_model->getProfile();
+		$data["tampilTim"]=$this->anggota_profile_model->getTeam();
 		$this->load->view('anggota/profile_anggota',$data);
 	}
+
+	
 }

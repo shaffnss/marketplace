@@ -15,7 +15,7 @@ $this->load->view('anggota/head_anggota');
 
  <section class="content-header">
   <div>
-    <a href="<?php echo site_url('Anggota_uploadProduk/tambah_upload')?>" type="button" class="btn btn-primary" >
+    <a href="<?php echo site_url('Anggota_uploadProduk/uploadProduk')?>" type="button" class="btn btn-primary" >
       <i class="glyphicon glyphicon-plus"></i> Unggah
     </a>
   </div> 
@@ -34,10 +34,9 @@ $this->load->view('anggota/head_anggota');
           <table id="example1" class="table table-bordered table-striped">
              <thead>
             <tr>
-              <th>Kode Produk</th>
+              <th>No</th>
               <th>Nama Produk</th>
               <th>Jenis Produk</th>
-              <th>Tipe Proyek</th>
               <th>Harga</th>
               <th>Deskripsi Produk</th>
               <th>Link Demo</th>
@@ -45,17 +44,26 @@ $this->load->view('anggota/head_anggota');
               <th>Status</th>
             </tr>
             </thead>
-              <tbody>
+
+            <?php 
+            $no=1;
+            foreach ($upload as $data) {
+              # code...
+            
+            ?>
+            <tbody>
             <tr>
-              <td>01</td>
-              <td>Sistem Informasi TA</td>
-              <td>Web</td>
-              <td>Individu</td>
-              <td>Rp 1.000.000,-</td>
-              <td>Sistem Informasi Bagus</td>
-              <td>www.instagram.com</td>
-              <td>fileeee SS</td>
+              <td><?php echo $no ?></td>
+              <td><?php echo $data->nama_produk?></td>
+              <td><?php echo $data->jenis_produk?></td>
+              <td><?php echo $data->harga_produk?></td>
+              <td><?php echo $data->deskripsi_produk?></td>
+              <td><?php echo $data->link_demo?></td>
+              <td><?php echo $data->mockup_produk?></td>
               <td><span class="label label-success">Disetujui</span></td>
+              <?php 
+              $no++; }
+              ?>
             </tr>
           </tbody>
             </table>
