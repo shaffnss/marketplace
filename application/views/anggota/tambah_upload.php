@@ -13,26 +13,35 @@ $this->load->view('anggota/head_anggota');
   <section class="content">
    <div class="row">
     <!-- Form pemesanan -->
-    <div class="col-md-10">
+    <div class="col-md-12">
       <div class="box box-primary">
         <div class="box-header with-border">
           <h2 class="box-title">Form Pengisian Data Unggah Produk</h2>
-        </div>
 
-        <form id="form" role="form" class="form-horizontal" method="POST" action="<?php echo site_url('Anggota_uploadProduk/inputProduk') ?>" enctype="multipart/form-data">
-          <div class="box-body">
+          <form class="form-horizontal" method="POST" action="<?php echo site_url('Anggota_uploadProduk/inputProduk') ?>" enctype="multipart/form-data">
 
-            <div class="form-group">
-              <label for="inputName" class="form-control">Nama Produk</label>
-              <input type="text" class="form-control" name="nama_produk" placeholder="Nama Produk<">
+            <div class="box-body">
+             <div class="form-group">
+              <label for="inputName" class="col-sm-2 control-label">Nama Produk</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="inputName" name="nama_produk" placeholder="Nama Produk" required="">
+                <input type="text" class="form-control" name="id_team" placeholder="Nama Produk" value="<?php echo $id_team[0]->id_tim ?>" required="">
+              </div>
             </div>
 
             <div class="form-group">
-              <label for="inputEmail" class="">Jenis Produk</label>
-              <div>            
-                <select class="form-control" name="jenis_produk">
+              <label for="inputPrice" class="col-sm-2 control-label">Harga</label>
+              <div class="col-sm-8">
+                <input type="number" class="form-control" name="harga_produk" placeholder="Harga" required="">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Jenis Produk</label>
+              <div class="col-sm-8">            
+                <select class="form-control" name="jenis_produk" required="">
                   <option disabled selected="">---Pilih Jenis Produk---</option>
-                  <option value="Website">WEB</option>
+                  <option value="Website">Web</option>
                   <option value="Mobile Apps">Mobile Apps</option>
                   <option value="Game">Game</option>
                   <option value="Artificial Intelegent(AI)">Artificial Intelegent(AI)</option>
@@ -41,47 +50,49 @@ $this->load->view('anggota/head_anggota');
             </div>
 
             <div class="form-group">
-              <label for="inputHarga" class="">Harga</label>
-              <input type="text" class="form-control" name="harga_produk" placeholder="Harga">
+              <label for="inputName" class="col-sm-2 control-label">Deskripsi Produk</label>
+              <div class="col-sm-8">
+                <textarea class="form-control" id="inputExperience" placeholder="Deskripsi Produk" name="deskripsi_produk" required=""></textarea>
+              </div>
             </div>
 
             <div class="form-group">
-              <label for="inputPosisi" class="">Deskripsi Produk</label>
-              <textarea class="form-control" rows="3" name="deskripsi Produk" placeholder="Enter ..."></textarea>
+              <label for="inputEmail" class="col-sm-2 control-label">Link Demo</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" name="link_demo" placeholder="Link demo" required="">
+              </div>
             </div>
 
             <div class="form-group">
-              <label for="inputLink" class="">Link Demo</label>
-              <input type="text" class="form-control" name="link_demo" placeholder="Link Demo">
+              <label class="col-sm-2 control-label">Upload Screenshot Tampilan Sistem</label>
+              <div class="col-sm-8">
+                <input type="file" name="mockup_produk" placeholder="inputkan mockup produk" required="">
+              </div>
             </div>
 
-            <br>
-
             <div class="form-group">
-              <label for="exampleInputFile">Upload Screenshot Tampilan Sistem</label>
-              <input type="file" id="exampleInputFile" name="mockup_produk" required="">
+              <div class="col-sm-offset-2 col-sm-8">
+                <input type="submit" name="Simpan" value="Tambah" class="btn btn-success pull-right">
+              </div>
             </div>
 
           </div>
           <!-- /.box-body
           -->
         </form>
+        
 
         <div class="box-footer">
-          <a href="<?php echo site_url('Anggota_uploadProduk') ?>" type="button" class="btn btn-primary"> Kembali</a>
-         <input type="submit" name="Simpan" value="Tambah" class="btn btn-success pull-right">
+          <a href="<?php echo site_url('Anggota_uploadProduk') ?>" type="button" class="btn btn-primary" >
+            <i class="glyphicon glyphicon-chevron-left"></i> Kembali
+          </a>
         </div> 
 
       </div>
       <!-- /.Form Data Pemesanan end -->
     </div>
   </div>
-
-
-  <div class="col-md-2"></div>
-
 </section>
-
 </div>
 
 

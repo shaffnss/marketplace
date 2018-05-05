@@ -6,58 +6,102 @@ class Anggota_uploadProduk extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model("Anggota_uploadProduk_model");
+		$this->load->model("anggota_uploadProduk_model");
+		$this->load->helper("form");
+		$this->load->helper("url");
 	}
 
 	public function index()
 	{
-		$data["upload"]=$this->admin_uploadProduk_model->getUpload();
-		$this->load->view('anggota/uploadProduk',$data);
+		$data['upload']=$this->anggota_uploadProduk_model->getUpload();
+		$this->load->view('anggota/uploadProduk',$data);		
 	}
 
-	public function inputProduk()
+	public function tambah_uploadProduk()
 	{
-		$this->load->library('form_validation');
-		$this->form_validation->set_rules('nama_produk','nama produk','required');
-		$this->form_validation->set_rules('jenis_produk','jenis produk','required');
-		$this->form_validation->set_rules('harga_produk','harga produk','required');
-		$this->form_validation->set_rules('deskripsi_produk','deskripsi produk','required');
-		$this->form_validation->set_rules('link_demo','link demo','required');
-  		  //$this->form_validation->set_rules('file_produk','file produk','required|xss_clean');
-    //$this->form_validation->set_rules('mockup_produk','mockup produk','required');
-		if($this->form_validation->run() == FALSE)
+		$data['id_team']=$this->anggota_uploadProduk_model->getTeam(51);
+		$this->load->view('anggota/tambah_upload',$data);
+	}
+
+	public function ubahProduk()
+	{
+		$config['upload_path']          = './assets/produk/';
+		$config['allowed_types']        = 'gif|jpg|png|jpeg';
+		$config['max_size']             = 3000;
+		$config['max_width']            = 5024;
+		$config['max_height']           = 5068;
+
+		$this->load->library('upload', $config);
+		if( ! $this->upload->do_upload('mockup_produk'))
 		{
-   //jika form tidak lengkap maka akan dikembalikan ke route "matkulAdminR"
-			redirect('Anggota_uploadProduk');
+			echo 'Gagal upload, resolusi atau ukuran foto melebihi batas!';
 		}
 		else
 		{
-			echo 'masuk';
-			$nama_produk = $this->input->post('nama_produk');
-			$jenis_produk = $this->input->post('jenis_produk');
-			$harga_produk = $this->input->post('harga_produk');
-   //$status = $this->input->post('status');
-			$deskripsi_produk = $this->input->post('deskripsi_produk');
-   //$file_produk = $this->input->post('file_produk');
-			$link_demo = $this->input->post('link_demo');
-			$mockup_produk = $this->input->post('mockup_produk');
-
-			$produk =  array(
-				"nama_produk"=>$nama_produk,
-    //"status"=>$status,
-				"jenis_produk"=>$jenis_produk,
-				"harga_produk"=>$harga_produk,
-				"deskripsi_produk"=>$deskripsi_produk,
-    //"file_produk"=>$file_produk,
-				"link_demo"=>$link_demo,
-				"mockup_produk"=>$mockup_produk
-			);
-
-			$result = $this->admin_uploadProduk_model->insertProduk($produk);
-
+			$img = $this->upload->data();
+			$mockup_produk = $img['file_name'];
+			$id_produk= $this->input->post('id_produk', true);
+			$nama_produk = $this->input->post('nama_produk', true);
+			$jenis_produk = $this->input->post('jenis_produk', true);
+			$harga_produk = $this->input->post('harga_produk', true);
+			$deskripsi_produk = $this->input->post('deskripsi_produk', true);
+			$link_demo = $this->input->post('link_demo', true);
+			//$mockup_produk = $this->input->post('mockup_produk', true);
+			
+			$data = array(
+				
+				'nama_produk'=>$nama_produk,
+				'jenis_produk' =>$jenis_produk,
+				'harga_produk' => $harga_produk,
+				'deskripsi_produk' => $deskripsi_produk,
+				'link_demo'	=> $link_demo,
+				'mockup_produk' => $mockup_produk
+			); 
+			//$this->session->set_flashdata('message', 'Data anggota berhasil ditambahkan');
+			$this->db->where('id_produk',$id_produk); //yg di update menjadi sesuai dengan id_produk
+			$this->db->update('produk', $data);
+			redirect('Anggota_uploadProduk');
 		}
+	} 	
 
-		redirect('Admin_uploadProduk');
+	public function inputProduk()
+	{
+		$config['upload_path']          = './assets/produk/';
+		$config['allowed_types']        = 'gif|jpg|png|jpeg';
+		$config['max_size']             = 3000;
+		$config['max_width']            = 5024;
+		$config['max_height']           = 5068;
+
+		$this->load->library('upload', $config);
+		if( ! $this->upload->do_upload('mockup_produk'))
+		{
+			echo 'Gagal upload, resolusi atau ukuran foto melebihi batas!';
+		}
+		else
+		{
+			$img = $this->upload->data();
+			$mockup_produk = $img['file_name'];
+			$id_produk= $this->input->post('id_produk', true);
+			$nama_produk = $this->input->post('nama_produk', true);
+			$jenis_produk = $this->input->post('jenis_produk', true);
+			$harga_produk = $this->input->post('harga_produk', true);
+			$deskripsi_produk = $this->input->post('deskripsi_produk', true);
+			$link_demo = $this->input->post('link_demo', true);
+			//$mockup_produk = $this->input->post('mockup_produk', true);
+			
+			$data = array(
+				'id_produk'=>$id_produk,
+				'nama_produk'=>$nama_produk,
+				'jenis_produk' =>$jenis_produk,
+				'harga_produk' => $harga_produk,
+				'deskripsi_produk' => $deskripsi_produk,
+				'link_demo'	=> $link_demo,
+				'mockup_produk' => $mockup_produk
+			); 
+			//$this->session->set_flashdata('message', 'Data anggota berhasil ditambahkan');
+			$this->db->insert('produk', $data);
+			redirect('Anggota_uploadProduk');
+		}
 	}
 
 }

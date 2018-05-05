@@ -15,4 +15,9 @@ class Admin_team_model extends CI_Model {
 		$this->db->trans_complete();
 		return $insert_id;
 	}
+
+	public function getAnggota(){
+		$this->db->where("users.id_roles",3); 
+		return $this->db->get('users')->result(); //get dari DB users
+	}
 }

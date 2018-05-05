@@ -31,7 +31,7 @@ $this->load->view('anggota/head_anggota');
               <p class="text-muted text-center">
                 <?php echo $data->posisi_tim?>
               </p>
-            </div>
+              </div>
           </div>
 
           <!-- About Me Box -->
@@ -64,69 +64,72 @@ $this->load->view('anggota/head_anggota');
                 <?php echo $data->posisi_tim?>
               </p>
 
-              <div>
-                <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#ubah-data">
-                  Ubah
+               <div>
+                <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#ubah-profile<?php echo $data->id_users; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-profile"><i class="fa fa-pencil"></i> Ubah
                 </button>
               </div>
-              <?php 
-            } 
-            ?>
 
-            <!-- modal-content -->
-            <div class="modal fade" id="ubah-data">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title">Ubah Data Anggota</h4>
-                    </div>
+              <!-- modal-content -->
+              <div class="modal fade" id="ubah-profile<?php echo $data->id_users; ?>">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Ubah Data Anggota</h4>
+                      </div>
 
-                    <div class="modal-body">
-                      <div class="box-body">
-                        <div class="form-group">
-                          <label for="inputName" class="">Nama Anggota</label>
-                          <input type="email" class="form-control" id="inputName" placeholder="Nama Anggota">
-                        </div>
-                        <div class="form-group">
-                          <label for="inputEmail" class="">Email</label>
-                          <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                          <label for="inputTelp" class="">No Telpon</label>
-                          <input type="text" class="form-control" id="inputName" placeholder="No Telpon">
-                        </div>
-                        <div class="form-group">
-                          <label for="inputPosisi" class="">Posisi</label>
-                          <div>            
-                            <select class="form-control">
-                              <option disabled selected="">---Pilih Posisi---</option>
-                              <option>option 1</option>
-                              <option>option 2</option>
-                              <option>option 3</option>
-                              <option>option 4</option>
-                              <option>option 5</option>
-                            </select>
+                      <div class="modal-body">
+                        <form action="" enctype="multipart/form-data" method="POST" class="form-horizontal">
+                          <div class="box-body">
+                            <input type="hidden" class="form-control" name="id_users" value="<?php echo $data->id_users; ?>" required="">
+
+                            <div class="form-group">
+                              <label for="inputName" class="">Nama Anggota</label>
+                              <input type="email" class="form-control" id="inputName" name="nama_users" value="<?php echo $data->nama_users; ?>" required="">
+                            </div>
+
+                            <div class="form-group">
+                              <label for="inputEmail" class="">Email</label>
+                              <input type="email" class="form-control" name="email" value="<?php echo $data->email; ?>" required="">
+                            </div>
+
+                            <div class="form-group">
+                              <label for="inputTelp" class="">No Telpon</label>
+                              <input type="text" class="form-control" id="inputName" name="no_telpon" value="<?php echo $data->no_telpon; ?>" required="">
+                            </div>
+
+                            <div class="form-group">
+                              <label for="inputPosisi" class="">Posisi</label>
+                              <div>            
+                                <select class="form-control" name="posisi_tim" value="<?php echo $data->posisi_tim; ?>>
+                                  <option disabled selected="">---Pilih Posisi---</option>
+                                  <option value="Project Manager" <?php if($data->posisi_tim == "Project Manager") {echo "selected=selected";} ?>>Project Manager</option>
+                                  <option value="UI/UX designer" <?php if($data->posisi_tim == "UI/UX designer") {echo "selected=selected";} ?>>UI/UX designer</option>
+                                  <option value="Front End" <?php if($data->posisi_tim == "Front End") {echo "selected=selected";} ?>>Front End</option>
+                                  <option value="Back End" <?php if($data->posisi_tim == "Back End") {echo "selected=selected";} ?>>Back End</option>
+                                  <option value="Database analyst" <?php if($data->posisi_tim == "Database analyst") {echo "selected=selected";} ?>>Database analyst</option>
+                                </select>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                        <div class="form-group">
-                          <label for="inputSkills" class="">Skills</label>
-                          <input type="text" class="form-control" id="inputSkills" placeholder="Skills">                           
-                        </div>
-                      </div>
 
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
-                        <button type="button" class="btn btn-primary">Simpan</button>
+
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
+                            <button type="button" class="btn btn-primary">Simpan</button>
+                          </div>
+                        </form>
                       </div>
                     </div>
+                    <!-- /.modal-content -->
                   </div>
-                  <!-- /.modal-content -->
+                  <!-- /.modal-dialog -->
                 </div>
-                <!-- /.modal-dialog -->
-              </div>
-              <!-- /.modal -->
+                <!-- /.modal -->
+                <?php 
+              } 
+              ?>
             </div> 
           </div> 
           <!-- /.About Me Box -->
@@ -180,64 +183,64 @@ $this->load->view('anggota/head_anggota');
 
       <!-- Modal Tim --> 
       <div class="modal fade" id="detail-tim">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title">Detail Tim</h4>
-                    </div>
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Detail Tim</h4>
+              </div>
 
-                    <div class="modal-body">
-                      <div class="box-body">
-                        <div class="form-group">
-                          <label for="inputName" class="">Nama Anggota</label>
-                          <input type="email" class="form-control" id="inputName" placeholder="Nama Anggota">
-                        </div>
-                        <div class="form-group">
-                          <label for="inputEmail" class="">Email</label>
-                          <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                          <label for="inputTelp" class="">No Telpon</label>
-                          <input type="text" class="form-control" id="inputName" placeholder="No Telpon">
-                        </div>
-                        <div class="form-group">
-                          <label for="inputPosisi" class="">Posisi</label>
-                          <div>            
-                            <select class="form-control">
-                              <option disabled selected="">---Pilih Posisi---</option>
-                              <option>option 1</option>
-                              <option>option 2</option>
-                              <option>option 3</option>
-                              <option>option 4</option>
-                              <option>option 5</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label for="inputSkills" class="">Skills</label>
-                          <input type="text" class="form-control" id="inputSkills" placeholder="Skills">                           
-                        </div>
-                      </div>
-
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
-                        <button type="button" class="btn btn-primary">Simpan</button>
-                      </div>
+              <div class="modal-body">
+                <div class="box-body">
+                  <div class="form-group">
+                    <label for="inputName" class="">Nama Anggota</label>
+                    <input type="email" class="form-control" id="inputName" placeholder="Nama Anggota">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmail" class="">Email</label>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputTelp" class="">No Telpon</label>
+                    <input type="text" class="form-control" id="inputName" placeholder="No Telpon">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPosisi" class="">Posisi</label>
+                    <div>            
+                      <select class="form-control">
+                        <option disabled selected="">---Pilih Posisi---</option>
+                        <option>option 1</option>
+                        <option>option 2</option>
+                        <option>option 3</option>
+                        <option>option 4</option>
+                        <option>option 5</option>
+                      </select>
                     </div>
                   </div>
-                  <!-- /.modal-content -->
+                  <div class="form-group">
+                    <label for="inputSkills" class="">Skills</label>
+                    <input type="text" class="form-control" id="inputSkills" placeholder="Skills">                           
+                  </div>
                 </div>
-                <!-- /.modal-dialog -->
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
+                  <button type="button" class="btn btn-primary">Simpan</button>
+                </div>
               </div>
-              <!-- /.modal -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
 
 
-  <?php
-  $this->load->view('anggota/foot_anggota');
-  ?>
+    <?php
+    $this->load->view('anggota/foot_anggota');
+    ?>

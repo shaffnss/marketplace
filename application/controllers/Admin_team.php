@@ -15,10 +15,26 @@ class Admin_team extends CI_Controller {
 		$this->load->view('admin/pengguna_team',$data);
 	}
 
-	public function detail_anggota()
+	public function tambah_team()
 	{
-		$this->load->view('admin/pengguna_team_detail');
+		$data['panggil_anggota']=$this->admin_team_model->getAnggota(); //panggil dari db
+		$this->load->view('admin/pengguna_team_tambah',$data);
 	}
+
+	public function detail_team() //tambah tim dan anggota untuk bagian form
+	{
+		
+	}
+
+	public function ubah_team()
+	{
+		$this->load->view('admin/pengguna_team_ubah');
+	}
+
+	// public function detail_anggota()
+	// {
+	// 	$this->load->view('admin/pengguna_team_detail');
+	// }
 
 	public function inputTeam()
 	{

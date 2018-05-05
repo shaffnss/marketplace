@@ -15,91 +15,62 @@ $this->load->view('admin/head_admin');
   <!-- Modals Tambah Tim -->
   <section class="content-header">
     <div>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah-tim">
-        Tambah
-      </button>
+      <a href="<?php echo site_url('Admin_team/tambah_team')?>" type="button" class="btn btn-warning" >
+        <i class="glyphicon glyphicon-plus"></i> Tambah Tim
+      </a>
     </div> 
   </section>
 
-  <div class="modal fade" id="tambah-tim">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Tambahkan Tim</h4>
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title">Daftar Tim</h3>
           </div>
-
-          <form id="form" class="form-horizontal" method="POST" action="<?php echo site_url('Admin_team/inputTeam') ?>">
-            <div class="modal-body">
-              <label>Nama Tim</label>
-              <div>
-                <input type="text" class="form-control" name="nama_tim" placeholder="Masukkan Nama Tim">
-              </div>
-            </div>
-            
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
-              <button type="submit" class="btn btn-primary">Simpan</button>
-            </div>
-          </form>
-        </div>
-        <!-- /.modal-content -->
-      </div>
-      <!-- /.modal-dialog -->
-    </div>
-    <!-- /.Modals Tambah Tim -->
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Daftar Tim</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Nama Team</th>
-                    <th>Detail Anggota</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <?php 
-                $i=1;
-                foreach ($tim as $data) {
+          <!-- /.box-header -->
+          <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Nama Team</th>
+                  <th>Jumlah Anggota</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <?php 
+              $no=1;
+              foreach ($tim as $data) {
                     # code...
-                  
-                 ?>
-                 <tbody>
-                  <tr>
-                    <td><?php echo $i ?></td>
-                    <td><?php echo $data->nama_tim?></td>
-                    <th>
-                      <a href="<?php echo site_url('Admin_team/detail_anggota')?>" type="button" class="btn btn-primary" /> Lihat </a>
-                    </th>
-                    <td><span class="label label-success">Aktif</span></td>
-                  </tr>
-                </tbody>
-                <?php $i++; } ?>
-              </table>
-            </div>
-            <!-- /.box-body -->
+
+               ?>
+               <tbody>
+                <tr>
+                  <td><?php echo $no ?></td>
+                  <td><?php echo $data->nama_tim?></td>
+                  <td>jumlah anggota</td>
+                  <td>
+                    <a class="btn btn-sm btn-info" href="<?php echo site_url('Admin_team/ubah_team')?>" style="background: #4e9e02; border-color:#fff"><i class="fa fa-pencil"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+              <?php $no++; } ?>
+            </table>
           </div>
-          <!-- /.box -->
+          <!-- /.box-body -->
         </div>
+        <!-- /.box -->
       </div>
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+    </div>
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 
 
-  <?php
-  $this->load->view('admin/foot_admin');
-  ?>
-  
+<?php
+$this->load->view('admin/foot_admin');
+?>

@@ -46,6 +46,8 @@
 <!-- DataTables -->
 <script src="<?php echo base_url('AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
 <script src="<?php echo base_url('AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>
+<!-- Select2 -->
+<script src="<?php echo base_url('AdminLTE/bower_components/select2/dist/js/select2.full.min.js') ?>"></script>
 
 <script>
   $(function () {
@@ -58,6 +60,10 @@
       'info'         : true,
       'autoWidth'   : false
     })
+    
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
   })
 </script>
 </body>

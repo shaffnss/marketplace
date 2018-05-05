@@ -62,26 +62,17 @@ $this->load->view('admin/head_admin');
               </div>
 
 
-             <!--  <div class="form-group">
-                <label for="inputEmail" class="col-sm-2 control-label">File Produk</label>
-                <div class="col-sm-8">
-                  <input type="text" class="form-control" id="inputEmail" name="file_produk" placeholder="Harga">
-                </div>
-              </div> -->
-
-
-              <div class="form-group">
-                <label for="inputEmail" class="col-sm-2 control-label">Mockup</label>
-                <div class="col-sm-8">
-                  <input type="file" class="form-control" name="mockup_produk" placeholder="inputkan mockup produk" required="">
-                </div>
-              </div>
-
-
               <div class="form-group">
                 <label for="inputEmail" class="col-sm-2 control-label">Link Demo</label>
                 <div class="col-sm-8">
-                  <input type="text" name="link_demo" placeholder="Harga" required="">
+                  <input type="text" class="form-control" name="link_demo" placeholder="Link demo" required="">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputEmail" class="col-sm-2 control-label">Upload Screenshot Tampilan Sistem</label>
+                <div class="col-sm-8">
+                  <input type="file" name="mockup_produk" placeholder="inputkan mockup produk" required="">
                 </div>
               </div>
 
@@ -119,6 +110,7 @@ $this->load->view('admin/head_admin');
         </div>
       </div>
     </section>
+</div>
 
     <?php
     $this->load->view('admin/foot_admin');
