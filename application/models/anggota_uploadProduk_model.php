@@ -2,10 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class anggota_uploadProduk_model extends CI_Model {
-	public function getUpload()
+	public function getUpload($id_user)
 	{
 		$this->db->select("*");
 		$this->db->from("produk");
+		$this->db->where("id_users", $id_user);
 		return $this->db->get()->result();
 	}
 

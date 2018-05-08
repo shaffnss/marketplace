@@ -13,7 +13,8 @@ class Anggota_uploadProduk extends CI_Controller {
 
 	public function index()
 	{
-		$data['upload']=$this->anggota_uploadProduk_model->getUpload();
+		$id_user = $this->session->userdata('userId'); //manggil session id yg sedang login
+		$data['upload']=$this->anggota_uploadProduk_model->getUpload($id_user);
 		$this->load->view('anggota/uploadProduk',$data);		
 	}
 
@@ -32,12 +33,7 @@ class Anggota_uploadProduk extends CI_Controller {
 		$config['max_height']           = 5068;
 
 		$this->load->library('upload', $config);
-		if( ! $this->upload->do_upload('mockup_produk'))
-		{
-			echo 'Gagal upload, resolusi atau ukuran foto melebihi batas!';
-		}
-		else
-		{
+
 			$img = $this->upload->data();
 			$mockup_produk = $img['file_name'];
 			$id_produk= $this->input->post('id_produk', true);
@@ -46,7 +42,26 @@ class Anggota_uploadProduk extends CI_Controller {
 			$harga_produk = $this->input->post('harga_produk', true);
 			$deskripsi_produk = $this->input->post('deskripsi_produk', true);
 			$link_demo = $this->input->post('link_demo', true);
-			//$mockup_produk = $this->input->post('mockup_produk', true);
+
+		if( ! $this->upload->do_upload('mockup_produk'))
+		{
+			
+			$data = array(
+				
+				'nama_produk'=>$nama_produk,
+				'jenis_produk' =>$jenis_produk,
+				'harga_produk' => $harga_produk,
+				'deskripsi_produk' => $deskripsi_produk,
+				'link_demo'	=> $link_demo
+
+			); 
+			//$this->session->set_flashdata('message', 'Data anggota berhasil ditambahkan');
+			$this->db->where('id_produk',$id_produk); //yg di update menjadi sesuai dengan id_produk
+			$this->db->update('produk', $data);
+			redirect('Anggota_uploadProduk');
+		}
+		else
+		{
 			
 			$data = array(
 				
@@ -55,7 +70,8 @@ class Anggota_uploadProduk extends CI_Controller {
 				'harga_produk' => $harga_produk,
 				'deskripsi_produk' => $deskripsi_produk,
 				'link_demo'	=> $link_demo,
-				'mockup_produk' => $mockup_produk
+				'mockup_produk' => $mockup_produk,
+
 			); 
 			//$this->session->set_flashdata('message', 'Data anggota berhasil ditambahkan');
 			$this->db->where('id_produk',$id_produk); //yg di update menjadi sesuai dengan id_produk
@@ -88,7 +104,8 @@ class Anggota_uploadProduk extends CI_Controller {
 			$deskripsi_produk = $this->input->post('deskripsi_produk', true);
 			$link_demo = $this->input->post('link_demo', true);
 			//$mockup_produk = $this->input->post('mockup_produk', true);
-			
+			$id_user = $this->session->userdata('userId');
+
 			$data = array(
 				'id_produk'=>$id_produk,
 				'nama_produk'=>$nama_produk,
@@ -96,12 +113,14 @@ class Anggota_uploadProduk extends CI_Controller {
 				'harga_produk' => $harga_produk,
 				'deskripsi_produk' => $deskripsi_produk,
 				'link_demo'	=> $link_demo,
-				'mockup_produk' => $mockup_produk
+				'mockup_produk' => $mockup_produk,
+				'id_users' => $id_user
 			); 
-			//$this->session->set_flashdata('message', 'Data anggota berhasil ditambahkan');
+			$this->session->set_flashdata('message', 'Data anggota berhasil ditambahkan');
 			$this->db->insert('produk', $data);
 			redirect('Anggota_uploadProduk');
 		}
 	}
 
 }
+

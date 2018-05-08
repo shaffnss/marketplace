@@ -7,7 +7,7 @@ class Admin_anggota_model extends CI_Model {
 		$this->db->from("users");
 		$this->db->join("roles","users.id_roles=roles.id_roles");
 		$this->db->where("roles.nama_roles","anggota");
-		$this->db->where_in("users.status",array('aktif','tidak_aktif'));
+		$this->db->where_in("users.status_users",array('aktif','tidak_aktif'));
 		return $this->db->get()->result();
 	}
 

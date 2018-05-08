@@ -45,8 +45,6 @@ $this->load->view('landing/head_landing');
             <h3 class="card-title">Sistem Informasi TA
             <a href="<?php echo site_url('')?>" class="btn btn-primary btn-sm">Lihat Demo</a></h3>
             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
-            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-            4.0 stars
           </div>
 
 
@@ -72,12 +70,15 @@ $this->load->view('landing/head_landing');
                     <form>
                       <div class="form-group">
                        <h5><p class="text-center"> Tahapan yang perlu anda lakukan :</p></h5>
+                       <div class="box-body">
+                         
+                       </div>
 
                     </form>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Login</button>
+                    <a href="<?php echo site_url('Login/loginMe')?>" type="button" class="btn btn-primary">Login</a>
                   </div>
                 </div>
               </div>
@@ -87,7 +88,7 @@ $this->load->view('landing/head_landing');
           <!-- /.card -->
         
 
-        <div class="card card-outline-secondary my-4">
+        <!-- <div class="card card-outline-secondary my-4">
           <div class="card-header">
             Product Reviews
           </div>
@@ -102,12 +103,12 @@ $this->load->view('landing/head_landing');
             <small class="text-muted">Posted by Anonymous on 3/1/17</small>
             <hr>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
+            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
               Review
             </button>
 
             <!-- Modal -->
-            <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+           <!--  <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -140,12 +141,13 @@ $this->load->view('landing/head_landing');
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
             <!-- /.modal -->
 
-          </div>
-        </div>
-        <!-- /.card -->
+         <!--  </div>
+        </div> -->
+        <!-- /.card --> 
+      </div>
 
       </div>
       <!-- /.col-lg-9 -->
