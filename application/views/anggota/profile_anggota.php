@@ -9,7 +9,6 @@ $this->load->view('anggota/head_anggota');
     <h1>Profil Anggota</h1>
   </section>
 
-  
 
   <!-- Main content -->
   <section class="content">
@@ -28,9 +27,6 @@ $this->load->view('anggota/head_anggota');
               <h3 class="profile-username text-center">
                 <?php echo $data->nama_users?>
               </h3>
-              <p class="text-muted text-center">
-                <?php echo $data->posisi_tim?>
-              </p>
               </div>
           </div>
 
@@ -59,15 +55,15 @@ $this->load->view('anggota/head_anggota');
               </p>
               <hr>
 
-              <strong><i class="fa fa-file-text-o margin-r-5"></i> Posisi</strong>
-              <p class="text-muted">
-                <?php echo $data->posisi_tim?>
-              </p>
-
                <div>
                 <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#ubah-profile<?php echo $data->id_users; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-profile"><i class="fa fa-pencil"></i> Ubah
                 </button>
               </div>
+
+            </div>
+          </div>
+        </div>
+           
 
               <!-- modal-content -->
               <div class="modal fade" id="ubah-profile<?php echo $data->id_users; ?>">
@@ -98,22 +94,8 @@ $this->load->view('anggota/head_anggota');
                               <label for="inputTelp" class="">No Telpon</label>
                               <input type="text" class="form-control" id="inputName" name="no_telpon" value="<?php echo $data->no_telpon; ?>" required="">
                             </div>
-
-                            <div class="form-group">
-                              <label for="inputPosisi" class="">Posisi</label>
-                              <div>            
-                                <select class="form-control" name="posisi_tim" value="<?php echo $data->posisi_tim; ?>>
-                                  <option disabled selected="">---Pilih Posisi---</option>
-                                  <option value="Project Manager" <?php if($data->posisi_tim == "Project Manager") {echo "selected=selected";} ?>>Project Manager</option>
-                                  <option value="UI/UX designer" <?php if($data->posisi_tim == "UI/UX designer") {echo "selected=selected";} ?>>UI/UX designer</option>
-                                  <option value="Front End" <?php if($data->posisi_tim == "Front End") {echo "selected=selected";} ?>>Front End</option>
-                                  <option value="Back End" <?php if($data->posisi_tim == "Back End") {echo "selected=selected";} ?>>Back End</option>
-                                  <option value="Database analyst" <?php if($data->posisi_tim == "Database analyst") {echo "selected=selected";} ?>>Database analyst</option>
-                                </select>
-                              </div>
                             </div>
                           </div>
-
 
                           <div class="modal-footer">
                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
@@ -127,9 +109,9 @@ $this->load->view('anggota/head_anggota');
                   <!-- /.modal-dialog -->
                 </div>
                 <!-- /.modal -->
-                <?php 
+                 <?php 
               } 
-              ?>
+            ?>
             </div> 
           </div> 
           <!-- /.About Me Box -->

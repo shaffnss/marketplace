@@ -6,16 +6,16 @@ $this->load->view('admin/head_admin');
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <h1>Daftar Klien</h1>
+    <h1>Daftar Pengelola</h1>
     <ol class="breadcrumb">
      <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-     <li><a href="#"><i class="fa fa-dashboard"></i> Klien</a></li>
+     <li><a href="#"><i class="fa fa-dashboard"></i> Pengelola</a></li>
    </ol>
  </section>
 
  <section class="content-header">
   <div>
-    <a href="<?php echo site_url('Admin_klien/tambah_klien')?>" type="button" class="btn btn-primary" >
+    <a href="<?php echo site_url('Admin_pengelola/tambah_pengelola')?>" type="button" class="btn btn-primary" >
       <i class="glyphicon glyphicon-plus"></i> Tambah
     </a>
   </div> 
@@ -29,13 +29,13 @@ $this->load->view('admin/head_admin');
     <div class="col-md-12">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">Data Klien</h3>
+          <h3 class="box-title">Data Pengelola</h3>
         </div>
         <div class="box-body">
           <table id="example1" class="table table-bordered table-striped">
             <thead>
               <th>No</th>
-              <th>Nama Klien</th>
+              <th>Nama Pengelola</th>
               <th>Jenis Kelamin</th>
               <th>Instansi</th>
               <th>No Telfon</th>
@@ -47,7 +47,7 @@ $this->load->view('admin/head_admin');
 
           <?php 
           $no=1;
-          foreach ($klien as $data) {
+          foreach ($pengelola as $data) {
                   # code...
 
             ?>
@@ -68,28 +68,28 @@ $this->load->view('admin/head_admin');
                     <?php }?>
                 </td>
                 <td>
-                  <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah-klien<?php echo $data->id_users; ?>" style="background:#1a75ff; border-color:#fff"><i class="fa fa-pencil"></i>
+                  <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah-pengelola<?php echo $data->id_users; ?>" style="background:#1a75ff; border-color:#fff"><i class="fa fa-pencil"></i>
                   </button>    
                 </td>
               </tr>
 
               <!-- Modals Ubah DATA KLIEN -->
-              <div class="modal fade" id="ubah-klien<?php echo $data->id_users; ?>">
+              <div class="modal fade" id="ubah-pengelola<?php echo $data->id_users; ?>">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Ubah Data Klien</h4>
+                        <h4 class="modal-title">Ubah Data pengelola</h4>
                       </div>
 
                       <div class="modal-body">
-                        <form action="<?php echo site_url('Admin_klien/ubahKlien') ?>" method="post" class="form-horizontal">
+                        <form action="<?php echo site_url('Admin_pengelola/ubahPengelola') ?>" method="post" class="form-horizontal">
                           <div class="box-body">
                             <input type="hidden" class="form-control" id="inputName" name="id_users" value="<?php echo $data->id_users; ?>" required>
 
                             <div class="form-group">
-                              <label class="">Nama Klien</label>
+                              <label class="">Nama Pengelola</label>
                               <input type="text" class="form-control" id="inputName" name="nama_users" value="<?php echo $data->nama_users; ?>">
                             </div>
 

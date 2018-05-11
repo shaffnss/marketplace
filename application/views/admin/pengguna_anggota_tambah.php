@@ -35,7 +35,7 @@ $this->load->view('admin/head_admin');
                 <label class="col-sm-2 control-label">Jenis Kelamin</label>
                 <div class="col-sm-8">            
                   <select class="form-control" name="jenis_kelamin" required="">
-                    <!-- <option disabled selected="">---Pilih Jenis Kelamin---</option> -->
+                    <option disabled selected="">---Pilih Jenis Kelamin---</option>
                     <option value="Pria">Pria</option>
                     <option value="Wanita">Wanita</option>
                   </select>
@@ -57,40 +57,40 @@ $this->load->view('admin/head_admin');
                 </div>
 
                  <div class="form-group">
-                  <label for="inputName" class="col-sm-2 control-label">Instansi</label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" name="instansi" placeholder="Nama Instansi">
-                  </div>
-                </div> 
-
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Posisi</label>
-                  <div class="col-sm-8">            
-                    <select class="form-control">
-                      <option disabled selected="">---Pilih Posisi---</option>
-                      <option value="Project Manager">Project Manager</option>
-                      <option value="UI/UX designer">UI/UX designer</option>
-                      <option value="Front End">Front End Developer</option>
-                      <option value="Back End">Back End Developer</option>
-                      <option value="Database analyst">Database analyst</option>
-                    </select>
-                  </div>
+                <label for="inputEmail" class="col-sm-2 control-label">Instansi</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" name="instansi" placeholder="Instansi">
                 </div>
+              </div>
 
-               <!--  <div class="form-group">
-                  <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" name="" placeholder="Skills">
-                  </div>
-                </div> -->
+                   <div class="form-group">
+                <label class="col-sm-2 control-label">Status Mahasiswa</label>
+                <div class="col-sm-8">            
+                  <select class="form-control" name="status_mhs" required="">
+                    <option disabled selected="">---Pilih Status Mahasiswa---</option>
+                    <option value="mahasiswa">Mahasiswa</option>
+                    <option value="alumni">Alumni</option>
+                  </select>
+                </div>
+              </div>
+
+              
+              <div class="form-group">
+                <label for="inputExperience" class="col-sm-2 control-label">Password</label>
+                <div class="col-sm-8">
+                 <input type="text" class="form-control" name="password" placeholder="Password">
+               </div>
+             </div>
+              
+              
+
 
                 <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-12">
-                    <button type="submit" class="btn btn-success">Tambah</button>
+                    <input type="submit" class="btn btn-success" value="Tambah">
                   </div>
                 </div>
               </form>
-
 
               <div class="box-footer">
                 <a href="<?php echo site_url('Admin_anggota')?>" type="button" class="btn btn-primary" >
@@ -101,7 +101,7 @@ $this->load->view('admin/head_admin');
           </div>
         </div>
       </section>
-
+</div>
 
       <?php
       $this->load->view('admin/foot_admin');

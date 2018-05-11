@@ -20,12 +20,6 @@ class Admin_anggota extends CI_Controller {
 		$this->load->view('admin/pengguna_anggota_tambah');
 	}
 
-	public function ubah_status($id_users)
-	{
-		$this->admin_anggota_model->UbahStatus($id_users);
-		redirect($_SERVER['HTTP_REFERER']); //KEMBALI KE PAGE SEBELUMNYA
-	}
-
 	public function inputAnggota()
 	{
 
@@ -35,8 +29,9 @@ class Admin_anggota extends CI_Controller {
 		$this->form_validation->set_rules('email','email','required');
 		$this->form_validation->set_rules('no_telpon','no telpon','required');
 		$this->form_validation->set_rules('instansi','instansi','required');
-		$this->form_validation->set_rules('posisi','posisi','required');
-		
+		$this->form_validation->set_rules('status_mhs','status_mhs','required');
+		$this->form_validation->set_rules('password','password','required');
+
 		if($this->form_validation->run() == FALSE)
 		{
    //jika form tidak lengkap maka akan dikembalikan ke route "matkulAdminR"
@@ -50,14 +45,19 @@ class Admin_anggota extends CI_Controller {
 			$email = $this->input->post('email');
 			$no_telpon = $this->input->post('no_telpon');
 			$instansi = $this->input->post('instansi');
+			$status_mhs = $this->input->post('status_mhs');
+			$password = $this->input->post('password');
+
 
 			$anggota =  array(
 				"id_roles"=>3,
 				"nama_users"=>$nama_anggota,
 				"jenis_kelamin"=>$jenis_kelamin,
 				"email"=>$email,
-				"no_telpon"=>$no_telpon,
 				"instansi"=>$instansi,
+				"no_telpon"=>$no_telpon,
+				"status_mhs"=>$status_mhs,
+				"password"=>PASSWORD_HASH($password,PASSWORD_DEFAULT)
 			);
 
 			$result = $this->admin_anggota_model->insertAnggota($anggota);
@@ -65,5 +65,36 @@ class Admin_anggota extends CI_Controller {
 		}
 
 		redirect('Admin_anggota');
+	}
+
+	public function ubahAnggota()
+	{
+		$id_users = $this->input->post('id_users');
+		$nama_anggota = $this->input->post('nama_users');
+		$jenis_kelamin = $this->input->post('jenis_kelamin');
+		$email = $this->input->post('email');
+		$no_telpon = $this->input->post('no_telpon');
+		$instansi = $this->input->post('instansi');
+		$status_users = $this->input->post('status_users');
+		$status_mhs = $this->input->post('status_mhs');
+
+		$anggota =  array(
+			"id_roles"=>3,
+			"nama_users"=>$nama_anggota,
+			"jenis_kelamin"=>$jenis_kelamin,
+			"no_telpon"=>$no_telpon,
+			"email"=>$email,
+			"status_users"=>$status_users,
+			"instansi"=>$instansi,
+			"status_mhs"=>$status_mhs
+		);
+		$this->db->where('id_users',$id_users);
+		$this->db->group_start();
+		$this->db->where('status_mhs','mahasiswa');
+		$this->db->or_where('status_mhs','alumni');
+		$this->db->group_end();
+		$this->db->update('users',$anggota);
+		redirect('Admin_anggota');
+
 	}
 }

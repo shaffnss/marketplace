@@ -6,11 +6,11 @@ $this->load->view('admin/head_admin');
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <h1>Tambah Data Klien</h1>
+    <h1>Tambah Data Pengelola</h1>
     <ol class="breadcrumb">
      <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-     <li><a href="#"><i class="fa fa-dashboard"></i> Klien</a></li>
-     <li class="active"> Tambah Klien</li>
+     <li><a href="#"><i class="fa fa-dashboard"></i> Pengelola</a></li>
+     <li class="active"> Tambah Pengelola</li>
    </ol>
  </section>
 
@@ -21,14 +21,14 @@ $this->load->view('admin/head_admin');
     <div class="col-md-12">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">Form Menambah Data Klien</h3>
+          <h3 class="box-title">Form Menambah Data Pengelola</h3>
 
-          <form class="form-horizontal" method="post" action="<?php echo site_url('Admin_klien/inputKlien') ?>">
+          <form class="form-horizontal" method="post" action="<?php echo site_url('Admin_pengelola/inputPengelola') ?>">
             <div class="box-body">
               <div class="form-group">
-                <label for="inputName" class="col-sm-2 control-label">Nama Klien</label>
+                <label for="inputName" class="col-sm-2 control-label">Nama Pengelola</label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" name="nama_klien" placeholder="Nama Klien">
+                  <input type="text" class="form-control" name="nama_pengelola" placeholder="Nama Pengelola">
                 </div>
               </div>
 
@@ -79,7 +79,7 @@ $this->load->view('admin/head_admin');
           </form>
 
           <div class="box-footer">
-            <a href="<?php echo site_url('Admin_klien')?>" type="button" class="btn btn-primary" >
+            <a href="<?php echo site_url('Admin_pengelola')?>" type="button" class="btn btn-primary" >
               <i class="glyphicon glyphicon-chevron-left"></i> Kembali
             </a>
           </div>

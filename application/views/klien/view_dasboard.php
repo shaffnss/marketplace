@@ -11,6 +11,12 @@ $this->load->view('klien/head_klien');
 
      <!-- Main content -->
  	<section class="content">
+    <div class="callout callout-warning">
+        <h4>Apakah anda telah melakukan pembelian?</h4>
+
+        <p>Silahkan masuk ke menu pembayaran untuk melihat produk pembbelian anda
+        </p>
+      </div>
  		
 
     </section>
