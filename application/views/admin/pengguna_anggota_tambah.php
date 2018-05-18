@@ -66,7 +66,7 @@ $this->load->view('admin/head_admin');
                    <div class="form-group">
                 <label class="col-sm-2 control-label">Status Mahasiswa</label>
                 <div class="col-sm-8">            
-                  <select class="form-control" name="status_mhs" required="">
+                  <select class="form-control" name="posisi" required="">
                     <option disabled selected="">---Pilih Status Mahasiswa---</option>
                     <option value="mahasiswa">Mahasiswa</option>
                     <option value="alumni">Alumni</option>

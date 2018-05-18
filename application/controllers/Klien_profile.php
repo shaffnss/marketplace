@@ -11,7 +11,8 @@ class Klien_profile extends CI_Controller {
  
 	public function index()
 	{
-		$data["profile"]=$this->klien_profile_model->getProfile();
+		$id_users = $this->session->userdata('userId');
+		$data["profile"]=$this->klien_profile_model->getProfile($id_users);
 		$this->load->view('Klien/view_profile',$data);
 	}
 }

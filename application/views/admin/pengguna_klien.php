@@ -6,7 +6,7 @@ $this->load->view('admin/head_admin');
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <h1>Daftar Klien</h1>
+    <h1>Pengguna Klien <small>Lihat, Tambah, Ubah Data Klien</small></h1>
     <ol class="breadcrumb">
      <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
      <li><a href="#"><i class="fa fa-dashboard"></i> Klien</a></li>
@@ -15,8 +15,8 @@ $this->load->view('admin/head_admin');
 
  <section class="content-header">
   <div>
-    <a href="<?php echo site_url('Admin_klien/tambah_klien')?>" type="button" class="btn btn-primary" >
-      <i class="glyphicon glyphicon-plus"></i> Tambah
+    <a href="<?php echo site_url('Admin_klien/tambah_klien')?>" type="button" class="btn btn-success" >
+      <i class="glyphicon glyphicon-plus"></i> Tambah Klien
     </a>
   </div> 
 </section>
@@ -35,6 +35,7 @@ $this->load->view('admin/head_admin');
           <table id="example1" class="table table-bordered table-striped">
             <thead>
               <th>No</th>
+              <th>Foto</th>
               <th>Nama Klien</th>
               <th>Jenis Kelamin</th>
               <th>Instansi</th>
@@ -54,6 +55,7 @@ $this->load->view('admin/head_admin');
             <tbody>
               <tr>
                 <td><?php echo $no ?></td>
+                <td><?php echo $data->foto ?></td>
                 <td><?php echo $data->nama_users?></td>
                 <td><?php echo $data->jenis_kelamin?></td>
                 <td><?php echo $data->instansi?></td>
@@ -62,10 +64,10 @@ $this->load->view('admin/head_admin');
                 <td>
                   <?php if($data->status_users=='aktif') {
                     ?>
-                  <span class="label label-success">Aktif</span>
+                    <span class="label label-success">Aktif</span>
                   <?php }else{ ?>
                     <span class="label label-danger">Non Aktif</span>
-                    <?php }?>
+                  <?php }?>
                 </td>
                 <td>
                   <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah-klien<?php echo $data->id_users; ?>" style="background:#1a75ff; border-color:#fff"><i class="fa fa-pencil"></i>
@@ -114,6 +116,11 @@ $this->load->view('admin/head_admin');
                             <div class="form-group">
                               <label class="">Email</label>
                               <input type="text" class="form-control" id="inputName" name="email" value="<?php echo $data->email; ?>" required>
+                            </div>
+
+                            <div class="form-group">
+                              <label class="">Upload Foto</label>
+                              <input type="file" name="foto" value="<?php echo $data->foto; ?>" required>
                             </div>
 
                             <div class="form-group">

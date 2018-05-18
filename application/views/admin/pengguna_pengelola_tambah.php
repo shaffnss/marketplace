@@ -64,31 +64,38 @@ $this->load->view('admin/head_admin');
                </div>
              </div>
 
-              <div class="form-group">
-                <label for="inputExperience" class="col-sm-2 control-label">Password</label>
-                <div class="col-sm-8">
-                 <input type="text" class="form-control" name="password" placeholder="Password">
-               </div>
-             </div>
-
              <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-12">
-                <button type="submit" class="btn btn-success">Tambah</button>
-              </div>
-            </div>
-          </form>
+              <label for="inputExperience" class="col-sm-2 control-label">Password</label>
+              <div class="col-sm-8">
+               <input type="text" class="form-control" name="password" placeholder="Password">
+             </div>
+           </div>
 
-          <div class="box-footer">
-            <a href="<?php echo site_url('Admin_pengelola')?>" type="button" class="btn btn-primary" >
-              <i class="glyphicon glyphicon-chevron-left"></i> Kembali
-            </a>
+           <div class="form-group">
+            <label class="col-sm-2 control-label">Upload Foto</label>
+            <div class="col-sm-8">
+              <input type="file" name="foto" required>
+            </div>
           </div>
 
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-12">
+              <button type="submit" class="btn btn-success">Tambah</button>
+            </div>
+          </div>
+        </form>
+
+        <div class="box-footer">
+          <a href="<?php echo site_url('Admin_pengelola')?>" type="button" class="btn btn-primary" >
+            <i class="glyphicon glyphicon-chevron-left"></i> Kembali
+          </a>
         </div>
+
       </div>
     </div>
-  </section>
-  <!-- /.content -->
+  </div>
+</section>
+<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 

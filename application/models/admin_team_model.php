@@ -20,4 +20,18 @@ class Admin_team_model extends CI_Model {
 		$this->db->where("users.id_roles",3); 
 		return $this->db->get('users')->result(); //get dari DB users
 	}
+
+	public function getAnggotaTim($id_team){
+		$this->db->join('users','users.id_users=detail_tim.id_users');
+		$this->db->join('tim','tim.id_tim=detail_tim.id_tim');
+		$this->db->where("tim.id_tim",$id_team); 
+		return $this->db->get('detail_tim')->result(); //get dari DB users
+	}	
+
+	public function tim($id_team){
+		$this->db->select("*");
+		$this->db->from("tim");
+		$this->db->where('id_tim',$id_team);
+		return $this->db->get()->result();
+	}
 }

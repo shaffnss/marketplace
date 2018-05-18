@@ -6,7 +6,7 @@ $this->load->view('admin/head_admin');
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <h1>Daftar Anggota Tim</h1>
+    <h1>User Anggota Tim</h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-users"></i> Anggota</a></li>
     </ol>
@@ -14,8 +14,8 @@ $this->load->view('admin/head_admin');
 
   <section class="content-header">
     <div>
-      <a href="<?php echo site_url('Admin_Anggota/tambah_anggota')?>" type="button" class="btn btn-primary" >
-        <i class="glyphicon glyphicon-plus"></i> Tambah
+      <a href="<?php echo site_url('Admin_Anggota/tambah_anggota')?>" type="button" class="btn btn-success" >
+        <i class="glyphicon glyphicon-plus"></i> Tambah Anggota Tim
       </a>
     </div> 
   </section>
@@ -59,7 +59,7 @@ $this->load->view('admin/head_admin');
                     <td><?php echo $data->no_telpon?></td>
                     <td><?php echo $data->instansi?></td>
                     <td>
-                      <?php if($data->status_mhs=='mahasiswa') {
+                      <?php if($data->posisi=='mahasiswa') {
                         ?>
                         <span class="label label-primary">Mahasiswa</span>
                         <?php }else{ ?>
@@ -131,9 +131,9 @@ $this->load->view('admin/head_admin');
 
                                           <div class="form-group">
                                             <label>Jstatus Mahasiswa</label>        
-                                            <select class="form-control" name="status_mhs">
-                                              <option value="mahasiswa" <?php if($data->status_mhs == "mahasiswa") {echo "selected=selected";} ?>>Mahasiswa</option>
-                                              <option value="alumni" <?php if($data->status_mhs == "alumni") {echo "selected=selected";} ?>>Alumni</option>
+                                            <select class="form-control" name="posisi">
+                                              <option value="mahasiswa" <?php if($data->posisi == "mahasiswa") {echo "selected=selected";} ?>>Mahasiswa</option>
+                                              <option value="alumni" <?php if($data->posisi == "alumni") {echo "selected=selected";} ?>>Alumni</option>
                                             </select>
                                           </div>
 

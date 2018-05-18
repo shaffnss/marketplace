@@ -19,9 +19,10 @@ $this->load->view('admin/head_admin');
   <div class="row">
     <!-- Form Tambah Klien -->
     <div class="col-md-12">
-      <div class="box box-primary">
+      <div class="box box-solid">
         <div class="box-header with-border">
-          <h3 class="box-title">Form Menambah Data Klien</h3>
+          <h3 class="box-title">Masukkan Data Klien</h3>
+        </div>
 
           <form class="form-horizontal" method="post" action="<?php echo site_url('Admin_klien/inputKlien') ?>">
             <div class="box-body">
@@ -72,6 +73,13 @@ $this->load->view('admin/head_admin');
              </div>
 
              <div class="form-group">
+            <label class="col-sm-2 control-label">Upload Foto</label>
+            <div class="col-sm-8">
+              <input type="file" name="foto" required>
+            </div>
+          </div>
+
+             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-12">
                 <button type="submit" class="btn btn-success">Tambah</button>
               </div>
@@ -83,8 +91,6 @@ $this->load->view('admin/head_admin');
               <i class="glyphicon glyphicon-chevron-left"></i> Kembali
             </a>
           </div>
-
-        </div>
       </div>
     </div>
   </section>

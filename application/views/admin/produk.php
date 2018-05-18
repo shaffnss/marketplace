@@ -15,8 +15,8 @@ $this->load->view('admin/head_admin');
 
  <section class="content-header">
   <div>
-    <a href="<?php echo site_url('Admin_produk/tambahProduk')?>" type="button" class="btn btn-primary" >
-      <i class="glyphicon glyphicon-plus"></i> Tambah
+    <a href="<?php echo site_url('Admin_produk/tambahProduk')?>" type="button" class="btn btn-warning" >
+      <i class="glyphicon glyphicon-plus"></i> Tambah Produk
     </a>
   </div> 
 </section>

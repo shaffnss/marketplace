@@ -49,6 +49,9 @@ class Login extends CI_Controller
             }elseif ($role == 3){
                 //Login Anggota
                 redirect('Anggota_dashboard');
+            }elseif ($role == 4){
+                //Login Superadmin
+                redirect('Admin_dashboard');    
             }
         }
     }
@@ -80,33 +83,45 @@ class Login extends CI_Controller
                 foreach ($result as $res)
                 {
                     $sessionArray = array('userId'=>$res->id_users,                    
-                                            'role'=>$res->id_roles,
-                                            'roleText'=>$res->nama_roles,
-                                            'name'=>$res->nama_users,
-                                            'isLoggedIn' => TRUE
-                                    );
-                                    
+                        'role'=>$res->id_roles,
+                        'roleText'=>$res->nama_roles,
+                        'name'=>$res->nama_users,
+                        'isLoggedIn' => TRUE
+                    );
+
                     $this->session->set_userdata($sessionArray);
                     
-                    redirect('Anggota_dashboard');
-                }
-            }
-            else
-            {
-                $this->session->set_flashdata('error', 'Email or password mismatch');
-                
-                redirect('/login');
-            }
+                    if($res->id_roles == 1){
+                //Login Admin
+                        redirect('Admin_dashboard');
+                    }elseif ($res->id_roles == 2) {
+                //Login Klien
+                        redirect('Klien_dashboard');
+                    }elseif ($res->id_roles == 3){
+                //Login Anggota
+                       redirect('Anggota_dashboard');
+                    }elseif ($res->id_roles == 4){
+                //Login Superadmin
+                        redirect('Admin_dashboard');
+                   }
+               }
+           }
+           else
+           {
+            $this->session->set_flashdata('error', 'Email or password mismatch');
+
+            redirect('/login');
         }
-
     }
 
-       public function logout() {
-            $this->session->sess_destroy();
+}
 
-            redirect('login');
-        
-    }
+public function logout() {
+    $this->session->sess_destroy();
+
+    redirect('login');
+
+}
 
 }
 

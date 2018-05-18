@@ -29,7 +29,7 @@ class Admin_anggota extends CI_Controller {
 		$this->form_validation->set_rules('email','email','required');
 		$this->form_validation->set_rules('no_telpon','no telpon','required');
 		$this->form_validation->set_rules('instansi','instansi','required');
-		$this->form_validation->set_rules('status_mhs','status_mhs','required');
+		$this->form_validation->set_rules('posisi','posisi','required');
 		$this->form_validation->set_rules('password','password','required');
 
 		if($this->form_validation->run() == FALSE)
@@ -45,7 +45,7 @@ class Admin_anggota extends CI_Controller {
 			$email = $this->input->post('email');
 			$no_telpon = $this->input->post('no_telpon');
 			$instansi = $this->input->post('instansi');
-			$status_mhs = $this->input->post('status_mhs');
+			$posisi = $this->input->post('posisi');
 			$password = $this->input->post('password');
 
 
@@ -56,7 +56,7 @@ class Admin_anggota extends CI_Controller {
 				"email"=>$email,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
-				"status_mhs"=>$status_mhs,
+				"posisi"=>$posisi,
 				"password"=>PASSWORD_HASH($password,PASSWORD_DEFAULT)
 			);
 
@@ -76,7 +76,7 @@ class Admin_anggota extends CI_Controller {
 		$no_telpon = $this->input->post('no_telpon');
 		$instansi = $this->input->post('instansi');
 		$status_users = $this->input->post('status_users');
-		$status_mhs = $this->input->post('status_mhs');
+		$posisi = $this->input->post('posisi');
 
 		$anggota =  array(
 			"id_roles"=>3,
@@ -86,12 +86,12 @@ class Admin_anggota extends CI_Controller {
 			"email"=>$email,
 			"status_users"=>$status_users,
 			"instansi"=>$instansi,
-			"status_mhs"=>$status_mhs
+			"posisi"=>$posisi
 		);
 		$this->db->where('id_users',$id_users);
 		$this->db->group_start();
-		$this->db->where('status_mhs','mahasiswa');
-		$this->db->or_where('status_mhs','alumni');
+		$this->db->where('posisi','mahasiswa');
+		$this->db->or_where('posisi','alumni');
 		$this->db->group_end();
 		$this->db->update('users',$anggota);
 		redirect('Admin_anggota');

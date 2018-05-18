@@ -99,7 +99,7 @@
           </a>
         </li>
 
-         <li class="treeview">
+         <!-- <li class="treeview">
           <a href="#">
             <i class="fa fa-file-text-o"></i> <span>Pemesanan</span>
             <span class="pull-right-container">
@@ -107,11 +107,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo site_url('Admin_pemesanan')?>"><i class="fa fa-list-alt"></i> Pemesanan Diproses</a></li>
-            <li><a href="<?php echo site_url('Admin_pemesanan/pemesananDiterima')?>"><i class="fa fa-check"></i> Pemesanan Diterima</a></li>
-            <li><a href="<?php echo site_url('Admin_pemesanan/pemesananDitolak')?>"><i class="fa fa-close"></i> Pemesanan Ditolak</a></li>
+            <li><a href="<?php //echo site_url('Admin_pemesanan')?>"><i class="fa fa-list-alt"></i> Pemesanan Diproses</a></li>
+            <li><a href="<?php //echo site_url('Admin_pemesanan/pemesananDiterima')?>"><i class="fa fa-check"></i> Pemesanan Diterima</a></li>
+            <li><a href="<?php //echo site_url('Admin_pemesanan/pemesananDitolak')?>"><i class="fa fa-close"></i> Pemesanan Ditolak</a></li>
           </ul>
-        </li>
+        </li> -->
         
         <li class="treeview">
           <a href="#">
@@ -135,14 +135,15 @@
             </li>
       
             <li class="treeview">
-              <i class="fa fa-navicon"></i> Pembelian
+              <a href="">
+              <i class="fa fa-navicon"></i>Pembelian
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
               </a>
               <ul class="treeview-menu">
-                  <li><a href="<?php echo site_url('Admin_pembelian')?>"><i class="fa fa-list-alt"></i> Diproses</a></li>
-                  <li><a href="<?php echo site_url('Admin_pembelian/pembelianSelesai')?>"><i class="fa fa-check"></i> Selesai</a></li>
+                  <li><a href="<?php echo site_url('Admin_pembelian')?>"><i class="fa fa-list-alt"></i>Diproses</a></li>
+                  <li><a href="<?php echo site_url('Admin_pembelian')?>"><i class="fa fa-check"></i>Selesai</a></li>
               </ul>
             </li>
           </ul>
@@ -156,8 +157,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?php echo site_url('Admin_produk') ?>"><i class="fa fa-list-alt"></i> Produk Masuk </a></li>
+            <li class=""><a href="<?php echo site_url('Admin_produk') ?>"><i class="fa fa-list-alt"></i> Produk Masuk </a></li>
             <li><a href="<?php echo site_url('Admin_anggota') ?>"><i class="fa fa-check"></i> Produk Diterima </a></li>
+            <li><a href="<?php echo site_url('Admin_anggota') ?>"><i class="fa fa-check"></i> Kategori Produk </a></li>
           </ul>
         </li>
 
@@ -170,10 +172,16 @@
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="<?php echo site_url('Admin_klien') ?>"><i class="fa fa-user"></i> Klien </a></li>
-            <li><a href="<?php echo site_url('Admin_anggota') ?>"><i class="fa fa-user"></i> Anggota Tim </a></li>
             <li><a href="<?php echo site_url('Admin_team') ?>"><i class="fa fa-user"></i> Tim </a></li>
+            <li><a href="<?php echo site_url('Admin_anggota') ?>"><i class="fa fa-user"></i> Anggota Tim </a></li>
+            <?php  
+                     if ($this->session->userdata('role')== 4){
+                      ?>
             <li><a href="<?php echo site_url('Admin_pengelola') ?>"><i class="fa fa-user"></i> Pengelola</a></li>
-            <li><a href="<?php echo site_url('Admin_pelamar') ?>"><i class="fa fa-user"></i> Pelamar</a></li>  
+              <?php 
+                    }
+                    ?>
+            <!-- <li><a href="<?php //echo site_url('Admin_pelamar') ?>"><i class="fa fa-user"></i> Pelamar</a></li>   -->
           </ul>
         </li>   
     </section>

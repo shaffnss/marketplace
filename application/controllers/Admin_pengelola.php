@@ -25,7 +25,6 @@ class Admin_pengelola extends CI_Controller {
 	{
 
 		$this->load->library('form_validation');
-
 		$this->form_validation->set_rules('nama_pengelola','nama pengelola','required');
 		$this->form_validation->set_rules('jenis_kelamin','jenis_kelamin','required');
 		$this->form_validation->set_rules('instansi','instansi','required');
@@ -40,7 +39,7 @@ class Admin_pengelola extends CI_Controller {
 		}
 		else
 		{
-			echo 'masuk';
+			//echo 'masuk';
 			$nama_pengelola = $this->input->post('nama_pengelola');
 			$jenis_kelamin = $this->input->post('jenis_kelamin');
 			$instansi = $this->input->post('instansi');
@@ -54,6 +53,7 @@ class Admin_pengelola extends CI_Controller {
 				"jenis_kelamin"=>$jenis_kelamin,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
+				"posisi"=>"pengelola",
 				"email"=>$email,
 				"password"=>PASSWORD_HASH($password,PASSWORD_DEFAULT)
 			);
@@ -75,8 +75,8 @@ class Admin_pengelola extends CI_Controller {
 		$email = $this->input->post('email');
 		$status_users = $this->input->post('status_users');
 
-		$klien =  array(
-			"id_roles"=>2,
+		$pengelola =  array(
+			"id_roles"=>1,
 			"nama_users"=>$nama_pengelola,
 			"jenis_kelamin"=>$jenis_kelamin,
 			"instansi"=>$instansi,

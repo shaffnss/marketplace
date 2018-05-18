@@ -70,6 +70,7 @@ $this->load->view('anggota/head_anggota');
               </div>
             </div>
 
+            
             <div class="form-group">
                 <label class="col-sm-2 control-label">Tentukan Team</label>
                 <div class="col-sm-8">            
