@@ -36,32 +36,24 @@
   <div class="login-box-body">
     <p class="login-box-msg">Masuk ke Marketplace TA</p>
 
-    <form action="../../index2.html" method="post">
+    <form action="<?php echo site_url('Login/loginMe')?>" method="post">
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
+        <input type="email" class="form-control" name="email" placeholder="Email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" class="form-control" name="password" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> Remember Me
-            </label>
-          </div>
-        </div>
         <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+        <div class="col-xs-12">
+          <input type="submit" class="btn btn-primary btn-flat pull-right" value="Masuk">
         </div>
         <!-- /.col -->
       </div>
     </form>
-
-    <a href="#">I forgot my password</a><br>
+		<br>
     <a href="<?php echo site_url('Register') ?>" class="text-center">Daftar sebagai pengguna baru</a>
 
   </div>
