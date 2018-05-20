@@ -1,15 +1,15 @@
 DARI PROSES PEMBELIAN OLEH KLIEN
 1. Search produk (halaman landing page) berdasarkan keyword
-2. Membagi halaman produk per kategori 
+2. Membagi halaman produk per kategori
 3. Kategori produk dibuat dinamis
 4. Link demo 
 5. LIVE CHAT (tawk.to)
 6. Purchase (simpan di session item yang dipilih)
 7. Klien = Upload pembayaran + alert  upload sukses + tunggu konfirmasi admin (klien_pembayaran)
 8. Admin = request pembelian oleh klien masuk ke halaman admin dibagian pembelian proses, jika sudah dikonfirmasi 
-status pembelian di halaman klien berubah\
-9. klien ditambah ganti photo [SOLVED]
-10. ubah password 
+status pembelian di halaman klien berubah 
+9. klien ditambah ganti photo
+10. ubah password
 11. produk detail list kategori left-sidebar diganti list produk dengan kategori yang sesuai
 
 DARI ANGGOTA UPLOAD DATA PRODUK
@@ -33,3 +33,8 @@ Admin
 
 System : 
 20. pengaturan session yang sedang login. anggota hanya bisa login pada halaman anggota, begitu jga klien dan admin.
+
+superadmin : superadmin@gmail.com : 12345
+klien : gorby@gmail.com : 12345
+anggota : 12345
+pengelola : pengelola1@gmail.com : 12345
