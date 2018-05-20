@@ -122,7 +122,7 @@
           </a>
           <ul class="treeview-menu">
             <li class="treeview">
-              <a href="">
+              <a>
               <i class="fa fa-file-text-o"></i>Pemesanan
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
@@ -135,7 +135,7 @@
             </li>
       
             <li class="treeview">
-              <a href="">
+              <a >
               <i class="fa fa-navicon"></i>Pembelian
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
@@ -150,7 +150,7 @@
         </li>
 
         <li class="treeview">
-          <a href="<?php echo site_url('') ?>">
+          <a >
             <i class="fa fa-file"></i> <span>Produk</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -158,8 +158,8 @@
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="<?php echo site_url('Admin_produk') ?>"><i class="fa fa-list-alt"></i> Produk Masuk </a></li>
-            <li><a href="<?php echo site_url('Admin_anggota') ?>"><i class="fa fa-check"></i> Produk Diterima </a></li>
-            <li><a href="<?php echo site_url('Admin_anggota') ?>"><i class="fa fa-check"></i> Kategori Produk </a></li>
+            <li><a ><i class="fa fa-check"></i> Produk Diterima </a></li>
+            <li><a ><i class="fa fa-check"></i> Kategori Produk </a></li>
           </ul>
         </li>
 
