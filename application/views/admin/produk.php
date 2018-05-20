@@ -15,8 +15,8 @@ $this->load->view('admin/head_admin');
 
  <section class="content-header">
   <div>
-    <a href="<?php echo site_url('Admin_produk/tambahProduk')?>" type="button" class="btn btn-primary" >
-      <i class="glyphicon glyphicon-plus"></i> Tambah
+    <a href="<?php echo site_url('Admin_produk/tambahProduk')?>" type="button" class="btn btn-warning" >
+      <i class="glyphicon glyphicon-plus"></i> Tambah Produk
     </a>
   </div> 
 </section>
@@ -64,7 +64,9 @@ $this->load->view('admin/head_admin');
                     <img src="<?php echo site_url('/assets/produk/'); echo $data->mockup_produk ?>" height='100px' width='100px'>
                   </td>
                   <td><?php echo $data->link_demo?></td>
-                  <td><span class="label label-success">Aktif</span></td>
+                  <td>
+                    <span class="label label-success">Aktif</span>
+                  </td>
                   <td class="text-center">
                     <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-produk"><i class="fa fa-pencil"></i>
                     </button>
@@ -84,11 +86,11 @@ $this->load->view('admin/head_admin');
                         <div class="modal-body">
                           <form action="" enctype="multipart/form-data" method="POST" class="form-horizontal">
                             <div class="box-body">
-                              <input type="hidden" class="form-control" id="inputName" name="id_produk" value="<?php echo $data->id_produk; ?>" required="">   
+                              <input type="hidden" class="form-control" id="inputName" name="id_produk" value="<?php echo $data->id_produk; ?>" required>   
 
                               <div class="form-group">
                                 <label for="inputName">Nama Produk</label>
-                                <input type="text" class="form-control" id="inputName" name="nama_produk" value="<?php echo $data->nama_produk; ?>" required="">            
+                                <input type="text" class="form-control" id="inputName" name="nama_produk" value="<?php echo $data->nama_produk; ?>" required>
                               </div>
 
                               <div class="form-group">
@@ -98,7 +100,6 @@ $this->load->view('admin/head_admin');
                               <div class="form-group">
                                 <label >Jenis Produk</label>
                                 <select class="form-control" name="jenis_produk" value="<?php echo $data->jenis_produk; ?>">
-                                  <option disabled selected="">---Pilih Jenis Produk---</option>
                                   <option value="Website" <?php if($data->jenis_produk == "Website") {echo "selected=selected";} ?>>Website</option>
                                   <option value="Mobile Apps" <?php if($data->jenis_produk == "Mobile Apps") {echo "selected=selected";} ?>>Mobile Apps</option>
                                   <option value="Game" <?php if($data->jenis_produk == "Game") {echo "selected=selected";} ?> >Game</option>
@@ -120,6 +121,18 @@ $this->load->view('admin/head_admin');
                               <div class="form-group">
                                 <label for="inputEmail">Mockup</label>                
                                 <input type="file" name="mockup_produk" value="<?php echo $data->mockup_produk; ?> required="">               
+                              </div>
+
+                              <div class="form-group">
+                                <label for="produk">Status</label>
+                                    <div class="radio">
+                                      <label>
+                                        <input type="radio" name="status_produk" id="optionsAktif" value="Aktif" checked>Aktif
+                                      </label>
+                                      <label>
+                                        <input type="radio" name="status_produk" id="optionsTdkAktif" value="Tidak Aktif">Tidak Aktif
+                                      </label>
+                                    </div>
                               </div>
                             </div>
                           </div>

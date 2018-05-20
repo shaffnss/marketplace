@@ -9,7 +9,6 @@ $this->load->view('anggota/head_anggota');
     <h1>Profil Anggota</h1>
   </section>
 
-  
 
   <!-- Main content -->
   <section class="content">
@@ -28,116 +27,141 @@ $this->load->view('anggota/head_anggota');
               <h3 class="profile-username text-center">
                 <?php echo $data->nama_users?>
               </h3>
-              <p class="text-muted text-center">
-                <?php echo $data->posisi_tim?>
-              </p>
-              </div>
-          </div>
-
-          <!-- About Me Box -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Tentang Saya</h3>
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <strong><i class="fa fa-book margin-r-5"></i> Nama Anggota</strong>
-              <p class="text-muted">
-                <?php echo $data->nama_users?>
-              </p>
-              <hr>
+            <!--- /.Box Body Profile End --->
+            <hr>
+            <!-- About Me Box -->
+            <div class="box box-solid">
+              <!-- /.box-header -->
+              <div class="box-body">
+                <strong><i class="fa fa-book margin-r-5"></i>Nama</strong>
+                <p class="text-muted">
+                  <?php echo $data->nama_users?>
+                </p>
+                <hr>
 
-              <strong><i class="fa fa-pencil margin-r-5"></i> Email</strong>
-              <p class="text-muted">
-                <?php echo $data->email?>
-              </p>
-              <hr>
+                <strong><i class="fa fa-map-marker margin-r-5"></i>Jenis Kelamin</strong>
+                <p class="text-muted">
+                  <?php echo $data->jenis_kelamin?>
+                </p>
+                <hr>
 
-              <strong><i class="fa fa-map-marker margin-r-5"></i> No Telpon</strong>
-              <p class="text-muted">
-                <?php echo $data->no_telpon?>
-              </p>
-              <hr>
+                <strong><i class="fa fa-pencil margin-r-5"></i> Email</strong>
+                <p class="text-muted">
+                  <?php echo $data->email?>
+                </p>
+                <hr>
 
-              <strong><i class="fa fa-file-text-o margin-r-5"></i> Posisi</strong>
-              <p class="text-muted">
-                <?php echo $data->posisi_tim?>
-              </p>
+                <strong><i class="fa fa-map-marker margin-r-5"></i>Instansi</strong>
+                <p class="text-muted">
+                  <?php echo $data->instansi?>
+                </p>
+                <hr>
 
-               <div>
-                <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#ubah-profile<?php echo $data->id_users; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-profile"><i class="fa fa-pencil"></i> Ubah
-                </button>
+                <strong><i class="fa fa-map-marker margin-r-5"></i> No Telpon</strong>
+                <p class="text-muted">
+                  <?php echo $data->no_telpon?>
+                </p>
+                <hr>
+
+                <strong><i class="fa fa-map-marker margin-r-5"></i> Status Mahasiswa</strong>
+                <p class="text-muted">
+                  <?php if($data->posisi=='mahasiswa') {
+                    ?>
+                    <span class="label label-primary">Mahasiswa</span>
+                  <?php }else{ ?>
+                    <span class="label label-info">Alumni</span>
+                  <?php }?>
+                </p>
+                <hr>
+
+                <div>
+                  <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#ubah-profile<?php echo $data->id_users; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-profile"><i class="fa fa-pencil"></i> Ubah
+                  </button>
+                </div>
+              </div>
+              <!-- /.BOX BODY ABOUT ME --> 
+            </div>
+            <!--- /.Box Primary About Me End --->
+          </div>
+          <!--- /.Col md 4 --->
+        </div>
+        <!--- /.Box Primary Profile End --->
+
+        <?php 
+      } 
+      ?>
+
+
+      <!-- modal-content -->
+      <div class="modal fade" id="ubah-profile<?php echo $data->id_users; ?>">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Ubah Data Anggota</h4>
               </div>
 
-              <!-- modal-content -->
-              <div class="modal fade" id="ubah-profile<?php echo $data->id_users; ?>">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Ubah Data Anggota</h4>
-                      </div>
+              <form action="<?php echo site_url('Anggota_profile/ubahAnggota') ?>" method="post" class="form-horizontal">
+                <div class="modal-body">
+                  <div class="box-body">
+                    <input type="hidden" class="form-control" name="id_users" required="">
 
-                      <div class="modal-body">
-                        <form action="" enctype="multipart/form-data" method="POST" class="form-horizontal">
-                          <div class="box-body">
-                            <input type="hidden" class="form-control" name="id_users" value="<?php echo $data->id_users; ?>" required="">
-
-                            <div class="form-group">
-                              <label for="inputName" class="">Nama Anggota</label>
-                              <input type="email" class="form-control" id="inputName" name="nama_users" value="<?php echo $data->nama_users; ?>" required="">
-                            </div>
-
-                            <div class="form-group">
-                              <label for="inputEmail" class="">Email</label>
-                              <input type="email" class="form-control" name="email" value="<?php echo $data->email; ?>" required="">
-                            </div>
-
-                            <div class="form-group">
-                              <label for="inputTelp" class="">No Telpon</label>
-                              <input type="text" class="form-control" id="inputName" name="no_telpon" value="<?php echo $data->no_telpon; ?>" required="">
-                            </div>
-
-                            <div class="form-group">
-                              <label for="inputPosisi" class="">Posisi</label>
-                              <div>            
-                                <select class="form-control" name="posisi_tim" value="<?php echo $data->posisi_tim; ?>>
-                                  <option disabled selected="">---Pilih Posisi---</option>
-                                  <option value="Project Manager" <?php if($data->posisi_tim == "Project Manager") {echo "selected=selected";} ?>>Project Manager</option>
-                                  <option value="UI/UX designer" <?php if($data->posisi_tim == "UI/UX designer") {echo "selected=selected";} ?>>UI/UX designer</option>
-                                  <option value="Front End" <?php if($data->posisi_tim == "Front End") {echo "selected=selected";} ?>>Front End</option>
-                                  <option value="Back End" <?php if($data->posisi_tim == "Back End") {echo "selected=selected";} ?>>Back End</option>
-                                  <option value="Database analyst" <?php if($data->posisi_tim == "Database analyst") {echo "selected=selected";} ?>>Database analyst</option>
-                                </select>
-                              </div>
-                            </div>
-                          </div>
-
-
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
-                            <button type="button" class="btn btn-primary">Simpan</button>
-                          </div>
-                        </form>
-                      </div>
+                    <div class="form-group">
+                      <label for="inputName" class="">Nama Anggota</label>
+                      <input type="text" class="form-control" id="inputName" name="nama_users" value="<?php echo $data->nama_users; ?>" required="">
                     </div>
-                    <!-- /.modal-content -->
+
+                    <div class="form-group">
+                      <label>Jenis Kelamin</label>        
+                      <select class="form-control" name="jenis_kelamin">
+                        <option value="Pria" <?php if($data->jenis_kelamin == "Pria") {echo "selected=selected";} ?>>Pria</option>
+                        <option value="Wanita" <?php if($data->jenis_kelamin == "Wanita") {echo "selected=selected";} ?>>Wanita</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="inputEmail" class="">Email</label>
+                      <input type="email" class="form-control" name="email" value="<?php echo $data->email; ?>" required="">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="inputTelp" class="">No Telpon</label>
+                      <input type="text" class="form-control" id="inputName" name="no_telpon" value="<?php echo $data->no_telpon; ?>" required="">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="inputTelp" class="">Instansi</label>
+                      <input type="text" class="form-control" id="inputName" name="instansi" value="<?php echo $data->instansi; ?>" required="">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="inputTelp" class="">Status</label>
+                      <input type="text" class="form-control" id="inputName" name="posisi" value="<?php echo $data->posisi; ?>" required="">
+                    </div>
+
+                    <div class="form-group">
+                      <label class="">Upload Foto</label>
+                      <input type="file" name="foto" value="<?php echo $data->foto; ?>" required>
+                    </div>
                   </div>
-                  <!-- /.modal-dialog -->
                 </div>
-                <!-- /.modal -->
-                <?php 
-              } 
-              ?>
-            </div> 
-          </div> 
-          <!-- /.About Me Box -->
-        </div>     
-        <!-- /.Profile End-->
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
+                  <input type="submit" class="btn btn-primary" value="simpan">
+                </div>
+              </form>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
 
         <div class="col-md-8">
-          <div class="box">
+          <div class="box box-solid">
             <div class="box-header">
               <h3 class="box-title">Daftar Tim Anda</h3>
             </div>
@@ -179,7 +203,7 @@ $this->load->view('anggota/head_anggota');
           </div>  
         </div>
       </div>
-      <!-- /.Row End --> 
+      <!-- /.COL-MD-8 -->
 
       <!-- Modal Tim --> 
       <div class="modal fade" id="detail-tim">
@@ -235,12 +259,14 @@ $this->load->view('anggota/head_anggota');
           <!-- /.modal-dialog -->
         </div>
         <!-- /.modal -->
-      </section>
-      <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
+      </div>
+      <!--- /.ROW --->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
 
 
-    <?php
-    $this->load->view('anggota/foot_anggota');
-    ?>
+  <?php
+  $this->load->view('anggota/foot_anggota');
+  ?>

@@ -70,6 +70,25 @@ $this->load->view('anggota/head_anggota');
               </div>
             </div>
 
+            
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Tentukan Team</label>
+                <div class="col-sm-8">            
+                  <select class="form-control" name="nama_tim" required="">
+                    <option disabled selected="">---Pilih Team---</option>
+                    <?php 
+                      foreach ($tambah_tim as $data) {
+                        # code...
+                      
+                    ?>
+                    <option value="<?php echo $data->id_tim; ?>"><?php echo $data->nama_tim; ?></option>
+                    <?php 
+                      }
+                    ?>
+                  </select>
+                </div>
+              </div>
+
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-8">
                 <input type="submit" name="Simpan" value="Tambah" class="btn btn-success pull-right">

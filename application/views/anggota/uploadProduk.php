@@ -70,6 +70,7 @@ $this->load->view('anggota/head_anggota');
                 <td>
                   <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-produk"><i class="fa fa-pencil"></i>
                   </button>
+                  <a class="btn btn-sm btn-info" style="background: #d41912; border-color: #fff"><i class="fa fa-remove"></i></a>
                 </td>
               </tr>
 
@@ -120,7 +121,8 @@ $this->load->view('anggota/head_anggota');
 
                             <div class="form-group">
                               <label for="inputEmail">Mockup</label>                
-                              <input type="file" name="mockup_produk" required="">               
+                              <input type="file" name="mockup_produk">
+                              <img src="<?php echo site_url('/assets/produk/'); echo $data->mockup_produk ?>" height='100px' width='100px'>             
                             </div>
                           </div>
                         </div>

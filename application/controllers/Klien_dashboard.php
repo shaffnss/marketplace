@@ -1,11 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Klien_dashboard extends CI_Controller {
+require APPPATH. '/libraries/BaseController.php';
+
+class Klien_dashboard extends Basecontroller {
 
 	function __construct()
 	{
 		parent::__construct();
+		$this->IsLoggedIn();
 	}
  
 	public function index()

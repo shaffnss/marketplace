@@ -31,6 +31,16 @@
   <link rel="stylesheet" href="<?php echo base_url('AdminLTE/bower_components') ?>/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Select2 -->
   <link rel="stylesheet" href="<?php echo base_url('AdminLTE/bower_components') ?>/select2/dist/css/select2.min.css">
+  <!-- jQuery 3 -->
+<script src="<?php echo base_url('AdminLTE/bower_components/jquery/dist/jquery.min.js') ?>"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="<?php echo base_url('AdminLTE/bower_components/jquery-ui/jquery-ui.min.js') ?>"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button);
+</script>
+<!-- Bootstrap 3.3.7 -->
+<script src="<?php echo base_url('AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js') ?>"></script>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -54,35 +64,10 @@
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
-
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?php echo base_url('AdminLTE/dist/img/user2-160x160.jpg') ?>" class="user-image" alt="User Image">
-              <span class="hidden-xs">ADMIN</span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <p>
-                  ADMIN
-                </p>
-              </li>
-              
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div>
-                <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
-            </ul>
+            <a href="<?php echo site_url('login/logout') ?>" class="btn btn-primary btn-flat"><i class="fa fa-sign-out"></i>Sign out</a>
           </li>
         </ul>
       </div>
@@ -99,8 +84,7 @@
           <img src="<?php echo base_url('AdminLTE/dist/img/user2-160x160.jpg') ?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>ADMIN</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <p><?php echo $this->session->userdata('name');?></p>
         </div>
       </div>
   
@@ -115,7 +99,7 @@
           </a>
         </li>
 
-         <li class="treeview">
+         <!-- <li class="treeview">
           <a href="#">
             <i class="fa fa-file-text-o"></i> <span>Pemesanan</span>
             <span class="pull-right-container">
@@ -123,11 +107,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo site_url('Admin_pemesanan')?>"><i class="fa fa-list-alt"></i> Pemesanan Diproses</a></li>
-            <li><a href="<?php echo site_url('Admin_pemesanan/pemesananDiterima')?>"><i class="fa fa-check"></i> Pemesanan Diterima</a></li>
-            <li><a href="<?php echo site_url('Admin_pemesanan/pemesananDitolak')?>"><i class="fa fa-close"></i> Pemesanan Ditolak</a></li>
+            <li><a href="<?php //echo site_url('Admin_pemesanan')?>"><i class="fa fa-list-alt"></i> Pemesanan Diproses</a></li>
+            <li><a href="<?php //echo site_url('Admin_pemesanan/pemesananDiterima')?>"><i class="fa fa-check"></i> Pemesanan Diterima</a></li>
+            <li><a href="<?php //echo site_url('Admin_pemesanan/pemesananDitolak')?>"><i class="fa fa-close"></i> Pemesanan Ditolak</a></li>
           </ul>
-        </li>
+        </li> -->
         
         <li class="treeview">
           <a href="#">
@@ -152,26 +136,32 @@
       
             <li class="treeview">
               <a href="">
-              <i class="fa fa-navicon"></i> Pembelian
+              <i class="fa fa-navicon"></i>Pembelian
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
               </a>
               <ul class="treeview-menu">
-                  <li><a href="<?php echo site_url('Admin_pembelian')?>"><i class="fa fa-list-alt"></i> Diproses</a></li>
-                  <li><a href="<?php echo site_url('Admin_pembelian/pembelianSelesai')?>"><i class="fa fa-check"></i> Selesai</a></li>
+                  <li><a href="<?php echo site_url('Admin_pembelian')?>"><i class="fa fa-list-alt"></i>Diproses</a></li>
+                  <li><a href="<?php echo site_url('Admin_pembelian')?>"><i class="fa fa-check"></i>Selesai</a></li>
               </ul>
             </li>
           </ul>
         </li>
 
-        <li>
-          <a href="<?php echo site_url('Admin_produk') ?>">
-            <i class="fa fa-laptop"></i>
-            <span>Produk</span>
+        <li class="treeview">
+          <a href="<?php echo site_url('') ?>">
+            <i class="fa fa-file"></i> <span>Produk</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
+          <ul class="treeview-menu">
+            <li class=""><a href="<?php echo site_url('Admin_produk') ?>"><i class="fa fa-list-alt"></i> Produk Masuk </a></li>
+            <li><a href="<?php echo site_url('Admin_anggota') ?>"><i class="fa fa-check"></i> Produk Diterima </a></li>
+            <li><a href="<?php echo site_url('Admin_anggota') ?>"><i class="fa fa-check"></i> Kategori Produk </a></li>
+          </ul>
         </li>
-
 
          <li class="treeview">
           <a href="<?php echo site_url('') ?>">
@@ -181,10 +171,17 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?php echo site_url('Admin_klien') ?>"><i class="fa fa-user"></i> Klien </a></li>
-            <li><a href="<?php echo site_url('Admin_anggota') ?>"><i class="fa fa-user"></i> Anggota Tim </a></li>
+            <li class=""><a href="<?php echo site_url('Admin_klien') ?>"><i class="fa fa-user"></i> Klien </a></li>
             <li><a href="<?php echo site_url('Admin_team') ?>"><i class="fa fa-user"></i> Tim </a></li>
-            <li><a href="<?php echo site_url('Admin_pelamar') ?>"><i class="fa fa-user"></i> Pelamar</a></li>  
+            <li><a href="<?php echo site_url('Admin_anggota') ?>"><i class="fa fa-user"></i> Anggota Tim </a></li>
+            <?php  
+                     if ($this->session->userdata('role')== 4){
+                      ?>
+            <li><a href="<?php echo site_url('Admin_pengelola') ?>"><i class="fa fa-user"></i> Pengelola</a></li>
+              <?php 
+                    }
+                    ?>
+            <!-- <li><a href="<?php //echo site_url('Admin_pelamar') ?>"><i class="fa fa-user"></i> Pelamar</a></li>   -->
           </ul>
         </li>   
     </section>

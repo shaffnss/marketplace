@@ -24,26 +24,67 @@ class Admin_klien extends CI_Controller {
 	public function inputKlien()
 	{
 
-		$this->load->library('form_validation');
+		$config['upload_path']          = './assets/users/klien';
+		$config['allowed_types']        = 'gif|jpg|png|jpeg';
+		$config['max_size']             = 3000;
+		$config['max_width']            = 5024;
+		$config['max_height']           = 5068;
 
-		$this->form_validation->set_rules('nama_klien','nama klien','required');
-		$this->form_validation->set_rules('jenis_kelamin','jenis_kelamin','required');
-		$this->form_validation->set_rules('instansi','instansi','required');
-		$this->form_validation->set_rules('no_telpon','no telpon','required');
-		$this->form_validation->set_rules('email','email','required');
-		if($this->form_validation->run() == FALSE)
+		$this->load->library('upload', $config);
+		if( ! $this->upload->do_upload('foto'))
 		{
-   //jika form tidak lengkap maka akan dikembalikan ke route "matkulAdminR"
-			redirect('Admin_klien');
+			echo 'Gagal upload, resolusi atau ukuran foto melebihi batas!';
 		}
 		else
 		{
-			echo 'masuk';
-			$nama_klien = $this->input->post('nama_klien');
-			$jenis_kelamin = $this->input->post('jenis_kelamin');
-			$instansi = $this->input->post('instansi');
-			$no_telpon = $this->input->post('no_telpon');
-			$email = $this->input->post('email');
+			$img = $this->upload->data();
+			$foto = $img['file_name'];
+			$nama_klien = $this->input->post('nama_klien', true);
+			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
+			$instansi = $this->input->post('instansi', true);
+			$no_telpon = $this->input->post('no_telpon', true);
+			$email = $this->input->post('email', true);
+			$password = $this->input->post('password', true);
+
+			$klien =  array(
+				"id_roles"=>2,
+				"nama_users"=>$nama_klien,
+				"jenis_kelamin"=>$jenis_kelamin,
+				"instansi"=>$instansi,
+				"no_telpon"=>$no_telpon,
+				"posisi"=>"klien",
+				"email"=>$email,
+				'foto'=>$foto,
+				"password"=>PASSWORD_HASH($password,PASSWORD_DEFAULT)
+			);
+
+			$this->db->insert('users', $data);
+			redirect('Admin_klien');
+		}
+	}
+
+	public function ubahKlien()
+	{
+		$config['upload_path']          = './assets/users/klien';
+		$config['allowed_types']        = 'gif|jpg|png|jpeg';
+		$config['max_size']             = 3000;
+		$config['max_width']            = 5024;
+		$config['max_height']           = 5068;
+
+		$this->load->library('upload', $config);
+
+		$img = $this->upload->data();
+		$foto = $img['file_name'];
+		$nama_klien = $this->input->post('nama_klien', true);
+		$jenis_kelamin = $this->input->post('jenis_kelamin', true);
+		$instansi = $this->input->post('instansi', true);
+		$no_telpon = $this->input->post('no_telpon', true);
+		$email = $this->input->post('email', true);
+		$password = $this->input->post('password', true);
+
+
+		if( ! $this->upload->do_upload('foto'))
+		{
 
 			$klien =  array(
 				"id_roles"=>2,
@@ -52,12 +93,28 @@ class Admin_klien extends CI_Controller {
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
 				"email"=>$email,
+				"status_users"=>$status_users
+			);
+			$this->db->where('id_users',$id_users);
+			$this->db->update('users',$klien);
+			redirect('Admin_klien');
+		}
+		else
+		{
+
+			$klien =  array(
+				"id_roles"=>2,
+				"nama_users"=>$nama_klien,
+				"jenis_kelamin"=>$jenis_kelamin,
+				"instansi"=>$instansi,
+				"no_telpon"=>$no_telpon,
+				"email"=>$email,
+				"status_users"=>$status_users
 			);
 
-			$result = $this->admin_klien_model->insertKlien($klien);
-
+			$this->db->where('id_users',$id_users);
+			$this->db->update('users',$klien);
+			redirect('Admin_klien');
 		}
-
-		redirect('Admin_klien');
 	}
 }

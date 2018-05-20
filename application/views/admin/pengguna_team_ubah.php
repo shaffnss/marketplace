@@ -15,132 +15,129 @@ $this->load->view('admin/head_admin');
 	<section class="content">
 		<div class="row">
 			<div class="col-md-12">
-				<div class="box box-primary">
-					<div class="box-header with-border">
-						<h3 class="box-title">Form Ubah Tim</h3>
+				<div class="box box-solid">
+					<div class="box-header with-border">		
+						<h3 class="box-title">Ubah Nama Tim dan Status</h3>
 					</div>
-					<!-- /.box header -->
 
-					<form class="form-horizontal" method="post" action="<?php echo site_url('Admin_anggota/inputAnggota') ?>">
-
+					<form method="post" action="<?php echo site_url('Admin_team/ubahNamaTim') ?>" >
 						<div class="box-body">
-							<div class="form-group">			
-								<label for="inputName" class="col-sm-3 control-label">Nama Tim</label>
+							<input type="hidden" class="form-control" name="id_tim" value="<?php echo $tim[0]->id_tim ?>">
+							<div class="form-group">		
+								<label for="inputName" class="col-sm-3 control-label" style="text-align: right;">Nama Tim</label>
 								<div class="col-sm-6">
-									<input type="text" class="form-control" name="nama_tim" placeholder="Nama Tim">
+									<input type="text" class="form-control" name="nama_tim" value="<?php echo $tim[0]->nama_tim ?>">
 								</div>
+							</div><br><br>
 
-								<div class="form-group">
-									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah-anggota">
-										<i class="glyphicon glyphicon-plus"></i> Tambah Anggota
-									</button>
-								</div>	
-
-								<div class="col-md-10">
-									<div class="box-body">
-										<table id="example1" class="table table-bordered table-striped">
-											<thead>
-												<tr>
-													<th>No</th>
-													<th>Nama Anggota</th>
-													<th>Posisi</th>													
-													<th>Aksi</th>
-												</tr>
-											</thead>
-
-											<tbody>
-												<tr>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td>
-														<a class="btn btn-sm btn-info" style="background: #d41912; border-color: #fff"><i class="fa fa-remove"></i></a>
-													</td>
-												</tr>
-
-												<!-- MODALS TAMBAH ANGGOTA -->
-												<div class="modal fade" id="tambah-anggota">
-													<div class="modal-dialog">
-														<div class="modal-content">
-															<div class="modal-header">
-																<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																	<span aria-hidden="true">&times;</span></button>
-																	<h4 class="modal-title">Tambah Anggota</h4>
-																</div>
-																<div class="modal-body">
-																	<div class="box-body">
-																		<div class="form-group">
-																			<label class="col-md-3">Nama Anggota</label>
-																			<select class="form-control select2" style="width: 60%;">
-																				<option selected="selected">Alabama</option>
-																				<option>Alaska</option>
-																				<option>California</option>
-																				<option>Delaware</option>
-																				<option>Tennessee</option>
-																				<option>Texas</option>
-																				<option>Washington</option>
-																			</select>
-																		</div>
-
-																		<div class="form-group">
-																			<label class="col-md-3">Posisi</label>
-																			<select class="form-control select2" style="width: 60%;">
-																				<option selected="selected">Alabama</option>
-																				<option>Alaska</option>
-																				<option>California</option>
-																				<option>Delaware</option>
-																				<option>Tennessee</option>
-																				<option>Texas</option>
-																				<option>Washington</option>
-																			</select>
-																		</div>
-																	</div>
-																</div>
-
-																<div class="modal-footer">
-																	<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-																	<button type="button" class="btn btn-success">Tambah</button>
-																</div>
-															</div>
-															<!-- /.modal-content -->
-														</div>
-														<!-- /.modal-dialog -->
-													</div>
-													<!-- /.modal -->
-												</tbody>											
-											</table>
-										</div>
-										<!-- /.box body tabel anggota -->
-									</div>
-									<!-- /.col-md-8 -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label" style="text-align: right;">Status</label> 
+								<div class="col-sm-6">       
+									<select class="form-control" name="status">
+										<option value="aktif" <?php if($tim[0]->status == "aktif") {echo "selected=selected";} ?>>Aktif</option>
+										<option value="nonaktif" <?php if($tim[0]->status == "nonaktif") {echo "selected=selected";} ?>>Non Aktif</option>
+									</select>
+									<br>
+									<input type="submit" class="btn btn-success" value="Simpan">
 								</div>
-								<!-- /.form group -->
-
-								<!-- /.box body -->
-							</form>
-
-							<div class="box-footer">
-								<button type="submit" class="btn btn-warning pull-right">Simpan</button>
-								<a href="<?php echo site_url('Admin_team')?>" type="button" class="btn btn-primary" >
-									<i class="glyphicon glyphicon-chevron-left"></i> Kembali
-								</a>
-							</div>
-
+							</div><br>
 						</div>
-						<!-- /.box primary -->
-					</div>
-					<!-- /.col md 12 -->
+					</form>
 				</div>
-				<!-- /.row -->
-			</section>
-			<!-- /.section content -->
+			</div>
+			<div class="col-md-12">
+				<div class="box box-solid">
+					<div class="box-header with-border">		
+						<h3 class="box-title">Tambah dan Hapus anggota</h3>
+					</div>
+
+					<div class="box-body">
+						<table id="example1" class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Nama Anggota</th>
+									<th>Posisi</th>													
+									<th>Aksi</th>
+								</tr>
+							</thead>
+							<?php 
+							$no=1;
+							foreach ($anggotaTim as $data) {
+												# code...
+
+
+								?>
+								<tbody>
+									<tr>
+										<td><?php echo $no ?></td>
+										<td>
+											<?php echo $data->nama_users ?>
+										</td>
+										<td>
+											<?php echo $data->posisi_tim ?>	
+										</td>
+										<td>
+											<a href="<?php echo site_url('Admin_team/hapusAnggota/'.$data->id_detail_tim.'/'.$data->id_tim) ?>" class="btn btn-danger"><i class="fa fa-remove"></i></a> 
+										</td>
+									</tr>
+									<?php 
+									$no++;
+								}?>
+								<tr>
+									<form method="post" action="<?php echo site_url('Admin_team/tambahAnggota') ?>" >
+
+										<td><?php echo $no ?></td>
+										<td><input type="hidden" name="id_tim" value="<?php echo $tim[0]->id_tim ?>">
+											<select class="form-control select2 anggota" style="width: 60%;" name="id_users" required="">
+												<option value="">Pilih Anggota</option>
+												<?php foreach ($panggil_anggota as $item) {
+																					# code...
+													?>
+													<option value="<?php echo $item->id_users ?>"><?php echo $item->nama_users ?></option>
+												<?php } ?>
+											</select>
+										</td>
+										<td>
+											<select class="form-control select2 posisi" style="width: 60%;" name="posisi_tim" required="">
+												<option value="">Pilih Posisi</option>
+												<option value="Project Manager">Project Manager</option>
+												<option value="UI/UX Designer">UI/UX Designer</option>
+												<option value="Front End">Front End</option>
+												<option value="Back End">Back End</option>
+												<option value="Database Analyst">Database Analyst</option>
+											</select>
+										</td>
+										<td>
+											<input type="submit" class="btn btn-primary" value="Tambah Anggota">
+										</td>
+									</form>
+								</tr>
+							</tbody>											
+						</table>
+					</div>
+					<!-- /.col-md-12-->
+					<!-- /.box body -->
+
+					<div class="box-footer">
+
+						<a href="<?php echo site_url('Admin_team')?>" type="button" class="btn btn-default" >
+							<i class="glyphicon glyphicon-chevron-left"></i> Kembali
+						</a>
+					</div>
+				</div>
+				<!-- /.form primary -->
+			</div>
+			<!-- /.col md 12 -->
 		</div>
-		<!-- /.wrapper -->
+		<!-- /.row -->
+	</section>
+	<!-- /.section content -->
+</div>
+<!-- /.wrapper -->
 
 
 
-
-
-		<?php
-		$this->load->view('admin/foot_admin');
-		?>
+<?php
+$this->load->view('admin/foot_admin');
+?>

@@ -6,7 +6,7 @@ $this->load->view('admin/head_admin');
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <h1>Daftar Anggota Tim</h1>
+    <h1>User Anggota Tim</h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-users"></i> Anggota</a></li>
     </ol>
@@ -14,8 +14,8 @@ $this->load->view('admin/head_admin');
 
   <section class="content-header">
     <div>
-      <a href="<?php echo site_url('Admin_Anggota/tambah_anggota')?>" type="button" class="btn btn-primary" >
-        <i class="glyphicon glyphicon-plus"></i> Tambah
+      <a href="<?php echo site_url('Admin_Anggota/tambah_anggota')?>" type="button" class="btn btn-success" >
+        <i class="glyphicon glyphicon-plus"></i> Tambah Anggota Tim
       </a>
     </div> 
   </section>
@@ -27,16 +27,6 @@ $this->load->view('admin/head_admin');
         <div class="box">
           <div class="box-header">
             <h3 class="box-title">Tabel Anggota Team</h3>
-
-            <div class="box-tools">
-              <div class="input-group input-group-sm" style="width: 150px;">
-                <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                <div class="input-group-btn">
-                  <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                </div>
-              </div>
-            </div>
           </div>
           <!-- /.box-header -->
           <div class="box-body">
@@ -45,9 +35,11 @@ $this->load->view('admin/head_admin');
                 <tr>
                   <th>No</th>
                   <th>Nama</th>
+                  <th>Jenis Kelamin</th>
                   <th>E-mail</th>
                   <th>No Telpon</th>
-                  <th>Posisi</th>
+                  <th>Instansi</th>
+                  <th>Status Mahasiswa</th>
                   <th>Status</th>
                   <th>Aksi</th>
                 </tr>
@@ -62,87 +54,129 @@ $this->load->view('admin/head_admin');
                   <tr>
                     <td><?php echo $no ?></td>
                     <td><?php echo $data->nama_users?></td>
+                    <td><?php echo $data->jenis_kelamin?></td>
                     <td><?php echo $data->email?></td>
                     <td><?php echo $data->no_telpon?></td>
-                    <td><?php echo $data->posisi_tim?></td>
-                    <td><a href="<?php echo site_url('Admin_Anggota/ubah_status/'.$data->id_users) ?>">
-                      <span class="label label-<?php echo ($data->status=='aktif')?'success':'danger' ?>"><?php echo ($data->status=='aktif')?'Aktif':'Tidak Aktif' ?></span></a>
-                    </td>
+                    <td><?php echo $data->instansi?></td>
                     <td>
-                      <div>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ubah-data">Ubah
-                        </button>
-                      </div>   
-                    </td>
-                  </tr>
-                </tbody>
-                <?php 
-                $no++; } ?>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-          
-          <!-- Modals Ubah Data -->
-          <div class="modal fade" id="ubah-data">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Ubah Data Anggota</h4>
-                  </div>
+                      <?php if($data->posisi=='mahasiswa') {
+                        ?>
+                        <span class="label label-primary">Mahasiswa</span>
+                        <?php }else{ ?>
+                          <span class="label label-info">Alumni</span>
+                          <?php }?>
+                        </td>
 
-                  <div class="modal-body">
-                    <div class="box-body">
-                      <div class="form-group">
-                        <label for="inputName" class="">Nama Anggota</label>
-                        <input type="email" class="form-control" id="inputName" placeholder="Nama Anggota">
-                      </div>
-                      <div class="form-group">
-                        <label for="inputEmail" class="">Email</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                      </div>
-                      <div class="form-group">
-                        <label for="inputTelp" class="">No Telpon</label>
-                        <input type="text" class="form-control" id="inputName" placeholder="No Telpon">
-                      </div>
-                      <div class="form-group">
-                        <label for="inputPosisi" class="">Posisi</label>
-                        <div>            
-                          <select class="form-control">
-                            <option disabled selected="">---Pilih Posisi---</option>
-                            <option>option 1</option>
-                            <option>option 2</option>
-                            <option>option 3</option>
-                            <option>option 4</option>
-                            <option>option 5</option>
-                          </select>
+                        <td>
+                          <?php if($data->status_users=='aktif') {
+                            ?>
+                            <span class="label label-success">Aktif</span>
+                            <?php }else{ ?>
+                              <span class="label label-danger">Non Aktif</span>
+                              <?php }?>
+                            </td>
+
+                            <td>
+                              <div>
+                                <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah-data<?php echo $data->id_users; ?>" style="background:#1a75ff; border-color:#fff"><i class="fa fa-pencil"></i>
+                                </div>   
+                              </td>
+                            </tr>
+
+                            <!-- Modals Ubah Data -->
+                            <div class="modal fade" id="ubah-data<?php echo $data->id_users; ?>">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span></button>
+                                      <h4 class="modal-title">Ubah Data Anggota</h4>
+                                    </div>
+
+                                    <div class="modal-body">
+                                      <form action="<?php echo site_url('Admin_anggota/ubahAnggota') ?>" method="post" class="form-horizontal">
+                                        <div class="box-body">
+                                          <input type="hidden" class="form-control" id="inputName" name="id_users" value="<?php echo $data->id_users; ?>" required>
+
+                                          <div class="form-group">
+                                            <label class="">Nama Anggota</label>
+                                            <input type="text" class="form-control" id="inputName" name="nama_users" value="<?php echo $data->nama_users; ?>">
+                                          </div>
+
+                                          <div class="form-group">
+                                            <label>Jenis Kelamin</label>        
+                                            <select class="form-control" name="jenis_kelamin">
+                                              <option value="Pria" <?php if($data->jenis_kelamin == "Pria") {echo "selected=selected";} ?>>Pria</option>
+                                              <option value="Wanita" <?php if($data->jenis_kelamin == "Wanita") {echo "selected=selected";} ?>>Wanita</option>
+                                            </select>
+                                          </div>
+
+                                          <div class="form-group">
+                                            <label for="inputEmail" class="">Email</label>
+                                            <input type="email" class="form-control" id="inputEmail" name="email" value="<?php echo $data->email; ?>">
+                                          </div>
+
+                                          <div class="form-group">
+                                            <label for="inputTelp" class="">No Telpon</label>
+                                            <input type="text" class="form-control" id="inputName" name="no_telpon" value="<?php echo $data->no_telpon; ?>">
+                                          </div>
+
+
+                            <div class="form-group">
+                              <label class="">Instansi</label>
+                              <input type="text" class="form-control" id="inputName" name="instansi" value="<?php echo $data->instansi; ?>" required>
+                            </div>
+
+
+
+                                          <div class="form-group">
+                                            <label>Jstatus Mahasiswa</label>        
+                                            <select class="form-control" name="posisi">
+                                              <option value="mahasiswa" <?php if($data->posisi == "mahasiswa") {echo "selected=selected";} ?>>Mahasiswa</option>
+                                              <option value="alumni" <?php if($data->posisi == "alumni") {echo "selected=selected";} ?>>Alumni</option>
+                                            </select>
+                                          </div>
+
+                                          <div class="form-group">
+                                            <label>Status</label>
+                                            <div class="radio">
+                                              <label>
+                                                <input type="radio" name="status_users" id="optionsAktif" value="aktif" <?php if($data->status_users == "aktif") {echo "checked";} ?>>Aktif
+                                              </label>
+                                              <label>
+                                                <input type="radio" name="status_users" id="optionsTdkAktif" value="nonaktif"  <?php if($data->status_users == "nonaktif") {echo "checked";} ?>>Non Aktif
+                                              </label>
+                                            </div>
+                                          </div>
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
+                                          <input type="submit" class="btn btn-success" value="Simpan">
+                                        </div>
+                                      </div>
+                                    </form>
+                                  </div>
+                                  <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                              </div>
+                              <!-- /.Modals Ubah Data -->
+                              <?php 
+                              $no++; } ?>
+                            </tbody>
+                          </table>
                         </div>
+                        <!-- /.box-body -->
                       </div>
-                      <div class="form-group">
-                        <label for="inputSkills" class="">Skills</label>
-                        <input type="text" class="form-control" id="inputSkills" placeholder="Skills">         </div>
-                      </div>
-
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
-                        <button type="button" class="btn btn-primary">Simpan</button>
-                      </div>
-                    </div>
+                      <!-- /.box -->
+                    </section>
+                    <!-- /.content -->
                   </div>
-                  <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-              </div>
-              <!-- /.Modals Ubah Data -->
-            </section>
-            <!-- /.content -->
-          </div>
-          <!-- /.content-wrapper -->
+                  <!-- /.content-wrapper -->
 
 
-          <?php
-          $this->load->view('admin/foot_admin');
-          ?>
+                  <?php
+                  $this->load->view('admin/foot_admin');
+                  ?>
