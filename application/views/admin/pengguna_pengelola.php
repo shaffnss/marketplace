@@ -15,7 +15,7 @@ $this->load->view('admin/head_admin');
 
  <section class="content-header">
   <div>
-    <a href="<?php echo site_url('Admin_pengelola/tambah_pengelola')?>" type="button" class="btn btn-warning" >
+    <a href="<?php echo site_url('Admin_pengelola/tambah_pengelola')?>" type="button" class="btn btn-primary" >
       <i class="glyphicon glyphicon-plus"></i> Tambah Pengelola
     </a>
   </div> 
@@ -34,7 +34,7 @@ $this->load->view('admin/head_admin');
         <div class="box-body">
           <table id="example1" class="table table-bordered table-striped">
             <thead>
-              <!-- <th>No</th> -->
+              <th>No</th>
               <th>Foto</th>
               <th>Nama Pengelola</th>
               <th>Jenis Kelamin</th>
@@ -47,14 +47,15 @@ $this->load->view('admin/head_admin');
           </thead>
 
           <?php 
+          $no=1;
           foreach ($pengelola as $data) {
                   # code...
 
             ?>
             <tbody>
               <tr>
-               <!--  <td><?php //echo $no ?></td> -->
-                <td><?php echo $data->foto ?></td>
+               <td><?php echo $no ?></td>
+                <td><img src="<?php echo site_url('/assets/users/pengelola/').$data->foto ?>" class="img-responsive" style="height: 100px; width: 100px"></td>
                 <td><?php echo $data->nama_users?></td>
                 <td><?php echo $data->jenis_kelamin?></td>
                 <td><?php echo $data->instansi?></td>
@@ -73,7 +74,7 @@ $this->load->view('admin/head_admin');
                     if ($this->session->userdata('role')== 4){
                       ?>
                       <td>
-                        <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah-pengelola<?php echo $data->id_users; ?>" style="background:#1a75ff; border-color:#fff"><i class="fa fa-pencil"></i>
+                        <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ubah-pengelola<?php echo $data->id_users; ?>"><i class="fa fa-edit"></i>
                         </button>   
                       </td>
                       <?php 
@@ -92,7 +93,8 @@ $this->load->view('admin/head_admin');
                           </div>
 
                           <div class="modal-body">
-                            <form action="<?php echo site_url('Admin_pengelola/ubahPengelola') ?>" method="post" class="form-horizontal">
+                            <form action="<?php echo site_url('Admin_pengelola/ubahPengelola') ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
+
                               <div class="box-body">
                                 <input type="hidden" class="form-control" id="inputName" name="id_users" value="<?php echo $data->id_users; ?>" required>
 
@@ -126,7 +128,7 @@ $this->load->view('admin/head_admin');
 
                                 <div class="form-group">
                                   <label class="">Upload Foto</label>
-                                  <input type="file" name="foto" value="<?php echo $data->foto; ?>" required>
+                                  <input type="file" name="foto" value="<?php echo $data->foto; ?>">
                                 </div>
 
                                 <div class="form-group">
@@ -145,7 +147,7 @@ $this->load->view('admin/head_admin');
 
                             <div class="modal-footer">
                               <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                              <input type="submit" class="btn btn-primary" value="Simpan">
+                              <input type="submit" class="btn btn-success" value="Simpan">
                             </div>
                           </div>
                         </form>
@@ -155,7 +157,7 @@ $this->load->view('admin/head_admin');
                     <!-- /.modal-dialog -->
                   </div>
                   <!-- /.modal -->      
-                  <?php } ?>
+                  <?php $no++; } ?>
                 </tbody>
               </table>
             </div>

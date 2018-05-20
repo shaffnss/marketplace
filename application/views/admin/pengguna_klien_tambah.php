@@ -24,19 +24,29 @@ $this->load->view('admin/head_admin');
           <h3 class="box-title">Masukkan Data Klien</h3>
         </div>
 
-          <form class="form-horizontal" method="post" action="<?php echo site_url('Admin_klien/inputKlien') ?>">
+        <!-- Alert file-->
+          <?php if(!empty($error_upload)): ?>
+            <div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-warning"></i> Peringatan</h4>
+                <?php echo $error_upload; ?>
+              </div>
+          <?php endif; ?>
+
+          <form class="form-horizontal" method="post" action="<?php echo site_url('Admin_klien/inputKlien') ?>" enctype="multipart/form-data">
+
             <div class="box-body">
               <div class="form-group">
                 <label for="inputName" class="col-sm-2 control-label">Nama Klien</label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" name="nama_klien" placeholder="Nama Klien">
+                  <input type="text" class="form-control" name="nama_users" placeholder="Nama Klien" value="<?php echo set_value("nama_users") ?>" required="">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="col-sm-2 control-label">Jenis Kelamin</label>
                 <div class="col-sm-8">            
-                  <select class="form-control" name="jenis_kelamin" required="">
+                  <select class="form-control" name="jenis_kelamin" required="" value="<?php echo set_value("jenis_kelamin") ?>">
                     <option disabled selected="">---Pilih Jenis Kelamin---</option>
                     <option value="Pria">Pria</option>
                     <option value="Wanita">Wanita</option>
@@ -47,28 +57,28 @@ $this->load->view('admin/head_admin');
               <div class="form-group">
                 <label for="inputEmail" class="col-sm-2 control-label">Instansi</label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" name="instansi" placeholder="Instansi">
+                  <input type="text" class="form-control" name="instansi" placeholder="Instansi" value="<?php echo set_value("instansi") ?>" required>
                 </div>
               </div>
 
               <div class="form-group">
                 <label for="inputName" class="col-sm-2 control-label">No Telpon</label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" name="no_telpon" placeholder="No Telpon">
+                  <input type="text" class="form-control" name="no_telpon" placeholder="No Telpon" value="<?php echo set_value("no_telpon") ?>" required="">
                 </div>
               </div>
 
               <div class="form-group">
                 <label for="inputExperience" class="col-sm-2 control-label">Email</label>
                 <div class="col-sm-8">
-                 <input type="email" class="form-control" name="email" placeholder="Email">
+                 <input type="email" class="form-control" name="email" placeholder="Email" value="<?php echo set_value("email") ?>" required="" >
                </div>
              </div>
 
               <div class="form-group">
                 <label for="inputExperience" class="col-sm-2 control-label">Password</label>
                 <div class="col-sm-8">
-                 <input type="text" class="form-control" name="password" placeholder="Password">
+                 <input type="text" class="form-control" name="password" placeholder="Password" required="">
                </div>
              </div>
 
@@ -87,7 +97,7 @@ $this->load->view('admin/head_admin');
           </form>
 
           <div class="box-footer">
-            <a href="<?php echo site_url('Admin_klien')?>" type="button" class="btn btn-primary" >
+            <a href="<?php echo site_url('Admin_klien')?>" type="button" class="btn btn-default" >
               <i class="glyphicon glyphicon-chevron-left"></i> Kembali
             </a>
           </div>

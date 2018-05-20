@@ -23,7 +23,7 @@ $this->load->view('anggota/head_anggota');
           # code...
             ?>
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url('AdminLTE/dist') ?>/img/user4-128x128.jpg" alt="User profile picture">
+              <img class="profile-user-img img-responsive img-circle" src="<?php echo site_url('/assets/users/klien/').$data->foto ?>" alt="User profile picture">
               <h3 class="profile-username text-center">
                 <?php echo $data->nama_users?>
               </h3>
@@ -103,7 +103,7 @@ $this->load->view('anggota/head_anggota');
                 <h4 class="modal-title">Ubah Data Anggota</h4>
               </div>
 
-              <form action="<?php echo site_url('Anggota_profile/ubahAnggota') ?>" method="post" class="form-horizontal">
+              <form action="<?php echo site_url('Anggota_profile/ubahAnggota') ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
                 <div class="modal-body">
                   <div class="box-body">
                     <input type="hidden" class="form-control" name="id_users" required="">
@@ -137,8 +137,11 @@ $this->load->view('anggota/head_anggota');
                     </div>
 
                     <div class="form-group">
-                      <label for="inputTelp" class="">Status</label>
-                      <input type="text" class="form-control" id="inputName" name="posisi" value="<?php echo $data->posisi; ?>" required="">
+                      <label>Status Mahasiswa</label>        
+                      <select class="form-control" name="posisi">
+                        <option value="mahasiswa" <?php if($data->posisi == "mahasiswa") {echo "selected=selected";} ?>>Mahasiswa</option>
+                        <option value="alumni" <?php if($data->posisi == "alumni") {echo "selected=selected";} ?>>Alumni</option>
+                      </select>
                     </div>
 
                     <div class="form-group">
@@ -150,7 +153,7 @@ $this->load->view('anggota/head_anggota');
 
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
-                  <input type="submit" class="btn btn-primary" value="simpan">
+                  <input type="submit" class="btn btn-primary" value="Simpan">
                 </div>
               </form>
             </div>

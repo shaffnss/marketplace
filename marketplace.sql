@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2018 at 09:29 AM
+-- Generation Time: May 20, 2018 at 07:49 AM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -30,15 +30,7 @@ CREATE TABLE IF NOT EXISTS `detail_pembelian` (
   `id_detail_pembelian` int(11) NOT NULL,
   `id_pembelian` int(11) NOT NULL,
   `id_produk` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `detail_pembelian`
---
-
-INSERT INTO `detail_pembelian` (`id_detail_pembelian`, `id_pembelian`, `id_produk`) VALUES
-(1, 1, 2),
-(2, 2, 2);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -91,16 +83,17 @@ CREATE TABLE IF NOT EXISTS `detail_tim` (
   `id_tim` int(11) NOT NULL,
   `id_users` int(11) NOT NULL,
   `posisi_tim` enum('Project Manager','UI/UX Designer','Front End','Back End','Database Analyst') NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_tim`
 --
 
 INSERT INTO `detail_tim` (`id_detail_tim`, `id_tim`, `id_users`, `posisi_tim`) VALUES
-(2, 51, 4, 'Project Manager'),
-(3, 51, 6, 'UI/UX Designer'),
-(4, 52, 4, 'Back End');
+(1, 51, 13, 'Project Manager'),
+(4, 51, 16, 'UI/UX Designer'),
+(9, 52, 13, 'UI/UX Designer'),
+(10, 51, 32, 'UI/UX Designer');
 
 -- --------------------------------------------------------
 
@@ -112,14 +105,18 @@ CREATE TABLE IF NOT EXISTS `info_lowongan` (
   `id_info_lowongan` int(11) NOT NULL,
   `deskripsi_info_lowongan` varchar(255) NOT NULL,
   `id_users` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `info_lowongan`
+-- Table structure for table `kategori_produk`
 --
 
-INSERT INTO `info_lowongan` (`id_info_lowongan`, `deskripsi_info_lowongan`, `id_users`) VALUES
-(1, 'dibutuhkan PM', 1);
+CREATE TABLE IF NOT EXISTS `kategori_produk` (
+  `id_kategori` int(11) NOT NULL,
+  `nama_kategori` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -137,15 +134,7 @@ CREATE TABLE IF NOT EXISTS `pembelian` (
   `jumlah_pembelian` int(255) NOT NULL,
   `deadline_instalasi` date NOT NULL,
   `id_users` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `pembelian`
---
-
-INSERT INTO `pembelian` (`id_pembelian`, `tgl_pembelian`, `status_pembelian`, `total`, `bukti_terima`, `bukti_pembayaran`, `jumlah_pembelian`, `deadline_instalasi`, `id_users`) VALUES
-(1, '2018-04-27', 'selesai', 1000000, 'ini', 'ini', 1, '2018-05-24', 2),
-(2, '2018-05-01', 'selesai', 1000000, 'ini', 'ini', 2, '2018-05-17', 3);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -189,23 +178,23 @@ CREATE TABLE IF NOT EXISTS `produk` (
   `nama_produk` varchar(50) NOT NULL,
   `harga_produk` int(255) NOT NULL,
   `status` enum('tersedia','tidak_tersedia') NOT NULL,
-  `jenis_produk` enum('Website','Mobile Apps','Game','Artificial Intelegent(AI)') NOT NULL,
   `deskripsi_produk` varchar(255) NOT NULL,
   `file_produk` varchar(255) NOT NULL,
   `mockup_produk` varchar(255) DEFAULT NULL,
   `link_demo` varchar(255) NOT NULL,
-  `id_users` int(11) NOT NULL
+  `id_users` int(11) NOT NULL,
+  `id_kategori` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `produk`
 --
 
-INSERT INTO `produk` (`id_produk`, `nama_produk`, `harga_produk`, `status`, `jenis_produk`, `deskripsi_produk`, `file_produk`, `mockup_produk`, `link_demo`, `id_users`) VALUES
-(1, 'sistem ta', 1000000, 'tersedia', 'Website', 'sistem pendaftaran tugas akhir                                                            ', 'ini yaa', '', 'www.instagram.com', 4),
-(2, 'sistem absensi lab', 2000000, 'tersedia', 'Mobile Apps', 'sistem absensi lab', 'ini', 'ini', 'www.instragram.com', 6),
-(14, 'sistem lele', 50000, 'tersedia', 'Website', 'kadnwjfbw', '', 'adminlte3.png', 'www.facebook.com', 4),
-(15, 'sistem lele', 5000, 'tersedia', 'Mobile Apps', 'wewwdw', '', 'admin3.png', 'www.facebook.com', 4);
+INSERT INTO `produk` (`id_produk`, `nama_produk`, `harga_produk`, `status`, `deskripsi_produk`, `file_produk`, `mockup_produk`, `link_demo`, `id_users`, `id_kategori`) VALUES
+(1, 'sistem ta', 1000000, 'tersedia', 'sistem pendaftaran tugas akhir                                                            ', 'ini yaa', '', 'www.instagram.com', 4, 0),
+(2, 'sistem absensi lab', 2000000, 'tersedia', 'sistem absensi lab', 'ini', 'ini', 'www.instragram.com', 6, 0),
+(14, 'sistem lele', 50000, 'tersedia', 'kadnwjfbw', '', 'adminlte3.png', 'www.facebook.com', 4, 0),
+(15, 'sistem lele', 5000, 'tersedia', 'wewwdw', '', 'admin3.png', 'www.facebook.com', 4, 0);
 
 -- --------------------------------------------------------
 
@@ -226,7 +215,7 @@ INSERT INTO `roles` (`id_roles`, `nama_roles`) VALUES
 (1, 'pengelola'),
 (2, 'klien'),
 (3, 'anggota'),
-(4, 'pelamar');
+(4, 'super pengelola');
 
 -- --------------------------------------------------------
 
@@ -237,17 +226,17 @@ INSERT INTO `roles` (`id_roles`, `nama_roles`) VALUES
 CREATE TABLE IF NOT EXISTS `tim` (
   `id_tim` int(11) NOT NULL,
   `nama_tim` varchar(50) NOT NULL,
-  `status` enum('aktif','tidak aktif') NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
+  `status` enum('aktif','nonaktif') NOT NULL,
+  `status_tim` enum('individu','tim') NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tim`
 --
 
-INSERT INTO `tim` (`id_tim`, `nama_tim`, `status`) VALUES
-(51, 'tim hore', 'aktif'),
-(52, 'tim hayo', 'aktif'),
-(56, 'team mawur', 'aktif');
+INSERT INTO `tim` (`id_tim`, `nama_tim`, `status`, `status_tim`) VALUES
+(51, 'KOMSI 15', 'nonaktif', 'individu'),
+(52, 'Hore', 'aktif', 'individu');
 
 -- --------------------------------------------------------
 
@@ -259,30 +248,35 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id_users` int(11) NOT NULL,
   `nama_users` varchar(30) NOT NULL,
   `id_roles` int(11) NOT NULL,
-  `posisi` enum('Pengelola','Klien','Anggota') NOT NULL,
-  `jenis_kelamin` enum('Pria','Wanita') NOT NULL,
-  `no_telpon` varchar(16) NOT NULL,
+  `jenis_kelamin` enum('Pria','Wanita') DEFAULT NULL,
+  `no_telpon` varchar(16) DEFAULT NULL,
   `email` varchar(30) NOT NULL,
-  `instansi` varchar(50) NOT NULL,
-  `status_users` enum('aktif','nonaktif') NOT NULL,
+  `instansi` varchar(50) DEFAULT NULL,
+  `status_users` enum('aktif','nonaktif') NOT NULL DEFAULT 'nonaktif',
+  `posisi` enum('mahasiswa','alumni','klien','pengelola','superpengelola') NOT NULL DEFAULT 'klien',
   `password` varchar(255) NOT NULL,
-  `foto` varchar(255) NOT NULL,
+  `foto` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id_users`, `nama_users`, `id_roles`, `posisi`, `jenis_kelamin`, `no_telpon`, `email`, `instansi`, `status_users`, `password`, `foto`, `created_at`, `updated_at`) VALUES
-(1, 'admin ', 1, 'Pengelola', 'Pria', '0987654662', 'admin@gmail.com', 'sv', '', '1234567', '', '2018-05-07 09:08:26', '0000-00-00 00:00:00'),
-(2, 'shafira', 2, 'Klien', 'Wanita', '082138657982', 'shafira@gmail.com', 'Sekolah Vokasi', '', '123456', '', '2018-05-07 09:08:26', '0000-00-00 00:00:00'),
-(3, 'fitri', 2, 'Klien', 'Wanita', '0821456789', 'fitri@gmail.com', 'UGM', '', '123456', '', '2018-05-07 09:08:26', '0000-00-00 00:00:00'),
-(4, 'afif', 3, 'Anggota', 'Pria', '087659321', 'afif@gmail.com', 'Sekolah Vokasi', 'aktif', '$2y$10$fAYVE53h6HeQNVEmwoiuCuwJp2LypPC2P274GQ6n5CgDasaRDX7hK', '', '2018-05-07 09:08:26', '0000-00-00 00:00:00'),
-(6, 'fadli', 3, 'Anggota', 'Pria', '0821456789', 'fadli@gmail.com', 'ugm', 'aktif', '123456', '', '2018-05-07 09:08:26', '0000-00-00 00:00:00'),
-(7, 'nisa', 4, '', 'Wanita', '0821456789', 'nisa@gmail.com', 'ugm', '', '12345', '', '2018-05-07 09:08:26', '0000-00-00 00:00:00'),
-(8, 'apip', 2, 'Pengelola', 'Pria', '0856173813', 'apip@gamil.com', 'sv', 'aktif', '', '', '2018-05-07 09:08:26', '0000-00-00 00:00:00');
+INSERT INTO `users` (`id_users`, `nama_users`, `id_roles`, `jenis_kelamin`, `no_telpon`, `email`, `instansi`, `status_users`, `posisi`, `password`, `foto`, `created_at`, `updated_at`) VALUES
+(13, 'Afif Imaduddin', 3, 'Wanita', '08213456789', 'afif@gmail.com', 'UGM', 'aktif', 'alumni', '$2y$10$xD2BkpEYssDjWTvhAJBziOBLYNf.3PmXCKqRNOOpUTNXYRWe81mn.', 'index.jpg', '2018-05-19 06:34:29', '2018-05-19 06:34:29'),
+(14, 'Fadhilah Hera', 2, 'Wanita', '0856173813', 'hera@gmail.com', 'UGM', 'aktif', 'klien', '$2y$10$xD2BkpEYssDjWTvhAJBziOBLYNf.3PmXCKqRNOOpUTNXYRWe81mn.', 'index5.png', '2018-05-19 06:06:34', '2018-05-19 06:06:34'),
+(15, 'Muhammad Gorby', 2, 'Pria', '08945638183', 'gorby@gmail.com', 'SV', 'aktif', 'klien', '$2y$10$xD2BkpEYssDjWTvhAJBziOBLYNf.3PmXCKqRNOOpUTNXYRWe81mn.', 'index6.png', '2018-05-19 06:07:12', '2018-05-19 06:07:12'),
+(16, 'Fitriyanti', 3, 'Wanita', '08231646456', 'fitri@gmail.com', 'UGM', 'aktif', 'mahasiswa', '$2y$10$s/wPro8T83wCfcpMXTnEbu1KKDRD.q2zMlbzzXQoOVqxMJfJdV2Yq', 'index.png', '2018-05-19 06:34:38', '2018-05-19 06:34:38'),
+(25, 'diaz', 2, 'Pria', '0856173813', 'diaz@gmail.com', 'UGM', 'aktif', 'klien', '$2y$10$AWuvd0nov6rybxXJvxxsuuyapJVRAMyBwSyMQMebpm9YiR9XfXVVm', '', '2018-05-11 13:35:36', '2018-05-11 13:35:36'),
+(27, 'superadmin', 4, 'Pria', '0856173813', 'superadmin@gmail.com', 'UGM', 'aktif', 'superpengelola', '$2y$10$TNSeOmYZrNXchkyBD7FZhuQz/Kg98g4pROwTs8zAtTXZaEg5iyNUC', '', '2018-05-12 07:35:22', '2018-05-12 07:35:22'),
+(28, 'pengelola2', 1, 'Wanita', '0856173813', 'pengelola2@gmail.com', 'UGM', 'aktif', 'pengelola', '$2y$10$ZyZIzlmfSVuPuKNmLmiV8egIbFljzPFsRu/6nHSzYmKtXZBVInRFi', 'index1.png', '2018-05-19 07:51:49', '2018-05-19 07:51:49'),
+(30, 'pengelola1', 1, 'Pria', '08231646456', 'pengelola1@gmail.com', 'UGM', 'aktif', 'pengelola', '$2y$10$k/d/rq/obzxyrG6PN9o93OH1dh5jYdlphRc.kP3nlidO0WuZnOmm6', '', '2018-05-12 07:31:56', NULL),
+(31, 'klien', 2, 'Wanita', '08231646456', 'klien@gmail.com', 'UGM', 'aktif', 'klien', '$2y$10$EkBLVelC07hd5QDOqkzsZeoz0KbLfCMNgiFyYjjwaaOmoh.0NKg2K', '', '2018-05-12 07:46:51', NULL),
+(32, 'rini', 2, 'Wanita', '08231646456', 'rini@gmail.com', 'UGM', 'aktif', 'alumni', '$2y$10$EoNsWk0/beAv89HSeXkT6OuE0UQP7tM1eFAmk5kDDPVlujBNiL2iC', 'index1.png', '2018-05-19 06:34:54', '2018-05-19 06:34:54'),
+(36, 'Fadli', 3, 'Pria', '08231646456', 'fadli@gmail.com', 'UGM', 'aktif', 'alumni', '$2y$10$6YxnKPOT9MlZo836obELw.SKZx5oCSCs/HAndsJPklPeZjkY/.fsC', 'index2.png', '2018-05-19 07:10:52', '2018-05-19 07:10:52'),
+(37, 'test', 1, 'Pria', '08231646456', 'test@gmail.com', 'UGM', 'nonaktif', 'pengelola', '$2y$10$gPMn4BGGsyR54vSmbQNWA.hvfr/ruzuJff4ZsGVXYi67f6EZAUDnC', 'index.png', '2018-05-19 07:48:01', NULL);
 
 --
 -- Indexes for dumped tables
@@ -333,6 +327,12 @@ ALTER TABLE `info_lowongan`
   ADD KEY `id_users` (`id_users`);
 
 --
+-- Indexes for table `kategori_produk`
+--
+ALTER TABLE `kategori_produk`
+  ADD PRIMARY KEY (`id_kategori`);
+
+--
 -- Indexes for table `pembelian`
 --
 ALTER TABLE `pembelian`
@@ -379,7 +379,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `detail_pembelian`
 --
 ALTER TABLE `detail_pembelian`
-  MODIFY `id_detail_pembelian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_detail_pembelian` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `detail_pemesanan`
 --
@@ -389,17 +389,22 @@ ALTER TABLE `detail_pemesanan`
 -- AUTO_INCREMENT for table `detail_tim`
 --
 ALTER TABLE `detail_tim`
-  MODIFY `id_detail_tim` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id_detail_tim` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `info_lowongan`
 --
 ALTER TABLE `info_lowongan`
-  MODIFY `id_info_lowongan` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_info_lowongan` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `kategori_produk`
+--
+ALTER TABLE `kategori_produk`
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `pembelian`
 --
 ALTER TABLE `pembelian`
-  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `pemesanan`
 --
@@ -419,12 +424,12 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `tim`
 --
 ALTER TABLE `tim`
-  MODIFY `id_tim` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=57;
+  MODIFY `id_tim` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=38;
 --
 -- Constraints for dumped tables
 --

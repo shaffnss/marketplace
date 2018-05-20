@@ -17,84 +17,117 @@ class Admin_anggota extends CI_Controller {
 
 	public function tambah_anggota()
 	{
+		$data["error_upload"] = "";
 		$this->load->view('admin/pengguna_anggota_tambah');
 	}
 
 	public function inputAnggota()
 	{
+		$config['upload_path']          = './assets/users/anggota';
+		$config['allowed_types']        = 'gif|jpg|png|jpeg';
+		$config['max_size']             = 300;
+		$config['max_width']            = 1024;
+		$config['max_height']           = 768;
 
-		$this->load->library('form_validation');
-		$this->form_validation->set_rules('nama_anggota','nama_anggota','required');
-		$this->form_validation->set_rules('jenis_kelamin','jenis_kelamin','required');
-		$this->form_validation->set_rules('email','email','required');
-		$this->form_validation->set_rules('no_telpon','no telpon','required');
-		$this->form_validation->set_rules('instansi','instansi','required');
-		$this->form_validation->set_rules('posisi','posisi','required');
-		$this->form_validation->set_rules('password','password','required');
-
-		if($this->form_validation->run() == FALSE)
+		$this->load->library('upload', $config);
+		if( ! $this->upload->do_upload('foto'))
 		{
-   //jika form tidak lengkap maka akan dikembalikan ke route "matkulAdminR"
-			redirect('Admin_anggota');
+			$data_error['error_upload'] = $this->upload->display_errors();
+			// echo 'Gagal upload, resolusi atau ukuran foto melebihi batas!';
+			$this->load->view('admin/pengguna_anggota_tambah',$data_error);
 		}
 		else
 		{
-			echo 'masuk';
-			$nama_anggota = $this->input->post('nama_anggota');
-			$jenis_kelamin = $this->input->post('jenis_kelamin');
-			$email = $this->input->post('email');
-			$no_telpon = $this->input->post('no_telpon');
-			$instansi = $this->input->post('instansi');
-			$posisi = $this->input->post('posisi');
-			$password = $this->input->post('password');
+			$img = $this->upload->data();
+			$foto = $img['file_name'];
+			$nama_users = $this->input->post('nama_users', true);
+			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
+			$email = $this->input->post('email', true);
+			$no_telpon = $this->input->post('no_telpon', true);
+			$instansi = $this->input->post('instansi', true);
+			$posisi = $this->input->post('posisi', true);
+			$password = $this->input->post('password', true);
 
-
-			$anggota =  array(
+			$data =  array(
 				"id_roles"=>3,
-				"nama_users"=>$nama_anggota,
+				"nama_users"=>$nama_users,
 				"jenis_kelamin"=>$jenis_kelamin,
-				"email"=>$email,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
 				"posisi"=>$posisi,
+				"email"=>$email,
+				'foto'=>$foto,
 				"password"=>PASSWORD_HASH($password,PASSWORD_DEFAULT)
 			);
 
-			$result = $this->admin_anggota_model->insertAnggota($anggota);
-
+			$this->db->insert('users', $data);
+			redirect('Admin_anggota');
 		}
-
-		redirect('Admin_anggota');
 	}
 
 	public function ubahAnggota()
 	{
-		$id_users = $this->input->post('id_users');
-		$nama_anggota = $this->input->post('nama_users');
-		$jenis_kelamin = $this->input->post('jenis_kelamin');
-		$email = $this->input->post('email');
-		$no_telpon = $this->input->post('no_telpon');
-		$instansi = $this->input->post('instansi');
-		$status_users = $this->input->post('status_users');
-		$posisi = $this->input->post('posisi');
+		$config['upload_path']          = './assets/users/anggota';
+		$config['allowed_types']        = 'gif|jpg|png|jpeg';
+		$config['max_size']             = 300;
+		$config['max_width']            = 1024;
+		$config['max_height']           = 768;
 
-		$anggota =  array(
-			"id_roles"=>3,
-			"nama_users"=>$nama_anggota,
-			"jenis_kelamin"=>$jenis_kelamin,
-			"no_telpon"=>$no_telpon,
-			"email"=>$email,
-			"status_users"=>$status_users,
-			"instansi"=>$instansi,
-			"posisi"=>$posisi
-		);
-		$this->db->where('id_users',$id_users);
-		$this->db->group_start();
-		$this->db->where('posisi','mahasiswa');
-		$this->db->or_where('posisi','alumni');
-		$this->db->group_end();
-		$this->db->update('users',$anggota);
-		redirect('Admin_anggota');
+		$this->load->library('upload', $config);
 
-	}
+		if( ! $this->upload->do_upload('foto')) //jika tidak update foto 
+		{	
+			$id_users = $this->input->post('id_users', true);
+			$nama_users = $this->input->post('nama_users', true);
+			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
+			$instansi = $this->input->post('instansi', true);
+			$no_telpon = $this->input->post('no_telpon', true);
+			$email = $this->input->post('email', true);
+			$status_users = $this->input->post('status_users', true);
+			$posisi = $this->input->post('posisi', true);
+			$anggota =  array(
+				"id_roles"=>3,
+				"id_users"=>$id_users,
+				"nama_users"=>$nama_users,
+				"jenis_kelamin"=>$jenis_kelamin,
+				"instansi"=>$instansi,
+				"no_telpon"=>$no_telpon,
+				"email"=>$email,
+				"status_users"=>$status_users,
+				"posisi"=>$posisi
+
+			);
+		}
+		else //jika update foto
+		{
+
+			$img = $this->upload->data();
+			$foto = $img['file_name'];
+			$id_users = $this->input->post('id_users', true);
+			$nama_users = $this->input->post('nama_users', true);
+			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
+			$instansi = $this->input->post('instansi', true);
+			$no_telpon = $this->input->post('no_telpon', true);
+			$email = $this->input->post('email', true);
+			$password = $this->input->post('password', true);
+			$status_users = $this->input->post('status_users', true);
+			$posisi = $this->input->post('posisi', true);
+			$anggota =  array(
+				"id_roles"=>3,
+				"id_users"=>$id_users,
+				"nama_users"=>$nama_users,
+				"jenis_kelamin"=>$jenis_kelamin,
+				"instansi"=>$instansi,
+				"no_telpon"=>$no_telpon,
+				"email"=>$email,
+				"status_users"=>$status_users,
+				"foto"=> $foto,
+				"posisi"=>$posisi
+			);
+		}
+			$id_users= $this->input->post('id_users');
+			$this->db->where('id_users',$id_users);
+			$this->db->update('users',$anggota);
+			redirect('Admin_anggota');
+		}
 }

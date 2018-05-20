@@ -15,7 +15,7 @@ $this->load->view('admin/head_admin');
 
  <section class="content-header">
   <div>
-    <a href="<?php echo site_url('Admin_klien/tambah_klien')?>" type="button" class="btn btn-success" >
+    <a href="<?php echo site_url('Admin_klien/tambah_klien')?>" type="button" class="btn btn-primary" >
       <i class="glyphicon glyphicon-plus"></i> Tambah Klien
     </a>
   </div> 
@@ -55,7 +55,7 @@ $this->load->view('admin/head_admin');
             <tbody>
               <tr>
                 <td><?php echo $no ?></td>
-                <td><?php echo $data->foto ?></td>
+                <td><img src="<?php echo site_url('/assets/users/klien/').$data->foto ?>" class="img-responsive" style="height: 100px; width: 100px"></td>
                 <td><?php echo $data->nama_users?></td>
                 <td><?php echo $data->jenis_kelamin?></td>
                 <td><?php echo $data->instansi?></td>
@@ -70,7 +70,7 @@ $this->load->view('admin/head_admin');
                   <?php }?>
                 </td>
                 <td>
-                  <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah-klien<?php echo $data->id_users; ?>" style="background:#1a75ff; border-color:#fff"><i class="fa fa-pencil"></i>
+                  <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ubah-klien<?php echo $data->id_users; ?>"><i class="fa fa-edit"></i>
                   </button>    
                 </td>
               </tr>
@@ -86,7 +86,8 @@ $this->load->view('admin/head_admin');
                       </div>
 
                       <div class="modal-body">
-                        <form action="<?php echo site_url('Admin_klien/ubahKlien') ?>" method="post" class="form-horizontal">
+                        <form action="<?php echo site_url('Admin_klien/ubahKlien') ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
+
                           <div class="box-body">
                             <input type="hidden" class="form-control" id="inputName" name="id_users" value="<?php echo $data->id_users; ?>" required>
 
@@ -120,7 +121,7 @@ $this->load->view('admin/head_admin');
 
                             <div class="form-group">
                               <label class="">Upload Foto</label>
-                              <input type="file" name="foto" value="<?php echo $data->foto; ?>" required>
+                              <input type="file" name="foto" value="<?php echo $data->foto; ?>">
                             </div>
 
                             <div class="form-group">
@@ -139,7 +140,7 @@ $this->load->view('admin/head_admin');
 
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                          <input type="submit" class="btn btn-primary" value="Simpan">
+                          <input type="submit" class="btn btn-success" value="Simpan">
                         </div>
                       </div>
                     </form>

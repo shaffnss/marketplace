@@ -1,0 +1,32 @@
+DARI PROSES PEMBELIAN OLEH KLIEN
+1. Search produk berdasarkan keyword
+2. Membagi halaman produk per kategori
+3. Kategori produk dibuat dinamis
+4. Link demo
+5. LIVE CHAT
+6. Purchase
+7. Klien = Upload pembayaran + alert  upload sukses + tunggu konfirmasi admin
+8. Admin = request pembelian oleh klien masuk ke halaman admin dibagian pembelian proses, jika sudah dikonfirmasi 
+status pembelian di halaman klien berubah\
+9. klien ditambah ganti photo ubah password
+
+DARI ANGGOTA UPLOAD DATA PRODUK
+ANGGOTA
+10. Di akun masing" anggota dapat melihat dia masuk tim apa aja dan posisinya di masing" tim apa aja
+11. Di button Unggah,upload produk berdasarkan nama tim terkait di drop down + alert sudah terupload dan menunggu konfirmasi admin.
+12. Anggota yang memiliki posisi sebagai PM bisa mengupload produk yang dihasilkan timnya ke admin dan dropdown pilihan team yg ada di menu upload produk munculnya cuma tim yg dia join
+13. kalo individu nanti create tim ketika pencet button individu
+14. Di fungsi Edit bagian foto diberi button delete foto sebelum bisa upload foto pengganti.
+15. ---DONE--- Pemberian wewenang ke anggota tim mana yg project manager mana yg nggak 
+16. anggota ditambah ganti photo ubah password
+
+
+Admin
+17. Konfirmasi produk baru yg diupload klik centang + alert produk diterima
+- Status di admin diterima
+- di akun anggota statusnya berubah jadi disetujui
+18. Bagaimana biar data produk langsung terhubung ke landing page dan bisa diatur aktif tidak aktifnya atau tampil tidak tampil.
+19. sorting pengguna aktif tidak aktif
+
+
+
