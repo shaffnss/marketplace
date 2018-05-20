@@ -10,6 +10,7 @@ class Admin_produk_model extends CI_Model {
 		$this->db->join("detail_produk","produk.id_produk=detail_produk.id_produk");
 		$this->db->join("tim","tim.id_tim=detail_produk.id_tim");
 		$this->db->join("kategori_produk","produk.id_kategori=kategori_produk.id_kategori");
+		$this->db->where('detail_produk.status', 'proses');
 		return $this->db->get()->result();
 	}
 	

@@ -71,6 +71,22 @@ class Admin_produk extends CI_Controller {
       redirect('Admin_produk');
     }
   }
+	
+	public function diterima($id_detail_produk)
+	{
+    $this->db->where('id_detail_produk', $id_detail_produk)
+		->update('detail_produk', array('status'=>'diterima'));
+		
+		redirect('Admin_produk/produk_diterima');
+  }
+	
+	public function ditolak($id_detail_produk)
+	{
+    $this->db->where('id_detail_produk', $id_detail_produk)
+		->update('detail_produk', array('status'=>'ditolak'));
+		
+		redirect('Admin_produk');
+  }	 
   
 }
 

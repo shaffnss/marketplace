@@ -64,7 +64,7 @@ function rupiah($angka){
                   <td><?php echo $data->nama_produk?></td>
                   <td><?php echo $data->nama_kategori?></td>
                   <td><?php echo rupiah($data->harga_produk)?></td>
-                  <td><?php echo $data->nama_tim?></td>
+                  <td><?php echo $data->nama_tim ?></td>
                   <td>
                     <img src="<?php echo site_url('/assets/produk/'.$data->mockup_produk); ?>" height='100px' width='100px'>
                   </td>
@@ -81,8 +81,8 @@ function rupiah($angka){
                   <td class="text-center">
                     <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-produk"><i class="fa fa-pencil"></i>
                     </button>
-                    <a class="btn btn-sm btn-info" style="background: #4e9e02; border-color: #fff"><i class="fa fa-check"></i></a>
-                    <a class="btn btn-sm btn-info" style="background: #d41912; border-color: #fff"><i class="fa fa-remove"></i></a>
+                    <a href="<?php echo site_url('Admin_produk/diterima/'.$data->id_detail_produk)?>" class="btn btn-sm btn-info" style="background: #4e9e02; border-color: #fff"><i class="fa fa-check"></i></a>
+                    <a href="<?php echo site_url('Admin_produk/ditolak/'.$data->id_detail_produk)?>" class="btn btn-sm btn-info" style="background: #d41912; border-color: #fff"><i class="fa fa-remove"></i></a>
                   </td>
                 </tr>
 
