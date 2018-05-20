@@ -14,6 +14,7 @@ class Admin_produk extends CI_Controller {
 	public function index()
 	{
 		$data['produk']=$this->admin_produk_model->getProduk();
+		$data['kategori']=$this->admin_produk_model->getKategori();
 		$this->load->view('admin/produk',$data);
 	}
 

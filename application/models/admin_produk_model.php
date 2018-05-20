@@ -5,9 +5,11 @@ class Admin_produk_model extends CI_Model {
 
 	public function getProduk(){
 		$this->db->select("*");
+		$this->db->select("produk.status as status_produk");
 		$this->db->from("produk");
 		$this->db->join("detail_produk","produk.id_produk=detail_produk.id_produk");
 		$this->db->join("tim","tim.id_tim=detail_produk.id_tim");
+		$this->db->join("kategori_produk","produk.id_kategori=kategori_produk.id_kategori");
 		return $this->db->get()->result();
 	}
 
@@ -23,6 +25,13 @@ class Admin_produk_model extends CI_Model {
 	{
 		$this->db->select("*");
 		$this->db->from("tim");
+		return $this->db->get()->result();
+	}
+	
+	public function getKategori()
+	{
+		$this->db->select("*");
+		$this->db->from("kategori_produk");
 		return $this->db->get()->result();
 	}
 }

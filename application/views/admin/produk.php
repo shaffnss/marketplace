@@ -1,5 +1,12 @@
 <?php
 $this->load->view('admin/head_admin');
+
+function rupiah($angka){
+	
+	$hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+	return $hasil_rupiah;
+ 
+}
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -38,7 +45,6 @@ $this->load->view('admin/head_admin');
                 <th>Nama Produk</th>
                 <th>Jenis Sistem</th>
                 <th>Harga</th>
-                <th>Deskripsi Produk</th>
                 <th>Team Pembuat</th>
                 <th>Tampilan Produk</th>
                 <th>Link Demo</th>
@@ -56,16 +62,21 @@ $this->load->view('admin/head_admin');
                 <tr>
                   <td><?php echo $no ?></td>
                   <td><?php echo $data->nama_produk?></td>
-                  <td><?php echo $data->jenis_produk?></td>
-                  <td><?php echo $data->harga_produk?></td>
-                  <td><?php echo $data->deskripsi_produk?></td>
+                  <td><?php echo $data->nama_kategori?></td>
+                  <td><?php echo rupiah($data->harga_produk)?></td>
                   <td><?php echo $data->nama_tim?></td>
                   <td>
-                    <img src="<?php echo site_url('/assets/produk/'); echo $data->mockup_produk ?>" height='100px' width='100px'>
+                    <img src="<?php echo site_url('/assets/produk/'.$data->mockup_produk); ?>" height='100px' width='100px'>
                   </td>
-                  <td><?php echo $data->link_demo?></td>
+                  <td><a class="btn-sm btn-info" href="<?php echo $data->link_demo?>" target="_blank"><i class="fa fa-link"></i></a></td>
                   <td>
-                    <span class="label label-success">Aktif</span>
+										<?php 
+											if ($data->status_produk == "tersedia") {
+												echo '<span class="label label-success">Tersedia</span>';
+											}else{
+												echo '<span class="label label-danger">Tidak Tersedia</span>';
+											}
+										?>
                   </td>
                   <td class="text-center">
                     <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-produk"><i class="fa fa-pencil"></i>
@@ -100,10 +111,9 @@ $this->load->view('admin/head_admin');
                               <div class="form-group">
                                 <label >Jenis Produk</label>
                                 <select class="form-control" name="jenis_produk" value="<?php echo $data->jenis_produk; ?>">
-                                  <option value="Website" <?php if($data->jenis_produk == "Website") {echo "selected=selected";} ?>>Website</option>
-                                  <option value="Mobile Apps" <?php if($data->jenis_produk == "Mobile Apps") {echo "selected=selected";} ?>>Mobile Apps</option>
-                                  <option value="Game" <?php if($data->jenis_produk == "Game") {echo "selected=selected";} ?> >Game</option>
-                                  <option value="Artificial Intelegent(AI)" <?php if($data->jenis_produk == "Artificial Intelegent(AI)") {echo "selected=selected";} ?> >Artificial Intelegent(AI)</option>
+                                  <?php foreach ($kategori as $kategoris) {?>
+																	<option value="<?php echo $kategoris->id_kategori ?>" <?php if($data->id_kategori == $kategoris->id_kategori) {echo "selected";} ?>><?php echo $kategoris->nama_kategori?></option>
+																	<?php } ?>
                                 </select>              
                               </div>
 
