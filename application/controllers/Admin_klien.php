@@ -13,42 +13,43 @@ class Admin_klien extends CI_Controller {
 	{
 		$data["klien"]=$this->admin_klien_model->getKlien();
 		$this->load->view('admin/pengguna_klien',$data);
-
 	}
 
 	public function tambah_klien()
 	{
-		$this->load->view('admin/pengguna_klien_tambah');
+		$data["error_upload"] = "";
+		$this->load->view('admin/pengguna_klien_tambah',$data);
 	}
 
 	public function inputKlien()
 	{
-
 		$config['upload_path']          = './assets/users/klien';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
-		$config['max_size']             = 3000;
-		$config['max_width']            = 5024;
-		$config['max_height']           = 5068;
+		$config['max_size']             = 300;
+		$config['max_width']            = 1024;
+		$config['max_height']           = 768;
 
 		$this->load->library('upload', $config);
 		if( ! $this->upload->do_upload('foto'))
 		{
-			echo 'Gagal upload, resolusi atau ukuran foto melebihi batas!';
+			$data_error['error_upload'] = $this->upload->display_errors();
+			// echo 'Gagal upload, resolusi atau ukuran foto melebihi batas!';
+			$this->load->view('admin/pengguna_klien_tambah',$data_error);
 		}
 		else
 		{
 			$img = $this->upload->data();
 			$foto = $img['file_name'];
-			$nama_klien = $this->input->post('nama_klien', true);
+			$nama_users = $this->input->post('nama_users', true);
 			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
 			$instansi = $this->input->post('instansi', true);
 			$no_telpon = $this->input->post('no_telpon', true);
 			$email = $this->input->post('email', true);
 			$password = $this->input->post('password', true);
 
-			$klien =  array(
+			$data =  array(
 				"id_roles"=>2,
-				"nama_users"=>$nama_klien,
+				"nama_users"=>$nama_users,
 				"jenis_kelamin"=>$jenis_kelamin,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
@@ -67,54 +68,60 @@ class Admin_klien extends CI_Controller {
 	{
 		$config['upload_path']          = './assets/users/klien';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
-		$config['max_size']             = 3000;
-		$config['max_width']            = 5024;
-		$config['max_height']           = 5068;
+		$config['max_size']             = 300;
+		$config['max_width']            = 1024;
+		$config['max_height']           = 768;
 
 		$this->load->library('upload', $config);
 
-		$img = $this->upload->data();
-		$foto = $img['file_name'];
-		$nama_klien = $this->input->post('nama_klien', true);
-		$jenis_kelamin = $this->input->post('jenis_kelamin', true);
-		$instansi = $this->input->post('instansi', true);
-		$no_telpon = $this->input->post('no_telpon', true);
-		$email = $this->input->post('email', true);
-		$password = $this->input->post('password', true);
-
-
-		if( ! $this->upload->do_upload('foto'))
-		{
-
+		if( ! $this->upload->do_upload('foto')) //jika tidak update foto 
+		{	
+			$id_users = $this->input->post('id_users', true);
+			$nama_users = $this->input->post('nama_users', true);
+			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
+			$instansi = $this->input->post('instansi', true);
+			$no_telpon = $this->input->post('no_telpon', true);
+			$email = $this->input->post('email', true);
+			$status_users = $this->input->post('status_users', true);
 			$klien =  array(
 				"id_roles"=>2,
-				"nama_users"=>$nama_klien,
+				"id_users"=>$id_users,
+				"nama_users"=>$nama_users,
 				"jenis_kelamin"=>$jenis_kelamin,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
 				"email"=>$email,
 				"status_users"=>$status_users
 			);
-			$this->db->where('id_users',$id_users);
-			$this->db->update('users',$klien);
-			redirect('Admin_klien');
 		}
-		else
+		else //jika update foto
 		{
 
+			$img = $this->upload->data();
+			$foto = $img['file_name'];
+			$id_users = $this->input->post('id_users', true);
+			$nama_users = $this->input->post('nama_users', true);
+			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
+			$instansi = $this->input->post('instansi', true);
+			$no_telpon = $this->input->post('no_telpon', true);
+			$email = $this->input->post('email', true);
+			//$password = $this->input->post('password', true);
+			$status_users = $this->input->post('status_users', true);
 			$klien =  array(
 				"id_roles"=>2,
-				"nama_users"=>$nama_klien,
+				"id_users"=>$id_users,
+				"nama_users"=>$nama_users,
 				"jenis_kelamin"=>$jenis_kelamin,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
 				"email"=>$email,
-				"status_users"=>$status_users
+				"status_users"=>$status_users,
+				"foto"=> $foto
 			);
-
+		}
+			$id_users= $this->input->post('id_users');
 			$this->db->where('id_users',$id_users);
 			$this->db->update('users',$klien);
 			redirect('Admin_klien');
 		}
-	}
 }
