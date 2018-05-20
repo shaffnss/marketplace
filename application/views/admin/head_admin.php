@@ -159,6 +159,7 @@
           <ul class="treeview-menu">
             <li class=""><a href="<?php echo site_url('Admin_produk') ?>"><i class="fa fa-list-alt"></i> Produk Masuk </a></li>
             <li><a href="<?php echo site_url('Admin_produk/produk_diterima') ?>" ><i class="fa fa-check"></i> Produk Diterima </a></li>
+            <li><a href="<?php echo site_url('Admin_produk/produk_ditolak') ?>" ><i class="fa fa-close"></i> Produk Ditolak </a></li>
             <li><a ><i class="fa fa-list"></i> Kategori Produk </a></li>
           </ul>
         </li>

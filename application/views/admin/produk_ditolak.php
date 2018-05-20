@@ -13,10 +13,10 @@ function rupiah($angka){
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <h1>Produk Diterima</h1>
+    <h1>Produk Ditolak</h1>
     <ol class="breadcrumb">
      <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-     <li class="active"> Produk Diterima</li>
+     <li class="active"> Produk Ditolak</li>
    </ol>
  </section>
 
@@ -34,7 +34,7 @@ function rupiah($angka){
     <div class="col-xs-12">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">Tabel Produk Diterima</h3>
+          <h3 class="box-title">Tabel Produk Ditolak</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -81,6 +81,7 @@ function rupiah($angka){
                   <td class="text-center">
                     <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-produk"><i class="fa fa-pencil"></i>
                     </button>
+                    <a href="<?php echo site_url('Admin_produk/diterima/'.$data->id_detail_produk)?>" class="btn btn-sm btn-info" style="background: #4e9e02; border-color: #fff"><i class="fa fa-check"></i></a>
                   </td>
                 </tr>
 
@@ -90,7 +91,7 @@ function rupiah($angka){
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span></button>
-                          <h4 class="modal-title">Ubah Data Produk Diterima</h4>
+                          <h4 class="modal-title">Ubah Data Produk Ditolak</h4>
                         </div>
                         <div class="modal-body">
                           <form action="" enctype="multipart/form-data" method="POST" class="form-horizontal">
@@ -98,7 +99,7 @@ function rupiah($angka){
                               <input type="hidden" class="form-control" id="inputName" name="id_produk" value="<?php echo $data->id_produk; ?>" required>   
 
                               <div class="form-group">
-                                <label for="inputName">Nama Produk Diterima</label>
+                                <label for="inputName">Nama Produk Ditolak</label>
                                 <input type="text" class="form-control" id="inputName" name="nama_produk" value="<?php echo $data->nama_produk; ?>" required>
                               </div>
 
@@ -107,7 +108,7 @@ function rupiah($angka){
                               </div>
 
                               <div class="form-group">
-                                <label >Jenis Produk Diterima</label>
+                                <label >Jenis Produk Ditolak</label>
                                 <select class="form-control" name="jenis_produk" value="<?php echo $data->jenis_produk; ?>">
                                   <?php foreach ($kategori as $kategoris) {?>
 																	<option value="<?php echo $kategoris->id_kategori ?>" <?php if($data->id_kategori == $kategoris->id_kategori) {echo "selected";} ?>><?php echo $kategoris->nama_kategori?></option>
@@ -116,7 +117,7 @@ function rupiah($angka){
                               </div>
 
                               <div class="form-group">
-                                <label for="inputName">Deskripsi Produk Diterima</label>          
+                                <label for="inputName">Deskripsi Produk Ditolak</label>          
                                 <textarea class="form-control" name="deskripsi_produk"><?php echo $data->deskripsi_produk; ?>
                                 </textarea>                
                               </div>

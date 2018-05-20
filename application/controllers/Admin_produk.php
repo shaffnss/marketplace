@@ -18,12 +18,39 @@ class Admin_produk extends CI_Controller {
 		$this->load->view('admin/produk',$data);
 	}
 	
+	//fungsi untuk mengarah ke halaman produk dengan status diterima
 	public function produk_diterima()
 	{
 		$data['produk']=$this->admin_produk_model->getProdukDiterima();
 		$data['kategori']=$this->admin_produk_model->getKategori();
 		$this->load->view('admin/produk_diterima',$data);
 	}
+	
+	//fungsi untuk merubah status detail produk menjadi diterima
+	public function diterima($id_detail_produk)
+	{
+    $this->db->where('id_detail_produk', $id_detail_produk)
+		->update('detail_produk', array('status'=>'diterima'));
+		
+		redirect('Admin_produk/produk_diterima');
+  }
+	
+	//fungsi untuk mengarah ke halaman produk dengan status diterima
+	public function produk_ditolak()
+	{
+		$data['produk']=$this->admin_produk_model->getProdukDitolak();
+		$data['kategori']=$this->admin_produk_model->getKategori();
+		$this->load->view('admin/produk_ditolak',$data);
+	}
+	
+	//fungsi untuk merubah status detail produk menjadi ditolak
+	public function ditolak($id_detail_produk)
+	{
+    $this->db->where('id_detail_produk', $id_detail_produk)
+		->update('detail_produk', array('status'=>'ditolak'));
+		
+		redirect('Admin_produk');
+  }	
 
 	public function tambahProduk()
 	{
@@ -70,23 +97,7 @@ class Admin_produk extends CI_Controller {
       $this->db->insert('produk', $data);
       redirect('Admin_produk');
     }
-  }
-	
-	public function diterima($id_detail_produk)
-	{
-    $this->db->where('id_detail_produk', $id_detail_produk)
-		->update('detail_produk', array('status'=>'diterima'));
-		
-		redirect('Admin_produk/produk_diterima');
-  }
-	
-	public function ditolak($id_detail_produk)
-	{
-    $this->db->where('id_detail_produk', $id_detail_produk)
-		->update('detail_produk', array('status'=>'ditolak'));
-		
-		redirect('Admin_produk');
-  }	 
+  } 
   
 }
 
