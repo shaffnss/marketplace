@@ -22,6 +22,7 @@ ANGGOTA
 15. ---DONE--- Pemberian wewenang ke anggota tim mana yg project manager mana yg nggak 
 16. anggota ditambah ganti photo [SOLVED]
 17. ubah password
+18. dropdown kategori dari tabel produk, ketika tambah produk get foreignkey id_kategori
 
 
 Admin
@@ -33,6 +34,7 @@ Admin
 
 System : 
 20. pengaturan session yang sedang login. anggota hanya bisa login pada halaman anggota, begitu jga klien dan admin.
+21. sidebar active ketika halaman diakses
 
 superadmin : superadmin@gmail.com : 12345
 klien : gorby@gmail.com : 12345
