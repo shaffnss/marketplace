@@ -12,6 +12,17 @@ class Admin_produk_model extends CI_Model {
 		$this->db->join("kategori_produk","produk.id_kategori=kategori_produk.id_kategori");
 		return $this->db->get()->result();
 	}
+	
+	public function getProdukDiterima(){
+		return $this->db
+		->select("*")->select("produk.status as status_produk")
+		->from("produk")
+		->join("detail_produk","produk.id_produk=detail_produk.id_produk")
+		->join("tim","tim.id_tim=detail_produk.id_tim")
+		->join("kategori_produk","produk.id_kategori=kategori_produk.id_kategori")
+		->where('detail_produk.status', 'diterima')
+		->get()->result();
+	}
 
 	public function insertProduk($produk){
 		$this->db->trans_start();

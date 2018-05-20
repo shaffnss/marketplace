@@ -17,6 +17,13 @@ class Admin_produk extends CI_Controller {
 		$data['kategori']=$this->admin_produk_model->getKategori();
 		$this->load->view('admin/produk',$data);
 	}
+	
+	public function produk_diterima()
+	{
+		$data['produk']=$this->admin_produk_model->getProdukDiterima();
+		$data['kategori']=$this->admin_produk_model->getKategori();
+		$this->load->view('admin/produk_diterima',$data);
+	}
 
 	public function tambahProduk()
 	{
