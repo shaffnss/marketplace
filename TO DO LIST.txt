@@ -36,7 +36,7 @@ Admin
 
 System : 
 20. pengaturan session yang sedang login. anggota hanya bisa login pada halaman anggota, begitu jga klien dan admin.
-21. sidebar active ketika halaman diakses
+21. sidebar active ketika halaman diakses [DONE]
 
 superadmin : superadmin@gmail.com : 12345
 klien : gorby@gmail.com : 12345
