@@ -31,7 +31,6 @@ class Admin_team extends CI_Controller {
 
 	public function inputTeam() //MENGINPUTKAN NAMA TIM KE VIEW
 	{
-
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nama_tim','nama tim','required');
 		if($this->form_validation->run() == FALSE)

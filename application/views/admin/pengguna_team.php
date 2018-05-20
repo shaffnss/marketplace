@@ -18,7 +18,7 @@ $this->load->view('admin/head_admin');
     <div>
      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahTim"><i class="glyphicon glyphicon-plus"></i> Tambah Tim </button>   
    </div> 
-   <!-- Modals Ubah DATA KLIEN -->
+   <!-- Modals Ubah Tamabh tim -->
    <div class="modal fade" id="tambahTim">
     <div class="modal-dialog">
       <div class="modal-content">

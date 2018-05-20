@@ -27,11 +27,16 @@ $this->load->view('anggota/head_anggota');
               <h3 class="profile-username text-center">
                 <?php echo $data->nama_users?>
               </h3>
+              <p class="text-muted text-center"> <?php echo $data->nama_roles?></p>
             </div>
-            <!--- /.Box Body Profile End --->
-            <hr>
+           </div>
+        <!--- /.Box Primary Profile End --->
             <!-- About Me Box -->
             <div class="box box-solid">
+              <div class="box-header with-border">
+              <h3 class="box-title">About Me</h3>
+
+            </div>
               <!-- /.box-header -->
               <div class="box-body">
                 <strong><i class="fa fa-book margin-r-5"></i>Nama</strong>
@@ -85,8 +90,7 @@ $this->load->view('anggota/head_anggota');
             <!--- /.Box Primary About Me End --->
           </div>
           <!--- /.Col md 4 --->
-        </div>
-        <!--- /.Box Primary Profile End --->
+      
 
         <?php 
       } 
@@ -106,11 +110,11 @@ $this->load->view('anggota/head_anggota');
               <form action="<?php echo site_url('Anggota_profile/ubahAnggota') ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
                 <div class="modal-body">
                   <div class="box-body">
-                    <input type="hidden" class="form-control" name="id_users" required="">
+                    <input type="hidden" class="form-control" name="id_users">
 
                     <div class="form-group">
                       <label for="inputName" class="">Nama Anggota</label>
-                      <input type="text" class="form-control" id="inputName" name="nama_users" value="<?php echo $data->nama_users; ?>" required="">
+                      <input type="text" class="form-control" id="inputName" name="nama_users" value="<?php echo $data->nama_users; ?>">
                     </div>
 
                     <div class="form-group">
@@ -123,17 +127,17 @@ $this->load->view('anggota/head_anggota');
 
                     <div class="form-group">
                       <label for="inputEmail" class="">Email</label>
-                      <input type="email" class="form-control" name="email" value="<?php echo $data->email; ?>" required="">
+                      <input type="email" class="form-control" name="email" value="<?php echo $data->email; ?>">
                     </div>
 
                     <div class="form-group">
                       <label for="inputTelp" class="">No Telpon</label>
-                      <input type="text" class="form-control" id="inputName" name="no_telpon" value="<?php echo $data->no_telpon; ?>" required="">
+                      <input type="text" class="form-control" id="inputName" name="no_telpon" value="<?php echo $data->no_telpon; ?>">
                     </div>
 
                     <div class="form-group">
                       <label for="inputTelp" class="">Instansi</label>
-                      <input type="text" class="form-control" id="inputName" name="instansi" value="<?php echo $data->instansi; ?>" required="">
+                      <input type="text" class="form-control" id="inputName" name="instansi" value="<?php echo $data->instansi; ?>">
                     </div>
 
                     <div class="form-group">
@@ -146,7 +150,7 @@ $this->load->view('anggota/head_anggota');
 
                     <div class="form-group">
                       <label class="">Upload Foto</label>
-                      <input type="file" name="foto" value="<?php echo $data->foto; ?>" required>
+                      <input type="file" name="foto" value="<?php echo $data->foto; ?>">
                     </div>
                   </div>
                 </div>
