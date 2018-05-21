@@ -6,11 +6,13 @@ class ListProduk extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->model('listProduk_model');
 	}
  
 	public function index()
 	{
-		$this->load->view('landing/produk');
+		$data['produks'] = $this->listProduk_model->getProduk();
+		$this->load->view('landing/produk', $data);
 	}
 
 	public function detail()
