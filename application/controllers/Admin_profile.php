@@ -1,28 +1,28 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Klien_profile extends CI_Controller {
+class Admin_profile extends CI_Controller {
 
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model("klien_profile_model");
+		$this->load->model("admin_profile_model");
 	}
  
 	public function index()
 	{
-		$id_users = $this->session->userdata('userId');
-		$data["profile"]=$this->klien_profile_model->getProfile($id_users);
-		$this->load->view('Klien/view_profile',$data);
+		$data["profile"]=$this->anggota_profile_model->getProfile();
+		$data["tampilTim"]=$this->anggota_profile_model->getTeam();
+		$this->load->view('admin/profile',$data);
 	}
 
-	public function ubahKlien()
+	public function ubahAnggota()
 	{
 		$config['upload_path']          = './assets/users/klien';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
-		$config['max_size']             = 300;
-		$config['max_width']            = 1024;
-		$config['max_height']           = 768;
+		$config['max_size']             = 3000;
+		$config['max_width']            = 5024;
+		$config['max_height']           = 5068;
 
 		$this->load->library('upload', $config);
 
@@ -34,14 +34,18 @@ class Klien_profile extends CI_Controller {
 			$instansi = $this->input->post('instansi', true);
 			$no_telpon = $this->input->post('no_telpon', true);
 			$email = $this->input->post('email', true);
-			$klien =  array(
+			$status_users = $this->input->post('status_users', true);
+			$posisi = $this->input->post('posisi', true);
+			$anggota =  array(
 				"id_roles"=>2,
 				"id_users"=>$id_users,
 				"nama_users"=>$nama_users,
 				"jenis_kelamin"=>$jenis_kelamin,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
-				"email"=>$email
+				"email"=>$email,
+				"status_users"=>$status_users,
+				"posisi"=>$posisi
 			);
 		}
 		else //jika update foto
@@ -55,7 +59,10 @@ class Klien_profile extends CI_Controller {
 			$instansi = $this->input->post('instansi', true);
 			$no_telpon = $this->input->post('no_telpon', true);
 			$email = $this->input->post('email', true);
-			$klien =  array(
+			$password = $this->input->post('password', true);
+			$status_users = $this->input->post('status_users', true);
+			$posisi = $this->input->post('posisi', true);
+			$anggota =  array(
 				"id_roles"=>2,
 				"id_users"=>$id_users,
 				"nama_users"=>$nama_users,
@@ -63,12 +70,14 @@ class Klien_profile extends CI_Controller {
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
 				"email"=>$email,
-				"foto"=> $foto
+				"status_users"=>$status_users,
+				"foto"=> $foto,
+				"posisi"=>$posisi
 			);
 		}
 			$id_users= $this->input->post('id_users');
 			$this->db->where('id_users',$id_users);
-			$this->db->update('users',$klien);
-			redirect('Klien_profile');
+			$this->db->update('users',$anggota);
+			redirect('Anggota_profile');
 		}
 }

@@ -8,7 +8,7 @@ DARI PROSES PEMBELIAN OLEH KLIEN
 7. Klien = Upload pembayaran + alert  upload sukses + tunggu konfirmasi admin (klien_pembayaran)
 8. Admin = request pembelian oleh klien masuk ke halaman admin dibagian pembelian proses, jika sudah dikonfirmasi 
 status pembelian di halaman klien berubah 
-9. klien ditambah ganti photo
+9. klien ditambah ganti photo --DONE--
 10. ubah password
 11. produk detail list kategori left-sidebar diganti list produk dengan kategori yang sesuai 
 

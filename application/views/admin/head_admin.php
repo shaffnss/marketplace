@@ -64,10 +64,41 @@
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
+           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
-            <a href="<?php echo site_url('login/logout') ?>" class="btn btn-primary btn-flat"><i class="fa fa-sign-out"></i>Sign out</a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="<?php echo base_url('AdminLTE/dist/img/user2-160x160.jpg') ?>" class="user-image" alt="User Image">
+              <span class="hidden-xs"><?php echo $this->session->userdata('name');?></span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                <img src="<?php echo base_url('AdminLTE/dist/img/user2-160x160.jpg') ?>" class="img-circle" alt="User Image">
+
+                <p>
+                  <?php echo $this->session->userdata('name');?>
+                </p>
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="<?php echo site_url('Admin_profile') ?>" class="btn btn-default btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+                  <a href="<?php echo site_url('login/logout') ?>" class="btn btn-default btn-flat">Sign out</a>
+                </div>
+              </li>
+            </ul>
           </li>
         </ul>
       </div>
@@ -160,7 +191,7 @@
             <li class=""><a href="<?php echo site_url('Admin_produk') ?>"><i class="fa fa-list-alt"></i> Produk Masuk </a></li>
             <li><a href="<?php echo site_url('Admin_produk/produk_diterima') ?>" ><i class="fa fa-check"></i> Produk Diterima </a></li>
             <li><a href="<?php echo site_url('Admin_produk/produk_ditolak') ?>" ><i class="fa fa-close"></i> Produk Ditolak </a></li>
-            <li><a ><i class="fa fa-list"></i> Kategori Produk </a></li>
+            <li><a href="<?php echo site_url('Admin_kategori') ?>"><i class="fa fa-th-list"></i> Kategori Produk </a></li>
           </ul>
         </li>
 

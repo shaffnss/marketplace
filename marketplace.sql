@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2018 at 07:49 AM
+-- Generation Time: May 21, 2018 at 05:36 AM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -60,6 +60,7 @@ INSERT INTO `detail_pemesanan` (`id_detail_pemesanan`, `id_tim`, `id_pemesanan`)
 
 CREATE TABLE IF NOT EXISTS `detail_produk` (
   `id_detail_produk` int(11) NOT NULL,
+  `status` enum('diterima','ditolak') NOT NULL,
   `id_tim` int(11) NOT NULL,
   `id_produk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -68,9 +69,9 @@ CREATE TABLE IF NOT EXISTS `detail_produk` (
 -- Dumping data for table `detail_produk`
 --
 
-INSERT INTO `detail_produk` (`id_detail_produk`, `id_tim`, `id_produk`) VALUES
-(1, 51, 1),
-(2, 52, 2);
+INSERT INTO `detail_produk` (`id_detail_produk`, `status`, `id_tim`, `id_produk`) VALUES
+(1, 'diterima', 51, 1),
+(2, 'diterima', 52, 2);
 
 -- --------------------------------------------------------
 
@@ -115,8 +116,18 @@ CREATE TABLE IF NOT EXISTS `info_lowongan` (
 
 CREATE TABLE IF NOT EXISTS `kategori_produk` (
   `id_kategori` int(11) NOT NULL,
-  `nama_kategori` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `nama_kategori` varchar(255) NOT NULL,
+  `status_kategori` enum('aktif','nonaktif') NOT NULL DEFAULT 'aktif'
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kategori_produk`
+--
+
+INSERT INTO `kategori_produk` (`id_kategori`, `nama_kategori`, `status_kategori`) VALUES
+(1, 'Website', 'nonaktif'),
+(3, 'Mobile Apps', 'aktif'),
+(4, 'Game', 'aktif');
 
 -- --------------------------------------------------------
 
@@ -399,7 +410,7 @@ ALTER TABLE `info_lowongan`
 -- AUTO_INCREMENT for table `kategori_produk`
 --
 ALTER TABLE `kategori_produk`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `pembelian`
 --

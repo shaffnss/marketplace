@@ -60,12 +60,12 @@ class Admin_produk extends CI_Controller {
 
 	public function tambahProduk()
 	{
-    $data["tambah_tim"]=$this->admin_produk_model->getTeam();
+     $data["tambah_tim"]=$this->admin_produk_model->getTeam();
      $data["tambah_produk"]=$this->admin_produk_model->getTeam();
      $data["kategoris"]=$this->admin_produk_model->getKategori();
 		 
     $this->load->view('admin/produkTambah',$data);
-  }	 
+  }
 
   public function inputProduk()
   {
