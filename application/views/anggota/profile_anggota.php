@@ -27,75 +27,76 @@ $this->load->view('anggota/head_anggota');
               <h3 class="profile-username text-center">
                 <?php echo $data->nama_users?>
               </h3>
-              <p class="text-muted text-center"> <?php echo $data->nama_roles?></p>
+
+              <?php if($data->nama_roles=='anggota') {
+                ?>
+                <p class="text-muted text-center">Anggota</p>
+              <?php }?>
             </div>
-           </div>
-        <!--- /.Box Primary Profile End --->
-            <!-- About Me Box -->
-            <div class="box box-solid">
-              <div class="box-header with-border">
+          </div>
+          <!--- /.Box Primary Profile End --->
+          <!-- About Me Box -->
+          <div class="box box-solid">
+            <div class="box-header with-border">
               <h3 class="box-title">About Me</h3>
 
             </div>
-              <!-- /.box-header -->
-              <div class="box-body">
-                <strong><i class="fa fa-book margin-r-5"></i>Nama</strong>
-                <p class="text-muted">
-                  <?php echo $data->nama_users?>
-                </p>
-                <hr>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <strong><i class="fa fa-book margin-r-5"></i>Nama</strong>
+              <p class="text-muted">
+                <?php echo $data->nama_users?>
+              </p>
+              <hr>
 
-                <strong><i class="fa fa-map-marker margin-r-5"></i>Jenis Kelamin</strong>
-                <p class="text-muted">
-                  <?php echo $data->jenis_kelamin?>
-                </p>
-                <hr>
+              <strong><i class="fa fa-intersex margin-r-5"></i>Jenis Kelamin</strong>
+              <p class="text-muted">
+                <?php echo $data->jenis_kelamin?>
+              </p>
+              <hr>
 
-                <strong><i class="fa fa-pencil margin-r-5"></i> Email</strong>
-                <p class="text-muted">
-                  <?php echo $data->email?>
-                </p>
-                <hr>
+              <strong><i class="fa fa-envelope margin-r-5"></i>Email</strong>
+              <p class="text-muted">
+                <?php echo $data->email?>
+              </p>
+              <hr>
 
-                <strong><i class="fa fa-map-marker margin-r-5"></i>Instansi</strong>
-                <p class="text-muted">
-                  <?php echo $data->instansi?>
-                </p>
-                <hr>
+              <strong><i class="fa fa-building margin-r-5"></i>Instansi</strong>
+              <p class="text-muted">
+                <?php echo $data->instansi?>
+              </p>
+              <hr>
 
-                <strong><i class="fa fa-map-marker margin-r-5"></i> No Telpon</strong>
-                <p class="text-muted">
-                  <?php echo $data->no_telpon?>
-                </p>
-                <hr>
+              <strong><i class="fa fa-phone margin-r-5"></i>No Telpon</strong>
+              <p class="text-muted">
+                <?php echo $data->no_telpon?>
+              </p>
+              <hr>
 
-                <strong><i class="fa fa-map-marker margin-r-5"></i> Status Mahasiswa</strong>
-                <p class="text-muted">
-                  <?php if($data->posisi=='mahasiswa') {
-                    ?>
-                    <span class="label label-primary">Mahasiswa</span>
-                  <?php }else{ ?>
-                    <span class="label label-info">Alumni</span>
-                  <?php }?>
-                </p>
-                <hr>
+              <strong><i class="fa fa-user margin-r-5"></i>Status Mahasiswa</strong>
+              <p class="text-muted">
+                <?php if($data->posisi=='mahasiswa') {
+                  ?>
+                  <span class="label label-primary">Mahasiswa</span>
+                <?php }else{ ?>
+                  <span class="label label-info">Alumni</span>
+                <?php }?>
+              </p>
+              <hr>
 
-                <div>
-                  <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#ubah-profile<?php echo $data->id_users; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-profile"><i class="fa fa-pencil"></i> Ubah
-                  </button>
-                </div>
+              <div>
+                <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#ubah-profile<?php echo $data->id_users; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-profile"><i class="fa fa-pencil"></i> Ubah
+                </button>
               </div>
-              <!-- /.BOX BODY ABOUT ME --> 
             </div>
-            <!--- /.Box Primary About Me End --->
+            <!-- /.BOX BODY ABOUT ME --> 
           </div>
-          <!--- /.Col md 4 --->
-      
-
+          <!--- /.Box Primary About Me End --->
+        </div>
+        <!--- /.Col md 4 --->
         <?php 
       } 
       ?>
-
 
       <!-- modal-content -->
       <div class="modal fade" id="ubah-profile<?php echo $data->id_users; ?>">
@@ -110,7 +111,7 @@ $this->load->view('anggota/head_anggota');
               <form action="<?php echo site_url('Anggota_profile/ubahAnggota') ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
                 <div class="modal-body">
                   <div class="box-body">
-                    <input type="hidden" class="form-control" name="id_users">
+                    <input type="hidden" class="form-control" name="id_users" value="<?php echo $data->id_users; ?>">
 
                     <div class="form-group">
                       <label for="inputName" class="">Nama Anggota</label>
@@ -168,7 +169,7 @@ $this->load->view('anggota/head_anggota');
         <!-- /.modal -->
 
         <div class="col-md-8">
-          <div class="box box-solid">
+          <div class="box box-success">
             <div class="box-header">
               <h3 class="box-title">Daftar Tim Anda</h3>
             </div>
