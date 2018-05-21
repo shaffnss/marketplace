@@ -6,5 +6,9 @@ class ListProduk_model extends CI_Model {
 		$this->db->where('status', 'tersedia');
 		return $this->db->get('produk')->result();
 	}
+	
+	public function getKategori(){
+		return $this->db->get('kategori_produk')->result();
+	}
 
 }

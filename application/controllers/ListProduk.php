@@ -12,6 +12,7 @@ class ListProduk extends CI_Controller {
 	public function index()
 	{
 		$data['produks'] = $this->listProduk_model->getProduk();
+		$data['kategoris'] = $this->listProduk_model->getKategori();
 		$this->load->view('landing/produk', $data);
 	}
 

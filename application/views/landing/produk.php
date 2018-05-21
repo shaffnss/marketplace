@@ -18,10 +18,9 @@ function rupiah($angka){
 
           <h1 class="my-4">VokasiDev</h1>
           <div class="list-group">
-            <a href="#" class="list-group-item">Website</a>
-            <a href="#" class="list-group-item">Mobile Apps</a>
-            <a href="#" class="list-group-item">Game</a>
-            <a href="#" class="list-group-item">Artificial Intelegent</a>
+						<?php foreach ($kategoris as $kategori) : ?>
+            <a href="#" class="list-group-item"><?php echo $kategori->nama_kategori ?></a>
+						<?php endforeach; ?>
           </div>
 
         </div>
