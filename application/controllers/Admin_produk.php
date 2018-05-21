@@ -29,8 +29,11 @@ class Admin_produk extends CI_Controller {
 	//fungsi untuk merubah status detail produk menjadi diterima
 	public function diterima($id_detail_produk)
 	{
-    $this->db->where('id_detail_produk', $id_detail_produk)
+    $result = $this->db->where('id_detail_produk', $id_detail_produk)
 		->update('detail_produk', array('status'=>'diterima'));
+		
+		if ($result == TRUE) $this->session->set_flashdata('success','Produk berhasil diterima');
+		else $this->session->set_flashdata('error','Produk gagal dieksekusi');
 		
 		redirect('Admin_produk/produk_diterima');
   }
@@ -46,10 +49,13 @@ class Admin_produk extends CI_Controller {
 	//fungsi untuk merubah status detail produk menjadi ditolak
 	public function ditolak($id_detail_produk)
 	{
-    $this->db->where('id_detail_produk', $id_detail_produk)
+    $result = $this->db->where('id_detail_produk', $id_detail_produk)
 		->update('detail_produk', array('status'=>'ditolak'));
 		
-		redirect('Admin_produk');
+		if ($result == TRUE) $this->session->set_flashdata('success','Produk berhasil ditolak');
+		else $this->session->set_flashdata('error','Produk gagal dieksekusi');
+		
+		redirect('Admin_produk/produk_ditolak');
   }	
 
 	public function tambahProduk()
