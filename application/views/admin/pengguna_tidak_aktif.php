@@ -15,6 +15,37 @@ $this->load->view('admin/head_admin');
 
 <!-- Main content -->
 <section class="content">
+	<div class="row">
+		<div class="col-md-12">
+			<?php
+				$this->load->helper('form');
+				$error = $this->session->flashdata('error');
+				if($error)
+				{
+				?>
+				<div class="alert alert-danger alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+					<?php echo $this->session->flashdata('error'); ?>                    
+				</div>
+			<?php } ?>
+			<?php  
+				$success = $this->session->flashdata('success');
+				if($success)
+				{
+				?>
+				<div class="alert alert-success alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+					<?php echo $this->session->flashdata('success'); ?>
+				</div>
+			<?php } ?>
+			
+			<div class="row">
+				<div class="col-md-12">
+					<?php echo validation_errors('<div class="alert alert-danger alert-dismissable">', ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>'); ?>
+				</div>
+			</div>
+		</div>
+	</div>
   <div class="row">
 
     <!-- Form Daftar Pengguna Tidak Aktif -->
@@ -38,13 +69,13 @@ $this->load->view('admin/head_admin');
             </tr>
           </thead>
 
+            <tbody>
           <?php 
           $no=1;
           foreach ($pengelola as $data) {
                   # code...
 
             ?>
-            <tbody>
               <tr>
                 <td><?php echo $no ?></td>
                 <td><img src="<?php echo site_url('/assets/users/klien/').$data->foto ?>" class="img-responsive" style="height: 100px; width: 100px"></td>
@@ -62,86 +93,9 @@ $this->load->view('admin/head_admin');
                   <?php }?>
                 </td>
                 <td>
-                  <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ubah-klien<?php echo $data->id_users; ?>"><i class="fa fa-edit"></i>
-                  </button>    
+                  <a onclick="return confirm('Apakah Anda yakin akan mengaktifkan kembali user ini?'); " class="btn-sm btn-success" href="<?php echo site_url('Admin_pengelola/aktifkan/'.$data->id_users) ?>"><i class="fa fa-check"></i> Aktifkan</a>
                 </td>
-              </tr>
-
-              <!-- Modals Ubah DATA KLIEN -->
-              <div class="modal fade" id="ubah-klien<?php echo $data->id_users; ?>">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Ubah Data Pengguna Tidak Aktif</h4>
-                      </div>
-
-                      <div class="modal-body">
-                        <form action="<?php echo site_url('Admin_klien/ubahKlien') ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
-
-                          <div class="box-body">
-                            <input type="hidden" class="form-control" id="inputName" name="id_users" value="<?php echo $data->id_users; ?>" required>
-
-                            <div class="form-group">
-                              <label class="">Nama Pengguna Tidak Aktif</label>
-                              <input type="text" class="form-control" id="inputName" name="nama_users" value="<?php echo $data->nama_users; ?>">
-                            </div>
-
-                            <div class="form-group">
-                              <label>Jenis Kelamin</label>        
-                              <select class="form-control" name="jenis_kelamin">
-                                <option value="Pria" <?php if($data->jenis_kelamin == "Pria") {echo "selected=selected";} ?>>Pria</option>
-                                <option value="Wanita" <?php if($data->jenis_kelamin == "Wanita") {echo "selected=selected";} ?>>Wanita</option>
-                              </select>
-                            </div>
-
-                            <div class="form-group">
-                              <label class="">Instansi</label>
-                              <input type="text" class="form-control" id="inputName" name="instansi" value="<?php echo $data->instansi; ?>" required>
-                            </div>
-
-                            <div class="form-group">
-                              <label class="">No Telpon</label>
-                              <input type="text" class="form-control" id="inputName" name="no_telpon" value="<?php echo $data->no_telpon; ?>" required>
-                            </div>
-
-                            <div class="form-group">
-                              <label class="">Email</label>
-                              <input type="text" class="form-control" id="inputName" name="email" value="<?php echo $data->email; ?>" required>
-                            </div>
-
-                            <div class="form-group">
-                              <label class="">Upload Foto</label>
-                              <input type="file" name="foto" value="<?php echo $data->foto; ?>">
-                            </div>
-
-                            <div class="form-group">
-                              <label for="produk">Status</label>
-                              <div class="radio">
-                                <label>
-                                  <input type="radio" name="status_users" id="optionsAktif" value="aktif" <?php if($data->status_users == "aktif") {echo "checked";} ?>>Aktif
-                                </label>
-                                <label>
-                                  <input type="radio" name="status_users" id="optionsTdkAktif" value="nonaktif"  <?php if($data->status_users == "nonaktif") {echo "checked";} ?>>Non Aktif
-                                </label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                          <input type="submit" class="btn btn-success" value="Simpan">
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-              </div>
-              <!-- /.modal -->      
+              </tr>    
               <?php $no++; } ?>
             </tbody>
           </table>
