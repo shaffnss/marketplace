@@ -7,6 +7,7 @@ class Admin_pengelola_model extends CI_Model {
 		$this->db->from("users");
 		$this->db->join("roles","users.id_roles=roles.id_roles");
 		$this->db->where("roles.nama_roles","pengelola");
+		$this->db->where("status_users", "aktif");
 		return $this->db->get()->result();
 	}
 
@@ -16,5 +17,11 @@ class Admin_pengelola_model extends CI_Model {
 		$insert_id = $this->db->insert_id();
 		$this->db->trans_complete();
 		return $insert_id;
+	}
+	
+	public function getPengelolaTidakAktif(){
+		$this->db->where("status_users","nonaktif");
+		$this->db->order_by("posisi");
+		return $this->db->get('users')->result();
 	}
 }

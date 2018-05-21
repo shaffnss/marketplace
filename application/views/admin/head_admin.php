@@ -182,6 +182,7 @@
               <?php 
                     }
                     ?>
+            <li><a href="<?php echo site_url('Admin_pengelola/pengguna_tidak_aktif') ?>"><i class="fa fa-user"></i> Pengguna Tidak Aktif</a></li>
             <!-- <li><a href="<?php //echo site_url('Admin_pelamar') ?>"><i class="fa fa-user"></i> Pelamar</a></li>   -->
           </ul>
         </li>   
