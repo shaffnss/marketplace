@@ -26,9 +26,9 @@ ANGGOTA
 
 
 Admin
-17. Konfirmasi produk baru yg diupload klik centang + alert produk diterima
+17. Konfirmasi produk baru yg diupload klik centang + alert produk diterima [DONE]
 - Status di admin diterima [DONE]
-- di akun anggota statusnya berubah jadi disetujui
+- di akun anggota statusnya berubah jadi disetujui [DONE]
 18. Bagaimana biar data produk langsung terhubung ke landing page dan bisa diatur aktif tidak aktifnya atau tampil tidak tampil. (status tersedia/tdk tersedia) [DONE]
 19. sorting pengguna aktif tidak aktif (menu pengguna aktif dan non-aktif)
 20. buat view kategori (tabel list kategori, id, nama_kagori, status)

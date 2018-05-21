@@ -53,8 +53,6 @@ class Admin_produk_model extends CI_Model {
 	
 	public function getKategori()
 	{
-		$this->db->select("*");
-		$this->db->from("kategori_produk");
-		return $this->db->get()->result();
+		return $this->db->get('kategori_produk')->result();
 	}
 }

@@ -46,10 +46,9 @@ $this->load->view('admin/head_admin');
                 <div class="col-sm-8">            
                   <select class="form-control" name="jenis_produk" required="">
                     <option disabled selected="">---Pilih Jenis Produk---</option>
-                    <option value="Website">Web</option>
-                    <option value="Mobile Apps">Mobile Apps</option>
-                    <option value="Game">Game</option>
-                    <option value="Artificial Intelegent(AI)">Artificial Intelegent(AI)</option>
+                    <?php foreach($kategoris as $kategori) { ?>
+										<option value="<?php echo $kategori->id_kategori ?>"><?php echo $kategori->nama_kategori ?></option>
+										<?php } ?>
                   </select>
                 </div>
               </div>
@@ -57,7 +56,7 @@ $this->load->view('admin/head_admin');
               <div class="form-group">
                 <label for="inputName" class="col-sm-2 control-label">Deskripsi Produk</label>
                 <div class="col-sm-8">
-                  <textarea class="form-control" id="inputExperience" placeholder="Deskripsi Produk" name="deskripsi_produk" required=""></textarea>
+                  <textarea class="form-control" rows="5" id="inputExperience" placeholder="Deskripsi Produk" name="deskripsi_produk" maxLength="255" required=""></textarea>
                 </div>
               </div>
 
