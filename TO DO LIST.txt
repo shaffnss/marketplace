@@ -1,7 +1,7 @@
 DARI PROSES PEMBELIAN OLEH KLIEN
 1. Search produk (halaman landing page) berdasarkan keyword
 2. Membagi halaman produk per kategori
-3. Kategori produk dibuat dinamis
+3. Kategori produk dibuat dinamis [DONE]
 4. Link demo 
 5. LIVE CHAT (tawk.to)
 6. Purchase (simpan di session item yang dipilih)
@@ -10,7 +10,7 @@ DARI PROSES PEMBELIAN OLEH KLIEN
 status pembelian di halaman klien berubah 
 9. klien ditambah ganti photo
 10. ubah password
-11. produk detail list kategori left-sidebar diganti list produk dengan kategori yang sesuai
+11. produk detail list kategori left-sidebar diganti list produk dengan kategori yang sesuai 
 
 DARI ANGGOTA UPLOAD DATA PRODUK
 ANGGOTA
@@ -20,16 +20,16 @@ ANGGOTA
 13. kalo individu nanti create tim (yang isinya dirinya sendiri) ketika pencet button individu
 14. Di fungsi Edit bagian foto (produk) diberi button untuk edit foto
 15. ---DONE--- Pemberian wewenang ke anggota tim mana yg project manager mana yg nggak 
-16. anggota ditambah ganti photo [SOLVED]
+16. anggota ditambah ganti photo [DONE]
 17. ubah password
 18. dropdown kategori dari tabel produk, ketika tambah produk get foreignkey id_kategori
 
 
 Admin
 17. Konfirmasi produk baru yg diupload klik centang + alert produk diterima
-- Status di admin diterima
+- Status di admin diterima [DONE]
 - di akun anggota statusnya berubah jadi disetujui
-18. Bagaimana biar data produk langsung terhubung ke landing page dan bisa diatur aktif tidak aktifnya atau tampil tidak tampil. (status tersedia/tdk tersedia)
+18. Bagaimana biar data produk langsung terhubung ke landing page dan bisa diatur aktif tidak aktifnya atau tampil tidak tampil. (status tersedia/tdk tersedia) [DONE]
 19. sorting pengguna aktif tidak aktif (menu pengguna aktif dan non-aktif)
 20. buat view kategori (tabel list kategori, id, nama_kagori, status)
 21. buat tambah kategori
