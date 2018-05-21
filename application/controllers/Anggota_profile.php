@@ -11,8 +11,9 @@ class Anggota_profile extends CI_Controller {
  
 	public function index()
 	{
+		$id_users = $this->session->userdata('userId');
 		$data["profile"]=$this->anggota_profile_model->getProfile();
-		$data["tampilTim"]=$this->anggota_profile_model->getTeam();
+		$data["tampilTim"]=$this->anggota_profile_model->getTeam($id_users);
 		$this->load->view('anggota/profile_anggota',$data);
 	}
 

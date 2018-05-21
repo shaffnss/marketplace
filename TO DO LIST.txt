@@ -14,7 +14,7 @@ status pembelian di halaman klien berubah
 
 DARI ANGGOTA UPLOAD DATA PRODUK
 ANGGOTA
-10. Di akun masing" anggota dapat melihat dia masuk tim apa aja dan posisinya di masing" tim apa aja
+10. Di akun masing" anggota dapat melihat dia masuk tim apa aja dan posisinya di masing" tim apa aja [DONE]
 11. Di button Unggah,upload produk berdasarkan nama tim terkait di drop down + alert sudah terupload dan menunggu konfirmasi admin.
 12. Anggota yang memiliki posisi sebagai PM bisa mengupload produk yang dihasilkan timnya ke admin dan dropdown pilihan team yg ada di menu upload produk munculnya cuma tim yg dia join
 13. kalo individu nanti create tim (yang isinya dirinya sendiri) ketika pencet button individu
@@ -30,7 +30,7 @@ Admin
 - Status di admin diterima [DONE]
 - di akun anggota statusnya berubah jadi disetujui [DONE]
 18. Bagaimana biar data produk langsung terhubung ke landing page dan bisa diatur aktif tidak aktifnya atau tampil tidak tampil. (status tersedia/tdk tersedia) [DONE]
-19. sorting pengguna aktif tidak aktif (menu pengguna aktif dan non-aktif)
+19. sorting pengguna aktif tidak aktif (menu pengguna aktif dan non-aktif) [DONE]
 20. buat view kategori (tabel list kategori, id, nama_kagori, status)
 21. buat tambah kategori
 

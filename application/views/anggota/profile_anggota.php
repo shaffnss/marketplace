@@ -1,5 +1,6 @@
 <?php
 $this->load->view('anggota/head_anggota');
+$this->load->model('anggota_profile_model');
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -192,11 +193,63 @@ $this->load->view('anggota/head_anggota');
                       <td><?php echo $item->nama_tim; ?></td>
                       <td><?php echo $item->posisi_tim; ?></td>
                       <td>
-                       <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#detail-tim">
-                        Ubah
+                       <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#detail-tim<?php echo $item->id_tim; ?>">
+                        Detail Anggota
                       </button>
                     </td>
                   </tr>
+									
+									<!-- Modal Tim --> 
+									<div class="modal fade" id="detail-tim<?php echo $item->id_tim; ?>">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">&times;</span></button>
+														<h4 class="modal-title">Detail Tim</h4>
+													</div>
+
+													<div class="modal-body">
+														<div class="box-body">
+																
+
+																	<?php 
+																	$index=1;
+																	
+																	$detail_tim = $this->anggota_profile_model->getDetailTeam($item->idTim);
+																	
+																	foreach ($detail_tim as $tim) {
+																	# code...
+
+																		?>
+																		<div class="row">
+																			<div class="col-md-1">
+																			</div>
+																			<div class="col-md-2">
+																				<img style="height: 60px; width: 60px; border-radius: 100%" src="<?php echo site_url('assets/users/klien/'.$tim->foto) ?>">
+																			</div>
+																			<div class="col-md-3">
+																				<h4><?php echo $tim->nama_users; ?></h4>
+																			</div>
+																			<div class="col-md-6">
+																				<h4><?php echo $tim->posisi_tim; ?></h4>
+																			</div>
+																		</div>
+																		<hr>
+																	
+																	<?php 
+																	$index++; 
+																}
+																?>
+														</div>
+													</div>
+												</div>
+												<!-- /.modal-content -->
+											</div>
+											<!-- /.modal-dialog -->
+										</div>
+										<!-- /.modal -->
+									
                   <?php 
                   $no++; 
                 }
@@ -207,61 +260,6 @@ $this->load->view('anggota/head_anggota');
         </div>
       </div>
       <!-- /.COL-MD-8 -->
-
-      <!-- Modal Tim --> 
-      <div class="modal fade" id="detail-tim">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Detail Tim</h4>
-              </div>
-
-              <div class="modal-body">
-                <div class="box-body">
-                  <div class="form-group">
-                    <label for="inputName" class="">Nama Anggota</label>
-                    <input type="email" class="form-control" id="inputName" placeholder="Nama Anggota">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEmail" class="">Email</label>
-                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputTelp" class="">No Telpon</label>
-                    <input type="text" class="form-control" id="inputName" placeholder="No Telpon">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputPosisi" class="">Posisi</label>
-                    <div>            
-                      <select class="form-control">
-                        <option disabled selected="">---Pilih Posisi---</option>
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
-                        <option>option 5</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputSkills" class="">Skills</label>
-                    <input type="text" class="form-control" id="inputSkills" placeholder="Skills">                           
-                  </div>
-                </div>
-
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
-                  <button type="button" class="btn btn-primary">Simpan</button>
-                </div>
-              </div>
-            </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
       </div>
       <!--- /.ROW --->
     </section>
