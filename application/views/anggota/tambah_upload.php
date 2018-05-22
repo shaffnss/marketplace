@@ -25,7 +25,6 @@ $this->load->view('anggota/head_anggota');
               <label for="inputName" class="col-sm-2 control-label">Nama Produk</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" id="inputName" name="nama_produk" placeholder="Nama Produk" required="">
-                <input type="text" class="form-control" name="id_team" placeholder="Nama Produk" value="<?php echo $id_team[0]->id_tim ?>" required="">
               </div>
             </div>
 
@@ -73,10 +72,11 @@ $this->load->view('anggota/head_anggota');
             <div class="form-group">
                 <label class="col-sm-2 control-label">Tentukan Team</label>
                 <div class="col-sm-8">            
-                  <select class="form-control" name="nama_tim" required="">
+                  <select class="form-control" name="id_team" required="">
                     <option disabled selected="">---Pilih Team---</option>
+                    <option value="-1" >Produk Individu (Milik Sendiri)</option>
                     <?php 
-                      foreach ($tambah_tim as $data) {
+                      foreach ($id_team as $data) {
                         # code...
                       
                     ?>

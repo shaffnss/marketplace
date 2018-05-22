@@ -6,6 +6,7 @@ class anggota_uploadProduk_model extends CI_Model {
 	{
 		$this->db->select("*");
 		$this->db->from("produk");
+		$this->db->join("kategori_produk", "kategori_produk.id_kategori = produk.id_kategori");
 		$this->db->where("id_users", $id_user);
 		return $this->db->get()->result();
 	}
