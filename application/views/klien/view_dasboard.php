@@ -6,11 +6,17 @@ $this->load->view('klien/head_klien');
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>Selamat Datang, Nama Klien!</h1>
+      <h1>Dashboard<small>Control Panel</small></h1>
     </section>
 
      <!-- Main content -->
  	<section class="content">
+    <div class="row">
+        <center><p style="font-size: 30px;" >Selamat Datang, <?php echo $this->session->userdata('name');?>!</p></center>
+        <br>
+<!-- <hr style="border-width: 1px; border-color: #DDD;"> -->
+      </div>
+
     <div class="callout callout-warning">
         <h4>Apakah anda telah melakukan pembelian?</h4>
 

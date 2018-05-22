@@ -21,6 +21,14 @@ class Admin_anggota extends CI_Controller {
 		$this->load->view('admin/pengguna_anggota_tambah');
 	}
 
+	public function reset($id){
+		$this->load->helper('string');
+		$reset=random_string('alnum',8);
+		$this->db->where('id_users',$id);
+		$this->db->update('users', array('password'=>PASSWORD_HASH($reset,PASSWORD_DEFAULT)));
+		echo json_encode(array("status" => true, 'data'=>$reset));
+	}
+
 	public function inputAnggota()
 	{
 		$config['upload_path']          = './assets/users/anggota';
@@ -45,7 +53,6 @@ class Admin_anggota extends CI_Controller {
 			$email = $this->input->post('email', true);
 			$no_telpon = $this->input->post('no_telpon', true);
 			$instansi = $this->input->post('instansi', true);
-			$posisi = $this->input->post('posisi', true);
 			$password = $this->input->post('password', true);
 
 			$data =  array(
@@ -54,7 +61,6 @@ class Admin_anggota extends CI_Controller {
 				"jenis_kelamin"=>$jenis_kelamin,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
-				"posisi"=>$posisi,
 				"email"=>$email,
 				'foto'=>$foto,
 				"password"=>PASSWORD_HASH($password,PASSWORD_DEFAULT)
@@ -84,7 +90,6 @@ class Admin_anggota extends CI_Controller {
 			$no_telpon = $this->input->post('no_telpon', true);
 			$email = $this->input->post('email', true);
 			$status_users = $this->input->post('status_users', true);
-			$posisi = $this->input->post('posisi', true);
 			$anggota =  array(
 				"id_roles"=>3,
 				"id_users"=>$id_users,
@@ -94,8 +99,6 @@ class Admin_anggota extends CI_Controller {
 				"no_telpon"=>$no_telpon,
 				"email"=>$email,
 				"status_users"=>$status_users,
-				"posisi"=>$posisi
-
 			);
 		}
 		else //jika update foto
@@ -111,7 +114,6 @@ class Admin_anggota extends CI_Controller {
 			$email = $this->input->post('email', true);
 			$password = $this->input->post('password', true);
 			$status_users = $this->input->post('status_users', true);
-			$posisi = $this->input->post('posisi', true);
 			$anggota =  array(
 				"id_roles"=>3,
 				"id_users"=>$id_users,
@@ -122,7 +124,6 @@ class Admin_anggota extends CI_Controller {
 				"email"=>$email,
 				"status_users"=>$status_users,
 				"foto"=> $foto,
-				"posisi"=>$posisi
 			);
 		}
 			$id_users= $this->input->post('id_users');
