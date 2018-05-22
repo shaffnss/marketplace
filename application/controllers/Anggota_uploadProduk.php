@@ -9,7 +9,7 @@ class Anggota_uploadProduk extends CI_Controller {
 		$this->load->model("anggota_uploadProduk_model");
 		$this->load->helper("form");
 		$this->load->helper("url");
-	}
+		}
 
 	public function index()
 	{
@@ -20,7 +20,10 @@ class Anggota_uploadProduk extends CI_Controller {
 
 	public function tambah_uploadProduk()
 	{
-		$data['id_team']=$this->anggota_uploadProduk_model->getTeam(51);
+		$id_users = $this->session->userdata('userId');
+		$data['id_team']=$this->anggota_uploadProduk_model->getTeam($id_users);
+		$data['kategoris']=$this->anggota_uploadProduk_model->getKategori();
+		
 		$this->load->view('anggota/tambah_upload',$data);
 	}
 

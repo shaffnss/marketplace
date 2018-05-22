@@ -41,10 +41,9 @@ $this->load->view('anggota/head_anggota');
               <div class="col-sm-8">            
                 <select class="form-control" name="jenis_produk" required="">
                   <option disabled selected="">---Pilih Jenis Produk---</option>
-                  <option value="Website">Web</option>
-                  <option value="Mobile Apps">Mobile Apps</option>
-                  <option value="Game">Game</option>
-                  <option value="Artificial Intelegent(AI)">Artificial Intelegent(AI)</option>
+                  <?php foreach ($kategoris as $kategori) { ?>
+									<option value="<?php echo $kategori->id_kategori ?>"><?php echo $kategori->nama_kategori ?></option>
+									<?php } ?>
                 </select>
               </div>
             </div>
