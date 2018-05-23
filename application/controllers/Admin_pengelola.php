@@ -127,4 +127,21 @@ class Admin_pengelola extends CI_Controller {
 		$this->db->update('users',$pengelola);
 		redirect('Admin_pengelola');
 	}
+
+	public function pengguna_tidak_aktif()
+	{
+		$data["pengelola"]=$this->admin_pengelola_model->getPengelolaTidakAktif();
+		$this->load->view('admin/pengguna_tidak_aktif',$data);
+	}
+
+	public function aktifkan($id_users)
+	{
+		$result = $this->db->where('id_users',$id_users)
+		->update('users', array('status_users'=>'aktif'));
+		
+		if ($result == TRUE) $this->session->set_flashdata('success','Users berhasil diaktifkan kembali');
+		else $this->session->set_flashdata('error','Users gagal diaktifkan');
+		
+		redirect('Admin_pengelola/pengguna_tidak_aktif');
+	}
 }

@@ -3,26 +3,69 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin_produk extends CI_Controller {
 
-	function __construct()
-	{
-		parent::__construct();
-		$this->load->model("admin_produk_model");
-		$this->load->helper("form");
-		$this->load->helper("url");
-	}
-
-	public function index()
-	{
-		$data['produk']=$this->admin_produk_model->getProduk();
-		$this->load->view('admin/produk',$data);
-	}
-
-	public function tambahProduk()
-	{
-     $data["tambah_tim"]=$this->admin_produk_model->getTeam();
-     $data["tambah_produk"]=$this->admin_produk_model->getTeam();
-    $this->load->view('admin/produkTambah',$data);
+  function __construct()
+  {
+    parent::__construct();
+    $this->load->model("admin_produk_model");
+    $this->load->helper("form");
+    $this->load->helper("url");
   }
+
+  public function index()
+  {
+    $data['produk']=$this->admin_produk_model->getProduk();
+    $data['kategori']=$this->admin_produk_model->getKategori();
+    $this->load->view('admin/produk',$data);
+  }
+  
+  //fungsi untuk mengarah ke halaman produk dengan status diterima
+  public function produk_diterima()
+  {
+    $data['produk']=$this->admin_produk_model->getProdukDiterima();
+    $data['kategori']=$this->admin_produk_model->getKategori();
+    $this->load->view('admin/produk_diterima',$data);
+  }
+  
+  //fungsi untuk merubah status detail produk menjadi diterima
+  public function diterima($id_detail_produk)
+  {
+    $result = $this->db->where('id_detail_produk', $id_detail_produk)
+    ->update('detail_produk', array('status'=>'diterima'));
+    
+    if ($result == TRUE) $this->session->set_flashdata('success','Produk berhasil diterima');
+    else $this->session->set_flashdata('error','Produk gagal dieksekusi');
+    
+    redirect('Admin_produk/produk_diterima');
+  }
+  
+  //fungsi untuk mengarah ke halaman produk dengan status diterima
+  public function produk_ditolak()
+  {
+    $data['produk']=$this->admin_produk_model->getProdukDitolak();
+    $data['kategori']=$this->admin_produk_model->getKategori();
+    $this->load->view('admin/produk_ditolak',$data);
+  }
+  
+  //fungsi untuk merubah status detail produk menjadi ditolak
+  public function ditolak($id_detail_produk)
+  {
+    $result = $this->db->where('id_detail_produk', $id_detail_produk)
+    ->update('detail_produk', array('status'=>'ditolak'));
+    
+    if ($result == TRUE) $this->session->set_flashdata('success','Produk berhasil ditolak');
+    else $this->session->set_flashdata('error','Produk gagal dieksekusi');
+    
+    redirect('Admin_produk/produk_ditolak');
+  } 
+
+  public function tambahProduk()
+  {
+    $data["tambah_tim"]=$this->admin_produk_model->getTeam();
+     $data["tambah_produk"]=$this->admin_produk_model->getTeam();
+     $data["kategoris"]=$this->admin_produk_model->getKategori();
+     
+    $this->load->view('admin/produkTambah',$data);
+  }  
 
   public function inputProduk()
   {
@@ -62,7 +105,7 @@ class Admin_produk extends CI_Controller {
       $this->db->insert('produk', $data);
       redirect('Admin_produk');
     }
-  }
+  } 
   
 }
 

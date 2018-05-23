@@ -17,4 +17,10 @@ class Admin_pengelola_model extends CI_Model {
 		$this->db->trans_complete();
 		return $insert_id;
 	}
+
+	public function getPengelolaTidakAktif(){
+		$this->db->where("status_users","nonaktif");
+		$this->db->order_by("nama_roles");
+		return $this->db->get('users')->result();
+	}
 }

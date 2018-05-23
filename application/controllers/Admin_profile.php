@@ -8,7 +8,7 @@ class Admin_profile extends CI_Controller {
 		parent::__construct();
 		$this->load->model("admin_profile_model");
 	}
- 
+
 	public function index()
 	{
 		$id_users=$this->session->userdata('userId');
@@ -66,9 +66,10 @@ class Admin_profile extends CI_Controller {
 				"foto"=> $foto
 			);
 		}
-			$id_users= $this->input->post('id_users');
-			$this->db->where('id_users',$id_users);
-			$this->db->update('users',$pengelola);
-			redirect('Admin_profile');
-		}
+		$id_users= $this->input->post('id_users');
+		$this->db->where('id_users',$id_users);
+		$this->db->update('users',$pengelola);
+		redirect('Admin_profile');
+	}
+
 }

@@ -149,20 +149,20 @@ $this->load->view('admin/head_admin');
           </div>    
 
           <div class="tab-pane" id="ubahPassword">
-            <form class="form-horizontal">
+            <form class="form-horizontal action="<?php echo site_url('Admin_password/ubah') ?>" method="post" ">
               <div class="box-body">
                   <div class="form-group">
                     <label for="inputName" class="col-sm-3 control-label">Password Lama</label>
 
                   <div class="col-sm-9">
-                    <input type="email" class="form-control" id="inputName" placeholder="Password Lama">
+                    <input type="password" name="passwordLama" class="form-control" id="inputName" placeholder="Password Lama">
                   </div>
                 </div>
                 <div class="form-group">
                     <label for="inputName" class="col-sm-3 control-label">Password Baru</label>
 
                   <div class="col-sm-9">
-                    <input type="email" class="form-control" id="inputName" placeholder="Password Baru">
+                    <input type="password" name="passwordBaru" class="form-control" id="inputName" placeholder="Password Baru">
                   </div>
                 </div>
 
@@ -170,13 +170,13 @@ $this->load->view('admin/head_admin');
                     <label for="inputEmail" class="col-sm-3 control-label">Ulangi Password Baru</label>
 
                   <div class="col-sm-9">
-                    <input type="email" class="form-control" id="inputEmail" placeholder="Ulangi Password Baru">
+                    <input type="password" name="re_password" class="form-control" id="inputEmail" placeholder="Ulangi Password Baru">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <div class="col-sm-offset-10 col-sm-12">
-                    <input type="submit" class="btn btn-success" value="Simpan">
+                  <div class="col-sm-offset-9 col-sm-12">
+                    <input type="submit" class="btn btn-success" value="Ubah password">
                   </div>
                 </div>
               </div>
