@@ -149,7 +149,7 @@ $this->load->view('admin/head_admin');
           </div>    
 
           <div class="tab-pane" id="ubahPassword">
-            <form class="form-horizontal action="<?php echo site_url('Admin_password/ubah') ?>" method="post" ">
+            <form class="form-horizontal" action="<?php echo site_url('Admin_profile/ubahPassword') ?>" method="post" ">
               <div class="box-body">
                   <div class="form-group">
                     <label for="inputName" class="col-sm-3 control-label">Password Lama</label>

@@ -11,34 +11,37 @@ status pembelian di halaman klien berubah
 9. klien ditambah ganti photo [DONE]
 10. ubah password
 11. produk detail list kategori left-sidebar diganti list produk dengan kategori yang sesuai 
+12. LUPA PASSWORD 
 
 DARI ANGGOTA UPLOAD DATA PRODUK
 ANGGOTA
-12. Di akun masing" anggota dapat melihat dia masuk tim apa aja dan posisinya di masing" tim apa aja [DONE]
-13. Di button Unggah,upload produk berdasarkan nama tim terkait di drop down + alert sudah terupload dan menunggu konfirmasi admin.
-14. Anggota yang memiliki posisi sebagai PM bisa mengupload produk yang dihasilkan timnya ke admin dan dropdown pilihan team yg ada di menu upload produk munculnya cuma tim yg dia join
-15. kalo individu nanti create tim (yang isinya dirinya sendiri) ketika pencet button individu
-16. Di fungsi Edit bagian foto (produk) diberi button untuk edit foto
-17. Pemberian wewenang ke anggota tim mana yg project manager mana yg nggak [DONE] 
-18. anggota ditambah ganti photo [DONE]
-19. ubah password
-20. dropdown kategori dari tabel produk, ketika tambah produk get foreignkey id_kategori
+13. Di akun masing" anggota dapat melihat dia masuk tim apa aja dan posisinya di masing" tim apa aja [DONE]
+14. Di button Unggah,upload produk berdasarkan nama tim terkait di drop down + alert sudah terupload dan menunggu konfirmasi admin.
+15. Anggota yang memiliki posisi sebagai PM bisa mengupload produk yang dihasilkan timnya ke admin dan dropdown pilihan team yg ada di menu upload produk munculnya cuma tim yg dia join
+16. kalo individu nanti create tim (yang isinya dirinya sendiri) ketika pencet button individu
+17. Di fungsi Edit bagian foto (produk) diberi button untuk edit foto
+18. Pemberian wewenang ke anggota tim mana yg project manager mana yg nggak [DONE] 
+19. anggota ditambah ganti photo [DONE]
+20. ubah password
+21. dropdown kategori dari tabel produk, ketika tambah produk get foreignkey id_kategori
+22. LUPA PASSWORD 
 
 
 Admin
-21. Konfirmasi produk baru yg diupload klik centang + alert produk diterima [DONE]
+23. Konfirmasi produk baru yg diupload klik centang + alert produk diterima [DONE]
 - Status di admin diterima [DONE]
 - di akun anggota statusnya berubah jadi disetujui [DONE]
-22. Bagaimana biar data produk langsung terhubung ke landing page dan bisa diatur aktif tidak aktifnya atau tampil tidak tampil. (status tersedia/tdk tersedia) [DONE]
-23. sorting pengguna aktif tidak aktif (menu pengguna aktif dan non-aktif) [DONE]
-24. buat view kategori (tabel list kategori, id, nama_kagori, status) [DONE]
-25. buat tambah kategori [DONE]
-26. Profile untuk admin cara memisahkan antara pengelola dan superpengelola gimana, karena di view profile admin di controller manggilnya masih nama_roles pengelola belum sama superadmin(superpengelola)
-27. ubah password admin [OTW]
+24. Bagaimana biar data produk langsung terhubung ke landing page dan bisa diatur aktif tidak aktifnya atau tampil tidak tampil. (status tersedia/tdk tersedia) [DONE]
+25. sorting pengguna aktif tidak aktif (menu pengguna aktif dan non-aktif) [DONE]
+26. buat view kategori (tabel list kategori, id, nama_kagori, status) [DONE]
+27. buat tambah kategori [DONE]
+28. Profile untuk admin cara memisahkan antara pengelola dan superpengelola gimana, karena di view profile admin di controller manggilnya masih nama_roles pengelola belum sama superadmin(superpengelola)
+29. ubah password admin [DONE]
+30. LUPA PASSWORD 
 
 System : 
-28. pengaturan session yang sedang login. anggota hanya bisa login pada halaman anggota, begitu jga klien dan admin.
-29. sidebar active ketika halaman diakses [DONE]
+31. pengaturan session yang sedang login. anggota hanya bisa login pada halaman anggota, begitu jga klien dan admin.
+32. sidebar active ketika halaman diakses [DONE]
 
 superadmin : superadmin@gmail.com : 12345
 klien : gorby@gmail.com : 12345

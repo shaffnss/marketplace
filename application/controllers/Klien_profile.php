@@ -71,4 +71,40 @@ class Klien_profile extends CI_Controller {
 			$this->db->update('users',$klien);
 			redirect('Klien_profile');
 		}
+
+		public function ubahPassword(){
+		$id_users=$this->session->userdata('userId');
+		$datas["profile"]=$this->klien_profile_model->getProfile($id_users);	
+
+		$passLama = $this->input->post('passwordLama');
+		$passBaru = password_hash($this->input->post('passwordBaru'), PASSWORD_DEFAULT);
+		$passRe = password_hash($this->input->post('re_password'), PASSWORD_DEFAULT);
+
+		$this->form_validation->set_rules('passwordLama','Password Lama','trim|required');
+		$this->form_validation->set_rules('passwordBaru','Password Baru','trim|required');
+		$this->form_validation->set_rules('re_password','Re Password','trim|required|max_length[20]|matches[passwordBaru]');
+
+		if ($this->form_validation->run() ==  FALSE)
+		{
+			$datas["profile"]=$this->klien_profile_model->getProfile($id_users);
+			$data['body'] = $this->load->view('klien/view_profile', $datas,'');
+			$this->load->view('klien/head_admin',$data);
+		}else{
+			$this->db->where('id_users', $this->session->userdata('userId'));
+			// $this->db->where('password', PASSWORD_HASH($this->input->post('passwordLama'),PASSWORD_DEFAULT));
+			$cek = $this->db->get('users')->result();
+			
+            if(password_verify($passLama, $cek[0]->password)){
+            	$this->db->set('password', $passBaru);
+                $this->db->where('id_users', $this->session->userdata('userId'));
+				$this->db->update('users');
+				// $this->db->update('users', array('password', PASSWORD_HASH($this->input->post('passwordBaru') ,PASSWORD_DEFAULT)));
+				echo "<script>alert('Password Berhasil Dirubah');document.location='../Klien_profile'</script>";
+            }else{
+                echo "<script>alert('Password Lama Anda Salah');document.location='../Klien_profile'</script>";
+            }
+
+		}
+	}
 }
+?>
