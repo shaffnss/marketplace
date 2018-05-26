@@ -83,7 +83,7 @@ $this->load->view('admin/head_admin');
                     <td>
                       <div>
                         <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ubah-data<?php echo $data['id_users']; ?>"><i class="fa fa-edit"></i></button>
-                        <button type="button" onclick="reset_password(<?php echo $data['id_users']; ?>)" class="btn btn-sm btn-warning">Reset</button>
+                        <button type="button" onclick="reset_password(<?php echo $data['id_users']; ?>)" class="btn btn-sm btn-warning" style="background: #d41912; border-color: #fff"><i class="fa fa-refresh"></i>Reset</button> 
                       </div>   
                     </td>
                   <?php }?>
@@ -103,7 +103,7 @@ $this->load->view('admin/head_admin');
                           <form action="<?php echo site_url('Admin_anggota/ubahAnggota') ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
 
                             <div class="box-body">
-                              <input type="hidden" class="form-control" id="inputName" name="id_users" value="<?php echo $data['id_users']; ?>" required>
+                              <input type="hidden" class="form-control" id="inputName" name="id_users" value="<?php echo $data['id_users']; ?>">
 
                               <div class="form-group">
                                 <label class="">Nama Anggota</label>
@@ -120,7 +120,7 @@ $this->load->view('admin/head_admin');
 
                               <div class="form-group">
                                 <label class="">Instansi</label>
-                                <input type="text" class="form-control" id="inputName" name="instansi" value="<?php echo $data['instansi']; ?>" required>
+                                <input type="text" class="form-control" id="inputName" name="instansi" value="<?php echo $data['instansi']; ?>">
                               </div>
 
                               <div class="form-group">

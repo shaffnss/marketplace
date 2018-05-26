@@ -42,6 +42,7 @@ Admin
 System : 
 31. pengaturan session yang sedang login. anggota hanya bisa login pada halaman anggota, begitu jga klien dan admin.
 32. sidebar active ketika halaman diakses [DONE]
+33. EDIT TAMPILAN BAGIAN REGISTER
 
 superadmin : superadmin@gmail.com : 12345
 klien : gorby@gmail.com : 12345

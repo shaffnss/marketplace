@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>VokasiDev | Log in</title>
+  <title>VokasiDev | Forgot Password</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -29,34 +29,35 @@
 </head>
 <body class="hold-transition login-page">
   <div class="login-box">
-    <div class="login-logo">
-      <a href="<?php echo site_url('Home')?>"><b>Marketplace TA</b></a>
-    </div>
-    <!-- /.login-logo -->
-    <div class="login-box-body">
-      <p class="login-box-msg">Masuk ke Marketplace TA</p>
-      <form action="<?php echo site_url('Login/loginMe')?>" method="post">
-        <div class="form-group has-feedback">
-          <input type="email" class="form-control" name="email" placeholder="Email">
-          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-        </div>
-        <div class="form-group has-feedback">
-          <input type="password" class="form-control" name="password" placeholder="Password">
-          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-        </div>
-      
-      <div class="row">
-      <div class="col-xs-12">
-        <input type="submit" class="btn btn-primary btn-block btn-flat" value="Masuk" name="masuk">
-      </div>
-      </div>
-      </form>
-      <br>
-      <p style="text-align: center;">Belum memiliki akun? Silahkan &nbsp;<a href="<?php echo site_url('Register') ?>">Register</a> &nbsp;disini</p>
-      <p style="text-align: center;"><a href="<?php echo site_url('Password') ?>">Lupa Password</a></p>
-    </div>
-    <!-- /.login-box-body -->
-  </div>
+   <div class="login-logo">
+     <a href="../../index2.html"><b>E</b>APPS</a>
+   </div>
+   <div class="login-box-body">
+     <p class="login-box-msg">Masukkan Alamat Email Anda</p>
+     <!-- Alert -->
+     <?php if ($this->session->flashdata('message')): ?>
+     <div class="alert alert-<?php echo $this->session->flashdata('style'); ?> fade in">
+       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+       <strong><?php echo $this->session->flashdata('alert'); ?></strong>&nbsp; <?php echo $this->session->flashdata('message'); ?>
+     </div>
+     <?php endif; ?>
+     <!-- End Alert -->
+     <form action="<?php echo base_url();?>password/kirim_email" method="post">
+       <div class="form-group has-feedback">
+         <input type="mail" name="email" id="email" class="form-control" placeholder="Email">
+         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+       </div>
+       <div class="row">
+         <div class="col-xs-8">
+         </div>
+         <div class="col-xs-4">
+           <button type="submit" class="btn btn-primary btn-block btn-flat">Lanjutkan</button>
+         </div>
+       </div>
+     </form>
+   </div>
+</div>
+ 
   <!-- /.login-box -->
 
   <!-- jQuery 3 -->
