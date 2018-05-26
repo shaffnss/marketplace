@@ -9,7 +9,7 @@ DARI PROSES PEMBELIAN OLEH KLIEN
 8. Admin = request pembelian oleh klien masuk ke halaman admin dibagian pembelian proses, jika sudah dikonfirmasi 
 status pembelian di halaman klien berubah 
 9. klien ditambah ganti photo [DONE]
-10. ubah password
+10. ubah password [DONE]
 11. produk detail list kategori left-sidebar diganti list produk dengan kategori yang sesuai 
 12. LUPA PASSWORD 
 
@@ -22,7 +22,7 @@ ANGGOTA
 17. Di fungsi Edit bagian foto (produk) diberi button untuk edit foto
 18. Pemberian wewenang ke anggota tim mana yg project manager mana yg nggak [DONE] 
 19. anggota ditambah ganti photo [DONE]
-20. ubah password
+20. ubah password [DONE]
 21. dropdown kategori dari tabel produk, ketika tambah produk get foreignkey id_kategori
 22. LUPA PASSWORD 
 

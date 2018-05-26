@@ -145,13 +145,14 @@ $this->load->model('anggota_profile_model');
                   <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
                   <input type="submit" class="btn btn-primary" value="Simpan">
                 </div>
+                </form>
             </div>
             <!-- /.modal-content -->
           </div>
           <!-- /.modal-dialog -->
-           </form>
         </div>
         <!-- /.modal -->
+
 
         <div class="col-md-8">
           <div class="box box-solid">

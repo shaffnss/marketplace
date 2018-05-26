@@ -83,7 +83,7 @@ $this->load->view('admin/head_admin');
                     <td>
                       <div>
                         <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ubah-data<?php echo $data['id_users']; ?>"><i class="fa fa-edit"></i></button>
-                        <button type="button" onclick="reset_password(<?php echo $data['id_users']; ?>)" class="btn btn-sm btn-black">Reset</button>
+                        <button type="button" onclick="reset_password(<?php echo $data['id_users']; ?>)" class="btn btn-sm btn-warning">Reset</button>
                       </div>   
                     </td>
                   <?php }?>

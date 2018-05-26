@@ -13,7 +13,7 @@ class Klien_profile extends CI_Controller {
 	{
 		$id_users = $this->session->userdata('userId');
 		$data["profile"]=$this->klien_profile_model->getProfile($id_users);
-		$this->load->view('Klien/view_profile',$data);
+		$this->load->view('klien/view_profile',$data);
 	}
 
 	public function ubahKlien()
@@ -75,7 +75,6 @@ class Klien_profile extends CI_Controller {
 		public function ubahPassword(){
 		$id_users=$this->session->userdata('userId');
 		$datas["profile"]=$this->klien_profile_model->getProfile($id_users);	
-
 		$passLama = $this->input->post('passwordLama');
 		$passBaru = password_hash($this->input->post('passwordBaru'), PASSWORD_DEFAULT);
 		$passRe = password_hash($this->input->post('re_password'), PASSWORD_DEFAULT);
@@ -86,6 +85,7 @@ class Klien_profile extends CI_Controller {
 
 		if ($this->form_validation->run() ==  FALSE)
 		{
+			echo "lele";
 			$datas["profile"]=$this->klien_profile_model->getProfile($id_users);
 			$data['body'] = $this->load->view('klien/view_profile', $datas,'');
 			$this->load->view('klien/head_admin',$data);

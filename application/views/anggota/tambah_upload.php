@@ -17,7 +17,7 @@ $this->load->view('anggota/head_anggota');
       <div class="box box-primary">
         <div class="box-header with-border">
           <h2 class="box-title">Form Pengisian Data Unggah Produk</h2>
-
+        </div>
           <form class="form-horizontal" method="POST" action="<?php echo site_url('Anggota_uploadProduk/inputProduk') ?>" enctype="multipart/form-data">
 
             <div class="box-body">

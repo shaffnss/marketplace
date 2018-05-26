@@ -149,8 +149,8 @@ $this->load->view('klien/head_klien');
           </div>    
 
           <div class="tab-pane" id="ubahPassword">
-            <form class="form-horizontal">
-              <div class="box-body" action="<?php echo site_url('Klien_profile/ubahPassword') ?>" method="post" ">
+            <form class="form-horizontal" action="<?php echo site_url('Klien_profile/ubahPassword') ?>" method="post">
+              <div class="box-body">
                   <div class="form-group">
                     <label for="inputName" class="col-sm-3 control-label">Password Lama</label>
 
