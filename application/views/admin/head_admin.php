@@ -41,6 +41,8 @@
   </script>
   <!-- Bootstrap 3.3.7 -->
   <script src="<?php echo base_url('AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js') ?>"></script>
+  <!-- Morris chart -->
+  <link rel="stylesheet" href="<?php echo base_url('AdminLTE/bower_components/morris.js/morris.css') ?>">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -167,7 +169,7 @@
           -->
           <li class="treeview">
             <a href="">
-              <i class="fa fa-navicon"></i>Pembelian
+              <i class="fa fa-shopping-cart"></i>Pembelian
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>

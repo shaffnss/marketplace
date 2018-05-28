@@ -7,9 +7,13 @@ $this->load->model('anggota_profile_model');
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <h1>Profil Anggota</h1>
+     <h1>Profil<small>Anggota</small></h1>
   </section>
 
+ <?php 
+          foreach ($profile as $data) {
+          # code...
+            ?>
 
   <!-- Main content -->
   <section class="content">
@@ -19,74 +23,65 @@ $this->load->model('anggota_profile_model');
       <div class="col-md-4">
         <!-- Profile Image -->
         <div class="box box-primary">
-          <?php 
-          foreach ($profile as $data) {
-          # code...
-            ?>
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="<?php echo site_url('/assets/users/klien/').$data->foto ?>" alt="User profile picture">
+              <img class="profile-user-img img-responsive img-circle" src="<?php echo site_url('/assets/users/anggota/').$data->foto ?>" alt="User profile picture">
+
               <h3 class="profile-username text-center">
                 <?php echo $data->nama_users?>
               </h3>
 
-              <?php if($data->nama_roles=='anggota') {
-                ?>
-                <p class="text-muted text-center">Anggota</p>
-              <?php }?>
             </div>
-          </div>
-          <!--- /.Box Primary Profile End --->
-          <!-- About Me Box -->
-          <div class="box box-solid">
-            <div class="box-header with-border">
-              <h3 class="box-title">About Me</h3>
-
+            <!--- /.Box Body Profile End --->
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <strong><i class="fa fa-book margin-r-5"></i>Nama</strong>
-              <p class="text-muted">
-                <?php echo $data->nama_users?>
-              </p>
-              <hr>
 
-              <strong><i class="fa fa-intersex margin-r-5"></i>Jenis Kelamin</strong>
-              <p class="text-muted">
-                <?php echo $data->jenis_kelamin?>
-              </p>
-              <hr>
+            <!-- About Me Box -->
+            <div class="box box-solid">
+              <div class="box-header with-border">
+              <h3 class="box-title">Tentang Saya</h3>
+            </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <strong><i class="fa fa-book margin-r-5"></i>Nama</strong>
+                <p class="text-muted">
+                  <?php echo $data->nama_users?>
+                </p>
+                <hr>
 
-              <strong><i class="fa fa-envelope margin-r-5"></i>Email</strong>
-              <p class="text-muted">
-                <?php echo $data->email?>
-              </p>
-              <hr>
+                <strong><i class="fa fa-map-marker margin-r-5"></i>Jenis Kelamin</strong>
+                <p class="text-muted">
+                  <?php echo $data->jenis_kelamin?>
+                </p>
+                <hr>
 
-              <strong><i class="fa fa-building margin-r-5"></i>Instansi</strong>
-              <p class="text-muted">
-                <?php echo $data->instansi?>
-              </p>
-              <hr>
+                <strong><i class="fa fa-pencil margin-r-5"></i> Email</strong>
+                <p class="text-muted">
+                  <?php echo $data->email?>
+                </p>
+                <hr>
 
-              <strong><i class="fa fa-phone margin-r-5"></i>No Telpon</strong>
-              <p class="text-muted">
-                <?php echo $data->no_telpon?>
-              </p>
-              <hr>
+                <strong><i class="fa fa-map-marker margin-r-5"></i>Instansi</strong>
+                <p class="text-muted">
+                  <?php echo $data->instansi?>
+                </p>
+                <hr>
 
-              <div>
-                <button type="button" class="btn btn-warning pull-right" data-toggle="modal" data-target="#ubah-profile<?php echo $data->id_users; ?>" onclick="ubah-profile"><i class="fa fa-edit"></i> Ubah
-                </button>
+                <strong><i class="fa fa-map-marker margin-r-5"></i> No Telpon</strong>
+                <p class="text-muted">
+                  <?php echo $data->no_telpon?>
+                </p>
+                <hr>
+
+                <div>
+                  <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#ubah-profile<?php echo $data->id_users; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-profile"><i class="fa fa-pencil"></i> Ubah
+                  </button>
+                </div>
               </div>
+              <!-- /.BOX BODY ABOUT ME --> 
             </div>
-            <!-- /.BOX BODY ABOUT ME --> 
+            <!--- /.Box Primary About Me End --->
           </div>
-          <!--- /.Box Primary About Me End --->
-        </div>
-        <!--- /.Col md 4 --->
-        <?php 
-      } 
-      ?>
+          <!--- /.Col md 4 --->
+        <?php }?>
 
       <!-- modal-content -->
       <div class="modal fade" id="ubah-profile<?php echo $data->id_users; ?>">
@@ -101,7 +96,7 @@ $this->load->model('anggota_profile_model');
               <form action="<?php echo site_url('Anggota_profile/ubahAnggota') ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
                 <div class="modal-body">
                   <div class="box-body">
-                    <input type="hidden" class="form-control" name="id_users" value="<?php echo $data->id_users; ?>">
+                    <input type="hidden" class="form-control" name="id_users" required="">
 
                     <div class="form-group">
                       <label for="inputName" class="">Nama Anggota</label>
@@ -129,8 +124,16 @@ $this->load->model('anggota_profile_model');
                     <div class="form-group">
                       <label for="inputTelp" class="">Instansi</label>
                       <input type="text" class="form-control" id="inputName" name="instansi" value="<?php echo $data->instansi; ?>">
-                    </div>  
+                    </div>
 
+                <!--     <div class="form-group">
+                      <label>Status Mahasiswa</label>        
+                      <select class="form-control" name="posisi">
+                        <option value="mahasiswa" <?php// if($data->posisi == "mahasiswa") {echo "selected=selected";} ?>>Mahasiswa</option>
+                        <option value="alumni" <?php //if($data->posisi == "alumni") {echo "selected=selected";} ?>>Alumni</option>
+                      </select>
+                    </div>
+ -->
                     <div class="form-group">
                       <label class="">Upload Foto</label>
                       <input type="file" name="foto" value="<?php echo $data->foto; ?>">
@@ -140,9 +143,9 @@ $this->load->model('anggota_profile_model');
 
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
-                  <input type="submit" class="btn btn-success" value="Simpan">
+                  <input type="submit" class="btn btn-primary" value="Simpan">
                 </div>
-              </form>
+                </form>
             </div>
             <!-- /.modal-content -->
           </div>
@@ -150,8 +153,9 @@ $this->load->model('anggota_profile_model');
         </div>
         <!-- /.modal -->
 
+
         <div class="col-md-8">
-          <div class="box box-success">
+          <div class="box box-solid">
             <div class="box-header">
               <h3 class="box-title">Daftar Tim Anda</h3>
             </div>
@@ -184,58 +188,58 @@ $this->load->model('anggota_profile_model');
                       </button>
                     </td>
                   </tr>
-									
-									<!-- Modal Tim --> 
-									<div class="modal fade" id="detail-tim<?php echo $item->id_tim; ?>">
-										<div class="modal-dialog">
-											<div class="modal-content">
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-														<span aria-hidden="true">&times;</span></button>
-														<h4 class="modal-title">Detail Tim</h4>
-													</div>
+                  
+                  <!-- Modal Tim --> 
+                  <div class="modal fade" id="detail-tim<?php echo $item->id_tim; ?>">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Detail Tim</h4>
+                          </div>
 
-													<div class="modal-body">
-														<div class="box-body">
-																
+                          <div class="modal-body">
+                            <div class="box-body">
+                                
 
-																	<?php 
-																	$index=1;
-																	
-																	$detail_tim = $this->anggota_profile_model->getDetailTeam($item->idTim);
-																	
-																	foreach ($detail_tim as $tim) {
-																	# code...
+                                  <?php 
+                                  $index=1;
+                                  
+                                  $detail_tim = $this->anggota_profile_model->getDetailTeam($item->idTim);
+                                  
+                                  foreach ($detail_tim as $tim) {
+                                  # code...
 
-																		?>
-																		<div class="row">
-																			<div class="col-md-1">
-																			</div>
-																			<div class="col-md-2">
-																				<img style="height: 60px; width: 60px; border-radius: 100%" src="<?php echo site_url('assets/users/klien/'.$tim->foto) ?>">
-																			</div>
-																			<div class="col-md-3">
-																				<h4><?php echo $tim->nama_users; ?></h4>
-																			</div>
-																			<div class="col-md-6">
-																				<h4><?php echo $tim->posisi_tim; ?></h4>
-																			</div>
-																		</div>
-																		<hr>
-																	
-																	<?php 
-																	$index++; 
-																}
-																?>
-														</div>
-													</div>
-												</div>
-												<!-- /.modal-content -->
-											</div>
-											<!-- /.modal-dialog -->
-										</div>
-										<!-- /.modal -->
-									
+                                    ?>
+                                    <div class="row">
+                                      <div class="col-md-1">
+                                      </div>
+                                      <div class="col-md-2">
+                                        <img style="height: 60px; width: 60px; border-radius: 100%" src="<?php echo site_url('assets/users/klien/'.$tim->foto) ?>">
+                                      </div>
+                                      <div class="col-md-3">
+                                        <h4><?php echo $tim->nama_users; ?></h4>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <h4><?php echo $tim->posisi_tim; ?></h4>
+                                      </div>
+                                    </div>
+                                    <hr>
+                                  
+                                  <?php 
+                                  $index++; 
+                                }
+                                ?>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /.modal-content -->
+                      </div>
+                      <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
+                  
                   <?php 
                   $no++; 
                 }

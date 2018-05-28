@@ -2,9 +2,9 @@
 $this->load->view('landing/head_landing');
 
 function rupiah($angka){
-	
-	$hasil_rupiah = "Rp " . number_format($angka,2,',','.');
-	return $hasil_rupiah;
+  
+  $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+  return $hasil_rupiah;
  
 }
 ?>
@@ -18,9 +18,9 @@ function rupiah($angka){
 
           <h1 class="my-4">VokasiDev</h1>
           <div class="list-group">
-						<?php foreach ($kategoris as $kategori) : ?>
+            <?php foreach ($kategoris as $kategori) : ?>
             <a href="#" class="list-group-item"><?php echo $kategori->nama_kategori ?></a>
-						<?php endforeach; ?>
+            <?php endforeach; ?>
           </div>
 
         </div>
@@ -36,19 +36,19 @@ function rupiah($angka){
         <br>
         <br>
           <div class="row">
-						<?php
-							foreach ($produks as $produk) {
-						?>
+            <?php
+              foreach ($produks as $produk) {
+            ?>
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="<?php echo base_url('assets/produk/'.$produk->mockup_produk) ?>" alt=""></a>
+                <a href="#"><img class="card-img-top" src="<?php echo base_url('assets/produk/'.$produk->foto_produk) ?>" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a href="<?php echo site_url('ListProduk/detail')?>"><?php echo strtoupper($produk->nama_produk) ?></a>
                   </h4>
                   <h5><?php echo rupiah($produk->harga_produk) ?></h5>
                   <div style="height: 100px; overflow: hidden">
-										<p class="card-text"><?php echo $produk->deskripsi_produk ?></p>
+                    <p class="card-text"><?php echo $produk->deskripsi_produk ?></p>
                   </div>
                   </div>
                 <div class="card-footer">
@@ -56,7 +56,7 @@ function rupiah($angka){
                 </div>
               </div>
             </div>
-						<?php } ?>
+            <?php } ?>
      
           </div>
           <!-- /.row -->

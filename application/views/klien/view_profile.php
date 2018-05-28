@@ -149,20 +149,20 @@ $this->load->view('klien/head_klien');
           </div>    
 
           <div class="tab-pane" id="ubahPassword">
-            <form class="form-horizontal">
+            <form class="form-horizontal" action="<?php echo site_url('Klien_profile/ubahPassword') ?>" method="post">
               <div class="box-body">
                   <div class="form-group">
                     <label for="inputName" class="col-sm-3 control-label">Password Lama</label>
 
                   <div class="col-sm-9">
-                    <input type="email" class="form-control" id="inputName" placeholder="Password Lama">
+                    <input type="password" name="passwordLama" class="form-control" id="inputName" placeholder="Password Lama">
                   </div>
                 </div>
                 <div class="form-group">
                     <label for="inputName" class="col-sm-3 control-label">Password Baru</label>
 
                   <div class="col-sm-9">
-                    <input type="email" class="form-control" id="inputName" placeholder="Password Baru">
+                    <input type="password" name="passwordBaru" class="form-control" id="inputName" placeholder="Password Baru">
                   </div>
                 </div>
 
@@ -170,7 +170,7 @@ $this->load->view('klien/head_klien');
                     <label for="inputEmail" class="col-sm-3 control-label">Ulangi Password Baru</label>
 
                   <div class="col-sm-9">
-                    <input type="email" class="form-control" id="inputEmail" placeholder="Ulangi Password Baru">
+                    <input type="password" class="form-control" name="re_password" id="inputEmail" placeholder="Ulangi Password Baru">
                   </div>
                 </div>
 

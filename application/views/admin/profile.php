@@ -26,9 +26,9 @@ $this->load->view('admin/head_admin');
 
               <h3 class="profile-username text-center"><?php echo $data->nama_users?></h3>
 
-              <?php if($data->nama_roles=='klien') {
+              <?php if($data->nama_roles=='pengelola') {
                 ?>
-                <p class="text-muted text-center">Klien</p>
+                <p class="text-muted text-center"><?php echo $data->nama_users?></p>
               <?php }?>
             </div>
             <!-- /.box-body -->
@@ -149,7 +149,7 @@ $this->load->view('admin/head_admin');
           </div>    
 
           <div class="tab-pane" id="ubahPassword">
-            <form class="form-horizontal action="<?php echo site_url('Admin_password/ubah') ?>" method="post" ">
+            <form class="form-horizontal" action="<?php echo site_url('Admin_profile/ubahPassword') ?>" method="post">
               <div class="box-body">
                   <div class="form-group">
                     <label for="inputName" class="col-sm-3 control-label">Password Lama</label>

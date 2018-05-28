@@ -60,7 +60,7 @@ class Admin_produk extends CI_Controller {
 
   public function tambahProduk()
   {
-    $data["tambah_tim"]=$this->admin_produk_model->getTeam();
+     $data["tambah_tim"]=$this->admin_produk_model->getTeam();
      $data["tambah_produk"]=$this->admin_produk_model->getTeam();
      $data["kategoris"]=$this->admin_produk_model->getKategori();
 		 
@@ -76,7 +76,7 @@ class Admin_produk extends CI_Controller {
     $config['max_height']           = 5068;
 
     $this->load->library('upload', $config);
-    if( ! $this->upload->do_upload('mockup_produk'))
+    if( ! $this->upload->do_upload('foto_produk'))
     {
       echo 'Gagal upload, resolusi atau ukuran foto melebihi batas!';
     }
@@ -86,20 +86,20 @@ class Admin_produk extends CI_Controller {
       $mockup_produk = $img['file_name'];
       $id_produk= $this->input->post('id_produk', true);
       $nama_produk = $this->input->post('nama_produk', true);
-      $jenis_produk = $this->input->post('jenis_produk', true);
+      $kategori_produk = $this->input->post('id_kategori', true);
       $harga_produk = $this->input->post('harga_produk', true);
       $deskripsi_produk = $this->input->post('deskripsi_produk', true);
       $link_demo = $this->input->post('link_demo', true);
-      //$mockup_produk = $this->input->post('mockup_produk', true);
+      $foto_produk = $this->input->post('foto_produk', true);
       
       $data = array(
         'id_produk'=>$id_produk,
         'nama_produk'=>$nama_produk,
-        'jenis_produk' =>$jenis_produk,
+        'id_kategori' =>$kategori_produk,
         'harga_produk' => $harga_produk,
         'deskripsi_produk' => $deskripsi_produk,
         'link_demo' => $link_demo,
-        'mockup_produk' => $mockup_produk
+        'foto_produk' => $foto_produk
       ); 
       //$this->session->set_flashdata('message', 'Data anggota berhasil ditambahkan');
       $this->db->insert('produk', $data);

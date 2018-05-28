@@ -62,23 +62,19 @@
               <img src="<?php echo base_url('AdminLTE/dist/img/user2-160x160.jpg') ?>" class="user-image" alt="User Image">
               <span class="hidden-xs"><?php echo $this->session->userdata('name');?></span>
             </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img src="<?php echo base_url('AdminLTE/dist/img/user2-160x160.jpg') ?>" class="img-circle" alt="User Image">
-
-                <p>
-                  <?php echo $this->session->userdata('name');?>
-                </p>
+            <ul class="dropdown-menu" style="width: 50px">
+              <li>
+                <br>
+                <a href="<?php echo site_url('Anggota_profile') ?>">Profile</a>
+                <hr>
               </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="<?php echo site_url('Anggota_profile') ?>" class="btn btn-default btn-flat">Profile</a>
-                </div>
-                <div class="pull-right">
-                  <a href="<?php echo site_url('login/logout') ?>" class="btn btn-default btn-flat"><i class="fa fa-sign-out"></i>Sign out</a>
-                </div>
+              <li>
+                <a href="<?php echo site_url('Anggota_password') ?>"></i>Ubah Password</a>
+                <hr>
+              </li>
+              <li>
+                <a href="<?php echo site_url('login/logout') ?>"></i>Sign out</a>
+                <br>
               </li>
             </ul>
           </div>
