@@ -7,34 +7,46 @@ $this->load->view('landing/head_landing');
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+         <!--  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
         </ol>
         <div class="carousel-inner" role="listbox">
           <!-- Slide One - Set the background image for this slide in the line below -->
-          <div class="carousel-item active" style="background-image: url('<?php echo base_url('img/slide-1.jpg') ?>')">
+          <div class="carousel-item active" style="background-image: url('<?php echo base_url('img/web-background.png') ?>'); background-size: 100%">
+            <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+            <form>
+              <div class="form-row">
+                <div class="col-12 col-md-9 mb-2 mb-md-0">
+                  <input type="text" class="form-control form-control-lg" placeholder="Search...">
+                </div>
+                <div class="col-12 col-md-3">
+                  <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
+                </div>
+              </div>
+            </form>
+          </div>
             <div class="carousel-caption d-none d-md-block">
             </div>
           </div>
           <!-- Slide Two - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('<?php echo base_url('img/slide-2.jpg') ?>')">
+          <!-- <div class="carousel-item" style="background-image: url('<?php //echo base_url('img/slide-2.jpg') ?>')">
             <div class="carousel-caption d-none d-md-block">
             </div>
           </div>
-          <!-- Slide Three - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('<?php echo base_url('img/slide-3.jpg') ?>')">
+          Slide Three - Set the background image for this slide in the line below
+          <div class="carousel-item" style="background-image: url('<?php //echo base_url('img/slide-3.jpg') ?>')">
             <div class="carousel-caption d-none d-md-block">
             </div>
-          </div>
+          </div> -->
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+       <!--  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
         </a>
         <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
-        </a>
+        </a> -->
       </div>
     </header>
 

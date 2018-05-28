@@ -73,15 +73,10 @@ function rupiah($angka){
                   </td>
                   <td>
                     <?php 
-                      if ($data->status == "proses") {
-                        //echo '<span class="label label-warning">Proses</span>';
-                        echo $data->status;
-                      }elseif ($data->status == "diterima"){
-                        //echo '<span class="label label-success">Diterima</span>';
-                        echo $data->status;
+                      if ($data->status_produk == "aktif") {
+                        echo '<span class="label label-success">Aktif</span>';
                       }else{
-                        //echo '<span class="label label-danger">Ditolak</span>';
-                        echo $data->status;
+                        echo '<span class="label label-danger">Non Aktif</span>';
                       }
                     ?>
                   </td>
