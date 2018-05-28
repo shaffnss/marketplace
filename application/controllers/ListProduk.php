@@ -17,8 +17,10 @@ class ListProduk extends CI_Controller {
 		$this->load->view('landing/produk', $data);
 	}
 
-	public function detail()
+	public function detail($id_produk)
 	{
-		$this->load->view('landing/DetailProduk');
+		$data['produks'] = $this->listProduk_model->getDetailProduk($id_produk);
+	
+		$this->load->view('landing/DetailProduk', $data);
 	}
 }

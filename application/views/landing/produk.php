@@ -41,10 +41,10 @@ function rupiah($angka){
             ?>
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="<?php echo base_url('assets/produk/'.$produk->mockup_produk) ?>" alt=""></a>
+                <a href="#"><img class="card-img-top" src="<?php echo base_url('assets/produk/'.$produk->foto_produk) ?>" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
-                    <a href="<?php echo site_url('ListProduk/detail')?>"><?php echo strtoupper($produk->nama_produk) ?></a>
+                    <a href="<?php echo site_url('ListProduk/detail/'.$produk->id_produk)?>"><?php echo strtoupper($produk->nama_produk) ?></a>
                   </h4>
                   <h5><?php echo rupiah($produk->harga_produk) ?></h5>
                   <div style="height: 100px; overflow: hidden">

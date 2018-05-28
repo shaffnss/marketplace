@@ -6,12 +6,9 @@ $this->load->view('landing/head_landing');
   <div class="container">
     <div class="row">
       <div class="col-lg-3">
-        <h1 class="my-4">Shop Name</h1>
+        <h1 class="my-4">Shop Review</h1>
         <div class="list-group">
-          <a href="#" class="list-group-item active">Website</a>
-          <a href="#" class="list-group-item">Mobile Apps</a>
-          <a href="#" class="list-group-item">Game</a>
-          <a href="#" class="list-group-item">Artificial Intelegent</a>
+          <a href="#" class="list-group-item active"><?php echo $produks->nama_kategori ?></a>
         </div>
       </div>
       <!-- /.col-lg-3 -->
@@ -42,9 +39,9 @@ $this->load->view('landing/head_landing');
 
         <div class="card mt-4">
           <div class="card-body">
-            <h3 class="card-title">Sistem Informasi TA
+            <h3 class="card-title"><?php echo $produks->nama_produk ?>
             <a href="<?php echo site_url('')?>" class="btn btn-primary btn-sm">Lihat Demo</a></h3>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
+            <p class="card-text"><?php echo $produks->deskripsi_produk ?></p>
           </div>
 
 
