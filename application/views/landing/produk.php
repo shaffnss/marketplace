@@ -1,5 +1,12 @@
 <?php
 $this->load->view('landing/head_landing');
+
+function rupiah($angka){
+  
+  $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+  return $hasil_rupiah;
+ 
+}
 ?>
 
     <!-- Page Content -->
@@ -11,10 +18,9 @@ $this->load->view('landing/head_landing');
 
           <h1 class="my-4">VokasiDev</h1>
           <div class="list-group">
-            <a href="#" class="list-group-item">Website</a>
-            <a href="#" class="list-group-item">Mobile Apps</a>
-            <a href="#" class="list-group-item">Game</a>
-            <a href="#" class="list-group-item">Artificial Intelegent</a>
+            <?php foreach ($kategoris as $kategori) : ?>
+            <a href="#" class="list-group-item"><?php echo $kategori->nama_kategori ?></a>
+            <?php endforeach; ?>
           </div>
 
         </div>
@@ -30,101 +36,27 @@ $this->load->view('landing/head_landing');
         <br>
         <br>
           <div class="row">
+            <?php
+              foreach ($produks as $produk) {
+            ?>
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="<?php echo base_url('img/produk-1.jpg') ?>" alt=""></a>
+                <a href="#"><img class="card-img-top" src="<?php echo base_url('assets/produk/'.$produk->foto_produk) ?>" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
-                    <a href="<?php echo site_url('ListProduk/detail')?>">Sistem Informasi TA</a>
+                    <a href="<?php echo site_url('ListProduk/detail')?>"><?php echo strtoupper($produk->nama_produk) ?></a>
                   </h4>
-                  <h5>$24.99</h5>
-                  <p class="card-text">Merupakan sistem informasi pendaftaran Tugas Akhir berbasis Web </p>
+                  <h5><?php echo rupiah($produk->harga_produk) ?></h5>
+                  <div style="height: 100px; overflow: hidden">
+                    <p class="card-text"><?php echo $produk->deskripsi_produk ?></p>
+                  </div>
                   </div>
                 <div class="card-footer">
                   <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                 </div>
               </div>
             </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="<?php echo base_url('img/produk-1.jpg') ?>" alt=""></a>
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <a href="<?php echo site_url('ListProduk/detail')?>">Sistem Informasi Kesehatan</a>
-                  </h4>
-                  <h5>$24.99</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-                </div>
-                <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="<?php echo base_url('img/produk-1.jpg') ?>" alt=""></a>
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <a href="#">Item Three</a>
-                  </h4>
-                  <h5>$24.99</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                </div>
-                <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <a href="#">Item Four</a>
-                  </h4>
-                  <h5>$24.99</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                </div>
-                <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <a href="#">Item Five</a>
-                  </h4>
-                  <h5>$24.99</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-                </div>
-                <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <a href="#">Item Six</a>
-                  </h4>
-                  <h5>$24.99</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                </div>
-                <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                </div>
-              </div>
-            </div>
+            <?php } ?>
      
           </div>
           <!-- /.row -->

@@ -26,9 +26,9 @@ $this->load->view('admin/head_admin');
 
               <h3 class="profile-username text-center"><?php echo $data->nama_users?></h3>
 
-              <?php if($data->nama_roles=='klien') {
+              <?php if($data->nama_roles=='pengelola') {
                 ?>
-                <p class="text-muted text-center">Klien</p>
+                <p class="text-muted text-center"><?php echo $data->nama_users?></p>
               <?php }?>
             </div>
             <!-- /.box-body -->

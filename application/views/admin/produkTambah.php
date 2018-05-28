@@ -44,7 +44,7 @@ $this->load->view('admin/head_admin');
               <div class="form-group">
                 <label class="col-sm-2 control-label">Jenis Produk</label>
                 <div class="col-sm-8">            
-                  <select class="form-control" name="jenis_produk" required="">
+                  <select class="form-control" name="kategori_produk" required="">
                     <option disabled selected="">---Pilih Jenis Produk---</option>
                     <?php foreach($kategoris as $kategori) { ?>
                     <option value="<?php echo $kategori->id_kategori ?>"><?php echo $kategori->nama_kategori ?></option>

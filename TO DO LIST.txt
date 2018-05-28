@@ -10,8 +10,8 @@ DARI PROSES PEMBELIAN OLEH KLIEN
 status pembelian di halaman klien berubah 
 9. klien ditambah ganti photo [DONE]
 10. ubah password [DONE]
-11. produk detail list kategori left-sidebar diganti list produk dengan kategori yang sesuai 
-12. LUPA PASSWORD 
+11. produk detail list kategori left-sidebar diganti list produk dengan kategori yang sesuai [DONE]
+12. LUPA PASSWORD [DONE]
 
 DARI ANGGOTA UPLOAD DATA PRODUK
 ANGGOTA
@@ -19,12 +19,13 @@ ANGGOTA
 14. Di button Unggah,upload produk berdasarkan nama tim terkait di drop down + alert sudah terupload dan menunggu konfirmasi admin.
 15. Anggota yang memiliki posisi sebagai PM bisa mengupload produk yang dihasilkan timnya ke admin dan dropdown pilihan team yg ada di menu upload produk munculnya cuma tim yg dia join
 16. kalo individu nanti create tim (yang isinya dirinya sendiri) ketika pencet button individu
-17. Di fungsi Edit bagian foto (produk) diberi button untuk edit foto
+17. Di fungsi Edit bagian foto (produk) diberi button untuk edit foto [DONE]
 18. Pemberian wewenang ke anggota tim mana yg project manager mana yg nggak [DONE] 
 19. anggota ditambah ganti photo [DONE]
 20. ubah password [DONE]
-21. dropdown kategori dari tabel produk, ketika tambah produk get foreignkey id_kategori
-22. LUPA PASSWORD 
+21. dropdown kategori dari tabel produk, ketika tambah produk get foreignkey id_kategori 
+22. LUPA PASSWORD [DONE]
+23. anggota tidak aktif dikasih label rolesnya dia 
 
 
 Admin
@@ -37,15 +38,21 @@ Admin
 27. buat tambah kategori [DONE]
 28. Profile untuk admin cara memisahkan antara pengelola dan superpengelola gimana, karena di view profile admin di controller manggilnya masih nama_roles pengelola belum sama superadmin(superpengelola)
 29. ubah password admin [DONE]
-30. LUPA PASSWORD 
+30. LUPA PASSWORD [DONE]
+31. tambah produk dibagian pilih kategori gak bisa ngeget nama kategorinya ketika input
 
 System : 
-31. pengaturan session yang sedang login. anggota hanya bisa login pada halaman anggota, begitu jga klien dan admin.
-32. sidebar active ketika halaman diakses [DONE]
-33. EDIT TAMPILAN BAGIAN REGISTER
+32. pengaturan session yang sedang login. anggota hanya bisa login pada halaman anggota, begitu jga klien dan admin.
+33. sidebar active ketika halaman diakses [DONE]
+34. EDIT TAMPILAN BAGIAN REGISTER
+
+LANDING :
+35. GANTI LANDING PAGE DENGAN ONE PAGE YG ISINYA UDAH ADA CONTACT, GALERI DSB
+36. GANTI bentuk searchnya
 
 superadmin : superadmin@gmail.com : 12345
 klien : gorby@gmail.com : 12345
+
 anggota : 12345
 pengelola : pengelola1@gmail.com : 12345
 
@@ -67,7 +74,7 @@ SELESAI
 a. Klien
 b. Anggota
 c. Admin/Pengelola
-2. Kalo tambah user(klien, anggota, admin) passwordnya gimana? DONEEE
+2. Kalo tambah user(klien, anggota, admin) passwordnya gimana?
 3. ubah data di klien udah bisa konek tapi belum bisa dirubah ketika klik buttton
 4. Login user dengan id roles klien/admin/anggota belum bisa masuk ke halaman klien 
 5. Admin bisa membentuk tim yg terdiri dari beberapa anggota dan beri posisinya

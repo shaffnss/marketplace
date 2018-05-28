@@ -58,8 +58,10 @@ class Password extends CI_Controller {
 		    $config['smtp_user'] = "komsidev@gmail.com"; // ganti dengan emailmu sendiri
 		    $config['smtp_pass'] = "Komsidev7"; // ganti dengan password emailmu
 		    $config['charset'] = "iso-8859-1";
+		    $config['wordwrap'] = TRUE;
 		    $config['mailtype'] = "html";
 		    $config['newline'] = "\r\n";
+		    $config['crlf'] = "\r\n";
 
     $this->load->library('email', $config);
 

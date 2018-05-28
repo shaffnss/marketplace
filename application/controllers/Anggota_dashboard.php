@@ -9,6 +9,8 @@ class Anggota_dashboard extends BaseController {
 	{
 		parent::__construct();
 		$this->IsLoggedIn();
+
+		
 	}
  
 	public function index()
