@@ -32,14 +32,14 @@
       <i class="fas fa-search"></i>
     </button>
 
-    <div class="collapse navbar-collapse" id="searchBar" style="flex-grow: 14">
+    <!-- <div class="collapse navbar-collapse" id="searchBar" style="flex-grow: 14">
       <form class="form-inline col-sm-12">
         <input class="form-control col-sm-10" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-success col-sm-2" type="submit">Search
           <span class="glyphicons glyphicons-search"></span>
         </button>
       </form>
-    </div>
+    </div> -->
 
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
