@@ -147,7 +147,7 @@
         </li> -->
         
         <li class="treeview">
-          <a href="#">
+          <a >
             <i class="fa fa-money"></i> <span>Transaksi</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -168,7 +168,7 @@
             </li>
           -->
           <li class="treeview">
-            <a href="">
+            <a >
               <i class="fa fa-shopping-cart"></i>Pembelian
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
