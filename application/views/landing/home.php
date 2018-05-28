@@ -1,521 +1,144 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>MARKETPLACE TA</title>
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-    <!-- 
-    Smoothy Template 
-    http://www.templatemo.com/tm-396-smoothy
-  -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Bootstrap -->
-  <link href="<?php echo base_url('template/css/bootstrap.min.css') ?>" rel="stylesheet">
-  <link href="<?php echo base_url('template/css/font-awesome.min.css') ?>" rel="stylesheet">
-  <link href="<?php echo base_url('template/css/templatemo_style.css') ?>" rel="stylesheet">
-  <link rel="stylesheet" href="<?php echo base_url('template/css/templatemo_misc.css') ?>">
+<?php
+$this->load->view('landing/head_landing');
+?>
 
-  <link rel="stylesheet" href="<?php echo base_url('template/css/nivo-slider.css') ?>">
-  <link rel="stylesheet" href="<?php echo base_url('template/css/slimbox2.css') ?>" type="text/css" media="screen" /> 
-  <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,600' rel='stylesheet' type='text/css'>
-  <script type="text/javascript" src="<?php echo base_url('template/js/jquery.min.js') ?>"></script>
-  <script type="text/JavaScript" src="<?php echo base_url('template/js/slimbox2.js') ?>"></script> 
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('template/css/ddsmoothmenu.css') ?>" />
-    <script type="<?php echo base_url('template/text/javascript') ?>" src="<?php echo base_url('template/js/jquery.min.js') ?>"></script>
-    <script type="<?php echo base_url('template/text/javascript') ?>" src="<?php echo base_url('template/js/ddsmoothmenu.js') ?>"></script>
-
-<!--/***********************************************
-* Smooth Navigational Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
-* This notice MUST stay intact for legal use
-* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
-***********************************************/
-
--->
-<style type="text/css">
-.searchbox input.lightsearch {
-    background: url("https://fitzdecarts.com/wp-content/uploads/2018/03/web-background.png") no-repeat scroll 0 0 transparent;
-    border: 0 none;
-    color: #575757;
-    font-size: 11px;
-    height: 100px;
-    margin-top: 24px;
-    padding: 2px 5px 2px 24px;
-    width: 170px;
-}
-</style>
-
-</head>
-<body>
-  <header>
-    <!-- start menu -->
-    <div id="templatemo_home">
-      <div class="templatemo_top">
-        <div class="container templatemo_container">
-          <div class="row">
-            <div class="col-sm-3 col-md-3">
-             
+  <body>
+    <header>
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+          <!-- Slide One - Set the background image for this slide in the line below -->
+          <div class="carousel-item active" style="background-image: url('<?php echo base_url('img/slide-1.jpg') ?>')">
+            <div class="carousel-caption d-none d-md-block">
             </div>
-            <div class="col-sm-9 col-md-9 templatemo_col9">
-              <div id="top-menu">
-                <nav class="mainMenu">
-                  <ul class="nav">
-                    <li><a class="menu" href="#templatemo_home">Home</a></li>
-                    <li><a class="menu" href="<?php echo site_url('ListProduk')?>">Product</a></li>
-                    <li><a class="menu" href="<?php echo site_url('Login')?>">Login</a></li>
-                    <li><a class="menu" href="<?php echo site_url('Register')?>">Register</a></li>
-                  </ul>
-                </nav>
-              </div>
+          </div>
+          <!-- Slide Two - Set the background image for this slide in the line below -->
+          <div class="carousel-item" style="background-image: url('<?php echo base_url('img/slide-2.jpg') ?>')">
+            <div class="carousel-caption d-none d-md-block">
+            </div>
+          </div>
+          <!-- Slide Three - Set the background image for this slide in the line below -->
+          <div class="carousel-item" style="background-image: url('<?php echo base_url('img/slide-3.jpg') ?>')">
+            <div class="carousel-caption d-none d-md-block">
             </div>
           </div>
         </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
-    </div>
-    <div class="clear"></div>
-    <!-- end menu -->
+    </header>
 
-<div class="templatemo_container">
-      <a href="#"><img src="<?php echo base_url('template/images/slider/web-background.png') ?>"/></a>              
-    </div>
+    <!-- Page Content -->
+    <div class="container marketing" style="padding-left: 15px; padding-right: 15px; padding-top: 70px">
+  <h1 class="text-center">Our Product</h1>
+ <div class="row" style="padding-top: 30px">
+          <div class="col-lg-4"><center>
+            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2>Heading</h2>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+           </center>
+          <div class="col-lg-4"><center>
+            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2>Heading</h2>
+            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          </center>
+          <div class="col-lg-4"><center>
+            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2>Heading</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          </center>
+        </div><!-- /.row -->
+      </div>
 
-    <div class="templatemo_caption">
-      <h2 class="text-center">Build a landing page for your business or project and generate more leads!</h2>
-    </div>
 
-   <!-- <div class="searchbox">
-   <input class="lightsearch" type="text" name="s" onfocus="doClear(this)" value="">
-</div> -->
-  </header>
-
-  <div class="templatemo_lightgrey_about">
-      <h2 style="text-align: center;">Our Products</h2>
-    <div class="container">
-      <div class="col-xs-6 col-sm-6 col-md-3 templatemo_col12">
-        <div class="item project-post">
-          <div class="templatemo_about_box">
-            <div class="square_coner">
-             <span class="texts-a"><i class="fa fa-globe"></i></span>
-           </div>                          
-          <a href="" style="color: #4d4d4d">Website</a></div>
-         <!-- <div class="col-xs-12 col-sm-6 col-md-3 hover-box" >
-          <div class="inner-hover-box">               
-            <p></p>
-          </div>
-        </div -->
-      </div>  
-    </div>
-    <div class="col-xs-6 col-sm-6 col-md-3 templatemo_col12">
-      <div class="item project-post">
-        <div class="templatemo_about_box">
-          <div class="square_coner">
-           <span class="texts-a"><i class="fa fa-tablet"></i></span>
-         </div>
-        <a href="" style="color: #4d4d4d">Mobile Apps</a></div>
-       <!-- <div class="col-xs-6 col-sm-6 col-md-3 hover-box" >
-        <div class="inner-hover-box">               
-          <p>Morbi ac vestibulum nisl. Praesent lacinia id mi eget dictum. Fusce egestas turpis nec erat lobortis, ut tempus purus suscipit.</p>
+    <section class="jumbotron text-center">
+        <div class="container">
+          <h2 class="jumbotron-heading">About Us</h2>
+          <h3 class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</h3>
+          <p>
+            
+          </p>
         </div>
-      </div> -->
-    </div>  
-  </div>
-  <div class="col-xs-6 col-sm-6 col-md-3 templatemo_col12 templatemo_margintop10">
-    <div class="item project-post">
-      <div class="templatemo_about_box">
-        <div class="square_coner">
-         <span class="texts-a"><i class="fa fa-gamepad"></i></span>
-       </div>
-     <a href="" style="color: #4d4d4d">Games</a></div>
-     <!-- <div class="col-xs-6 col-sm-6 col-md-3 hover-box" >
-      <div class="inner-hover-box">               
-        <p>Etiam venenatis egestas magna sit amet varius. Vivamus neque eros, sollicitudin a ligula quis, interdum venenatis justo.</p>
-      </div>
-    </div> -->
-  </div>  
-</div>
-<div class="col-xs-6 col-sm-6 col-md-3 templatemo_col12 templatemo_margintop10">
-  <div class="item project-post">
-    <div class="templatemo_about_box">
-      <div class="square_coner">
-       <span class="texts-a"><i class="fa fa-list"></i></span>
-     </div>
-   <a href="" style="color: #4d4d4d">See More..</a>
- </div>
- <!--   <div class="col-xs-6 col-sm-6 col-md-3 hover-box" >
-    <div class="inner-hover-box">               
-      <p>Vestibulum convallis leo vel tortor ultricies aliquam. Nullam faucibus urna vel volutpat ornare. Donec molestie accumsan ante.</p>
-    </div>
-  </div> -->
-</div>  
-</div>
-</div>
-</div>
+      </section>
 
-<div class="clear"></div>
-
-<div class="templatemo_reasonbg">
-  <h2>About Us</h2>
-  <p>Lorem ipsum</p>
-</div>
-<div class="clear"></div>
-
-<div class="clear"></div>
-
-<!--Our Partner Start-->
-<div class="section6 templatemo_partner" id="templatemo_partners">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="secHeader">
-          <h2 class="text-center">Our partners</h2>
-          <!-- <p class="text-center">Etiam faucibus turpis id ipsum egestas porta. Cras in aliquet purus, ac varius turpis.</p> -->
+      <!-- Content Row -->
+      <div class="row" style="padding-left: 110px; padding-right: 40px; padding-top: 30px">
+        <!-- Map Column -->
+        <div class="col-lg-8 mb-4">
+          <!-- Embedded Google Map -->
+          <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=37.0625,-95.677068&amp;spn=56.506174,79.013672&amp;t=m&amp;z=4&amp;output=embed"></iframe>
+        </div>
+        <!-- Contact Details Column -->
+        <div class="col-lg-4 mb-4">
+          <h3>Contact Details</h3>
+          <p>
+            Sekolah Vokasi
+            <br>Universitas Gadjah Mada
+            <br>
+          </p>
+          <p>
+            <abbr title="Phone">Phone</abbr>: (123) 456-7890
+          </p>
+          <p>
+            <abbr title="Email">Email</abbr>:
+            <a href="mailto:name@example.com">komsidev@example.com
+            </a>
+          </p>
+          <p>
+            <abbr title="Hours">Hours</abbr>: Monday - Friday: 9:00 AM to 5:00 PM
+          </p>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="partnerWrap">
-    <div class="slideshow" 
-    data-cycle-fx=carousel
-    data-cycle-timeout=0
-    data-cycle-carousel-visible=4
-    data-cycle-next="#next"
-    data-cycle-prev="#prev"
-    data-cycle-carousel-fluid=true
-    >
-    <img alt="partner 1" src="<?php echo base_url('template/images/partners/partner1.jpg') ?>" >
-    <img alt="partner 2" src="<?php echo base_url('template/images/partners/partner2.jpg') ?>" >
-    <img alt="partner 3" src="<?php echo base_url('template/images/partners/partner3.jpg') ?>" >
-    <img alt="partner 4" src="<?php echo base_url('template/images/partners/partner4.jpg') ?>" >
-    <img alt="partner 5" src="<?php echo base_url('template/images/partners/partner5.jpg') ?>" >
-    <img alt="partner 6" src="<?php echo base_url('template/images/partners/partner6.jpg') ?>" >
-    <img alt="partner 7" src="<?php echo base_url('template/images/partners/partner7.jpg') ?>" >
-    <img alt="partner 8" src="<?php echo base_url('template/images/partners/partner8.jpg') ?>" >
-  </div>
-  <a href="#" id="prev">&lt;&lt; Prev </a>
-  <a href="#" id="next"> Next &gt;&gt; </a>
-</div>
-
-</div>
-<!--Our Partner End-->
-<!--Our Client Start-->
-<div class="templatemo_reasonbg">
-  <h2>What our clients say?</h2>
-  <div class="container">
-    <div class="col-xs-11 templatemo_col12 templatemo_clientwrapper">
-      <div class="templatemo_clientimage">
-        <p class="templatemo_clientdes">Duis consequat ut quam ut sollicitudin. Donec eget congue ligula, eget pharetra urna. Nam tempor tellus sit amet bibendum dapibus.</p>
-        <img src="<?php echo base_url('template/images/client/1.jpg')?>" alt="client image 1" />
-        <div class="clear"></div>
-        <div class="fa fa-circle mleft1"></div>
-      </div>
-      <div class="templatemo_clientimage">
-        <p class="templatemo_clientdes">Nam auctor elementum dolor. Donec euismod, justo sed convallis blandit, ipsum erat mattis lectus, vel pharetra neque enim tristique risus.</p>
-        <img src="<?php echo base_url('template/images/client/2.jpg')?>" alt="client image 2" /> 
-        <div class="clear"></div>
-        <div class="fa fa-circle mleft2"></div>        
-      </div>
-      <div class="templatemo_clientimage">
-        <p class="templatemo_clientdes">Quisque tincidunt risus et enim. Vestibulum gravida sem at sem bibendum vehicula. Sed et leo. </p>
-        <img src="<?php echo base_url('template/images/client/3.jpg')?>" alt="client image 3" />    
-        <div class="clear"></div>
-        <div class="fa fa-circle mleft3"></div>    
-      </div>
-      <div class="templatemo_clientimage next templatemo_marginleft50">
-        <p class="templatemo_clientdes">Curabitur commodo arcu vel enim mollis consequat. Nulla pharetra tortor vel arcu. In rhoncus fermentum ipsum. </p>
-        <img src="<?php echo base_url('template/images/client/4.jpg')?>" alt="client image 4" />
-        <div class="clear"></div>
-        <div class="fa fa-circle mleft4"></div>
-
-      </div>
-      <div class="templatemo_clientimage next">
-        <p class="templatemo_clientdes">Nam auctor elementum dolor. Donec euismod, justo sed convallis blandit, ipsum erat mattis lectus, vel pharetra neque enim tristique risus. </p>
-        <img src="<?php echo base_url('template/images/client/5.jpg') ?>" alt="client image 5" />
-        <div class="clear"></div>
-        <div class="fa fa-circle mleft5"></div>
-      </div>
-
-    </div>
-    <div class="clear"></div>
-  </div>
-
-</div>
-<div class="clear"></div>
-<!--Our Client End-->
-
-  <!--Footer Start-->
-  <div class="templatemo_footer">
-    <div class="container">
-      <div class="col-xs-6 col-sm-6 col-md-3 templatemo_col12">
-        <h2>About Smoothy</h2>
-        <p>Etiam faucibus turpis id ipsum egestas porta. Cras in aliquet purus, ac varius turpis. Proin nibh mauris, lacinia at tincidunt egestas, tincidunt eleifend urna. Aliquam erat volutpat.</p>
-      </div>
-      <div class="col-xs-6 col-sm-6 col-md-3 templatemo_col12">
-        <h2>Services</h2>
-        <ul>
-          <li>Integer condimentum</li>
-          <li>Quisque eget mi felis</li>
-          <li>Mauris placerat lacinia</li>
-          <li>Cras molestie imperdiet</li>
-          <li>Duis vel consectetur</li>
-        </ul>
-        <div class="clear"></div>
-        <div class="templatemo_morelink"><a href="#">and more... </a></div>
-      </div>
-
-      <div class="col-xs-6 col-sm-6 col-md-3 templatemo_col12">
-        <h2>Contact</h2>
-        <span class="left col-xs-1 fa fa-map-marker"></span>
-        <span class="right col-xs-11">120-240 Nam bibendum consectetur diam et fringilla</span>
-        <div class="clear height10"></div>
-        <span class="left col-xs-1 fa fa-phone"></span>
-        <span class="right col-xs-11">010-020-0680</span>
-        <div class="clear height10"></div>
-        <span class="left col-xs-1 fa fa-envelope"></span>
-        <span class="right col-xs-11">contact@company.com</span>
-        <div class="clear height10"></div>
-        <span class="left col-xs-1 fa fa-globe"></span>
-        <span class="right col-xs-11">www.company.com</span>
-        <div class="clear"></div>
-      </div>
-    </div>
-  </div>
-  <!--Footer End-->
-  <!-- Bottom Start -->
-  <div class="templatemo_bottom">
-    <div class="container">
-      <div class="row">
-        <div class="left">
-          <span>Copyright © 2084 <a href="#">Your Company Name</a></span>
-        </div>
-        <div class="right">
-          <a href="#"><div class="fa fa-rss soc"></div></a>
-          <a href="#"><div class="fa fa-twitter soc"></div></a>
-          <a href="#"><div class="fa fa-linkedin soc"></div></a>
-          <a href="#"><div class="fa fa-dribbble soc"></div></a>
-          <a href="#"><div class="fa fa-facebook soc"></div></a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Bottom End -->
-
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <!-- <script src="https://code.jquery.com/jquery.js"></script> -->
-  <script src="<?php echo base_url('template/js/jquery-1.10.2.min.js') ?>"></script>
-  <script src="<?php echo base_url('template/js/jquery.cookie.js') ?>"></script>
-  <script src="<?php echo base_url('template/js/bootstrap.min.js') ?>"></script>
-  <script src="<?php echo base_url('template/js/jquery.cycle2.min.js') ?>"></script>
-  <script src="<?php echo base_url('template/js/jquery.cycle2.carousel.min.js') ?>"></script>
-  <script src="<?php echo base_url('template/js/jquery.nivo.slider.pack.js') ?>"></script>
-  <script>$.fn.cycle.defaults.autoSelector = '.slideshow';</script>
-  <script type="text/javascript">
-    $(function(){
-      var default_view = 'grid';
-      if($.cookie('view') !== 'undefined'){
-        $.cookie('view', default_view, { expires: 7, path: '/' });
-      } 
-      function get_grid(){
-        $('.list').removeClass('list-active');
-        $('.grid').addClass('grid-active');
-        $('.prod-cnt').animate({opacity:0},function(){
-          $('.prod-cnt').removeClass('dbox-list');
-          $('.prod-cnt').addClass('dbox');
-          $('.prod-cnt').stop().animate({opacity:1});
-        });
-      }
-      function get_list(){
-        $('.grid').removeClass('grid-active');
-        $('.list').addClass('list-active');
-        $('.prod-cnt').animate({opacity:0},function(){
-          $('.prod-cnt').removeClass('dbox');
-          $('.prod-cnt').addClass('dbox-list');
-          $('.prod-cnt').stop().animate({opacity:1});
-        });
-      }
-      if($.cookie('view') == 'list'){ 
-        $('.grid').removeClass('grid-active');
-        $('.list').addClass('list-active');
-        $('.prod-cnt').animate({opacity:0});
-        $('.prod-cnt').removeClass('dbox');
-        $('.prod-cnt').addClass('dbox-list');
-        $('.prod-cnt').stop().animate({opacity:1}); 
-      } 
-
-      if($.cookie('view') == 'grid'){ 
-        $('.list').removeClass('list-active');
-        $('.grid').addClass('grid-active');
-        $('.prod-cnt').animate({opacity:0});
-        $('.prod-cnt').removeClass('dboxlist');
-        $('.prod-cnt').addClass('dbox');
-        $('.prod-cnt').stop().animate({opacity:1});
-      }
-
-      $('#list').click(function(){   
-        $.cookie('view', 'list'); 
-        get_list()
-      });
-
-      $('#grid').click(function(){ 
-        $.cookie('view', 'grid'); 
-        get_grid();
-      });
-
-      /* filter */
-      $('.menuSwitch ul li').click(function(){
-        var CategoryID = $(this).attr('category');
-        $('.menuSwitch ul li').removeClass('cat-active');
-        $(this).addClass('cat-active');
-
-        $('.prod-cnt').each(function(){
-          if(($(this).hasClass(CategoryID)) == false){
-           $(this).css({'display':'none'});
-         };
-       });
-        $('.'+CategoryID).fadeIn(); 
-
-      });
-    });
-  </script>
-  <script src="<?php echo base_url('template/js/jquery.singlePageNav.js') ?>"></script>
-  
-  <script type="text/javascript">
-    $(window).load(function() {
-      $('#slider').nivoSlider({
-        prevText: '',
-        nextText: '',
-        controlNav: false,
-      });
-    });
-  </script>
-  <script>
-    $(document).ready(function(){
-
-        // hide #back-top first
-        $("#back-top").hide();
+      <!-- /.row -->
         
-        // fade in #back-top
-        $(function () {
-          $(window).scroll(function () {
-            if ($(this).scrollTop() > 100) {
-              $('#back-top').fadeIn();
-            } else {
-              $('#back-top').fadeOut();
-            }
-          });
+        <!-- <div class="col-lg-2 mb-4">
+          
+        </div>
 
-          // scroll body to 0px on click
-          $('#back-top a').click(function () {
-            $('body,html').animate({
-              scrollTop: 0
-            }, 800);
-            return false;
-          });
-        });
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100">
+            <h4 class="card-header">Membeli Produk</h4>
+            <div class="card-body">
+              <p class="card-text">VokasiDev menyediakan produk-produk yang siap Anda beli</p>
+            </div>
+            <div class="card-footer">
+              <a href="<?php //echo site_url('ListProduk')?>" class="btn btn-primary">Lihat Produk</a>
+            </div>
+          </div>
+        </div>
 
-      });
-    </script>
-    <script type="text/javascript">
-      <!--
-        function toggle_visibility(id) {
-         var e = document.getElementById(id);
-         if(e.style.display == 'block'){
-          e.style.display = 'none';
-          $('#togg').text('show footer');
-        }
-        else {
-          e.style.display = 'block';
-          $('#togg').text('hide footer');
-        }
-      }
-      //-->
-    </script>
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100">
+            <h4 class="card-header">Memesan Produk Kustom</h4>
+            <div class="card-body">
+              <p class="card-text">Pesan produk sesuai keinginan dan kebutuhan anda</p>
+            </div>
+            <div class="card-footer">
+              <a href="<?php //echo site_url('Contact')?>" class="btn btn-primary">Pesan Produk</a>
+            </div>
+          </div>
+        </div>
 
-    <script type="text/javascript">
-      $(function() {
-        $('a[href*=#]:not([href=#])').click(function() {
-          if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-            if (target.length) {
-              $('html,body').animate({
-                scrollTop: target.offset().top
-              }, 1000);
-              return false;
-            }
-          }
-        });
-      });
-    </script>
-    <script src="<?php echo base_url('template/js/stickUp.min.js') ?>" type="text/javascript"></script>
-    <script type="text/javascript">
-        //initiating jQuery
-        jQuery(function($) {
-          $(document).ready( function() {
-            //enabling stickUp on the '.navbar-wrapper' class
-            $('.mWrapper').stickUp();
-          });
-        });
-      </script>
-      <script>
-       $('a.menu').click(function(){
-        $('a.menu').removeClass("active");
-        $(this).addClass("active");
-      });
-    </script>
-
-    <script> <!-- scroll to specific id when click on menu -->
-         // Cache selectors
-         var lastId,
-         topMenu = $("#top-menu"),
-         topMenuHeight = topMenu.outerHeight()+15,
-    // All list items
-    menuItems = topMenu.find("a"),
-    // Anchors corresponding to menu items
-    scrollItems = menuItems.map(function(){
-      var item = $($(this).attr("href"));
-      if (item.length) { return item; }
-    });
-
-// Bind click handler to menu items
-// so we can get a fancy scroll animation
-menuItems.click(function(e){
-  var href = $(this).attr("href"),
-  offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+1;
-  $('html, body').stop().animate({ 
-    scrollTop: offsetTop
-  }, 300);
-  e.preventDefault();
-});
-
-// Bind to scroll
-$(window).scroll(function(){
-   // Get container scroll position
-   var fromTop = $(this).scrollTop()+topMenuHeight;
-   
-   // Get id of current scroll item
-   var cur = scrollItems.map(function(){
-     if ($(this).offset().top < fromTop)
-       return this;
-   });
-   // Get the id of the current element
-   cur = cur[cur.length-1];
-   var id = cur && cur.length ? cur[0].id : "";
-   
-   if (lastId !== id) {
-     lastId = id;
-       // Set/remove active class
-       menuItems
-       .parent().removeClass("active")
-       .end().filter("[href=#"+id+"]").parent().addClass("active");
-     }                   
-   });
- </script>
-</body>
-</html>
+         <div class="col-lg-2 mb-4">
+          
+        </div> -->
+  
+<?php
+$this->load->view('landing/foot_landing');
+?>

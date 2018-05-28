@@ -17,7 +17,8 @@ DARI ANGGOTA UPLOAD DATA PRODUK
 ANGGOTA
 13. Di akun masing" anggota dapat melihat dia masuk tim apa aja dan posisinya di masing" tim apa aja [DONE]
 14. Di button Unggah,upload produk berdasarkan nama tim terkait di drop down + alert sudah terupload dan menunggu konfirmasi admin.
-15. Anggota yang memiliki posisi sebagai PM bisa mengupload produk yang dihasilkan timnya ke admin dan dropdown pilihan team yg ada di menu upload produk munculnya cuma tim yg dia join
+15. Anggota yang memiliki posisi sebagai PM bisa mengupload produk yang dihasilkan timnya ke admin dan
+    dropdown pilihan team yg ada di menu upload produk munculnya cuma tim yg dia join
 16. kalo individu nanti create tim (yang isinya dirinya sendiri) ketika pencet button individu
 17. Di fungsi Edit bagian foto (produk) diberi button untuk edit foto [DONE]
 18. Pemberian wewenang ke anggota tim mana yg project manager mana yg nggak [DONE] 
@@ -47,7 +48,7 @@ System :
 34. EDIT TAMPILAN BAGIAN REGISTER
 
 LANDING :
-35. GANTI LANDING PAGE DENGAN ONE PAGE YG ISINYA UDAH ADA CONTACT, GALERI DSB
+35. GANTI LANDING PAGE DENGAN ONE PAGE YG ISINYA UDAH ADA CONTACT, GALERI DSB [DONE]
 36. GANTI bentuk searchnya
 
 superadmin : superadmin@gmail.com : 12345
