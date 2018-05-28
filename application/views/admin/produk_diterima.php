@@ -159,8 +159,11 @@ function rupiah($angka){
 
                               <div class="form-group">
                                 <label for="inputEmail">Mockup</label>                
-                                <input type="file" name="mockup_produk" value="<?php echo $data->foto_produk; ?> required="">               
-                              </div>
+                                <input type="file" name="mockup_produk" value="<?php echo $data->foto_produk; ?>" required>
+																<br>
+																<img src="<?php echo site_url('/assets/produk/'.$data->foto_produk); ?>" height='100px' width='100px' title="<?php echo $data->foto_produk ?>">
+																<?php echo $data->foto_produk ?>
+															</div>
 
                               <div class="form-group">
                                 <label for="produk">Status</label>
