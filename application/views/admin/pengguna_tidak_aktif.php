@@ -64,6 +64,7 @@ $this->load->view('admin/head_admin');
               <th>Instansi</th>
               <th>No Telfon</th>
               <th>E-mail</th>
+              <th>Roles</th>
               <th>Status</th>
               <th>Aksi</th>
             </tr>
@@ -85,6 +86,16 @@ $this->load->view('admin/head_admin');
                 <td><?php echo $data->no_telpon?></td>
                 <td><?php echo $data->email?></td>
                 <td>
+									<?php if($data->id_roles==1) {
+                    ?>
+                    <span class="label label-danger">Pengelola</span>
+										<?php }else if($data->id_roles==2){ ?>
+                    <span class="label label-warning">Klien</span>
+                  <?php }else{ ?>
+                    <span class="label bg-blue">Anggota</span>
+                  <?php }?>
+								</td>
+                <td>
                   <?php if($data->status_users=='aktif') {
                     ?>
                     <span class="label label-success">Aktif</span>
@@ -92,11 +103,6 @@ $this->load->view('admin/head_admin');
                     <span class="label label-danger">Non Aktif</span>
                   <?php }?>
                 </td>
-<<<<<<< HEAD
-                <td>
-                  <a onclick="return confirm('Apakah Anda yakin akan mengaktifkan kembali user ini?'); " class="btn-sm btn-success" href="<?php echo site_url('Admin_pengelola/aktifkan/'.$data->id_users) ?>"><i class="fa fa-check"></i> Aktifkan</a>
-                </td>
-=======
 
                  <?php  
                   if ($this->session->userdata('role')== 4){
@@ -105,7 +111,6 @@ $this->load->view('admin/head_admin');
                   <a onclick="return confirm('Apakah Anda yakin akan mengaktifkan kembali user ini?'); " class="btn-sm btn-success" href="<?php echo site_url('Admin_pengelola/aktifkan/'.$data->id_users) ?>"><i class="fa fa-check"></i> Aktifkan</a>
                 </td>
                 <?php }?>
->>>>>>> 3be3ae1008ff0c8a98342ec16c5e2ef6b75ffb26
               </tr>    
               <?php $no++; } ?>
             </tbody>
