@@ -1,4 +1,4 @@
-<?php<?php
+<?php
 $this->load->view('admin/head_admin');
 ?>
 
