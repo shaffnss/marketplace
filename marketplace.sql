@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2018 at 11:15 AM
+-- Generation Time: May 28, 2018 at 08:24 PM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `detail_pembelian` (
 
 CREATE TABLE IF NOT EXISTS `detail_produk` (
   `id_detail_produk` int(11) NOT NULL,
-  `status` enum('diterima','ditolak') NOT NULL,
+  `status` enum('diterima','ditolak','proses') NOT NULL DEFAULT 'proses',
   `id_tim` int(11) NOT NULL,
   `id_produk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -50,8 +50,8 @@ CREATE TABLE IF NOT EXISTS `detail_produk` (
 --
 
 INSERT INTO `detail_produk` (`id_detail_produk`, `status`, `id_tim`, `id_produk`) VALUES
-(1, 'diterima', 51, 1),
-(2, 'diterima', 52, 2);
+(1, 'proses', 51, 1),
+(2, 'proses', 52, 2);
 
 -- --------------------------------------------------------
 
@@ -75,6 +75,53 @@ INSERT INTO `detail_tim` (`id_detail_tim`, `id_tim`, `id_users`, `posisi_tim`) V
 (4, 51, 16, 'UI/UX Designer'),
 (9, 52, 13, 'UI/UX Designer'),
 (10, 51, 32, 'UI/UX Designer');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `forgot_password`
+--
+
+CREATE TABLE IF NOT EXISTS `forgot_password` (
+  `id_forgot` int(11) NOT NULL,
+  `token` varchar(255) DEFAULT NULL,
+  `id_users` int(11) NOT NULL,
+  `created` datetime DEFAULT NULL,
+  `expired` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `forgot_password`
+--
+
+INSERT INTO `forgot_password` (`id_forgot`, `token`, `id_users`, `created`, `expired`) VALUES
+(1, '0f77ea3db64a20b30058c1213ec8fce9', 38, '2018-05-26 14:35:00', '2018-05-26 16:35:00'),
+(2, '52745bd854c6511e26e411a73331665a', 38, '2018-05-26 14:36:00', '2018-05-26 16:36:00'),
+(3, 'e47878734890f93f13a4880250dfbdcd', 38, '2018-05-26 14:55:00', '2018-05-26 16:55:00'),
+(4, '890a66970768027a0eebcbab591fe52b', 38, '2018-05-26 14:56:00', '2018-05-26 16:56:00'),
+(5, '3fbc6ca2a47d0bac936b5042da0691be', 38, '2018-05-26 14:59:00', '2018-05-26 16:59:00'),
+(6, '348acbac682a1b4dcf5fcb35e8218af8', 38, '2018-05-26 15:06:00', '2018-05-26 17:06:00'),
+(7, '8f5a45f51ff13c8d8a477ab1dd00881e', 38, '2018-05-26 15:10:00', '2018-05-26 17:10:00'),
+(8, '36a6b62d9b2f361e199f1ea9ab0df6c0', 38, '2018-05-26 15:11:00', '2018-05-26 17:11:00'),
+(9, 'bb02a770821f37a3114c1fddd7d3fe83', 38, '2018-05-26 15:12:00', '2018-05-26 17:12:00'),
+(10, 'bb02a770821f37a3114c1fddd7d3fe83', 38, '2018-05-26 15:12:00', '2018-05-26 17:12:00'),
+(11, '9ba1949953c6f23dc70a8c66c8fcffb9', 38, '2018-05-26 15:13:00', '2018-05-26 17:13:00'),
+(12, '9ba1949953c6f23dc70a8c66c8fcffb9', 38, '2018-05-26 15:13:00', '2018-05-26 17:13:00'),
+(13, '727d0bc00099414eaf5a42dea8925155', 38, '2018-05-26 15:15:00', '2018-05-26 17:15:00'),
+(14, '7deb7dcd4b1dbe49d09523a90994238e', 38, '2018-05-26 15:17:00', '2018-05-26 17:17:00'),
+(15, '95dc803d3c88a9b7d44a33286c600185', 38, '2018-05-26 15:18:00', '2018-05-26 17:18:00'),
+(16, '7a86f54d702f30d3c8545bed511d2d88', 38, '2018-05-26 15:37:00', '2018-05-26 17:37:00'),
+(17, '0933bac12aced98f852453be38a8d46d', 38, '2018-05-26 15:47:00', '2018-05-26 17:47:00'),
+(18, '990668ffedfe031709b6d5774d0b298a', 38, '2018-05-26 16:10:00', '2018-05-26 18:10:00'),
+(19, '990668ffedfe031709b6d5774d0b298a', 38, '2018-05-26 16:10:00', '2018-05-26 18:10:00'),
+(20, 'af58239caed732510db795682f9610e2', 38, '2018-05-26 16:20:00', '2018-05-26 18:20:00'),
+(21, 'bd177df1522a62d0baa51d36bd803786', 38, '2018-05-26 16:24:00', '2018-05-26 18:24:00'),
+(22, '117da38b01320299a724e2f0b593bc69', 38, '2018-05-26 16:26:00', '2018-05-26 18:26:00'),
+(23, '20eec5b7e8c9bff754516c1963676d5e', 38, '2018-05-26 16:27:00', '2018-05-26 18:27:00'),
+(24, '07aa71425d978e0b05571a722e9642bb', 38, '2018-05-26 16:29:00', '2018-05-26 18:29:00'),
+(25, '7fcf5b43008ca04a668556450c7bb733', 38, '2018-05-26 16:32:00', '2018-05-26 18:32:00'),
+(26, '686e29bc9f8c608aba209742dda96885', 38, '2018-05-26 16:42:00', '2018-05-26 18:42:00'),
+(27, '3c9f9f4720662b1d1c3c69a440c57565', 38, '2018-05-26 16:45:00', '2018-05-26 18:45:00');
 
 -- --------------------------------------------------------
 
@@ -146,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `produk` (
   `id_produk` int(11) NOT NULL,
   `nama_produk` varchar(50) NOT NULL,
   `harga_produk` int(255) NOT NULL,
-  `status` enum('aktif','nonaktif') NOT NULL DEFAULT 'nonaktif',
+  `status` enum('aktif','nonaktif') NOT NULL,
   `deskripsi_produk` varchar(255) NOT NULL,
   `file_produk` varchar(255) NOT NULL,
   `foto_produk` varchar(255) DEFAULT NULL,
@@ -160,10 +207,10 @@ CREATE TABLE IF NOT EXISTS `produk` (
 --
 
 INSERT INTO `produk` (`id_produk`, `nama_produk`, `harga_produk`, `status`, `deskripsi_produk`, `file_produk`, `foto_produk`, `link_demo`, `id_users`, `id_kategori`) VALUES
-(1, 'sistem ta', 1000000, '', 'sistem pendaftaran tugas akhir                                                            ', 'ini yaa', '', 'www.instagram.com', 4, 0),
-(2, 'sistem absensi lab', 2000000, '', 'sistem absensi lab', 'ini', 'ini', 'www.instragram.com', 6, 0),
-(14, 'sistem lele', 50000, '', 'kadnwjfbw', '', 'adminlte3.png', 'www.facebook.com', 4, 0),
-(15, 'sistem lele', 5000, '', 'wewwdw', '', 'admin3.png', 'www.facebook.com', 4, 0);
+(1, 'sistem ta', 1000000, 'aktif', 'sistem pendaftaran tugas akhir                                                            ', 'ini yaa', '', 'www.instagram.com', 4, 3),
+(2, 'sistem absensi lab', 2000000, 'aktif', 'sistem absensi lab', 'ini', 'ini', 'www.instragram.com', 6, 1),
+(14, 'sistem lele', 50000, 'aktif', 'kadnwjfbw', '', 'adminlte3.png', 'www.facebook.com', 4, 1),
+(15, 'sistem lele', 5000, 'aktif', 'wewwdw', '', 'admin3.png', 'www.facebook.com', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -226,25 +273,26 @@ CREATE TABLE IF NOT EXISTS `users` (
   `foto` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id_users`, `nama_users`, `id_roles`, `jenis_kelamin`, `no_telpon`, `email`, `instansi`, `status_users`, `password`, `foto`, `created_at`, `updated_at`) VALUES
-(13, 'Afif Imaduddin', 3, 'Wanita', '08213456789', 'afif@gmail.com', 'UGM', 'nonaktif', '$2y$10$7t8mazrSrS3iZjew091okeLAGEA8nmT.igD2bo.94l4BB.6mBtxt.', 'index4.png', '2018-05-22 06:57:00', '2018-05-22 06:57:00'),
+(13, 'Afif Imaduddin', 3, 'Wanita', '08213456789', 'afif@gmail.com', 'UGM', 'aktif', '$2y$10$6YxnKPOT9MlZo836obELw.SKZx5oCSCs/HAndsJPklPeZjkY/.fsC', 'index4.png', '2018-05-26 08:31:27', '2018-05-26 08:31:27'),
 (14, 'Fadhilah Hera', 2, 'Wanita', '0856173813', 'hera@gmail.com', 'UGM', 'aktif', '$2y$10$xD2BkpEYssDjWTvhAJBziOBLYNf.3PmXCKqRNOOpUTNXYRWe81mn.', 'index5.png', '2018-05-21 06:16:12', '2018-05-21 06:16:12'),
-(15, 'Muhammad Gorby', 2, 'Pria', '08945638183', 'gorby@gmail.com', 'SV', 'aktif', '$2y$10$xD2BkpEYssDjWTvhAJBziOBLYNf.3PmXCKqRNOOpUTNXYRWe81mn.', 'index13.png', '2018-05-22 07:30:27', '2018-05-22 07:30:27'),
+(15, 'Muhammad Gorby', 2, 'Pria', '08945638183', 'gorby@gmail.com', 'SV', 'aktif', '$2y$10$wctbzddWMUBnQ/ipUHzQmeCLJPKx2rqWvAmxtNtO0zLZgVts.EI1u', 'index13.png', '2018-05-26 04:06:57', '2018-05-26 04:06:57'),
 (16, 'Fitriyanti', 3, 'Wanita', '08231646456', 'fitri@gmail.com', 'UGM', 'aktif', '$2y$10$hB5tGnTmyAT.8aFzN91w5eUNuoiV2JWVMf77yryLgkikVfc.vNKum', 'index.png', '2018-05-21 09:55:31', '2018-05-21 09:55:31'),
 (25, 'diaz', 2, 'Pria', '0856173813', 'diaz@gmail.com', 'UGM', 'aktif', '$2y$10$AWuvd0nov6rybxXJvxxsuuyapJVRAMyBwSyMQMebpm9YiR9XfXVVm', '', '2018-05-11 13:35:36', '2018-05-11 13:35:36'),
 (27, 'superadmin', 4, 'Pria', '0856173813', 'superadmin@gmail.com', 'UGM', 'aktif', '$2y$10$TNSeOmYZrNXchkyBD7FZhuQz/Kg98g4pROwTs8zAtTXZaEg5iyNUC', '', '2018-05-12 07:35:22', '2018-05-12 07:35:22'),
 (28, 'pengelola2', 1, 'Wanita', '0856173813', 'pengelola2@gmail.com', 'UGM', 'aktif', '$2y$10$ZyZIzlmfSVuPuKNmLmiV8egIbFljzPFsRu/6nHSzYmKtXZBVInRFi', 'index1.png', '2018-05-19 07:51:49', '2018-05-19 07:51:49'),
-(30, 'pengelola1', 1, 'Pria', '08231646456', 'pengelola1@gmail.com', 'UGM', 'aktif', '$2y$10$k/d/rq/obzxyrG6PN9o93OH1dh5jYdlphRc.kP3nlidO0WuZnOmm6', '', '2018-05-22 07:36:17', '2018-05-22 07:36:17'),
-(31, 'klien', 2, 'Wanita', '08231646456', 'klien@gmail.com', 'UGM', 'aktif', '$2y$10$EkBLVelC07hd5QDOqkzsZeoz0KbLfCMNgiFyYjjwaaOmoh.0NKg2K', '', '2018-05-12 07:46:51', NULL),
+(30, 'pengelola1', 1, 'Wanita', '08231646456', 'pengelola1@gmail.com', 'UGM', 'aktif', '$2y$10$nc6sGPa7C.4e84EPfofQhuwyliXxw.Sl6dZOoomjjKMdzMCtz5Mju', '', '2018-05-26 03:52:56', '2018-05-26 03:52:56'),
+(31, 'klien', 2, 'Wanita', '08231646456', 'klien@gmail.com', 'UGM', 'aktif', '$2y$10$1gkOl2GHP1yfdCiW1OhMbu3qBP0OFVGTl119BEB6KAi.kxpxT8e6u', '', '2018-05-26 05:35:30', '2018-05-26 05:35:30'),
 (32, 'rini', 2, 'Wanita', '08231646456', 'rini@gmail.com', 'UGM', 'aktif', '$2y$10$EoNsWk0/beAv89HSeXkT6OuE0UQP7tM1eFAmk5kDDPVlujBNiL2iC', 'index1.png', '2018-05-19 06:34:54', '2018-05-19 06:34:54'),
 (36, 'Fadli', 3, 'Pria', '08231646456', 'fadli@gmail.com', 'UGM', 'aktif', '$2y$10$6YxnKPOT9MlZo836obELw.SKZx5oCSCs/HAndsJPklPeZjkY/.fsC', 'index2.png', '2018-05-19 07:10:52', '2018-05-19 07:10:52'),
-(37, 'test', 1, 'Pria', '08231646456', 'test@gmail.com', 'UGM', 'nonaktif', '$2y$10$gPMn4BGGsyR54vSmbQNWA.hvfr/ruzuJff4ZsGVXYi67f6EZAUDnC', 'index.png', '2018-05-19 07:48:01', NULL);
+(37, 'test', 1, 'Pria', '08231646456', 'test@gmail.com', 'UGM', 'aktif', '$2y$10$gPMn4BGGsyR54vSmbQNWA.hvfr/ruzuJff4ZsGVXYi67f6EZAUDnC', 'index.png', '2018-05-28 07:33:57', '2018-05-28 07:33:57'),
+(38, 'shafira', 3, 'Pria', '', 'shafirafitrianissa02@gmail.com', '', 'aktif', '$2y$10$MXOSIlTj1MWfLyxXpA/eLOv6IUJtRTyrxPPWjyUw8TnFjEx.pzjgW', NULL, '2018-05-26 09:45:30', '2018-05-26 09:45:30');
 
 --
 -- Indexes for dumped tables
@@ -277,6 +325,12 @@ ALTER TABLE `detail_tim`
   ADD KEY `id_programmer` (`id_users`),
   ADD KEY `id_users` (`id_users`),
   ADD KEY `id_tim_2` (`id_tim`);
+
+--
+-- Indexes for table `forgot_password`
+--
+ALTER TABLE `forgot_password`
+  ADD PRIMARY KEY (`id_forgot`);
 
 --
 -- Indexes for table `kategori_perjanjian`
@@ -343,6 +397,11 @@ ALTER TABLE `detail_pembelian`
 ALTER TABLE `detail_tim`
   MODIFY `id_detail_tim` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
+-- AUTO_INCREMENT for table `forgot_password`
+--
+ALTER TABLE `forgot_password`
+  MODIFY `id_forgot` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
+--
 -- AUTO_INCREMENT for table `kategori_perjanjian`
 --
 ALTER TABLE `kategori_perjanjian`
@@ -381,7 +440,7 @@ ALTER TABLE `tim`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=38;
+  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
 --
 -- Constraints for dumped tables
 --

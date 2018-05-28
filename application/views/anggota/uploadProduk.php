@@ -56,7 +56,7 @@ $this->load->view('anggota/head_anggota');
               <tr>
                 <td><?php echo $no ?></td>
                 <td><?php echo $data->nama_produk?></td>
-                <td><?php echo $data->jenis_produk?></td>
+                <td><?php echo $data->nama_kategori?></td>
                 <td><?php echo $data->harga_produk?></td>
                 <td><?php echo $data->deskripsi_produk?></td>
                 <td><?php echo $data->link_demo?></td>

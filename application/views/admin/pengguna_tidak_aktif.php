@@ -92,6 +92,11 @@ $this->load->view('admin/head_admin');
                     <span class="label label-danger">Non Aktif</span>
                   <?php }?>
                 </td>
+<<<<<<< HEAD
+                <td>
+                  <a onclick="return confirm('Apakah Anda yakin akan mengaktifkan kembali user ini?'); " class="btn-sm btn-success" href="<?php echo site_url('Admin_pengelola/aktifkan/'.$data->id_users) ?>"><i class="fa fa-check"></i> Aktifkan</a>
+                </td>
+=======
 
                  <?php  
                   if ($this->session->userdata('role')== 4){
@@ -100,6 +105,7 @@ $this->load->view('admin/head_admin');
                   <a onclick="return confirm('Apakah Anda yakin akan mengaktifkan kembali user ini?'); " class="btn-sm btn-success" href="<?php echo site_url('Admin_pengelola/aktifkan/'.$data->id_users) ?>"><i class="fa fa-check"></i> Aktifkan</a>
                 </td>
                 <?php }?>
+>>>>>>> 3be3ae1008ff0c8a98342ec16c5e2ef6b75ffb26
               </tr>    
               <?php $no++; } ?>
             </tbody>

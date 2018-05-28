@@ -6,6 +6,7 @@ class Admin_team_model extends CI_Model {
 	public function getTim(){
 		$this->db->select("*");
 		$this->db->from("tim");
+		$this->db->where("status", "aktif");
 		return $this->db->get()->result();
 	}
 

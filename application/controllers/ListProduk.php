@@ -13,11 +13,14 @@ class ListProduk extends CI_Controller {
 	{
 		$data['produks'] = $this->listProduk_model->getProduk();
 		$data['kategoris'] = $this->listProduk_model->getKategori();
+		
 		$this->load->view('landing/produk', $data);
 	}
 
-	public function detail()
+	public function detail($id_produk)
 	{
-		$this->load->view('landing/DetailProduk');
+		$data['produks'] = $this->listProduk_model->getDetailProduk($id_produk);
+	
+		$this->load->view('landing/DetailProduk', $data);
 	}
 }

@@ -81,7 +81,7 @@ class Login extends CI_Controller
             {
                 foreach ($result as $res)
                 {
-                    $sessionArray = array('userId'=>$res->id_users,                    
+                    $sessionArray = array('userId'=>$res->id_users,
                         'role'=>$res->id_roles,
                         'roleText'=>$res->nama_roles,
                         'email'=>$res->email,

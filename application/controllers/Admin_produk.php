@@ -10,7 +10,7 @@ class Admin_produk extends CI_Controller {
     $this->load->helper("form");
     $this->load->helper("url");
   }
-
+	
   public function index()
   {
     $data['produk']=$this->admin_produk_model->getProduk();
@@ -63,7 +63,7 @@ class Admin_produk extends CI_Controller {
      $data["tambah_tim"]=$this->admin_produk_model->getTeam();
      $data["tambah_produk"]=$this->admin_produk_model->getTeam();
      $data["kategoris"]=$this->admin_produk_model->getKategori();
-     
+		 
     $this->load->view('admin/produkTambah',$data);
   }  
 

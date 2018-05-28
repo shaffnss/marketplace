@@ -6,6 +6,7 @@ class anggota_uploadProduk_model extends CI_Model {
 	{
 		$this->db->select("*");
 		$this->db->from("produk");
+		$this->db->join("kategori_produk", "kategori_produk.id_kategori = produk.id_kategori");
 		$this->db->where("id_users", $id_user);
 		return $this->db->get()->result();
 	}
@@ -18,9 +19,17 @@ class anggota_uploadProduk_model extends CI_Model {
 		return $insert_id;
 	}
 	
-	public function getTeam($id_tim)
+	//get id_users berdasarkan id_users
+	public function getTeam($id_users)
 	{
-		$this->db->where("id_tim",$id_tim);
-		return $this->db->get("tim")->result();
+		return $this->db
+		->join("detail_tim", 'detail_tim.id_tim = tim.id_tim')
+		->where("detail_tim.id_users",$id_users)
+		->where("detail_tim.posisi_tim", 'Project Manager')
+		->get("tim")->result();
+	}
+	
+	public function getKategori() {
+		return $this->db->where('status_kategori', 'aktif')->get('kategori_produk')->result();
 	}
 }

@@ -7,6 +7,7 @@ class Admin_klien_model extends CI_Model {
 		$this->db->from("users");
 		$this->db->join("roles","users.id_roles=roles.id_roles");
 		$this->db->where("roles.nama_roles","klien");
+		$this->db->where("status_users", "aktif");
 		return $this->db->get()->result();
 	}
 
