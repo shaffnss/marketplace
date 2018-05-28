@@ -167,10 +167,10 @@ function rupiah($angka){
                                 <label for="produk">Status</label>
                                     <div class="radio">
                                       <label>
-                                        <input type="radio" name="status_produk" id="optionsAktif" value="Aktif" checked>Aktif
+                                        <input <?php echo ($data->status=='aktif' ? 'checked' : '') ?> type="radio" name="status_produk" id="optionsAktif" value="Aktif" >Aktif
                                       </label>
                                       <label>
-                                        <input type="radio" name="status_produk" id="optionsTdkAktif" value="Tidak Aktif">Tidak Aktif
+                                        <input <?php echo ($data->status=='nonaktif' ? 'checked' : '') ?> type="radio" name="status_produk" id="optionsTdkAktif" value="Tidak Aktif">Tidak Aktif
                                       </label>
                                     </div>
                               </div>

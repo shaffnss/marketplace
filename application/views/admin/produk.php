@@ -83,7 +83,7 @@ function rupiah($angka){
                   <td class="text-center">
                     <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-produk"><i class="fa fa-pencil"></i>
                     </button>
-                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-produk"><i class="fa fa-eye"></i>
+                    <button type="button" class="btn btn-sm btn-info" style="background:#1a75ff; border-color:#fff" ><i class="fa fa-eye"></i>
                     </button>
                     <a onclick="return confirm('apakah anda yakin ingin menerima produk ini?'); " href="<?php echo site_url('Admin_produk/diterima/'.$data->id_detail_produk)?>" class="btn btn-sm btn-info" style="background: #4e9e02; border-color: #fff"><i class="fa fa-check"></i></a>
                     <a onclick="return confirm('apakah anda yakin ingin menolak produk ini?'); " href="<?php echo site_url('Admin_produk/ditolak/'.$data->id_detail_produk)?>" class="btn btn-sm btn-info" style="background: #d41912; border-color: #fff"><i class="fa fa-remove"></i></a>
@@ -112,10 +112,10 @@ function rupiah($angka){
                                 <label for="produk">Status</label>
                                     <div class="radio">
                                       <label>
-                                        <input type="radio" name="status_produk" id="optionsAktif" value="Aktif" checked>Aktif
+                                        <input <?php echo ($data->status=='aktif' ? 'checked' : '') ?> type="radio" name="status_produk" id="optionsAktif" value="Aktif" >Aktif
                                       </label>
                                       <label>
-                                        <input type="radio" name="status_produk" id="optionsTdkAktif" value="Tidak Aktif">Tidak Aktif
+                                        <input <?php echo ($data->status=='nonaktif' ? 'checked' : '') ?> type="radio" name="status_produk" id="optionsTdkAktif" value="Tidak Aktif">Tidak Aktif
                                       </label>
                                     </div>
                               </div>
