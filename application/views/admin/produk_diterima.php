@@ -102,7 +102,7 @@ function rupiah($angka){
                   <td><a class="btn-sm btn-info" href="<?php echo $data->link_demo?>" target="_blank"><i class="fa fa-link"></i></a></td>
                   <td>
 										<?php 
-											if ($data->status_produk == "tersedia") {
+											if ($data->status_produk == "aktif") {
 												echo '<span class="label label-success">Tersedia</span>';
 											}else{
 												echo '<span class="label label-danger">Tidak Tersedia</span>';
@@ -159,7 +159,7 @@ function rupiah($angka){
 
                               <div class="form-group">
                                 <label for="inputEmail">Mockup</label>                
-                                <input type="file" name="mockup_produk" value="<?php echo $data->mockup_produk; ?> required="">               
+                                <input type="file" name="mockup_produk" value="<?php echo $data->foto_produk; ?> required="">               
                               </div>
 
                               <div class="form-group">

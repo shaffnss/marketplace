@@ -74,9 +74,9 @@ function rupiah($angka){
                   <td>
                     <?php 
                       if ($data->status_produk == "aktif") {
-                        echo '<span class="label label-success">Aktif</span>';
+                        echo '<span class="label label-success">Tersedia</span>';
                       }else{
-                        echo '<span class="label label-danger">Non Aktif</span>';
+                        echo '<span class="label label-danger">Tidak Tersedia</span>';
                       }
                     ?>
                   </td>
