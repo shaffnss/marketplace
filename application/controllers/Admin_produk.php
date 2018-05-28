@@ -86,7 +86,7 @@ class Admin_produk extends CI_Controller {
       $mockup_produk = $img['file_name'];
       $id_produk= $this->input->post('id_produk', true);
       $nama_produk = $this->input->post('nama_produk', true);
-      $kategori_produk = $this->input->post('id_kategori', true);
+      $kategori_produk = $this->input->post('kategori_produk', true);
       $harga_produk = $this->input->post('harga_produk', true);
       $deskripsi_produk = $this->input->post('deskripsi_produk', true);
       $link_demo = $this->input->post('link_demo', true);

@@ -97,7 +97,7 @@ function rupiah($angka){
                   <td><?php echo rupiah($data->harga_produk)?></td>
                   <td><?php echo $data->nama_tim?></td>
                   <td>
-                    <img src="<?php echo site_url('/assets/produk/'.$data->mockup_produk); ?>" height='100px' width='100px'>
+                    <img src="<?php echo site_url('/assets/produk/'.$data->foto_produk); ?>" height='100px' width='100px'>
                   </td>
                   <td><a class="btn-sm btn-info" href="<?php echo $data->link_demo?>" target="_blank"><i class="fa fa-link"></i></a></td>
                   <td>

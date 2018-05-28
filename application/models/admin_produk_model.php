@@ -53,6 +53,7 @@ class Admin_produk_model extends CI_Model {
 	
 	public function getKategori()
 	{
+		$this->db->where('status_kategori', 'aktif');
 		return $this->db->get('kategori_produk')->result();
 	}
 }
