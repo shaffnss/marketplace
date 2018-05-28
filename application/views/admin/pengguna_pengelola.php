@@ -70,16 +70,10 @@ $this->load->view('admin/head_admin');
                       <?php }?>
                     </td>
 
-                    <?php  
-                    if ($this->session->userdata('role')== 4){
-                      ?>
                       <td>
                         <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ubah-pengelola<?php echo $data->id_users; ?>"><i class="fa fa-edit"></i>
                         </button>   
                       </td>
-                      <?php 
-                    }
-                    ?>
                   </tr>
 
                   <!-- Modals Ubah DATA KLIEN -->

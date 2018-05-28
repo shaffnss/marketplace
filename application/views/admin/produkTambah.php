@@ -47,8 +47,8 @@ $this->load->view('admin/head_admin');
                   <select class="form-control" name="jenis_produk" required="">
                     <option disabled selected="">---Pilih Jenis Produk---</option>
                     <?php foreach($kategoris as $kategori) { ?>
-										<option value="<?php echo $kategori->id_kategori ?>"><?php echo $kategori->nama_kategori ?></option>
-										<?php } ?>
+                    <option value="<?php echo $kategori->id_kategori ?>"><?php echo $kategori->nama_kategori ?></option>
+                    <?php } ?>
                   </select>
                 </div>
               </div>
@@ -71,7 +71,7 @@ $this->load->view('admin/head_admin');
               <div class="form-group">
                 <label for="inputEmail" class="col-sm-2 control-label">Upload Screenshot Tampilan Sistem</label>
                 <div class="col-sm-8">
-                  <input type="file" name="mockup_produk" placeholder="inputkan mockup produk" required="">
+                  <input type="file" name="foto_produk" placeholder="inputkan mockup produk" required="">
                 </div>
               </div>
 

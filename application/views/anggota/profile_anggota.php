@@ -74,19 +74,8 @@ $this->load->model('anggota_profile_model');
               </p>
               <hr>
 
-              <strong><i class="fa fa-user margin-r-5"></i>Status Mahasiswa</strong>
-              <p class="text-muted">
-                <?php if($data->posisi=='mahasiswa') {
-                  ?>
-                  <span class="label label-primary">Mahasiswa</span>
-                <?php }else{ ?>
-                  <span class="label label-info">Alumni</span>
-                <?php }?>
-              </p>
-              <hr>
-
               <div>
-                <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#ubah-profile<?php echo $data->id_users; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-profile"><i class="fa fa-pencil"></i> Ubah
+                <button type="button" class="btn btn-warning pull-right" data-toggle="modal" data-target="#ubah-profile<?php echo $data->id_users; ?>" onclick="ubah-profile"><i class="fa fa-edit"></i> Ubah
                 </button>
               </div>
             </div>
@@ -140,15 +129,7 @@ $this->load->model('anggota_profile_model');
                     <div class="form-group">
                       <label for="inputTelp" class="">Instansi</label>
                       <input type="text" class="form-control" id="inputName" name="instansi" value="<?php echo $data->instansi; ?>">
-                    </div>
-
-                    <div class="form-group">
-                      <label>Status Mahasiswa</label>        
-                      <select class="form-control" name="posisi">
-                        <option value="mahasiswa" <?php if($data->posisi == "mahasiswa") {echo "selected=selected";} ?>>Mahasiswa</option>
-                        <option value="alumni" <?php if($data->posisi == "alumni") {echo "selected=selected";} ?>>Alumni</option>
-                      </select>
-                    </div>
+                    </div>  
 
                     <div class="form-group">
                       <label class="">Upload Foto</label>
@@ -159,7 +140,7 @@ $this->load->model('anggota_profile_model');
 
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
-                  <input type="submit" class="btn btn-primary" value="Simpan">
+                  <input type="submit" class="btn btn-success" value="Simpan">
                 </div>
               </form>
             </div>

@@ -111,19 +111,34 @@ $this->load->view('anggota/head_anggota');
                             <div class="form-group">
                               <label for="inputName">Deskripsi Produk</label>          
                               <textarea class="form-control" name="deskripsi_produk"><?php echo $data->deskripsi_produk; ?>
-                              </textarea>                
-                            </div>
+                            </textarea>                
+                          </div>
 
-                            <div class="form-group">
-                              <label for="inputEmail">Link Demo</label>
-                              <input type="text" class="form-control" name="link_demo" value="<?php echo $data->link_demo; ?>" required="">
-                            </div>
+                          <div class="form-group">
+                            <label for="inputEmail">Link Demo</label>
+                            <input type="text" class="form-control" name="link_demo" value="<?php echo $data->link_demo; ?>" required="">
+                          </div>
 
-                            <div class="form-group">
-                              <label for="inputEmail">Mockup</label>                
-                              <input type="file" name="mockup_produk">
-                              <img src="<?php echo site_url('/assets/produk/'); echo $data->mockup_produk ?>" height='100px' width='100px'>             
+                          <div class="form-group">
+                            <label for="inputEmail">Foto</label>                
+                            <input type="file" name="foto_produk">
+                            <img src="<?php echo site_url('/assets/produk/'); echo $data->foto_produk ?>" height='100px' width='100px'>             
+                          </div>
+
+                          <div class="form-group">
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                Option one is this and that&mdash;be sure to include why it's great
+                              </label>
                             </div>
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                Option two can be something else and selecting it will deselect option one
+                              </label>
+                            </div>
+                          </div>
                           </div>
                         </div>
 

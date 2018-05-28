@@ -25,6 +25,8 @@ $this->load->view('anggota/head_anggota');
               <label for="inputName" class="col-sm-2 control-label">Nama Produk</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" id="inputName" name="nama_produk" placeholder="Nama Produk" required="">
+
+                <input type="hidden" class="form-control" name="id_team" placeholder="Nama Produk" value="<?php echo $id_team[0]->id_tim ?>" required="">
               </div>
             </div>
 
@@ -68,25 +70,48 @@ $this->load->view('anggota/head_anggota');
               </div>
             </div>
 
-            
             <div class="form-group">
-                <label class="col-sm-2 control-label">Tentukan Team</label>
-                <div class="col-sm-8">            
-                  <select class="form-control" name="id_team" required="">
-                    <option disabled selected="">---Pilih Team---</option>
-                    <option value="-1" >Produk Individu (Milik Sendiri)</option>
-                    <?php 
-                      foreach ($id_team as $data) {
+              <label class="col-sm-2 control-label">Status</label>
+              <div class="col-sm-8">
+                <label>
+                  <input type="radio" name="status_tim" id="optionsAktif">Individu
+                </label>
+                <label>
+                  <input type="radio" name="status_tim" id="optionsTdkAktif">Team
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Tentukan Team</label>
+              <div class="col-sm-8">            
+                <select class="form-control" name="nama_tim" required="">
+                  <option disabled selected="">---Pilih Team---</option>
+                  <?php 
+                  foreach ($tambah_tim as $data) {
                         # code...
-                      
+
                     ?>
                     <option value="<?php echo $data->id_tim; ?>"><?php echo $data->nama_tim; ?></option>
                     <?php 
-                      }
-                    ?>
-                  </select>
-                </div>
+                  }
+                  ?>
+                </select>
               </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Tentukan Team</label>
+              <div class="col-sm-8">
+                <select class="form-control" disabled>
+                  <option>option 1</option>
+                  <option>option 2</option>
+                  <option>option 3</option>
+                  <option>option 4</option>
+                  <option>option 5</option>
+                </select>
+              </div>
+            </div>
 
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-8">

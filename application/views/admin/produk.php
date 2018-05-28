@@ -2,9 +2,9 @@
 $this->load->view('admin/head_admin');
 
 function rupiah($angka){
-	
-	$hasil_rupiah = "Rp " . number_format($angka,2,',','.');
-	return $hasil_rupiah;
+  
+  $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+  return $hasil_rupiah;
  
 }
 ?>
@@ -66,17 +66,19 @@ function rupiah($angka){
                   <td><?php echo rupiah($data->harga_produk)?></td>
                   <td><?php echo $data->nama_tim ?></td>
                   <td>
-                    <img src="<?php echo site_url('/assets/produk/'.$data->mockup_produk); ?>" height='100px' width='100px'>
+                    <img src="<?php echo site_url('/assets/produk/'.$data->foto_produk); ?>" height='100px' width='100px'>
                   </td>
-                  <td><a class="btn-sm btn-info" href="<?php echo $data->link_demo?>" target="_blank"><i class="fa fa-link"></i></a></td>
                   <td>
-										<?php 
-											if ($data->status_produk == "tersedia") {
-												echo '<span class="label label-success">Tersedia</span>';
-											}else{
-												echo '<span class="label label-danger">Tidak Tersedia</span>';
-											}
-										?>
+                    <a class="btn-sm btn-info" href="<?php echo $data->link_demo?>" target="_blank"><i class="fa fa-link"></i></a>
+                  </td>
+                  <td>
+                    <?php 
+                      if ($data->status_produk == "aktif") {
+                        echo '<span class="label label-success">Aktif</span>';
+                      }else{
+                        echo '<span class="label label-danger">Non Aktif</span>';
+                      }
+                    ?>
                   </td>
                   <td class="text-center">
                     <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-produk"><i class="fa fa-pencil"></i>
@@ -112,9 +114,9 @@ function rupiah($angka){
                                 <label >Jenis Produk</label>
                                 <select class="form-control" name="jenis_produk" value="<?php echo $data->jenis_produk; ?>">
                                   <?php foreach ($kategori as $kategoris) {?>
-																	<option value="<?php echo $kategoris->id_kategori ?>" <?php if($data->id_kategori == $kategoris->id_kategori) {echo "selected";} ?>><?php echo $kategoris->nama_kategori?></option>
-																	<?php } ?>
-                                </select>              
+                                  <option value="<?php echo $kategoris->id_kategori ?>" <?php if($data->id_kategori == $kategoris->id_kategori) {echo "selected";} ?>><?php echo $kategoris->nama_kategori?></option>
+                                  <?php } ?>
+                                </select>        
                               </div>
 
                               <div class="form-group">

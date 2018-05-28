@@ -127,13 +127,13 @@ class Admin_pengelola extends CI_Controller {
 		$this->db->update('users',$pengelola);
 		redirect('Admin_pengelola');
 	}
-	
+
 	public function pengguna_tidak_aktif()
 	{
 		$data["pengelola"]=$this->admin_pengelola_model->getPengelolaTidakAktif();
 		$this->load->view('admin/pengguna_tidak_aktif',$data);
 	}
-	
+
 	public function aktifkan($id_users)
 	{
 		$result = $this->db->where('id_users',$id_users)

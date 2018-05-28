@@ -12,9 +12,10 @@ $this->load->view('anggota/head_anggota');
   <!-- Main content -->
   <section class="content">
     <div class="row">
-        <center><p style="font-size: 30px;" >SELAMAT DATANG ANGGOTA<br></p></center>
-        <br>
+        <center><p style="font-size: 30px;" >Selamat Datang, <?php echo $this->session->userdata('name');?>!</p></center>
+<!-- <hr style="border-width: 1px; border-color: #DDD;"> -->
       </div>
+
 
   </section>
 

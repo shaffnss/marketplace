@@ -35,7 +35,6 @@ class Anggota_profile extends CI_Controller {
 			$instansi = $this->input->post('instansi', true);
 			$no_telpon = $this->input->post('no_telpon', true);
 			$email = $this->input->post('email', true);
-			$posisi = $this->input->post('posisi', true);
 			$anggota =  array(
 				"id_roles"=>3,
 				"id_users"=>$id_users,
@@ -43,8 +42,7 @@ class Anggota_profile extends CI_Controller {
 				"jenis_kelamin"=>$jenis_kelamin,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
-				"email"=>$email,
-				"posisi"=>$posisi
+				"email"=>$email
 			);
 		}
 		else //jika update foto
@@ -58,7 +56,6 @@ class Anggota_profile extends CI_Controller {
 			$instansi = $this->input->post('instansi', true);
 			$no_telpon = $this->input->post('no_telpon', true);
 			$email = $this->input->post('email', true);
-			$posisi = $this->input->post('posisi', true);
 			$anggota =  array(
 				"id_roles"=>3,
 				"id_users"=>$id_users,
@@ -67,8 +64,7 @@ class Anggota_profile extends CI_Controller {
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
 				"email"=>$email,
-				"foto"=> $foto,
-				"posisi"=>$posisi
+				"foto"=> $foto
 			);
 		}
 			$id_users= $this->input->post('id_users');

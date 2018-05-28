@@ -63,7 +63,6 @@ class Login extends CI_Controller
     public function loginMe()
     {
         $this->load->library('form_validation');
-        
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email|max_length[128]|trim');
         $this->form_validation->set_rules('password', 'Password', 'required|max_length[32]');
         
@@ -99,15 +98,15 @@ class Login extends CI_Controller
                         redirect('Klien_dashboard');
                     }elseif ($res->id_roles == 3){
                 //Login Anggota
-                       redirect('Anggota_dashboard');
-                    }elseif ($res->id_roles == 4){
+                     redirect('Anggota_dashboard');
+                 }elseif ($res->id_roles == 4){
                 //Login Superadmin
-                        redirect('Admin_dashboard');
-                   }
-               }
-           }
-           else
-           {
+                    redirect('Admin_dashboard');
+                }
+            }
+        }
+        else
+        {
             $this->session->set_flashdata('error', 'Email or password mismatch');
 
             redirect('/login');
@@ -116,12 +115,12 @@ class Login extends CI_Controller
 
 }
 
-public function logout() {
-    $this->session->sess_destroy();
+        public function logout() {
+            $this->session->sess_destroy();
 
-    redirect('login');
+            redirect('login');
 
-}
+        }
 
 }
 

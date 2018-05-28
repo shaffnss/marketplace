@@ -13,6 +13,9 @@ $this->load->view('admin/head_admin');
    </ol>
  </section>
 
+ <?php  
+                  if ($this->session->userdata('role')== 4){
+                    ?>
  <section class="content-header">
   <div>
     <a href="<?php echo site_url('Admin_klien/tambah_klien')?>" type="button" class="btn btn-primary" >
@@ -20,6 +23,7 @@ $this->load->view('admin/head_admin');
     </a>
   </div> 
 </section>
+<?php }?>
 
 <!-- Main content -->
 <section class="content">
@@ -42,7 +46,11 @@ $this->load->view('admin/head_admin');
               <th>No Telfon</th>
               <th>E-mail</th>
               <th>Status</th>
+               <?php  
+                  if ($this->session->userdata('role')== 4){
+                    ?>
               <th>Aksi</th>
+              <?php }?>
             </tr>
           </thead>
 
@@ -69,10 +77,15 @@ $this->load->view('admin/head_admin');
                     <span class="label label-danger">Non Aktif</span>
                   <?php }?>
                 </td>
+
+                 <?php  
+                  if ($this->session->userdata('role')== 4){
+                    ?>
                 <td>
                   <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ubah-klien<?php echo $data->id_users; ?>"><i class="fa fa-edit"></i>
                   </button>    
                 </td>
+                <?php }?>
               </tr>
 
               <!-- Modals Ubah DATA KLIEN -->

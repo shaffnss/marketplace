@@ -53,6 +53,7 @@
       </form>
       <br>
       <p style="text-align: center;">Belum memiliki akun? Silahkan &nbsp;<a href="<?php echo site_url('Register') ?>">Register</a> &nbsp;disini</p>
+      <p style="text-align: center;"><a href="<?php echo site_url('Register') ?>">Lupa Password</a></p>
     </div>
     <!-- /.login-box-body -->
   </div>

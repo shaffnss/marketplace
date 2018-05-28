@@ -17,14 +17,11 @@ $this->load->view('admin/head_admin');
 
 	<!-- Main content -->
 	<section class="content">
-		<section class="content">
 			<div class="row">
-				<center><p style="font-size: 30px;" >SELAMAT DATANG ADMIN<br></p></center>
+				<center><p style="font-size: 30px;" >Selamat Datang, <?php echo $this->session->userdata('name');?>!<br></p></center>
 				<br>
 			</div>
-
-			<hr style="border-width: 1px; border-color: #DDD;">
-		</section>
+			<!-- <hr style="border-width: 1px; border-color: #DDD;"> -->
 
 		<!-- Box Notifikasi -->
 		<section class="content">

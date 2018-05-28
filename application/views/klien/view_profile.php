@@ -77,11 +77,11 @@ $this->load->view('klien/head_klien');
         <!-- /.col-md-4 -->
       <?php  } ?>
 
-
+<!-- TAB PANE -->
       <div class="col-md-8">
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs">
-            <li class="active"><a href="#ubahData" data-toggle="tab">Ubah Data</a></li>
+            <li class="active"><a href="#ubahData" data-toggle="tab">Ubah Data Diri</a></li>
             <li><a href="#ubahPassword" data-toggle="tab">Ubah Password</a></li>
           </ul>
           <div class="tab-content">
@@ -151,23 +151,26 @@ $this->load->view('klien/head_klien');
           <div class="tab-pane" id="ubahPassword">
             <form class="form-horizontal">
               <div class="box-body">
-                <div class="form-group">
-                  <div class="col-sm-3">
-                    <label for="inputName">Password Baru</label>
-                  </div>
+                  <div class="form-group">
+                    <label for="inputName" class="col-sm-3 control-label">Password Lama</label>
 
-                  <div class="col-sm-12">
-                    <input type="email" class="form-control" id="inputName" placeholder="Masukkan Password Baru">
+                  <div class="col-sm-9">
+                    <input type="email" class="form-control" id="inputName" placeholder="Password Lama">
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputName" class="col-sm-3 control-label">Password Baru</label>
+
+                  <div class="col-sm-9">
+                    <input type="email" class="form-control" id="inputName" placeholder="Password Baru">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <div class="col-sm-3">
-                    <label for="inputEmail">Re-type Password</label>
-                  </div>
+                    <label for="inputEmail" class="col-sm-3 control-label">Ulangi Password Baru</label>
 
-                  <div class="col-sm-12">
-                    <input type="email" class="form-control" id="inputEmail" placeholder="Re-type Password">
+                  <div class="col-sm-9">
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Ulangi Password Baru">
                   </div>
                 </div>
 
@@ -186,6 +189,8 @@ $this->load->view('klien/head_klien');
       <!-- /.nav-tabs-custom -->
     </div>
     <!-- /.col -->
+<!-- /.TAB PANE END -->
+
   </div>
   <!-- /.row -->
 </section>
