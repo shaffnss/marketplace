@@ -69,7 +69,7 @@ function rupiah($angka){
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-          <table id="example1" class="table table-bordered table-striped">
+          <table id="example1" class="table table-bordered table-striped datatable">
             <thead>
               <tr>
                 <th>No</th>
@@ -79,6 +79,7 @@ function rupiah($angka){
                 <th>Team Pembuat</th>
                 <th>Tampilan Produk</th>
                 <th>Link Demo</th>
+                <th>Status Proyek</th>
                 <th>Status</th>
                 <th>Aksi</th>
               </tr>
@@ -100,12 +101,13 @@ function rupiah($angka){
                     <img src="<?php echo site_url('/assets/produk/'.$data->foto_produk); ?>" height='100px' width='100px'>
                   </td>
                   <td><a class="btn-sm btn-info" href="<?php echo $data->link_demo?>" target="_blank"><i class="fa fa-link"></i></a></td>
-                  <td>
+                  <td><span class="label label-success">Diterima</span></td>
+									<td>
 										<?php 
 											if ($data->status_produk == "aktif") {
-												echo '<span class="label label-success">Tersedia</span>';
+												echo '<span class="label label-success">Aktif</span>';
 											}else{
-												echo '<span class="label label-danger">Tidak Tersedia</span>';
+												echo '<span class="label label-danger">Tidak Aktif</span>';
 											}
 										?>
                   </td>
@@ -124,46 +126,14 @@ function rupiah($angka){
                           <h4 class="modal-title">Ubah Data Produk Diterima</h4>
                         </div>
                         <div class="modal-body">
-                          <form action="" enctype="multipart/form-data" method="POST" class="form-horizontal">
+                          <form action="" method="POST" class="form-horizontal">
                             <div class="box-body">
                               <input type="hidden" class="form-control" id="inputName" name="id_produk" value="<?php echo $data->id_produk; ?>" required>   
 
                               <div class="form-group">
-                                <label for="inputName">Nama Produk Diterima</label>
-                                <input type="text" class="form-control" id="inputName" name="nama_produk" value="<?php echo $data->nama_produk; ?>" required>
+                                <label for="inputName">Nama Produk</label>
+                                <p><?php echo $data->nama_produk; ?></p>
                               </div>
-
-                              <div class="form-group">
-                                <label for="inputPrice">Harga</label><input type="number" class="form-control" name="harga_produk" value="<?php echo $data->harga_produk; ?>" required="">
-                              </div>
-
-                              <div class="form-group">
-                                <label >Jenis Produk Diterima</label>
-                                <select class="form-control" name="jenis_produk" value="<?php echo $data->jenis_produk; ?>">
-                                  <?php foreach ($kategori as $kategoris) {?>
-																	<option value="<?php echo $kategoris->id_kategori ?>" <?php if($data->id_kategori == $kategoris->id_kategori) {echo "selected";} ?>><?php echo $kategoris->nama_kategori?></option>
-																	<?php } ?>
-                                </select>              
-                              </div>
-
-                              <div class="form-group">
-                                <label for="inputName">Deskripsi Produk Diterima</label>          
-                                <textarea class="form-control" name="deskripsi_produk"><?php echo $data->deskripsi_produk; ?>
-                                </textarea>                
-                              </div>
-
-                              <div class="form-group">
-                                <label for="inputEmail">Link Demo</label>
-                                <input type="text" class="form-control" name="link_demo" value="<?php echo $data->link_demo; ?>" required="">
-                              </div>
-
-                              <div class="form-group">
-                                <label for="inputEmail">Mockup</label>                
-                                <input type="file" name="mockup_produk" value="<?php echo $data->foto_produk; ?>" required>
-																<br>
-																<img src="<?php echo site_url('/assets/produk/'.$data->foto_produk); ?>" height='100px' width='100px' title="<?php echo $data->foto_produk ?>">
-																<?php echo $data->foto_produk ?>
-															</div>
 
                               <div class="form-group">
                                 <label for="produk">Status</label>
@@ -181,7 +151,7 @@ function rupiah($angka){
 
                           <div class="modal-footer">
                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <input type="submit" class="btn btn-primary" value="Simpan">
                           </div>
                         </form>
                       </div>

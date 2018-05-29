@@ -58,7 +58,7 @@
 	
 	<script>
 		$(function () {
-			$('#example1').DataTable(),
+			$('.datatable').DataTable(),
 			$('#example2').DataTable({
 				'paging'      : true,
 				'lengthChange': false,

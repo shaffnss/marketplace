@@ -69,16 +69,17 @@ function rupiah($angka){
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-          <table id="example1" class="table table-bordered table-striped">
+          <table id="example1" class="table table-bordered table-striped datatable">
             <thead>
               <tr>
                 <th>No</th>
                 <th>Nama Produk</th>
+                <th>Deskripsi</th>
                 <th>Jenis Sistem</th>
                 <th>Harga</th>
                 <th>Team Pembuat</th>
                 <th>Tampilan Produk</th>
-                <th>Link Demo</th>
+                <th>Status  Proyek</th>
                 <th>Status</th>
                 <th>Aksi</th>
               </tr>
@@ -92,32 +93,35 @@ function rupiah($angka){
               <tbody>
                 <tr>
                   <td><?php echo $no ?></td>
-                  <td><?php echo $data->nama_produk?></td>
+                  <td><a target="_blank" href="<?php echo $data->link_demo?>"><?php echo $data->nama_produk?></a></td>
+                  <td><?php echo $data->deskripsi_produk ?></td>
                   <td><?php echo $data->nama_kategori?></td>
                   <td><?php echo rupiah($data->harga_produk)?></td>
                   <td><?php echo $data->nama_tim ?></td>
                   <td>
                     <img src="<?php echo site_url('/assets/produk/'.$data->foto_produk); ?>" height='100px' width='100px'>
                   </td>
-                  <td>
-                    <a class="btn-sm btn-info" href="<?php echo $data->link_demo?>" target="_blank"><i class="fa fa-link"></i></a>
-                  </td>
+									<td><span class="label label-warning">Proses</span></td>
                   <td>
                     <?php 
                       if ($data->status_produk == "aktif") {
-                        echo '<span class="label label-success">Tersedia</span>';
+                        echo '<span class="label label-success">Aktif</span>';
                       }else{
-                        echo '<span class="label label-danger">Tidak Tersedia</span>';
+                        echo '<span class="label label-danger">Tidak Aktif</span>';
                       }
                     ?>
                   </td>
                   <td class="text-center">
-                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-produk"><i class="fa fa-pencil"></i>
-                    </button>
-                    <button type="button" class="btn btn-sm btn-info" style="background:#1a75ff; border-color:#fff" ><i class="fa fa-eye"></i>
-                    </button>
-                    <a onclick="return confirm('apakah anda yakin ingin menerima produk ini?'); " href="<?php echo site_url('Admin_produk/diterima/'.$data->id_detail_produk)?>" class="btn btn-sm btn-info" style="background: #4e9e02; border-color: #fff"><i class="fa fa-check"></i></a>
-                    <a onclick="return confirm('apakah anda yakin ingin menolak produk ini?'); " href="<?php echo site_url('Admin_produk/ditolak/'.$data->id_detail_produk)?>" class="btn btn-sm btn-info" style="background: #d41912; border-color: #fff"><i class="fa fa-remove"></i></a>
+										<div class="row">
+											<button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-produk"><i class="fa fa-pencil"></i>
+											</button>
+											<button type="button" class="btn btn-sm btn-info" style="background:#1a75ff; border-color:#fff" ><i class="fa fa-eye"></i>
+											</button>
+										</div>
+										<div class="row">
+											<a onclick="return confirm('apakah anda yakin ingin menerima produk ini?'); " href="<?php echo site_url('Admin_produk/diterima/'.$data->id_detail_produk)?>" class="btn btn-sm btn-info" style="background: #4e9e02; border-color: #fff"><i class="fa fa-check"></i></a>
+											<a onclick="return confirm('apakah anda yakin ingin menolak produk ini?'); " href="<?php echo site_url('Admin_produk/ditolak/'.$data->id_detail_produk)?>" class="btn btn-sm btn-info" style="background: #d41912; border-color: #fff"><i class="fa fa-remove"></i></a>
+										</div>
                   </td>
                 </tr>
 
@@ -130,13 +134,13 @@ function rupiah($angka){
                           <h4 class="modal-title">Ubah Status Produk</h4>
                         </div>
                         <div class="modal-body">
-                          <form action="<?php echo site_url('Admin_produk/ubahProduk') ?>" enctype="multipart/form-data" method="POST" class="form-horizontal">
+                          <form action="" method="POST" class="form-horizontal">
                             <div class="box-body">
                               <input type="hidden" class="form-control" id="inputName" name="id_produk" value="<?php echo $data->id_produk; ?>" required>   
 
                               <div class="form-group">
                                 <label for="inputName">Nama Produk</label>
-                                <input type="text" class="form-control" id="inputName" name="nama_produk" value="<?php echo $data->nama_produk; ?>">
+                                <p><?php echo $data->nama_produk; ?></p>
                               </div>
 
                               <div class="form-group">
@@ -155,7 +159,7 @@ function rupiah($angka){
 
                           <div class="modal-footer">
                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <input type="submit" class="btn btn-primary" value="Simpan">
                           </div>
                         </form>
                       </div>
