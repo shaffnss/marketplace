@@ -9,7 +9,6 @@ $this->load->view('admin/head_admin');
     <h1>Kategori Produk</h1>
     <ol class="breadcrumb">
      <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-     <li><a href="#"><i class="fa fa-dashboard"></i> Produk</a></li>
      <li class="active"> Kategori Produk</li>
 
    </ol>
@@ -17,40 +16,41 @@ $this->load->view('admin/head_admin');
 
  <section class="content-header">
   <div>
-     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahKategori"><i class="glyphicon glyphicon-plus"></i> Tambah Kategori </button>   
-   </div> 
-   <!-- Modals tambah Kategori -->
-   <div class="modal fade" id="tambahKategori">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Tambah Kategori</h4>
-          </div>
+   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahKategori"><i class="glyphicon glyphicon-plus"></i> Tambah Kategori </button>   
+ </div> 
 
-            <div class="modal-body">
-                <div class="box-body">
- <form class="form-horizontal" method="post" action="<?php echo site_url('Admin_kategori/inputKategori') ?>">
-                  <div class="form-group">
-                    <label class="">Nama Kategori</label>
-                    <input type="text" class="form-control" name="nama_kategori" placeholder="Nama Kategori">
-                  </div>
-
-                </div>
-              </div>
-
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                <input type="submit" class="btn btn-success" value="Simpan">
-              </div>
-            </form>
-          </div>
-          <!-- /.modal-content -->
+ <!-- Modals tambah Kategori -->
+ <div class="modal fade" id="tambahKategori">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Tambah Kategori</h4>
         </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
+
+        <div class="modal-body">
+          <div class="box-body">
+           <form class="form-horizontal" method="post" action="<?php echo site_url('Admin_kategori/inputKategori') ?>">
+            <div class="form-group">
+              <label class="">Nama Kategori</label>
+              <input type="text" class="form-control" name="nama_kategori" placeholder="Nama Kategori">
+            </div>
+
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <input type="submit" class="btn btn-success" value="Simpan">
+        </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 </section>
 
 <!-- Main content -->
@@ -83,14 +83,14 @@ $this->load->view('admin/head_admin');
                   <td><?php echo $data->nama_kategori?></td>
                   <td>
                     <?php if($data->status_kategori=='aktif') {
-                        ?>
-                        <span class="label label-success">Aktif</span>
-                      <?php }else{ ?>
-                        <span class="label label-danger">Non Aktif</span>
-                      <?php }?>
+                      ?>
+                      <span class="label label-success">Aktif</span>
+                    <?php }else{ ?>
+                      <span class="label label-danger">Non Aktif</span>
+                    <?php }?>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah-kategori<?php echo $data->id_kategori; ?>" onclick="ubah-produk"><i class="fa fa-edit"></i>
+                    <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ubah-kategori<?php echo $data->id_kategori; ?>" onclick="ubah-produk"><i class="fa fa-edit"></i>
                     </button>
                   </td>
                 </tr>
@@ -115,22 +115,22 @@ $this->load->view('admin/head_admin');
                               </div>
 
                               <div class="form-group">
-                                    <label>Status</label>
-                                    <div class="radio">
-                                      <label>
-                                        <input type="radio" name="status_kategori" id="optionsAktif" value="aktif" <?php if($data->status_kategori == "aktif") {echo "checked";} ?>>Aktif
-                                      </label>
-                                      <label>
-                                        <input type="radio" name="status_kategori" id="optionsTdkAktif" value="nonaktif"  <?php if($data->status_kategori == "nonaktif") {echo "checked";} ?>>Non Aktif
-                                      </label>
-                                    </div>
-                                  </div>
+                                <label>Status</label>
+                                <div class="radio">
+                                  <label>
+                                    <input type="radio" name="status_kategori" id="optionsAktif" value="aktif" <?php if($data->status_kategori == "aktif") {echo "checked";} ?>>Aktif
+                                  </label>
+                                  <label>
+                                    <input type="radio" name="status_kategori" id="optionsTdkAktif" value="nonaktif"  <?php if($data->status_kategori == "nonaktif") {echo "checked";} ?>>Non Aktif
+                                  </label>
+                                </div>
+                              </div>
                             </div>
                           </div>
 
                           <div class="modal-footer">
                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                           <input type="submit" class="btn btn-success" value="Simpan">
+                            <input type="submit" class="btn btn-success" value="Simpan">
                           </div>
                         </form>
                       </div>
@@ -140,7 +140,7 @@ $this->load->view('admin/head_admin');
                   </div>
                   <!-- /.modal -->
                   <?php 
-                 $no++; }
+                  $no++; }
                   ?>
                 </tbody>
               </table>
