@@ -78,29 +78,27 @@ function rupiah($angka){
                 <th>Harga</th>
                 <th>Team Pembuat</th>
                 <th>Tampilan Produk</th>
-                <th>Link Demo</th>
                 <th>Status Proyek</th>
                 <th>Status</th>
                 <th>Aksi</th>
               </tr>
             </thead>
+              <tbody>
             <?php 
             $no=1;
             foreach ($produk as $data) {
                 # code...
 
               ?>
-              <tbody>
                 <tr>
                   <td><?php echo $no ?></td>
-                  <td><?php echo $data->nama_produk?></td>
+                  <td><a target="_blank" href="<?php echo $data->link_demo?>"><?php echo $data->nama_produk?></a></td>
                   <td><?php echo $data->nama_kategori?></td>
                   <td><?php echo rupiah($data->harga_produk)?></td>
                   <td><?php echo $data->nama_tim?></td>
                   <td>
                     <img src="<?php echo site_url('/assets/produk/'.$data->foto_produk); ?>" height='100px' width='100px'>
                   </td>
-                  <td><a class="btn-sm btn-info" href="<?php echo $data->link_demo?>" target="_blank"><i class="fa fa-link"></i></a></td>
                   <td><span class="label label-success">Diterima</span></td>
 									<td>
 										<?php 
@@ -114,6 +112,7 @@ function rupiah($angka){
                   <td class="text-center">
                     <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-produk"><i class="fa fa-pencil"></i>
                     </button>
+										<a onclick="return confirm('apakah anda yakin ingin menolak produk ini?'); " href="<?php echo site_url('Admin_produk/ditolak/'.$data->id_detail_produk)?>" class="btn btn-sm btn-info" style="background: #d41912; border-color: #fff"><i class="fa fa-remove"></i></a>
                   </td>
                 </tr>
 
