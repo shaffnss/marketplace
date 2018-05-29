@@ -134,7 +134,7 @@ function rupiah($angka){
                           <h4 class="modal-title">Ubah Status Produk</h4>
                         </div>
                         <div class="modal-body">
-                          <form action="" method="POST" class="form-horizontal">
+                          <form action="<?php echo site_url('Admin_produk/editProduk'); ?>" method="POST" class="form-horizontal">
                             <div class="box-body">
                               <input type="hidden" class="form-control" id="inputName" name="id_produk" value="<?php echo $data->id_produk; ?>" required>   
 
@@ -147,10 +147,10 @@ function rupiah($angka){
                                 <label for="produk">Status</label>
                                     <div class="radio">
                                       <label>
-                                        <input <?php echo ($data->status=='aktif' ? 'checked' : '') ?> type="radio" name="status_produk" id="optionsAktif" value="Aktif" >Aktif
+                                        <input <?php echo ($data->status_produk=='aktif' ? 'checked' : ''); ?> type="radio" name="status_produk" id="optionsAktif" value="aktif" >Aktif
                                       </label>
                                       <label>
-                                        <input <?php echo ($data->status=='nonaktif' ? 'checked' : '') ?> type="radio" name="status_produk" id="optionsTdkAktif" value="Tidak Aktif">Tidak Aktif
+                                        <input <?php echo ($data->status_produk=='nonaktif' ? 'checked' : ''); ?> type="radio" name="status_produk" id="optionsTdkAktif" value="nonaktif">Tidak Aktif
                                       </label>
                                     </div>
                               </div>
