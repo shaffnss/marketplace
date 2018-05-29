@@ -43,6 +43,10 @@ class Admin_produk_model extends CI_Model {
 		$this->db->trans_complete();
 		return $insert_id;
 	}
+	
+	public function insertDetailProduk($detail_produk){
+		return $this->db->insert('detail_produk',$detail_produk);
+	}
 
 	public function getTeam()
 	{

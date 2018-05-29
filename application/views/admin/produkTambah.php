@@ -79,7 +79,7 @@ $this->load->view('admin/head_admin');
                 <label class="col-sm-2 control-label">Tentukan Team</label>
                 <div class="col-sm-8">            
                   <select class="form-control" name="nama_tim" required="">
-                    <option disabled selected="">---Pilih Team---</option>
+                    <option value="" disabled selected="">---Pilih Team---</option>
                     <?php 
                       foreach ($tambah_tim as $data) {
                         # code...
