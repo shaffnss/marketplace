@@ -24,9 +24,9 @@ ANGGOTA
 18. Pemberian wewenang ke anggota tim mana yg project manager mana yg nggak [DONE] 
 19. anggota ditambah ganti photo [DONE]
 20. ubah password [DONE]
-21. dropdown kategori dari tabel produk, ketika tambah produk get foreignkey id_kategori 
+21. dropdown kategori dari tabel produk, ketika tambah produk get foreignkey id_kategori [DONE]
 22. LUPA PASSWORD [DONE]
-23. anggota tidak aktif dikasih label rolesnya dia 
+23. anggota tidak aktif dikasih label rolesnya dia [DONE]
 
 
 Admin
