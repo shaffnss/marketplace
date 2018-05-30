@@ -51,10 +51,10 @@ class BaseController extends CI_Controller {
 	 * This function is used to check the access
 	 */
 	function isAdmin() {
-		if ($this->role != 1 || $this->role != 4) {
-			return true;
-		} else {
+		if ($this->role == 1 || $this->role == 4) {
 			return false;
+		} else {
+			return true;
 		}
 	}
 	

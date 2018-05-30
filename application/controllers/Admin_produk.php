@@ -12,7 +12,7 @@ class Admin_produk extends BaseController {
 		$this->isLoggedIn();
   }
 	
-  public function index()
+  function index()
   {
 		if($this->isAdmin() == TRUE)
 		{
@@ -27,7 +27,7 @@ class Admin_produk extends BaseController {
   }
   
   //fungsi untuk mengarah ke halaman produk dengan status diterima
-  public function produk_diterima()
+  function produk_diterima()
   {
 		if($this->isAdmin() == TRUE)
 		{
@@ -42,7 +42,7 @@ class Admin_produk extends BaseController {
   }
   
   //fungsi untuk merubah status detail produk menjadi diterima
-  public function diterima($id_detail_produk)
+  function diterima($id_detail_produk)
   {
 		if($this->isAdmin() == TRUE)
 		{
@@ -61,7 +61,7 @@ class Admin_produk extends BaseController {
   }
   
   //fungsi untuk mengarah ke halaman produk dengan status diterima
-  public function produk_ditolak()
+ function produk_ditolak()
   {
 		if($this->isAdmin() == TRUE)
 		{
@@ -76,7 +76,7 @@ class Admin_produk extends BaseController {
   }
   
   //fungsi untuk merubah status detail produk menjadi ditolak
-  public function ditolak($id_detail_produk)
+  function ditolak($id_detail_produk)
   {
 		if($this->isAdmin() == TRUE)
 		{
@@ -94,7 +94,7 @@ class Admin_produk extends BaseController {
 		}
   } 
 
-  public function tambahProduk()
+  function tambahProduk()
   {
 		if($this->isAdmin() == TRUE)
 		{
@@ -110,7 +110,7 @@ class Admin_produk extends BaseController {
 		}
   }  
 
-  public function inputProduk()
+  function inputProduk()
   {
 		if($this->isAdmin() == TRUE)
 		{
@@ -163,7 +163,7 @@ class Admin_produk extends BaseController {
 			}
 		}
 		
-		public function editProduk()
+		function editProduk()
 		{
 			$id_produk= $this->input->post('id_produk', true);
 			$status_produk = $this->input->post('status_produk', true);

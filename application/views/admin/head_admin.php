@@ -176,7 +176,7 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="<?php echo site_url('Admin_pembelian')?>"><i class="fa fa-list-alt"></i>Diproses</a></li>
-              <li><a href="<?php echo site_url('Admin_pembelian')?>"><i class="fa fa-check"></i>Selesai</a></li>
+              <li><a href="<?php echo site_url('Admin_pembelian/pembelian_selesai')?>"><i class="fa fa-check"></i>Selesai</a></li>
             </ul>
           </li>
         </ul>

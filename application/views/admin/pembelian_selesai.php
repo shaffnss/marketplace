@@ -36,7 +36,6 @@ $this->load->view('admin/head_admin');
                   <th>Bukti Pembayaran</th>
                   <th>Bukti Terima</th>
                   <th>Status</th>
-                  <th>Aksi</th>
                 </tr>
               </thead>
 
@@ -56,12 +55,7 @@ $this->load->view('admin/head_admin');
                     <td><?php echo $item->bukti_pembayaran; ?></td>
                     <td><?php  ?></td>
                     <td>
-                      <span class="label label-warning">Proses</span>
-                    </td>
-                    <td>
-                      <div>
-                        <a href="<?php echo site_url('Admin_pembelian/ubahStatus/'.$item->id_pembelian)?>" class="btn btn-success glyphicon glyphicon-ok"> Selesai</a>
-                      </div>
+                      <span class="label label-success">Selesai</span>
                     </td>
                   </tr>
                 </tbody>
