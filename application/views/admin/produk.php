@@ -1,12 +1,12 @@
 <?php
-	$this->load->view('admin/head_admin');
-	
-	function rupiah($angka){
-		
-		$hasil_rupiah = "Rp " . number_format($angka,2,',','.');
-		return $hasil_rupiah;
-		
-	}
+$this->load->view('admin/head_admin');
+
+function rupiah($angka){
+
+  $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+  return $hasil_rupiah;
+
+}
 ?>
 
 <!-- Content Wrapper. Contains page content -->

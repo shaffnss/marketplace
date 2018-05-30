@@ -36,6 +36,7 @@ class Admin_pembelian extends BaseController {
 		}
 	}
 
+
 	public function ubahStatus($id_pembelian) 
 	{
 		if($this->isAdmin() == TRUE)

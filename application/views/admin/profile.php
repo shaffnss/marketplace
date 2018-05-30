@@ -6,7 +6,7 @@ $this->load->view('admin/head_admin');
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <h1>Profil<small>Klien</small></h1>
+    <h1>Profile</h1>
   </section>
 
   <?php 

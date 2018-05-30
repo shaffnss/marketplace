@@ -1,59 +1,66 @@
+YANG BELUM :
+
 DARI PROSES PEMBELIAN OLEH KLIEN
 1. Search produk (halaman landing page) berdasarkan keyword
 2. Membagi halaman produk per kategori
-3. Kategori produk dibuat dinamis [DONE]
 4. Link demo 
 5. LIVE CHAT (tawk.to)
-6. Purchase (simpan di session item yang dipilih)
+6. Purchase (simpan di session item yang dipilih) 
 7. Klien = Upload pembayaran + alert  upload sukses + tunggu konfirmasi admin (klien_pembayaran)
 8. Admin = request pembelian oleh klien masuk ke halaman admin dibagian pembelian proses, jika sudah dikonfirmasi 
 status pembelian di halaman klien berubah 
-9. klien ditambah ganti photo [DONE]
-10. ubah password [DONE]
-11. produk detail list kategori left-sidebar diganti list produk dengan kategori yang sesuai [DONE]
-12. LUPA PASSWORD [DONE]
+9. KETIKA KLIEN KLIK PURCHASE->REGS->LOGIN->LANGSUNG DIRECT KE MENU PEMBAYARAN
+10. RUBAH VIEW KLIEN PEMBAYARAN TAMBAH MENU PILIH PERJANJIAN OLEH KLIEN
+11. EDIT BAGIAN UPLOAD BERKAS PEMBAYARAN DI MENU PEMBAYARAN OLEH KLIEN
 
 DARI ANGGOTA UPLOAD DATA PRODUK
 ANGGOTA
-13. Di akun masing" anggota dapat melihat dia masuk tim apa aja dan posisinya di masing" tim apa aja [DONE]
-14. Di button Unggah,upload produk berdasarkan nama tim terkait di drop down + alert sudah terupload dan menunggu konfirmasi admin.
-15. Anggota yang memiliki posisi sebagai PM bisa mengupload produk yang dihasilkan timnya ke admin dan
+12. Di button Unggah,upload produk berdasarkan nama tim terkait di drop down + alert sudah terupload dan menunggu konfirmasi admin.
+13. Anggota yang memiliki posisi sebagai PM bisa mengupload produk yang dihasilkan timnya ke admin dan
     dropdown pilihan team yg ada di menu upload produk munculnya cuma tim yg dia join
-16. kalo individu nanti create tim (yang isinya dirinya sendiri) ketika pencet button individu
-17. Di fungsi Edit bagian foto (produk) diberi button untuk edit foto [DONE]
-18. Pemberian wewenang ke anggota tim mana yg project manager mana yg nggak [DONE] 
-19. anggota ditambah ganti photo [DONE]
-20. ubah password [DONE]
-21. dropdown kategori dari tabel produk, ketika tambah produk get foreignkey id_kategori [DONE]
-22. LUPA PASSWORD [DONE]
-23. anggota tidak aktif dikasih label rolesnya dia [DONE]
+14. kalo individu nanti create tim (yang isinya dirinya sendiri) ketika pencet button individu
+15. Di fungsi Edit bagian foto (produk) diberi button untuk edit foto [DONE]
+16. Pemberian wewenang ke anggota tim mana yg project manager mana yg nggak [DONE] 
+17. anggota ditambah ganti photo [DONE]
+18. ubah password [DONE]
+19. dropdown kategori dari tabel produk, ketika tambah produk get foreignkey id_kategori 
+20. LUPA PASSWORD [DONE]
+21. anggota tidak aktif dikasih label rolesnya dia 
 
 
 Admin
-23. Konfirmasi produk baru yg diupload klik centang + alert produk diterima [DONE]
-- Status di admin diterima [DONE]
-- di akun anggota statusnya berubah jadi disetujui [DONE]
-24. Bagaimana biar data produk langsung terhubung ke landing page dan bisa diatur aktif tidak aktifnya atau tampil tidak tampil. (status tersedia/tdk tersedia) [DONE]
-25. sorting pengguna aktif tidak aktif (menu pengguna aktif dan non-aktif) [DONE]
-26. buat view kategori (tabel list kategori, id, nama_kagori, status) [DONE]
-27. buat tambah kategori [DONE]
-28. Profile untuk admin cara memisahkan antara pengelola dan superpengelola gimana, karena di view profile admin di controller manggilnya masih nama_roles pengelola belum sama superadmin(superpengelola)
-29. ubah password admin [DONE]
-30. LUPA PASSWORD [DONE]
-31. tambah produk dibagian pilih kategori gak bisa ngeget nama kategorinya ketika input [DONE]
+- Konfirmasi produk baru yg diupload klik centang + alert produk diterima [DONE]
+A. Status di admin diterima [DONE]
+B. di akun anggota statusnya berubah jadi disetujui [DONE]
+- Bagaimana biar data produk langsung terhubung ke landing page dan bisa diatur aktif tidak aktifnya atau tampil tidak tampil. (status tersedia/tdk tersedia) [DONE]
+- sorting pengguna aktif tidak aktif (menu pengguna aktif dan non-aktif) [DONE]
+- buat view kategori (tabel list kategori, id, nama_kagori, status) [DONE]
+- buat tambah kategori [DONE]
+- Profile untuk admin cara memisahkan antara pengelola dan superpengelola gimana, karena di view profile admin di controller manggilnya masih nama_roles pengelola belum sama superadmin(superpengelola) [DONE]
+- ubah password admin [DONE]
+- LUPA PASSWORD [DONE]
+- tambah produk dibagian pilih kategori gak bisa ngeget nama kategorinya ketika input
+- JUMLAH ANGGOTA DI VIEW TIM BELUM KEHITUNG SESUAI JUMLAH ANGGOTA YG DIINPUTKAN 
+- BAGIAN PEMBAYARAN PEMBELIAN DI TAMBAH JOIN DGN TABEL PERJANJIAN, 
+- UBAH VIEW PEMBAYARAN PEMBELIAN TAMBAH KOLOM FILE PERJANJIAN DAN AKSI UPLOAD FILE PERJANJIAN TRUS UNTUK GAMBAR BUKTI PEMBAYARAN DAN PERJANJIAN DI VIEWNYA DITAMPILKAN GAMBAR ICON PDF SBG TANDA FILE UDAH ADA  
+- TAMBAH MENU KATEGORI PERJANJIAN DI ADMIN UNTUK INPUT JENIS JENIS PERJANJIAN [DONE]
+- TAMBAH MENU PERJANJIAN PEMBELIAN UNTUK UPLOAD FILE PERJANJIAN YANG DIBUAT ADMIN, UDAH COBA DIKODING TAPI BELUM NGE GET DATANYA
 
 System : 
-32. pengaturan session yang sedang login. anggota hanya bisa login pada halaman anggota, begitu jga klien dan admin.
-33. sidebar active ketika halaman diakses [DONE]
-34. EDIT TAMPILAN BAGIAN REGISTER
+- pengaturan session yang sedang login. anggota hanya bisa login pada halaman anggota, begitu jga klien dan admin.
+- sidebar active ketika halaman diakses [DONE]
+- EDIT TAMPILAN BAGIAN REGISTER dan login
 
 LANDING :
-35. GANTI LANDING PAGE DENGAN ONE PAGE YG ISINYA UDAH ADA CONTACT, GALERI DSB [DONE]
-36. GANTI bentuk searchnya
+- GANTI LANDING PAGE DENGAN ONE PAGE YG ISINYA UDAH ADA CONTACT, GALERI DSB [DONE]
+- search bar di landing home belum bisa
+- tampilan landing belum komplit
+- kategori product di landing dibikin caraousel supaya bisa dinamis dan masing2 kategori dilink an ke halaman produk dgn categori terkait
+
+
 
 superadmin : superadmin@gmail.com : 12345
 klien : gorby@gmail.com : 12345
-
 anggota : 12345
 pengelola : pengelola1@gmail.com : 12345
 
@@ -83,3 +90,10 @@ c. Admin/Pengelola
 7. di status_mhs klien superadmin
 8. tambah foto di admin untuk anggota, klien, admin
 9. menu kategori tambah, tampil, ubah
+- Kategori produk dibuat dinamis [DONE]
+- klien ditambah ganti photo [DONE]
+- ubah password [DONE]
+- produk detail list kategori left-sidebar diganti list produk dengan kategori yang sesuai [DONE]
+- LUPA PASSWORD [DONE]
+- Di akun masing" anggota dapat melihat dia masuk tim apa aja dan posisinya di masing" tim apa aja [DONE]
+

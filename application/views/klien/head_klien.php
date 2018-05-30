@@ -29,6 +29,20 @@
    <link rel="stylesheet" href="<?php echo base_url('AdminLTE/plugins') ?>/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
    <!-- DataTables -->
    <link rel="stylesheet" href="<?php echo base_url('AdminLTE/bower_components') ?>/datatables.net-bs/css/dataTables.bootstrap.min.css">
+   <!-- Select2 -->
+   <link rel="stylesheet" href="<?php echo base_url('AdminLTE/bower_components') ?>/select2/dist/css/select2.min.css">
+   <!-- jQuery 3 -->
+   <script src="<?php echo base_url('AdminLTE/bower_components/jquery/dist/jquery.min.js') ?>"></script>
+   <!-- jQuery UI 1.11.4 -->
+   <script src="<?php echo base_url('AdminLTE/bower_components/jquery-ui/jquery-ui.min.js') ?>"></script>
+   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+   <script>
+    $.widget.bridge('uibutton', $.ui.button);
+  </script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="<?php echo base_url('AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js') ?>"></script>
+  <!-- Morris chart -->
+  <link rel="stylesheet" href="<?php echo base_url('AdminLTE/bower_components/morris.js/morris.css') ?>">
    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -66,7 +80,6 @@
               <!-- User image -->
               <li class="user-header">
                 <img src="<?php echo base_url('AdminLTE/dist/img/user2-160x160.jpg') ?>" class="img-circle" alt="User Image">
-
                 <p>
                   <?php echo $this->session->userdata('name');?>
                 </p>
@@ -118,12 +131,12 @@
             </a>
           </li>
 
-          <li>
-            <a href="<?php echo site_url('Klien_pemesanan') ?>">
+          <!-- <li>
+            <a href="<?php //echo site_url('Klien_pemesanan') ?>">
               <i class="fa fa-file-text-o"></i>
               <span>Pemesanan</span>
             </a>
-          </li>
+          </li> -->
 
           <li>
             <a href="<?php echo site_url('Klien_pembayaran') ?>">

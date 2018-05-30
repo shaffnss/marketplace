@@ -114,12 +114,12 @@
             </a>
           </li>
           
-          <li>
-            <a href="<?php echo site_url('Anggota_proyek') ?>">
+          <!-- <li>
+            <a href="<?php //echo site_url('Anggota_proyek') ?>">
               <i class="fa fa-tasks"></i>
               <span>Proyek</span>
             </a>
-          </li>
+          </li> -->
 
           <li>
             <a href="<?php echo site_url('Anggota_uploadProduk') ?>">

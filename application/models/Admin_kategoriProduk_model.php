@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin_kategori_model extends CI_Model {
+class Admin_kategoriProduk_model extends CI_Model {
 
 	public function getKategori(){
 		$this->db->select("*");
