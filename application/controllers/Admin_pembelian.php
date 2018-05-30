@@ -15,6 +15,7 @@ class Admin_pembelian extends CI_Controller {
 		$this->load->view('admin/pembelian',$data);
 	}
 
+
 	public function ubahStatus($id_pembelian) 
 	{
 		$data = array(

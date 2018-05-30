@@ -6,8 +6,9 @@ class admin_profile_model extends CI_Model {
 		$this->db->select("*");
 		$this->db->from("users");
 		$this->db->join("roles","users.id_roles=roles.id_roles");
-		$this->db->where("roles.nama_roles","pengelola");
 		$this->db->where("id_users",$id_users);
+		$this->db->where("roles.nama_roles","pengelola");
+		$this->db->or_where("roles.nama_roles","super pengelola");
 		return $this->db->get()->result();
 	}
 

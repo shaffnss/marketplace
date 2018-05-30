@@ -155,7 +155,6 @@ $this->load->view('admin/head_admin');
                           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                           <input type="submit" class="btn btn-success" value="Simpan">
                         </div>
-                      </div>
                     </form>
                   </div>
                   <!-- /.modal-content -->

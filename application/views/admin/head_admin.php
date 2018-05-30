@@ -132,26 +132,33 @@
           </a>
         </li>
 
-
         <li class="treeview">
           <a href="<?php echo site_url('') ?>">
-            <i class="fa fa-money"></i> <span>Pembayaran Produk</span>
+            <i class="fa fa-money"></i> <span>Pembayaran Pembelian</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="<?php echo site_url('Admin_pembelian')?>"><i class="fa fa-list-alt"></i>Pembayaran Diproses</a></li>
-            <li><a href="<?php echo site_url('Admin_pembelian')?>"><i class="fa fa-check"></i>Pembayaran Selesai</a></li>
+            <li><a href="<?php echo site_url('Admin_pembelian/pembelianSelesai')?>"><i class="fa fa-check"></i>Pembayaran Selesai</a></li>
           </ul>
+        </li>
+        
+        <li>
+          <a href="<?php echo site_url('Admin_perjanjian') ?>">
+            <i class="fa fa-file-text"></i> 
+            <span>Perjanjian Pembelian</span>
+          </a>
         </li>
 
         <li>
-          <a href="<?php echo site_url('Admin_kategori') ?>">
-            <i class="fa fa-th-list"></i>
-            <span>Kategori Produk </span>
+          <a href="<?php echo site_url('Admin_perjanjian/kategori') ?>">
+            <i class="fa fa-th-list"></i> 
+            <span>Kategori Perjanjian</span>
           </a>
         </li>
+
 
         <li class="treeview">
           <a href="<?php echo site_url('') ?>">
@@ -164,6 +171,7 @@
             <li class=""><a href="<?php echo site_url('Admin_produk') ?>"><i class="fa fa-list-alt"></i> Produk Masuk </a></li>
             <li><a href="<?php echo site_url('Admin_produk') ?>"><i class="fa fa-check"></i> Produk Diterima </a></li>
             <li><a href="<?php echo site_url('Admin_produk') ?>"><i class="fa fa-close"></i> Produk Ditolak </a></li>
+            <li><a href="<?php echo site_url('Admin_kategori_produk') ?>"><i class="fa fa-th-list"></i> Kategori Produk</a></li>
           </ul>
         </li>
 
@@ -176,8 +184,8 @@
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="<?php echo site_url('Admin_klien') ?>"><i class="fa fa-user"></i> Klien </a></li>
-            <li><a href="<?php echo site_url('Admin_team') ?>"><i class="fa fa-user"></i> Tim </a></li>
             <li><a href="<?php echo site_url('Admin_anggota') ?>"><i class="fa fa-user"></i> Anggota Tim </a></li>
+            <li><a href="<?php echo site_url('Admin_team') ?>"><i class="fa fa-user"></i> Tim </a></li>
             <?php  
             if ($this->session->userdata('role')== 4){
               ?>

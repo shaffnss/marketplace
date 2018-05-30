@@ -123,7 +123,7 @@ class Admin_anggota extends CI_Controller {
 				"no_telpon"=>$no_telpon,
 				"email"=>$email,
 				"status_users"=>$status_users,
-				"foto"=> $foto,
+				"foto"=> $foto
 			);
 		}
 			$id_users= $this->input->post('id_users');

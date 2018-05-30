@@ -34,7 +34,7 @@ function rupiah($angka){
     <div class="col-xs-12">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">Tabel Produk</h3>
+          <h3 class="box-title">Tabel Data Produk</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -137,7 +137,7 @@ function rupiah($angka){
                             <h4 class="modal-title">Detail <?php echo $data->nama_produk; ?></h4>
                           </div>
                           <div class="modal-body">
-                            <form action="<?php echo site_url('Admin_produk/ubahProduk') ?>" enctype="multipart/form-data" method="POST" class="form-horizontal">
+                            <!-- <form action="<?php //echo site_url('Admin_produk/ubahProduk') ?>" enctype="multipart/form-data" method="POST" class="form-horizontal"> -->
                               <div class="box-body">
                                 <div class="form-group">
                                   <label for="inputName">ID Produk</label>

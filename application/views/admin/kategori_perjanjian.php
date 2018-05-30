@@ -6,10 +6,10 @@ $this->load->view('admin/head_admin');
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <h1>Kategori Produk</h1>
+    <h1>Kategori Perjanjian</h1>
     <ol class="breadcrumb">
      <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-     <li class="active"> Kategori Produk</li>
+     <li class="active"> Kategori Perjanjian</li>
 
    </ol>
  </section>
@@ -31,7 +31,7 @@ $this->load->view('admin/head_admin');
 
         <div class="modal-body">
           <div class="box-body">
-           <form class="form-horizontal" method="post" action="<?php echo site_url('Admin_kategori_produk/inputKategori') ?>">
+           <form class="form-horizontal" method="post" action="<?php echo site_url('Admin_perjanjian/inputKategori') ?>">
             <div class="form-group">
               <label class="">Nama Kategori</label>
               <input type="text" class="form-control" name="nama_kategori" placeholder="Nama Kategori">
@@ -59,7 +59,7 @@ $this->load->view('admin/head_admin');
     <div class="col-xs-12">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">Tabel Produk</h3>
+         <!--  <h3 class="box-title">Tabel Produk</h3> -->
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -82,7 +82,7 @@ $this->load->view('admin/head_admin');
                   <td><?php echo $no ?></td>
                   <td><?php echo $data->nama_kategori?></td>
                   <td>
-                    <?php if($data->status_kategori=='aktif') {
+                    <?php if($data->status=='aktif') {
                       ?>
                       <span class="label label-success">Aktif</span>
                     <?php }else{ ?>
@@ -105,7 +105,7 @@ $this->load->view('admin/head_admin');
                         </div>
 
                         <div class="modal-body">
-                          <form action="<?php echo site_url('Admin_kategori_produk/ubahkategori') ?>" enctype="multipart/form-data" method="POST" class="form-horizontal">
+                          <form action="<?php echo site_url('Admin_perjanjian/ubahkategori') ?>" enctype="multipart/form-data" method="POST" class="form-horizontal">
                             <div class="box-body">
                               <input type="hidden" class="form-control" id="inputName" name="id_kategori" value="<?php echo $data->id_kategori; ?>" required>   
 
@@ -118,10 +118,10 @@ $this->load->view('admin/head_admin');
                                 <label>Status</label>
                                 <div class="radio">
                                   <label>
-                                    <input type="radio" name="status_kategori" id="optionsAktif" value="aktif" <?php if($data->status_kategori == "aktif") {echo "checked";} ?>>Aktif
+                                    <input type="radio" name="status" id="optionsAktif" value="aktif" <?php if($data->status == "aktif") {echo "checked";} ?>>Aktif
                                   </label>
                                   <label>
-                                    <input type="radio" name="status_kategori" id="optionsTdkAktif" value="nonaktif"  <?php if($data->status_kategori == "nonaktif") {echo "checked";} ?>>Non Aktif
+                                    <input type="radio" name="status" id="optionsTdkAktif" value="nonaktif"  <?php if($data->status == "nonaktif") {echo "checked";} ?>>Non Aktif
                                   </label>
                                 </div>
                               </div>

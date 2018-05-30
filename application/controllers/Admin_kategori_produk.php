@@ -1,17 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin_kategori extends CI_Controller {
+class Admin_kategori_produk extends CI_Controller {
 
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model("admin_kategori_model");
+		$this->load->model("admin_kategoriProduk_model");
 	}
 
 	public function index()
 	{
-		$data["kategori"]=$this->admin_kategori_model->getKategori();
+		$data["kategori"]=$this->admin_kategoriProduk_model->getKategori();
 		$this->load->view('admin/kategori_produk',$data);
 	}
 
@@ -31,11 +31,11 @@ class Admin_kategori extends CI_Controller {
 				"nama_kategori"=>$nama_kategori,
 			);
 
-			$result = $this->admin_kategori_model->insertKategori($data);
+			$result = $this->admin_kategoriProduk_model->insertKategori($data);
 
 		}
 
-		redirect('Admin_kategori');
+		redirect('Admin_kategori_produk');
 	}
 
 	public function ubahKategori(){
@@ -49,6 +49,6 @@ class Admin_kategori extends CI_Controller {
 		);
 		$this->db->where('id_kategori',$id_kategori);
 		$this->db->update('kategori_produk',$data);
-		redirect('Admin_kategori');
+		redirect('Admin_kategori_produk');
 	}
 }
