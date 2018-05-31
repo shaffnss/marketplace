@@ -9,9 +9,10 @@ DARI PROSES PEMBELIAN OLEH KLIEN
 7. Klien = Upload pembayaran + alert  upload sukses + tunggu konfirmasi admin (klien_pembayaran)
 8. Admin = request pembelian oleh klien masuk ke halaman admin dibagian pembelian proses, jika sudah dikonfirmasi 
 status pembelian di halaman klien berubah 
-9. KETIKA KLIEN KLIK PURCHASE->REGS->LOGIN->LANGSUNG DIRECT KE MENU PEMBAYARAN
-10. RUBAH VIEW KLIEN PEMBAYARAN TAMBAH MENU PILIH PERJANJIAN OLEH KLIEN
-11. EDIT BAGIAN UPLOAD BERKAS PEMBAYARAN DI MENU PEMBAYARAN OLEH KLIEN
+9. KETIKA KLIEN KLIK PURCHASE->REGS->LOGIN->masuk ke dashboard klien, kalo klien statusnya masih login dankembali ke halaman landing di halaman landing pojok kanan ada
+status dia sedang login 
+10. RUBAH VIEW KLIEN PEMBAYARAN TAMBAH MENU PILIH PERJANJIAN OLEH KLIEN [DONE]
+11. EDIT BAGIAN UPLOAD BERKAS PEMBAYARAN DI MENU PEMBAYARAN OLEH KLIEN [DONE]
 
 DARI ANGGOTA UPLOAD DATA PRODUK
 ANGGOTA
@@ -25,8 +26,8 @@ ANGGOTA
 18. ubah password [DONE]
 19. dropdown kategori dari tabel produk, ketika tambah produk get foreignkey id_kategori 
 20. LUPA PASSWORD [DONE]
-21. anggota tidak aktif dikasih label rolesnya dia 
-
+21. anggota tidak aktif dikasih label rolesnya dia [DONE]
+- edit data akun ngebug
 
 Admin
 - Konfirmasi produk baru yg diupload klik centang + alert produk diterima [DONE]
@@ -45,11 +46,15 @@ B. di akun anggota statusnya berubah jadi disetujui [DONE]
 - UBAH VIEW PEMBAYARAN PEMBELIAN TAMBAH KOLOM FILE PERJANJIAN DAN AKSI UPLOAD FILE PERJANJIAN TRUS UNTUK GAMBAR BUKTI PEMBAYARAN DAN PERJANJIAN DI VIEWNYA DITAMPILKAN GAMBAR ICON PDF SBG TANDA FILE UDAH ADA  
 - TAMBAH MENU KATEGORI PERJANJIAN DI ADMIN UNTUK INPUT JENIS JENIS PERJANJIAN [DONE]
 - TAMBAH MENU PERJANJIAN PEMBELIAN UNTUK UPLOAD FILE PERJANJIAN YANG DIBUAT ADMIN, UDAH COBA DIKODING TAPI BELUM NGE GET DATANYA
+- id dari produk adalah kombinasi string dan numeric, stringnya berupa 2 digit huruf sbg inisial jenis sistemnya sedangkan numericnya berupa int yg diambil dari id autoincrement dari tabel produk
+- begitu juga untuk pembelian
+- tambah field di tabel pembelian namanya kode pembelian dan di tabel produk
 
 System : 
 - pengaturan session yang sedang login. anggota hanya bisa login pada halaman anggota, begitu jga klien dan admin.
 - sidebar active ketika halaman diakses [DONE]
 - EDIT TAMPILAN BAGIAN REGISTER dan login
+- dibagian login kalo si users login sedangkan superadmin belum mengaktifkan akunnya nanti keluar notif kalo akunnya belom masuk
 
 LANDING :
 - GANTI LANDING PAGE DENGAN ONE PAGE YG ISINYA UDAH ADA CONTACT, GALERI DSB [DONE]

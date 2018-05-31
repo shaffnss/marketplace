@@ -66,31 +66,30 @@ $this->load->view('anggota/head_anggota');
             <div class="form-group">
               <label class="col-sm-2 control-label">Upload Screenshot Tampilan Sistem</label>
               <div class="col-sm-8">
-                <input type="file" name="mockup_produk" placeholder="inputkan mockup produk" required="">
+                <input type="file" name="foto_produk" placeholder="inputkan mockup produk" required="">
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-sm-2 control-label">Status</label>
-              <div class="col-sm-8">
+              <div class="col-sm-10">
                 <label>
-                  <input type="radio" name="status_tim" id="optionsAktif">Individu
+                  <label>
+                  <input type="radio" name="status_tim" id="optTeam" checked>Team
                 </label>
-                <label>
-                  <input type="radio" name="status_tim" id="optionsTdkAktif">Team
+                  <input type="radio" name="status_tim" id="optIndividu">Individu
                 </label>
               </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" id="selectAktif">
               <label class="col-sm-2 control-label">Tentukan Team</label>
               <div class="col-sm-8">            
                 <select class="form-control" name="nama_tim" required="">
                   <option disabled selected="">---Pilih Team---</option>
                   <?php 
-                  foreach ($tambah_tim as $data) {
+                  foreach ($id_team as $data) {
                         # code...
-
                     ?>
                     <option value="<?php echo $data->id_tim; ?>"><?php echo $data->nama_tim; ?></option>
                     <?php 
@@ -100,10 +99,10 @@ $this->load->view('anggota/head_anggota');
               </div>
             </div>
 
-            <div class="form-group">
+           <!--  <div class="form-group">
               <label class="col-sm-2 control-label">Tentukan Team</label>
               <div class="col-sm-8">
-                <select class="form-control" disabled>
+                <select class="form-control" id="selectTdkAktif" disabled>
                   <option>option 1</option>
                   <option>option 2</option>
                   <option>option 3</option>
@@ -111,7 +110,7 @@ $this->load->view('anggota/head_anggota');
                   <option>option 5</option>
                 </select>
               </div>
-            </div>
+            </div> -->
 
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-8">

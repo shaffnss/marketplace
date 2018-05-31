@@ -33,7 +33,7 @@ $this->load->view('admin/head_admin');
 
             <div class="info-box-content">
               <span class="info-box-text">Pembelian</span>
-              <span class="info-box-number">1,000</span>
+              <span class="info-box-number"><?php echo sizeof($pembelian);?></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -46,7 +46,7 @@ $this->load->view('admin/head_admin');
 
             <div class="info-box-content">
               <span class="info-box-text">Produk Masuk</span>
-              <span class="info-box-number">41,410</span>
+              <span class="info-box-number"><?php echo sizeof($produk);?></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -63,7 +63,7 @@ $this->load->view('admin/head_admin');
 
             <div class="info-box-content">
               <span class="info-box-text">Produk Diterima</span>
-              <span class="info-box-number">760</span>
+              <span class="info-box-number"><!-- <?php //echo sizeof($produk);?> --></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -76,7 +76,7 @@ $this->load->view('admin/head_admin');
 
             <div class="info-box-content">
               <span class="info-box-text">Klien Baru</span>
-              <span class="info-box-number">2,000</span>
+              <span class="info-box-number"><?php echo sizeof($klien);?></span>
             </div>
             <!-- /.info-box-content -->
           </div>
