@@ -56,10 +56,20 @@
       'lengthChange': false,
       'searching'   : false,
       'ordering'    : true,
-      'info'         : true,
+      'info'        : true,
       'autoWidth'   : false
     })
   })
+</script>
+
+<script type="text/javascript">
+  $('#optIndividu').on('click',function () {
+    $('#selectAktif').hide()
+  })
+  $('#optTeam').on('click',function () {
+    $('#selectAktif').show()
+  })
+  
 </script>
 </body>
 </html>

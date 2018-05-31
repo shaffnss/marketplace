@@ -9,11 +9,18 @@ class Admin_dashboard extends BaseController {
 	{
 		parent::__construct();
 		$this->IsLoggedIn();
+		$this->load->model("admin_produk_model");
+		$this->load->model("admin_pembelian_model");
+		$this->load->model("admin_klien_model");
 		
 	}
  
 	public function index()
 	{
-		$this->load->view('admin/dashboard');
+		$data['produk']=$this->admin_produk_model->getProduk();
+		$data["pembelian"]=$this->admin_pembelian_model->getPembelian();
+		// $data['produk']=$this->admin_produk_model->getProdukDiterima();
+		$data["klien"]=$this->admin_klien_model->getKlien();
+		$this->load->view('admin/dashboard', $data);
 	}
 }

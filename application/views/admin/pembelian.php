@@ -41,11 +41,20 @@ $this->load->view('admin/head_admin');
 
               <?php 
               $no=1;
-              foreach ($pembelian as $item) { ?>
+              foreach ($pembelian as $item) { 
+                $pnjg = strlen($item->id);
+                if($pnjg==1){
+                  $id = 'OR00'. $item->id;
+                }elseif ($pnjg==2) {
+                  $id = 'OR0'.$item->id;
+                }else{
+                  $id = 'OR'.$item->id;
+                }
+              ?>
 
                 <tbody>
                   <tr>
-                    <td><?php echo $no ?></td>
+                    <td><?php echo $id ?></td>
                     <td><?php echo $item->nama_users; ?></td>
                     <td><?php echo $item->email; ?></td>
                     <td><?php echo $item->nama_produk; ?></td>

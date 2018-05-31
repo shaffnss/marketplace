@@ -46,7 +46,7 @@ class Anggota_uploadProduk extends CI_Controller {
 			$deskripsi_produk = $this->input->post('deskripsi_produk', true);
 			$link_demo = $this->input->post('link_demo', true);
 
-		if( ! $this->upload->do_upload('mockup_produk'))
+		if( ! $this->upload->do_upload('foto_produk'))
 		{
 			
 			$data = array(
@@ -73,7 +73,7 @@ class Anggota_uploadProduk extends CI_Controller {
 				'harga_produk' => $harga_produk,
 				'deskripsi_produk' => $deskripsi_produk,
 				'link_demo'	=> $link_demo,
-				'mockup_produk' => $mockup_produk,
+				'foto_produk' => $foto_produk,
 
 			); 
 			//$this->session->set_flashdata('message', 'Data anggota berhasil ditambahkan');
@@ -93,7 +93,7 @@ class Anggota_uploadProduk extends CI_Controller {
 		$config['file_name'] = "produk".time();
 
 		$this->load->library('upload', $config);
-		if( ! $this->upload->do_upload('mockup_produk'))
+		if( ! $this->upload->do_upload('foto_produk'))
 		{
 			$this->session->set_flashdata('error', 'Gagal upload, resolusi atau ukuran foto melebihi batas!');
 			redirect('Anggota_uploadProduk/tambah_uploadProduk');
@@ -116,7 +116,7 @@ class Anggota_uploadProduk extends CI_Controller {
 				'harga_produk' => $harga_produk,
 				'deskripsi_produk' => $deskripsi_produk,
 				'link_demo'	=> $link_demo,
-				'mockup_produk' => $mockup_produk,
+				'foto_produk' => $foto_produk,
 				'id_users' => $id_user
 			); 
 			$id_produk = $this->db->insert('produk', $data);

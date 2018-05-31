@@ -12,7 +12,12 @@ $this->load->view('anggota/head_anggota');
   <!-- Main content -->
   <section class="content">
     <div class="row">
-        <center><p style="font-size: 30px;" >Selamat Datang, <?php echo $this->session->userdata('name');?>!</p></center>
+      <div class="col-md-12">
+      <div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <center><p style="font-size: 30px;" >Selamat Datang, <?php echo $this->session->userdata('name');?>!</p></center>
+              </div>
+        </div>
 <!-- <hr style="border-width: 1px; border-color: #DDD;"> -->
       </div>
 
