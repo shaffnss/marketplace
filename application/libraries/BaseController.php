@@ -51,7 +51,29 @@ class BaseController extends CI_Controller {
 	 * This function is used to check the access
 	 */
 	function isAdmin() {
-		if ($this->role != ROLE_ADMIN) {
+		if ($this->role == 1 || $this->role == 4) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	/**
+	 * This function is used to check the access
+	 */
+	function isKlien() {
+		if ($this->role != 2) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
+	 * This function is used to check the access
+	 */
+	function isAnggota() {
+		if ($this->role != 3) {
 			return true;
 		} else {
 			return false;
@@ -73,11 +95,8 @@ class BaseController extends CI_Controller {
 	 * This function is used to load the set of views
 	 */
 	function loadThis() {
-		$this->global ['pageTitle'] = 'CodeInsect : Access Denied';
 		
-		$this->load->view ( 'includes/header', $this->global );
 		$this->load->view ( 'access' );
-		$this->load->view ( 'includes/footer' );
 	}
 	
 	/**

@@ -20,8 +20,9 @@ class Admin_pengelola_model extends CI_Model {
 	}
 
 	public function getPengelolaTidakAktif(){
+		$this->db->join("roles","roles.id_roles=users.id_roles");
 		$this->db->where("status_users","nonaktif");
-		//$this->db->order_by("nama_roles");
+		$this->db->order_by("nama_roles");
 		return $this->db->get('users')->result();
 	}
 }

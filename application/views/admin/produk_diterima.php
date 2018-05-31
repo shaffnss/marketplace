@@ -69,7 +69,7 @@ function rupiah($angka){
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-          <table id="example1" class="table table-bordered table-striped">
+          <table id="example1" class="table table-bordered table-striped datatable">
             <thead>
               <tr>
                 <th>No</th>
@@ -78,40 +78,41 @@ function rupiah($angka){
                 <th>Harga</th>
                 <th>Team Pembuat</th>
                 <th>Tampilan Produk</th>
-                <th>Link Demo</th>
+                <th>Status Proyek</th>
                 <th>Status</th>
                 <th>Aksi</th>
               </tr>
             </thead>
+              <tbody>
             <?php 
             $no=1;
             foreach ($produk as $data) {
                 # code...
 
               ?>
-              <tbody>
                 <tr>
                   <td><?php echo $no ?></td>
-                  <td><?php echo $data->nama_produk?></td>
+                  <td><a target="_blank" href="<?php echo $data->link_demo?>"><?php echo $data->nama_produk?></a></td>
                   <td><?php echo $data->nama_kategori?></td>
                   <td><?php echo rupiah($data->harga_produk)?></td>
                   <td><?php echo $data->nama_tim?></td>
                   <td>
-                    <img src="<?php echo site_url('/assets/produk/'.$data->mockup_produk); ?>" height='100px' width='100px'>
+                    <img src="<?php echo site_url('/assets/produk/'.$data->foto_produk); ?>" height='100px' width='100px'>
                   </td>
-                  <td><a class="btn-sm btn-info" href="<?php echo $data->link_demo?>" target="_blank"><i class="fa fa-link"></i></a></td>
-                  <td>
+                  <td><span class="label label-success">Diterima</span></td>
+									<td>
 										<?php 
-											if ($data->status_produk == "tersedia") {
-												echo '<span class="label label-success">Tersedia</span>';
+											if ($data->status_produk == "aktif") {
+												echo '<span class="label label-success">Aktif</span>';
 											}else{
-												echo '<span class="label label-danger">Tidak Tersedia</span>';
+												echo '<span class="label label-danger">Tidak Aktif</span>';
 											}
 										?>
                   </td>
                   <td class="text-center">
                     <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-produk"><i class="fa fa-pencil"></i>
                     </button>
+										<a onclick="return confirm('apakah anda yakin ingin menolak produk ini?'); " href="<?php echo site_url('Admin_produk/ditolak/'.$data->id_detail_produk)?>" class="btn btn-sm btn-info" style="background: #d41912; border-color: #fff"><i class="fa fa-remove"></i></a>
                   </td>
                 </tr>
 
@@ -124,52 +125,23 @@ function rupiah($angka){
                           <h4 class="modal-title">Ubah Data Produk Diterima</h4>
                         </div>
                         <div class="modal-body">
-                          <form action="" enctype="multipart/form-data" method="POST" class="form-horizontal">
+                          <form action="<?php echo site_url('Admin_produk/editProduk'); ?>" method="POST" class="form-horizontal">
                             <div class="box-body">
                               <input type="hidden" class="form-control" id="inputName" name="id_produk" value="<?php echo $data->id_produk; ?>" required>   
 
                               <div class="form-group">
-                                <label for="inputName">Nama Produk Diterima</label>
-                                <input type="text" class="form-control" id="inputName" name="nama_produk" value="<?php echo $data->nama_produk; ?>" required>
-                              </div>
-
-                              <div class="form-group">
-                                <label for="inputPrice">Harga</label><input type="number" class="form-control" name="harga_produk" value="<?php echo $data->harga_produk; ?>" required="">
-                              </div>
-
-                              <div class="form-group">
-                                <label >Jenis Produk Diterima</label>
-                                <select class="form-control" name="jenis_produk" value="<?php echo $data->jenis_produk; ?>">
-                                  <?php foreach ($kategori as $kategoris) {?>
-																	<option value="<?php echo $kategoris->id_kategori ?>" <?php if($data->id_kategori == $kategoris->id_kategori) {echo "selected";} ?>><?php echo $kategoris->nama_kategori?></option>
-																	<?php } ?>
-                                </select>              
-                              </div>
-
-                              <div class="form-group">
-                                <label for="inputName">Deskripsi Produk Diterima</label>          
-                                <textarea class="form-control" name="deskripsi_produk"><?php echo $data->deskripsi_produk; ?>
-                                </textarea>                
-                              </div>
-
-                              <div class="form-group">
-                                <label for="inputEmail">Link Demo</label>
-                                <input type="text" class="form-control" name="link_demo" value="<?php echo $data->link_demo; ?>" required="">
-                              </div>
-
-                              <div class="form-group">
-                                <label for="inputEmail">Mockup</label>                
-                                <input type="file" name="mockup_produk" value="<?php echo $data->mockup_produk; ?> required="">               
+                                <label for="inputName">Nama Produk</label>
+                                <p><?php echo $data->nama_produk; ?></p>
                               </div>
 
                               <div class="form-group">
                                 <label for="produk">Status</label>
                                     <div class="radio">
                                       <label>
-                                        <input type="radio" name="status_produk" id="optionsAktif" value="Aktif" checked>Aktif
+                                        <input <?php echo ($data->status_produk=='aktif' ? 'checked' : '') ?> type="radio" name="status_produk" id="optionsAktif" value="aktif" >Aktif
                                       </label>
                                       <label>
-                                        <input type="radio" name="status_produk" id="optionsTdkAktif" value="Tidak Aktif">Tidak Aktif
+                                        <input <?php echo ($data->status_produk=='nonaktif' ? 'checked' : '') ?> type="radio" name="status_produk" id="optionsTdkAktif" value="nonaktif">Tidak Aktif
                                       </label>
                                     </div>
                               </div>
@@ -178,7 +150,7 @@ function rupiah($angka){
 
                           <div class="modal-footer">
                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <input type="submit" class="btn btn-primary" value="Simpan">
                           </div>
                         </form>
                       </div>

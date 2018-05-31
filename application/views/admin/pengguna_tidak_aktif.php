@@ -64,6 +64,7 @@ $this->load->view('admin/head_admin');
               <th>Instansi</th>
               <th>No Telfon</th>
               <th>E-mail</th>
+              <th>Roles</th>
               <th>Status</th>
               <th>Aksi</th>
             </tr>
@@ -84,6 +85,16 @@ $this->load->view('admin/head_admin');
                 <td><?php echo $data->instansi?></td>
                 <td><?php echo $data->no_telpon?></td>
                 <td><?php echo $data->email?></td>
+                <td>
+									<?php if($data->id_roles==1) {
+                    ?>
+                    <span class="label label-danger">Pengelola</span>
+										<?php }else if($data->id_roles==2){ ?>
+                    <span class="label label-warning">Klien</span>
+                  <?php }else{ ?>
+                    <span class="label bg-blue">Anggota</span>
+                  <?php }?>
+								</td>
                 <td>
                   <?php if($data->status_users=='aktif') {
                     ?>

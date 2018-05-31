@@ -23,7 +23,7 @@ $this->load->view('admin/head_admin');
           </div>
 
           <div class="box-body">
-            <table id="example1" class="table table-bordered table-striped">
+            <table id="example1" class="table table-bordered table-striped datatable">
               <thead>
                 <tr>
                   <th>No</th>
@@ -61,19 +61,9 @@ $this->load->view('admin/head_admin');
                     <td><?php echo $item->harga; ?></td>
                     <td><?php echo $item->tgl_pembelian; ?></td>
                     <td><?php echo $item->bukti_pembayaran; ?></td>
-                    <td><?php echo $item->bukti_terima; ?></td>
+                    <td><?php  ?></td>
                     <td>
-                      <?php 
-                      if($item->status_pembelian=="proses"){ 
-                        ?>
-                        <span class="label label-warning">Proses</span>
-                        <?php 
-                      }else{ 
-                        ?>
-                        <span class="label label-success">Selesai</span>
-                        <?php 
-                      }
-                      ?>
+                      <span class="label label-warning">Proses</span>
                     </td>
                     <td>
                       <div>
