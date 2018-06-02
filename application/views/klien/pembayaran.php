@@ -56,7 +56,7 @@ function rupiah($angka){
 
                 <tbody>
                   <tr>
-                    <td>KODE PEMBELIAN</td>
+                    <td><?php echo $item->kode_pembelian ?></td>
                     <td><?php echo $item->nama_produk ?></td>
                     <td><?php echo rupiah($item->harga_produk)?></td>
                     <td><?php echo $item->nama_kategori ?></td>

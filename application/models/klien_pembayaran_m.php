@@ -14,8 +14,7 @@ class klien_pembayaran_m extends CI_Model {
 		$this->db->join("perjanjian","perjanjian.id_pembelian=pembelian.id_pembelian");
 		$this->db->join("kategori_perjanjian","kategori_perjanjian.id_kategori=perjanjian.id_kategori");
 		$this->db->join("detail_produk","detail_produk.id_produk=produk.id_produk");
-		$this->db->join("detail_tim","users.id_users=detail_tim.id_users");
-		$this->db->join("tim","tim.id_tim=detail_tim.id_tim");
+		$this->db->join("tim","tim.id_tim=detail_produk.id_tim");
 		$this->db->where("pembelian.status_pembelian","proses");
 		return $this->db->get()->result();
 	}
