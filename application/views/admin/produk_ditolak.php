@@ -20,13 +20,13 @@ function rupiah($angka){
    </ol>
  </section>
 
- <section class="content-header">
+ <!-- <section class="content-header">
   <div>
     <a href="<?php echo site_url('Admin_produk/tambahProduk')?>" type="button" class="btn btn-warning" >
       <i class="glyphicon glyphicon-plus"></i> Tambah Produk
     </a>
   </div> 
-</section>
+</section> -->
 
 <!-- Main content -->
 <section class="content">
@@ -73,12 +73,12 @@ function rupiah($angka){
             <thead>
               <tr>
                 <th>No</th>
-                <th>Nama Produk</th>
-                <th>Jenis Sistem</th>
-                <th>Harga</th>
-                <th>Team Pembuat</th>
-                <th>Tampilan Produk</th>
-                <th>Status Proyek</th>
+               <th>Nama Produk</th>
+                  <th>Jenis Sistem</th>
+                  <th>Harga</th>
+                  <th>Team Pembuat</th>
+                  <th>Link Demo</th>
+                  <th>Status Penerimaan</th>
                 <th>Status</th>
                 <th>Aksi</th>
               </tr>
@@ -96,9 +96,12 @@ function rupiah($angka){
                   <td><?php echo $data->nama_kategori?></td>
                   <td><?php echo rupiah($data->harga_produk)?></td>
                   <td><?php echo $data->nama_tim?></td>
-                  <td>
+                   <td>
+                      <a href="<?php echo $data->link_demo?>" type="button" class="btn btn-sm btn-primary" href><i class="fa fa-link" style="color: #fff"></i></a>
+                    </td>
+                 <!--  <td>
                     <img src="<?php echo site_url('/assets/produk/'.$data->foto_produk); ?>" height='100px' width='100px'>
-                  </td>
+                  </td> -->
                   <td><span class="label label-danger">Ditolak</span></td>
 									<td>
 										<?php 
@@ -110,9 +113,11 @@ function rupiah($angka){
 										?>
                   </td>
                   <td class="text-center">
-                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-produk"><i class="fa fa-pencil"></i>
+                    <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ubah-produk<?php echo $data->id_produk; ?>" onclick="ubah-produk"><i class="fa fa-edit">Edit</i>
                     </button>
-                    <a href="<?php echo site_url('Admin_produk/diterima/'.$data->id_detail_produk)?>" class="btn btn-sm btn-info" style="background: #4e9e02; border-color: #fff"><i class="fa fa-check"></i></a>
+                    <a href="<?php echo site_url('Admin_produk/diterima/'.$data->id_detail_produk)?>" class="btn btn-sm btn-info" style="background: #4e9e02; border-color: #fff"><i class="fa fa-check"></i>Terima</a>
+                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#lihat-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff"><i class="fa fa-eye"></i>Lihat
+                    </button>
 										</td>
                 </tr>
 
@@ -159,6 +164,66 @@ function rupiah($angka){
                     <!-- /.modal-dialog -->
                   </div>
                   <!-- /.modal -->
+
+                   <!-- Modal Detail Produk -->
+                    <div class="modal fade" id="lihat-produk<?php echo $data->id_produk; ?>">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span></button>
+                              <h4 class="modal-title">Detail <?php echo $data->nama_produk; ?></h4>
+                            </div>
+                            <div class="modal-body">
+                              <!--  <form action="<?php //echo site_url('Admin_pembelian/ubahPembelian') ?>" enctype="multipart/form-data" method="POST" class="form-horizontal"> -->
+                                <div class="box-body">
+                                  <div class="form-group">
+                                    <label for="inputName">ID Produk</label>
+                                    <input type="text" class="form-control" id="inputName" name="id_produk" value="<?php echo $data->id_produk; ?>" required>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="inputName">Nama Produk</label>
+                                    <p class="form-control" name="nama_produk"><?php echo $data->nama_produk; ?></p>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="inputName">Harga Produk</label>
+                                    <p class="form-control" name="harga_produk"><?php echo rupiah($data->harga_produk)?></p>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="inputName">Nama Tim</label>
+                                    <p class="form-control" name="nama_tim"><?php echo $data->nama_tim; ?></p>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="inputName">Deskripsi Produk</label>
+                                    <textarea class="form-control" name="nama_klien"><?php echo $data->deskripsi_produk; ?></textarea>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="inputName">Link Demo</label>
+                                    <a target="_blank" class="form-control" href="<?php echo $data->link_demo?>"></a>
+                                  </div>
+                                  
+                                  <div class="form-group">
+                                    <label for="inputName">Foto Produk</label>
+                                    <img src="<?php echo site_url('/assets/produk/'.$data->foto_produk); ?>" height='100px' width='100px'>
+                                  </div>                        
+                                </div>
+                              </div>
+
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                              </div>
+                            </form>
+                          </div>
+                          <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                      </div>
+                      <!-- /.modal -->
                   <?php 
                   $no++; }
                   ?>

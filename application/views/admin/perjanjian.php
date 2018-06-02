@@ -32,7 +32,7 @@ $this->load->view('admin/head_admin');
                 <th>Kategori Perjanjian</th>
                 <th>Keterangan</th>
                 <th>Status Pembelian</th>
-                <th>File</th>
+                <th>File Perjanjian</th>
                 <th>Upload File</th>
               </tr>
             </thead>
@@ -48,17 +48,17 @@ $this->load->view('admin/head_admin');
                   <td><?php echo $no ?></td>
                   <td><?php echo $data->nama_users?></td>
                   <td><?php echo $data->nama_produk?></td>
-                  <td><?php echo $data->nama_kategori?></td>
+                  <td><?php echo $data->nama_perjanjian?></td>
                   <td><?php echo $data->keterangan?></td>
                   <td>
                     <?php 
-                      if($item->status_pembelian=="proses"){ 
+                      if($data->status_pembelian=="proses"){ 
                     ?>
                     <span class="label label-warning">Proses</span>
                     <?php
                       }else{
                     ?>
-                    <span class="label label-success">Terbayar</span>
+                    <span class="label label-success">Selesai</span>
                     <?php 
                       }
                     ?>
@@ -80,21 +80,25 @@ $this->load->view('admin/head_admin');
                             <h4 class="modal-title">Unggah File Perjanjian</h4>
                           </div>
 
+                          <form action="<?php echo site_url('Admin_perjanjian/unggahPerjanjian') ?>" enctype="multipart/form-data" method="POST" class="form-horizontal">
                           <div class="modal-body">
                             <div class="box-body">
-
                               <div class="form-group">
                                 <label for="exampleInputFile">Unggah File</label>
-                                <input type="file" id="exampleInputFile">
+                                <input type="file" name="file_perjanjian">
+                                <input type="hidden" name="id_pembelian" value="<?php echo $data->id_pembelian ?> ">
 
                                 <p class="help-block">Example block-level help text here.</p>
                               </div>
+                            </div>
+                          </div>
 
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
                                 <input type="submit" name="Unggah" class="btn btn-warning" value="Unggah">
                               </div>
                             </div>
+                            </form>
                           </div>
                           <!-- /.modal-content -->
                         </div>

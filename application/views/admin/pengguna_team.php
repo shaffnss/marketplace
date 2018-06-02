@@ -28,7 +28,7 @@ $this->load->view('admin/head_admin');
             <h4 class="modal-title">Tambah Nama Tim</h4>
           </div>
 
-          <form class="form-horizontal" method="post" action="<?php echo site_url('Admin_team/inputTeam') ?>">
+          <form class="form-horizontal" method="post" action="<?php echo site_url('Admin_team/inputNamaTeam') ?>">
             <div class="modal-body">
               <form action="" method="post" class="form-horizontal">
                 <div class="box-body">

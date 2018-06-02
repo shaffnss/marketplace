@@ -83,7 +83,7 @@ $this->load->view('admin/head_admin');
                     <td>
                       <div>
                         <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ubah-data<?php echo $data['id_users']; ?>"><i class="fa fa-edit"></i></button>
-                        <button type="button" onclick="reset_password(<?php echo $data['id_users']; ?>)" class="btn btn-sm btn-warning" style="background: #d41912; border-color: #fff"><i class="fa fa-refresh"></i>Reset</button> 
+                       <!--  <button type="button" onclick="reset_password(<?php echo $data['id_users']; ?>)" class="btn btn-sm btn-warning" style="background: #d41912; border-color: #fff"><i class="fa fa-refresh"></i>Reset</button>  -->
                       </div>   
                     </td>
                   <?php }?>
@@ -181,7 +181,7 @@ $this->load->view('admin/head_admin');
       $this->load->view('admin/foot_admin');
       ?>
 
-      <script type="text/javascript">
+    <!--   <script type="text/javascript">
         function reset_password(id){
           if(confirm('Apakah anda yakin akan reset password ?')){
 
@@ -203,4 +203,4 @@ $this->load->view('admin/head_admin');
             });
           }
         }
-      </script>
+      </script> -->

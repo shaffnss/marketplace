@@ -19,7 +19,7 @@ class Admin_dashboard extends BaseController {
 	{
 		$data['produk']=$this->admin_produk_model->getProduk();
 		$data["pembelian"]=$this->admin_pembelian_model->getPembelian();
-		// $data['produk']=$this->admin_produk_model->getProdukDiterima();
+		$data['produkDiterima']=$this->admin_produk_model->getProdukDiterima();
 		$data["klien"]=$this->admin_klien_model->getKlien();
 		$this->load->view('admin/dashboard', $data);
 	}

@@ -35,7 +35,7 @@ class Admin_produk extends BaseController {
 		}
 		else
 		{
-			$data['produk']=$this->admin_produk_model->getProdukDiterima();
+			$data['produkDiterima']=$this->admin_produk_model->getProdukDiterima();
 			$data['kategori']=$this->admin_produk_model->getKategori();
 			$this->load->view('admin/produk_diterima',$data);
 		}
