@@ -5,10 +5,11 @@ class Admin_perjanjian_model extends CI_Model {
 	public function getPerjanjian(){
 		$this->db->select("*");
 		$this->db->from("perjanjian");
-		$this->db->join("kategori_perjanjian","kategori_perjanjian.id_kategori=perjanjian.id_kategori");
-		$this->db->join("pembelian","pembelian.id_pembelian=perjanjian.id_pembelian");
+		$this->db->join("kategori_perjanjian","kategori_perjanjian.id_kategori=perjanjian.id_kategori", "left");
+		$this->db->join("pembelian","pembelian.id_pembelian=perjanjian.id_pembelian", "right");
 		$this->db->join("detail_pembelian","pembelian.id_pembelian=detail_pembelian.id_pembelian");
 		$this->db->join("produk","produk.id_produk=detail_pembelian.id_produk");
+		$this->db->join("users","pembelian.id_users=users.id_users");
 		return $this->db->get()->result();
 	}
 
@@ -21,6 +22,14 @@ class Admin_perjanjian_model extends CI_Model {
 	public function insertKategori($kategori){
 		$this->db->trans_start();
 		$this->db->insert('kategori_perjanjian',$kategori);
+		$insert_id = $this->db->insert_id();
+		$this->db->trans_complete();
+		return $insert_id;
+	}
+
+	public function insertPerjanjian($perjanjian){
+		$this->db->trans_start();
+		$this->db->insert('perjanjian',$perjanjian);
 		$insert_id = $this->db->insert_id();
 		$this->db->trans_complete();
 		return $insert_id;

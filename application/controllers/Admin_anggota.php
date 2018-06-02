@@ -8,7 +8,7 @@ class Admin_anggota extends CI_Controller {
 		parent::__construct();
 		$this->load->model("admin_anggota_model");
 	}
- 
+
 	public function index()
 	{
 		$data["anggota"]=$this->admin_anggota_model->getAnggota();
@@ -21,13 +21,13 @@ class Admin_anggota extends CI_Controller {
 		$this->load->view('admin/pengguna_anggota_tambah');
 	}
 
-	public function reset($id){
-		$this->load->helper('string');
-		$reset=random_string('alnum',8);
-		$this->db->where('id_users',$id);
-		$this->db->update('users', array('password'=>PASSWORD_HASH($reset,PASSWORD_DEFAULT)));
-		echo json_encode(array("status" => true, 'data'=>$reset));
-	}
+	// public function reset($id){
+	// 	$this->load->helper('string');
+	// 	$reset=random_string('alnum',8);
+	// 	$this->db->where('id_users',$id);
+	// 	$this->db->update('users', array('password'=>PASSWORD_HASH($reset,PASSWORD_DEFAULT)));
+	// 	echo json_encode(array("status" => true, 'data'=>$reset));
+	// }
 
 	public function inputAnggota()
 	{
@@ -126,9 +126,50 @@ class Admin_anggota extends CI_Controller {
 				"foto"=> $foto
 			);
 		}
-			$id_users= $this->input->post('id_users');
-			$this->db->where('id_users',$id_users);
-			$this->db->update('users',$anggota);
-			redirect('Admin_anggota');
+		$id_users= $this->input->post('id_users');
+		$this->db->where('id_users',$id_users);
+		$this->db->update('users',$anggota);
+		redirect('Admin_anggota');
+	}
+
+	public function posisi_tim(){
+		$data["posisi"]=$this->admin_anggota_model->getPosisi();
+		$this->load->view('admin/pengguna_posisi_tim',$data);
+	}
+
+	public function inputPosisi(){
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('nama_posisi','nama posisi','required');
+		if($this->form_validation->run() == FALSE)
+		{
+			redirect('Admin_anggota/posisi_tim');
 		}
+		else
+		{
+			$nama_posisi = $this->input->post('nama_posisi');
+
+			$data =  array(
+				"nama_posisi"=>$nama_posisi,
+			);
+
+			$result = $this->admin_anggota_model->insertPosisi($data);
+
+		}
+
+		redirect('Admin_anggota/posisi_tim');
+	}
+
+	public function ubahPosisi(){
+		$id_posisi = $this->input->post('id_posisi');
+		$nama_posisi = $this->input->post('nama_posisi');
+		$status_posisi = $this->input->post('status_posisi');
+
+		$data=array(
+			'nama_posisi'=>$nama_posisi,
+			"status_posisi"=>$status_posisi
+		);
+		$this->db->where('id_posisi',$id_posisi);
+		$this->db->update('posisi_tim',$data);
+		redirect('Admin_anggota/posisi_tim');
+	}
 }

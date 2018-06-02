@@ -73,21 +73,11 @@ $this->load->view('admin/head_admin');
                 </div>
               </div>
 
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Status Mahasiswa</label>
-                <div class="col-sm-8">            
-                  <select class="form-control" name="posisi" required="">
-                    <option disabled selected="">---Pilih Status Mahasiswa---</option>
-                    <option value="mahasiswa">Mahasiswa</option>
-                    <option value="alumni">Alumni</option>
-                  </select>
-                </div>
-              </div>
 
               <div class="form-group">
                 <label for="inputExperience" class="col-sm-2 control-label">Password</label>
                 <div class="col-sm-8">
-                 <input type="text" class="form-control" name="password" placeholder="Password" value="<?php echo set_value("password") ?>" required="">
+                 <input type="password" class="form-control" name="password" placeholder="Password" value="<?php echo set_value("password") ?>" required="">
                </div>
              </div>
 

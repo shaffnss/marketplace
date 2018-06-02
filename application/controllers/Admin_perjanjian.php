@@ -22,17 +22,17 @@ class Admin_perjanjian extends CI_Controller {
 
 	public function inputKategori(){
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('nama_kategori','nama kategori','required');
+		$this->form_validation->set_rules('nama_perjanjian','nama perjanjian','required');
 		if($this->form_validation->run() == FALSE)
 		{
 			redirect('Admin_perjanjian/kategori_perjanjian');
 		}
 		else
 		{
-			$nama_kategori = $this->input->post('nama_kategori');
+			$nama_perjanjian = $this->input->post('nama_perjanjian');
 
 			$data =  array(
-				"nama_kategori"=>$nama_kategori,
+				"nama_perjanjian"=>$nama_perjanjian,
 			);
 
 			$result = $this->admin_perjanjian_model->insertKategori($data);
@@ -42,13 +42,42 @@ class Admin_perjanjian extends CI_Controller {
 		redirect('Admin_perjanjian/kategori');
 	}
 
+	public function unggahPerjanjian(){
+			$config['upload_path']          = './assets/file/';
+			$config['allowed_types']        = 'pdf';
+			$config['max_size']             = 34000;
+			$config['max_width']            = 1024;
+			$config['max_height']           = 1024;
+
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+			if( ! $this->upload->do_upload('file_perjanjian'))
+			{
+				echo 'Gagal upload, resolusi atau ukuran foto melebihi batas!';
+			}else{
+				$file_perjanjian = $this->upload->data();
+				$id_pembelian = $this->input->post('id_pembelian', true);
+				$file_perjanjian = $file_perjanjian['file_name'];
+
+				$data = array(
+					'id_pembelian'=>$id_pembelian,
+					'file_perjanjian'=>$file_perjanjian,
+				); 
+
+				$id_perjanjian = $this->admin_perjanjian_model->insertPerjanjian($data);
+				
+				$this->session->set_flashdata('message', 'File berhasil ditambahkan');
+				redirect('Admin_perjanjian');
+	}
+}
+
 	public function ubahKategori(){
 		$id_kategori = $this->input->post('id_kategori');
-		$nama_kategori = $this->input->post('nama_kategori');
+		$nama_perjanjian = $this->input->post('nama_perjanjian');
 		$status = $this->input->post('status');
 
 		$data=array(
-			'nama_kategori'=>$nama_kategori,
+			'nama_perjanjian'=>$nama_perjanjian,
 			"status"=>$status
 		);
 		$this->db->where('id_kategori',$id_kategori);

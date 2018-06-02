@@ -15,21 +15,17 @@ class Admin_team extends CI_Controller {
 		$this->load->view('admin/pengguna_team',$data);
 	}
 
-	public function tambah_team()
-	{
-		$data['panggil_anggota']=$this->admin_team_model->getAnggota(); //panggil dari db
-		$this->load->view('admin/pengguna_team_tambah',$data);
-	}
 
 	public function ubah_team($id_team)
 	{
 		$data['panggil_anggota']=$this->admin_team_model->getAnggota(); //panggil dari db
 		$data['anggotaTim']=$this->admin_team_model->getAnggotaTim($id_team); //panggil dari db
 		$data['tim']=$this->admin_team_model->tim($id_team);
+		$data['posisi']=$this->admin_team_model->getPosisi($id_team);
 		$this->load->view('admin/pengguna_team_ubah',$data);
 	}
 
-	public function inputTeam() //MENGINPUTKAN NAMA TIM KE VIEW
+	public function inputNamaTeam() //MENGINPUTKAN NAMA TIM KE VIEW
 	{
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nama_tim','nama tim','required');
@@ -57,12 +53,12 @@ class Admin_team extends CI_Controller {
 	{
 		$id_tim = $this->input->post('id_tim');
 		$id_users = $this->input->post('id_users');
-		$posisi_tim = $this->input->post('posisi_tim');
+		$id_posisi = $this->input->post('id_posisi');
 
 		$data=array(
 			'id_tim'=>$id_tim,
 			'id_users'=>$id_users,
-			'posisi_tim'=>$posisi_tim
+			'id_posisi'=>$id_posisi
 		);
 		$this->db->insert('detail_tim',$data);
 

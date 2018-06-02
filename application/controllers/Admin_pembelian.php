@@ -23,19 +23,6 @@ class Admin_pembelian extends BaseController {
 		}
 	}
 	
-	public function pembelian_selesai()
-	{
-		if($this->isAdmin() == TRUE)
-		{
-			$this->loadThis();
-		}
-		else
-		{
-			$data["pembelian"]=$this->admin_pembelian_model->getPembelianSelesai();
-			$this->load->view('admin/pembelian_selesai',$data);
-		}
-	}
-
 
 	public function ubahStatus($id_pembelian) 
 	{
@@ -64,7 +51,7 @@ class Admin_pembelian extends BaseController {
 		else
 		{
 			$data["pembelian"]=$this->admin_pembelian_model->getPembelianSelesai();
-			$this->load->view('admin/pembelian',$data);
+			$this->load->view('admin/pembelian_selesai',$data);
 		}
 	}
 }

@@ -57,7 +57,7 @@ $this->load->view('admin/head_admin');
 								<tr>
 									<th>No</th>
 									<th>Nama Anggota</th>
-									<th>Posisi</th>													
+									<th>Posisi</th>												
 									<th>Aksi</th>
 								</tr>
 							</thead>
@@ -75,7 +75,7 @@ $this->load->view('admin/head_admin');
 											<?php echo $data->nama_users ?>
 										</td>
 										<td>
-											<?php echo $data->posisi_tim ?>	
+											<?php echo $data->nama_posisi ?>	
 										</td>
 										<td>
 											<a href="<?php echo site_url('Admin_team/hapusAnggota/'.$data->id_detail_tim.'/'.$data->id_tim) ?>" class="btn btn-danger"><i class="fa fa-remove"></i></a> 
@@ -99,13 +99,11 @@ $this->load->view('admin/head_admin');
 											</select>
 										</td>
 										<td>
-											<select class="form-control select2 posisi" style="width: 60%;" name="posisi_tim" required="">
+											<select class="form-control select2 posisi" style="width: 60%;" name="id_posisi" required="">
 												<option value="">Pilih Posisi</option>
-												<option value="Project Manager">Project Manager</option>
-												<option value="UI/UX Designer">UI/UX Designer</option>
-												<option value="Front End">Front End</option>
-												<option value="Back End">Back End</option>
-												<option value="Database Analyst">Database Analyst</option>
+												<?php foreach ($posisi as $value) { ?>
+													<option value="<?php echo $value->id_posisi ?>"><?php echo $value->nama_posisi ?></option>
+												<?php } ?>
 											</select>
 										</td>
 										<td>

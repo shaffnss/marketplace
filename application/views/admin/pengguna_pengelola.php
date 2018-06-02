@@ -72,7 +72,8 @@ $this->load->view('admin/head_admin');
 
                       <td>
                         <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ubah-pengelola<?php echo $data->id_users; ?>"><i class="fa fa-edit"></i>
-                        </button>   
+                        </button> 
+                        <a onclick="return confirm('apakah anda ingin mendelegasikan roles superadmin?'); " href="<?php //echo site_url('Admin_produk/ditolak/'.$data->id_detail_produk)?>" class="btn btn-sm btn-info" style="background: #4e9e02; border-color: #fff"><i class="fa fa-user"></i>Delegasikan</a>  
                       </td>
                   </tr>
 

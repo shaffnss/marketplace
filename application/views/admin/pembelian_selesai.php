@@ -30,11 +30,10 @@ $this->load->view('admin/head_admin');
                   <th>Nama Klien</th>
                   <th>Instansi</th>
                   <th>Produk</th>
-                  <th>Jumlah</th>
-                  <th>Total Harga</th>
+                  <th>Harga</th>
                   <th>Tanggal Pembelian</th>
                   <th>Bukti Pembayaran</th>
-                  <th>Bukti Terima</th>
+                  <th>File Perjanjian</th>
                   <th>Status</th>
                 </tr>
               </thead>
@@ -49,11 +48,10 @@ $this->load->view('admin/head_admin');
                     <td><?php echo $item->nama_users; ?></td>
                     <td><?php echo $item->instansi; ?></td>
                     <td><?php echo $item->nama_produk; ?></td>
-                    <td><?php  ?></td>
-                    <td><?php  ?></td>
+                    <td><?php echo $item->harga_produk  ?></td>
                     <td><?php echo $item->tgl_pembelian; ?></td>
                     <td><?php echo $item->bukti_pembayaran; ?></td>
-                    <td><?php  ?></td>
+                    <td><?php echo $item->file_perjanjian; ?></td>
                     <td>
                       <span class="label label-success">Selesai</span>
                     </td>

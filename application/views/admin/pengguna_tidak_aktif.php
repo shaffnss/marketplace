@@ -79,7 +79,7 @@ $this->load->view('admin/head_admin');
             ?>
               <tr>
                 <td><?php echo $no ?></td>
-                <td><img src="<?php echo site_url('/assets/users/klien/').$data->foto ?>" class="img-responsive" style="height: 100px; width: 100px"></td>
+                <td><img src="<?php echo site_url('/assets/users/klien/').$data->foto ?>" class="img-responsive" style="height: 80px; width: 80px"></td>
                 <td><?php echo $data->nama_users?></td>
                 <td><?php echo $data->jenis_kelamin?></td>
                 <td><?php echo $data->instansi?></td>
@@ -88,7 +88,7 @@ $this->load->view('admin/head_admin');
                 <td>
 									<?php if($data->id_roles==1) {
                     ?>
-                    <span class="label label-danger">Pengelola</span>
+                    <span class="label label-info">Pengelola</span>
 										<?php }else if($data->id_roles==2){ ?>
                     <span class="label label-warning">Klien</span>
                   <?php }else{ ?>
@@ -108,7 +108,7 @@ $this->load->view('admin/head_admin');
                   if ($this->session->userdata('role')== 4){
                     ?>
                 <td>
-                  <a onclick="return confirm('Apakah Anda yakin akan mengaktifkan kembali user ini?'); " class="btn-sm btn-success" href="<?php echo site_url('Admin_pengelola/aktifkan/'.$data->id_users) ?>"><i class="fa fa-check"></i> Aktifkan</a>
+                  <a onclick="return confirm('Apakah Anda yakin akan mengaktifkan kembali user ini?'); " class="btn-sm btn-success" href="<?php echo site_url('Admin_pengelola/aktifkan/'.$data->id_users) ?>"><i class="fa fa-check"></i>Aktifkan</a>
                 </td>
                 <?php }?>
               </tr>    

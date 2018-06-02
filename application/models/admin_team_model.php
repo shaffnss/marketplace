@@ -26,9 +26,15 @@ class Admin_team_model extends CI_Model {
 	public function getAnggotaTim($id_team){
 		$this->db->join('users','users.id_users=detail_tim.id_users');
 		$this->db->join('tim','tim.id_tim=detail_tim.id_tim');
+		$this->db->join('posisi_tim','posisi_tim.id_posisi=detail_tim.id_posisi');
 		$this->db->where("tim.id_tim",$id_team); 
 		return $this->db->get('detail_tim')->result(); //get dari DB users
 	}	
+
+	public function getPosisi($id_team){
+		$this->db->where('status_posisi', 'aktif');
+		return $this->db->get('posisi_tim')->result();
+	}
 
 	public function tim($id_team){
 		$this->db->select("*");

@@ -24,7 +24,7 @@ ANGGOTA
 16. Pemberian wewenang ke anggota tim mana yg project manager mana yg nggak [DONE] 
 17. anggota ditambah ganti photo [DONE]
 18. ubah password [DONE]
-19. dropdown kategori dari tabel produk, ketika tambah produk get foreignkey id_kategori 
+19. dropdown kategori dari tabel produk, ketika tambah produk get foreignkey id_kategori [done]
 20. LUPA PASSWORD [DONE]
 21. anggota tidak aktif dikasih label rolesnya dia [DONE]
 - edit data akun ngebug
@@ -41,14 +41,23 @@ B. di akun anggota statusnya berubah jadi disetujui [DONE]
 - ubah password admin [DONE]
 - LUPA PASSWORD [DONE]
 - tambah produk dibagian pilih kategori gak bisa ngeget nama kategorinya ketika input
-- JUMLAH ANGGOTA DI VIEW TIM BELUM KEHITUNG SESUAI JUMLAH ANGGOTA YG DIINPUTKAN 
-- BAGIAN PEMBAYARAN PEMBELIAN DI TAMBAH JOIN DGN TABEL PERJANJIAN, 
+- BAGIAN PEMBAYARAN PEMBELIAN DI TAMBAH JOIN DGN TABEL PERJANJIAN [DONE] 
 - UBAH VIEW PEMBAYARAN PEMBELIAN TAMBAH KOLOM FILE PERJANJIAN DAN AKSI UPLOAD FILE PERJANJIAN TRUS UNTUK GAMBAR BUKTI PEMBAYARAN DAN PERJANJIAN DI VIEWNYA DITAMPILKAN GAMBAR ICON PDF SBG TANDA FILE UDAH ADA  
 - TAMBAH MENU KATEGORI PERJANJIAN DI ADMIN UNTUK INPUT JENIS JENIS PERJANJIAN [DONE]
-- TAMBAH MENU PERJANJIAN PEMBELIAN UNTUK UPLOAD FILE PERJANJIAN YANG DIBUAT ADMIN, UDAH COBA DIKODING TAPI BELUM NGE GET DATANYA
+- TAMBAH MENU PERJANJIAN PEMBELIAN UNTUK UPLOAD FILE PERJANJIAN YANG DIBUAT ADMIN, UDAH COBA DIKODING TAPI BELUM NGE GET DATANYA [DONE]
 - id dari produk adalah kombinasi string dan numeric, stringnya berupa 2 digit huruf sbg inisial jenis sistemnya sedangkan numericnya berupa int yg diambil dari id autoincrement dari tabel produk
 - begitu juga untuk pembelian
-- tambah field di tabel pembelian namanya kode pembelian dan di tabel produk
+- tambah field di tabel pembelian namanya kode pembelian dan di tabel produk [DONE]
+- superadmin wewenang utamanya tambah admin,superadmin itu cuma satu orang dan untuk mengantisipasi jika superadmin sdg dlm kondisi tdk bisa mengakses sistem 
+pake cara delegasi, jadi di bagian admin tambah edit pengelolanya semacam ditambah satu button namanya button delegasi dur, jadi ketika tombol itu di klik rolesnya superadmin dan si pengelola itu bakal tukeran 
+shg si pengelola yg dipilih jadi superadmin sementara, nah nanti kalo superadmin aslinya mau balik lagi, rolesnya bisa dibalikin spt semula 
+-  jenis jenis perjanjian jual lepas sama trial [DONE]
+- IMPORT EXCEL UNTUK TAMBAH ANGGOTA DI TIM DAN DI ANGGOTA
+- jenis posisi anggota dinamis [done]
+- bagian search itu sesuai dgn rembugan awal tapi ditambah search sesuai range harga
+- edit bagian tambah anggota [DONE]
+- di menu tim bagian jumlah anggota belum sesuai dengan jumlah anggota yg diinputkan dan belum di join sama tabel posisi 
+- perjanjian upload filenya belom bisa [DONE]
 
 System : 
 - pengaturan session yang sedang login. anggota hanya bisa login pada halaman anggota, begitu jga klien dan admin.

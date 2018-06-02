@@ -63,7 +63,7 @@ $this->load->view('admin/head_admin');
 
             <div class="info-box-content">
               <span class="info-box-text">Produk Diterima</span>
-              <span class="info-box-number"><!-- <?php //echo sizeof($produk);?> --></span>
+              <span class="info-box-number"><?php echo sizeof($produkDiterima);?></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -88,21 +88,7 @@ $this->load->view('admin/head_admin');
 			
 			<br>
 
-			<!-- Custom tabs (Charts with tabs)-->
-          <div class="nav-tabs-custom">
-            <!-- Tabs within a box -->
-            <ul class="nav nav-tabs pull-right">
-              <li class="active"><a href="#revenue-chart" data-toggle="tab">Area</a></li>
-              <li><a href="#sales-chart" data-toggle="tab">Donut</a></li>
-              <li class="pull-left header"><i class="fa fa-inbox"></i> Grafik Penjualan</li>
-            </ul>
-            <div class="tab-content no-padding">
-              <!-- Morris chart - Sales -->
-              <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
-              <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
-            </div>
-          </div>
-          <!-- /.nav-tabs-custom -->
+			
 
           <br>
 			<div class="row">

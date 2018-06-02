@@ -53,7 +53,6 @@ class Admin_klien extends CI_Controller {
 				"jenis_kelamin"=>$jenis_kelamin,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
-				"posisi"=>"klien",
 				"email"=>$email,
 				'foto'=>$foto,
 				"password"=>PASSWORD_HASH($password,PASSWORD_DEFAULT)

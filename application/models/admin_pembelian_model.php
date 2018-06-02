@@ -9,6 +9,8 @@ class Admin_pembelian_model extends CI_Model {
 		$this->db->join("roles","roles.id_roles=users.id_roles");
 		$this->db->join("detail_pembelian","pembelian.id_pembelian=detail_pembelian.id_pembelian");
 		$this->db->join("produk","produk.id_produk=detail_pembelian.id_produk");
+		$this->db->join("kategori_produk","kategori_produk.id_kategori=produk.id_kategori");
+		$this->db->join("perjanjian","perjanjian.id_pembelian=pembelian.id_pembelian");
 		$this->db->where("pembelian.status_pembelian","proses");
 		return $this->db->get()->result();
 	}
@@ -27,6 +29,7 @@ class Admin_pembelian_model extends CI_Model {
 		$this->db->join("roles","roles.id_roles=users.id_roles");
 		$this->db->join("detail_pembelian","pembelian.id_pembelian=detail_pembelian.id_pembelian");
 		$this->db->join("produk","produk.id_produk=detail_pembelian.id_produk");
+		$this->db->join("perjanjian","perjanjian.id_pembelian=pembelian.id_pembelian");
 		$this->db->where("pembelian.status_pembelian","selesai");
 		return $this->db->get()->result();	
 	}
