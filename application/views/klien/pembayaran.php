@@ -60,7 +60,7 @@ function rupiah($angka){
                     <td><?php echo $item->nama_produk ?></td>
                     <td><?php echo rupiah($item->harga_produk)?></td>
                     <td><?php echo $item->nama_kategori ?></td>
-                    <td><img src="<?php echo site_url('/assets/bukti pembayaran').$item->bukti_pembayaran ?>" class="img-responsive" style="height: 100px; width: 100px"></td>
+                    <td><?php if(!empty($item->bukti_pembayaran)) { ?><img src="<?php echo site_url('/assets/bukti pembayaran').$item->bukti_pembayaran ?>" class="img-responsive" style="height: 100px; width: 100px"><?php } else { echo '<span class="label label-danger">Belum Upload Bukti</span>'; } ?></td>
                     <td><?php echo $item->nama_perjanjian ?></td>
                     <td>
                       <?php if($item->status_pembelian=='proses') {
