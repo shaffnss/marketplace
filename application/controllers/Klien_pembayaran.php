@@ -1,12 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-class Klien_pembayaran extends CI_Controller {
+require APPPATH . '/libraries/BaseController.php';
+class Klien_pembayaran extends BaseController {
 
 	function __construct()
 	{
 		parent::__construct();
 		$this->load->model("klien_pembayaran_m");
+		$this->isLoggedIn();
 	}
  
 	public function index()
