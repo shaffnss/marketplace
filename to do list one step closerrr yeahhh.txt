@@ -1,0 +1,16 @@
+
+1. Landing
+- Search produk (halaman landing page) berdasarkan keyword dan range harga
+- Link demo 
+- LIVE CHAT (tawk.to)
+- tampilan halaman seluruh produk
+- tampilan detail produk
+- tombol purchase (simpan di session item yang dipilih) = KLIEN KLIK PURCHASE->REGS->LOGIN->masuk ke dashboard klien, kalo klien statusnya masih login dan kembali ke halaman landing di halaman landing pojok kanan ada
+status dia sedang login 
+
+2. Klien
+- Klien = Upload pembayaran dan pilih jenis perjanjian dan isi keterangan + alert  upload sukses + tunggu konfirmasi admin (klien_pembayaran)
+-
+
+3. Anggota
+- Halaman unggah produk  

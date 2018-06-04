@@ -5,7 +5,7 @@ function rupiah($angka){
 
   $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
   return $hasil_rupiah;
-  }
+}
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -46,21 +46,21 @@ function rupiah($angka){
               </thead>
 
               <?php 
-              $no=1;
+              //$no=1;
               foreach ($pembelian as $item) { 
-              //   $pnjg = strlen($item->id);
-              //   if($pnjg==1){
-              //     $id = 'OR00'. $item->id;
-              //   }elseif ($pnjg==2) {
-              //     $id = 'OR0'.$item->id;
-              //   }else{
-              //     $id = 'OR'.$item->id;
+               $pnjg = strlen($item->id_pembelian);
+               if($pnjg==1){
+                $id = 'OR00'. $item->id_pembelian;
+              }elseif ($pnjg==2) {
+                $id = 'OR0'.$item->id_pembelian;
+              }else{
+                $id = 'OR'.$item->id_pembelian;
                 
-              ?>
+                } ?>
 
                 <tbody>
                   <tr>
-                    <td><?php echo $no ?></td>
+                    <td><?php echo $id ?></td>
                     <td><?php echo $item->nama_users; ?></td>
                     <!-- <td><?php //echo $item->email; ?></td> -->
                     <td><?php echo $item->nama_produk; ?></td>
@@ -91,51 +91,51 @@ function rupiah($angka){
                           </div>
                           <div class="modal-body">
                            <!--  <form action="<?php //echo site_url('Admin_pembelian/ubahPembelian') ?>" enctype="multipart/form-data" method="POST" class="form-horizontal"> -->
-                              <div class="box-body">
-                                <div class="form-group">
-                                  <label for="inputName">ID Produk</label>
-                                  <input type="text" class="form-control" id="inputName" name="id_pembelian" value="<?php echo $item->id_pembelian; ?>" required>
-                                </div>
+                            <div class="box-body">
+                              <div class="form-group">
+                                <label for="inputName">ID Produk</label>
+                                <input type="text" class="form-control" id="inputName" name="id_pembelian" value="<?php echo $item->id_pembelian; ?>" required>
+                              </div>
 
-                                <div class="form-group">
-                                  <label for="inputName">Nama Klien</label>
-                                  <p class="form-control" name="nama_klien"><?php echo $item->nama_users; ?></p>
-                                </div>
+                              <div class="form-group">
+                                <label for="inputName">Nama Klien</label>
+                                <p class="form-control" name="nama_klien"><?php echo $item->nama_users; ?></p>
+                              </div>
 
-                                <div class="form-group">
-                                  <label for="inputName">Instansi</label>
-                                  <p class="form-control" name="nama_klien"><?php echo $item->instansi; ?></p>
-                                </div>
+                              <div class="form-group">
+                                <label for="inputName">Instansi</label>
+                                <p class="form-control" name="nama_klien"><?php echo $item->instansi; ?></p>
+                              </div>
 
-                                 <div class="form-group">
-                                  <label for="inputName">No Telepon</label>
-                                  <p class="form-control" name="nama_klien"><?php echo $item->no_telpon; ?></p>
-                                </div>
+                              <div class="form-group">
+                                <label for="inputName">No Telepon</label>
+                                <p class="form-control" name="nama_klien"><?php echo $item->no_telpon; ?></p>
+                              </div>
 
-                                <div class="form-group">
-                                  <label for="inputName">Email</label>
-                                  <p class="form-control" name="email"><?php echo $item->email; ?></p>
-                                </div>
+                              <div class="form-group">
+                                <label for="inputName">Email</label>
+                                <p class="form-control" name="email"><?php echo $item->email; ?></p>
+                              </div>
 
-                                <div class="form-group">
-                                  <label for="inputName">Nama Produk</label>
-                                  <p class="form-control" name="email"><?php echo $item->nama_produk; ?></p>
-                                </div>
+                              <div class="form-group">
+                                <label for="inputName">Nama Produk</label>
+                                <p class="form-control" name="email"><?php echo $item->nama_produk; ?></p>
+                              </div>
 
-                                <div class="form-group">
-                                  <label for="inputName">Jenis Produk</label>
-                                  <p class="form-control" name="email"><?php echo $item->nama_kategori; ?></p>
-                                </div>
+                              <div class="form-group">
+                                <label for="inputName">Jenis Produk</label>
+                                <p class="form-control" name="email"><?php echo $item->nama_kategori; ?></p>
+                              </div>
 
-                                <div class="form-group">
-                                  <label for="inputName">Harga</label>
-                                  <p class="form-control" name="harga_produk"><?php echo rupiah($item->harga_produk)?></p>
-                                </div>
+                              <div class="form-group">
+                                <label for="inputName">Harga</label>
+                                <p class="form-control" name="harga_produk"><?php echo rupiah($item->harga_produk)?></p>
+                              </div>
 
-                                <div class="form-group">
-                                  <label for="inputName">Tanggal Pembelian</label>
-                                  <p class="form-control" name="tgl_pembelian"><?php echo $item->tgl_pembelian; ?></p>
-                                </div>
+                              <div class="form-group">
+                                <label for="inputName">Tanggal Pembelian</label>
+                                <p class="form-control" name="tgl_pembelian"><?php echo $item->tgl_pembelian; ?></p>
+                              </div>
 
                                <!--  <div class="form-group">
                                   <label for="inputName">Foto Produk</label>
@@ -167,7 +167,7 @@ function rupiah($angka){
                     </div>
                     <!-- /.modal -->
                   </tbody>
-                  <?php $no++; } ?>
+                  <?php ; } ?>
                 </table>
               </div>
               <!-- /.box-body -->

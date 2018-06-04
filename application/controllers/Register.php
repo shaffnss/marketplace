@@ -6,6 +6,7 @@ class Register extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->model("Register_model");
 	}
  
 	public function index()
@@ -25,13 +26,30 @@ class Register extends CI_Controller {
 			if ($this->form_validation->run() == FALSE) {
 				$this->load->view('register',$data,'');		
 			}else{
-				$row = array(
+				$users = array(
 					'nama_users'=>$nama,
 					'email'=>$email,
 					'id_roles' =>$level,
 					'password' =>password_hash($password, PASSWORD_DEFAULT)
 				); 
-				$this->db->insert('users', $row);
+				$id_users=$this->Register_model->createAnggota($users);
+
+			//apabila regis dengan level anggota maka akan langsung create tim di db
+			if($level == 3){
+				$tim = array(
+					'nama_tim'=>$nama,
+					'status'=>'aktif',
+					'status_tim' =>'individu',
+				); 
+				$id_tim =$this->Register_model->createTeam($tim);
+				$detail_tim = array(
+					'id_tim'=>$id_tim,
+					'id_users'=>$id_users,
+					'id_posisi' =>1,
+				); 
+				$this->db->insert('detail_tim',$detail_tim);
+			}
+
 				redirect('login');	
 			}
 		}else{

@@ -16,7 +16,7 @@ function rupiah($angka){
 
         <div class="col-lg-3">
 
-          <h1 class="my-4">VokasiDev</h1>
+          <h1 class="my-4">Produk</h1>
           <div class="list-group">
             <?php foreach ($kategoris as $kategori) : ?>
             <a href="#" class="list-group-item"><?php echo $kategori->nama_kategori ?></a>
@@ -51,9 +51,6 @@ function rupiah($angka){
                     <p class="card-text"><?php echo $produk->deskripsi_produk ?></p>
                   </div>
                   </div>
-                <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                </div>
               </div>
             </div>
      

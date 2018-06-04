@@ -62,7 +62,7 @@ $this->load->view('anggota/head_anggota');
                 <td><?php echo $data->link_demo?></td>
                 <!-- <td><?php echo $data->mockup_produk?></td> -->
                 <td>
-                  <img src="<?php echo site_url('/assets/produk/'); echo $data->mockup_produk ?>" height='100px' width='100px'>
+                  <img src="<?php echo site_url('/assets/produk/'); echo $data->foto_produk ?>" height='100px' width='100px'>
                 </td>
                 <td>
                   <span class="label label-success">Disetujui</span>
@@ -99,12 +99,11 @@ $this->load->view('anggota/head_anggota');
 
                             <div class="form-group">
                               <label >Jenis Produk</label>
-                              <select class="form-control" name="jenis_produk" value="<?php echo $data->jenis_produk; ?>">
+                              <select class="form-control" name="jenis_produk">
                                 <option disabled selected="">---Pilih Jenis Produk---</option>
-                                <option value="Website" <?php if($data->jenis_produk == "Website") {echo "selected=selected";} ?>>Website</option>
-                                <option value="Mobile Apps" <?php if($data->jenis_produk == "Mobile Apps") {echo "selected=selected";} ?>>Mobile Apps</option>
-                                <option value="Game" <?php if($data->jenis_produk == "Game") {echo "selected=selected";} ?> >Game</option>
-                                <option value="Artificial Intelegent(AI)" <?php if($data->jenis_produk == "Artificial Intelegent(AI)") {echo "selected=selected";} ?> >Artificial Intelegent(AI)</option>
+                                 <?php foreach ($kategoris as $kategori) { ?>
+                                    <option value="<?php echo $kategori->id_kategori ?>"><?php echo $kategori->nama_kategori?></option>
+                                  <?php } ?>
                               </select>              
                             </div>
 
@@ -123,21 +122,6 @@ $this->load->view('anggota/head_anggota');
                             <label for="inputEmail">Foto</label>                
                             <input type="file" name="foto_produk">
                             <img src="<?php echo site_url('/assets/produk/'); echo $data->foto_produk ?>" height='100px' width='100px'>             
-                          </div>
-
-                          <div class="form-group">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                Option one is this and that&mdash;be sure to include why it's great
-                              </label>
-                            </div>
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                                Option two can be something else and selecting it will deselect option one
-                              </label>
-                            </div>
                           </div>
                           </div>
                         </div>

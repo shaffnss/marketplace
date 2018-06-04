@@ -181,7 +181,7 @@ $this->load->model('anggota_profile_model');
                   <tr>
                     <td><?php echo $no ?></td>
                     <td><?php echo $item->nama_tim; ?></td>
-                    <td><?php echo $item->posisi_tim; ?></td>
+                    <td><?php echo $item->nama_posisi; ?></td>
                     <td>
                      <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#detail-tim<?php echo $item->id_tim; ?>">
                       Detail Anggota
@@ -205,9 +205,7 @@ $this->load->model('anggota_profile_model');
 
                             <?php 
                             $index=1;
-                            
-                            $detail_tim = $this->anggota_profile_model->getDetailTeam($item->idTim);
-                            
+                            $detail_tim=$this->anggota_profile_model->getDetailTeam($item->id_tim);
                             foreach ($detail_tim as $tim) {
                                   # code...
 
@@ -225,7 +223,7 @@ $this->load->model('anggota_profile_model');
                                         <h5><?php echo $tim->nama_users; ?></h5>
                                       </div>
                                       <div class="col-md-2">
-                                        <h5><?php echo $tim->posisi_tim; ?></h5>
+                                        <h5><?php echo $tim->nama_posisi; ?></h5>
                                       </div>
                                       <div class="col-md-3">
                                         <h5><?php echo $tim->email; ?></h5>
