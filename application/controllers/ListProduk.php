@@ -23,4 +23,14 @@ class ListProduk extends CI_Controller {
 	
 		$this->load->view('landing/DetailProduk', $data);
 	}
+	
+	public function search()
+	{
+		$nama_produk = $this->input->post('nama_produk');
+	
+		$data['produks'] = $this->listProduk_model->getNamaProduk($nama_produk);
+		$data['kategoris'] = $this->listProduk_model->getKategori();
+	
+		$this->load->view('landing/produk', $data);
+	}
 }

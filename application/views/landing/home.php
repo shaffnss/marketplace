@@ -14,10 +14,10 @@ $this->load->view('landing/head_landing');
           <!-- Slide One - Set the background image for this slide in the line below -->
           <div class="carousel-item active" style="background-image: url('<?php echo base_url('img/web-background.png') ?>'); background-size: 100%">
             <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-              <form>
+              <form role="form" method="POST" action="<?php echo site_url('ListProduk/search') ?>">
                 <div class="form-row">
                   <div class="col-12 col-md-9 mb-2 mb-md-0">
-                    <input type="text" class="form-control form-control-lg" placeholder="Search...">
+                    <input type="text" name="nama_produk" class="form-control form-control-lg" placeholder="Search...">
                   </div>
                   <div class="col-12 col-md-3">
                     <button type="submit" class="btn btn-block btn-lg btn-primary"><i class="fa fa-search"></i></button>

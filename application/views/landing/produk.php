@@ -35,6 +35,7 @@ function rupiah($angka){
         <br>
         <br>
         <br>
+					<?php if(!empty($produks)) { ?>
           <div class="row">
             <?php
               foreach ($produks as $produk) {
@@ -57,10 +58,18 @@ function rupiah($angka){
               </div>
             </div>
      
-            <?php } ?>
+            <?php }  ?>
           </div>
           <!-- /.row -->
-
+					<?php } else { ?>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="alert alert-secondary" role="alert">
+								Maaf, Produk yang anda cari tidak ditemukan.
+							</div>
+						</div>
+					</div>
+					<?php } ?>
         </div>
         <!-- /.col-lg-9 -->
 
