@@ -28,6 +28,11 @@ class klien_pembayaran_m extends CI_Model {
 		$this->db->where('id_pembelian', $id_pembelian);
 		return $this->db->get('perjanjian')->row();
 	}
+	
+	public function cekPembelian($id_pembelian){
+		$this->db->where('id_pembelian', $id_pembelian);
+		return $this->db->get('pembelian')->row();
+	}
 
 	public function insertBukti($pembelian, $id_pembelian){
 		$this->db->where('id_pembelian',$id_pembelian);

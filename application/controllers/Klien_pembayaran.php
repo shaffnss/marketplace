@@ -24,22 +24,38 @@ class Klien_pembayaran extends BaseController {
 			$config['max_size']             = 3000;
 			$config['max_width']            = 1024;
 			$config['max_height']           = 1024;
+			
+			$id_kategori = $this->input->post('nama_perjanjian');
+			$id_pembelian = $this->input->post('id_pembelian');
 
 			$this->load->library('upload', $config);
 			$this->upload->initialize($config);
 			if( ! $this->upload->do_upload('bukti_pembayaran'))
 			{
-				echo 'Gagal upload, resolusi atau ukuran foto melebihi batas!';
+				$cekPerjanjian = $this->klien_pembayaran_m->cekPerjanjian($id_pembelian);
+				
+				if (count($cekPerjanjian) > 0) {
+					//apabila perjanjian dah ada maka update kategori
+					$this->db->where('id_perjanjian', $cekPerjanjian->id_perjanjian)->update('perjanjian', array('id_kategori'=>$id_kategori));
+				}else{
+					//apabila perjanjian belum ada maka insert kategori perjanjian
+					$dataPerjanjian = array(
+						'id_pembelian' => $id_pembelian,
+						'id_kategori' => $id_kategori
+					);
+					$this->db->insert('perjanjian', $dataPerjanjian);
+				}
+				
+				$this->session->set_flashdata('message', 'Data pembelian berhasil diubah');
+				redirect('Klien_pembayaran');
 			}else{
 				$bukti_pembayaran = $this->upload->data();
 				// $nama_perjanjian =$this->input->post('nama_perjanjian', true);
 				$bukti_pembayaran = $bukti_pembayaran['file_name'];
-				$id_kategori = $this->input->post('nama_perjanjian');
-				$id_pembelian = $this->input->post('id_pembelian');
 				
 				$cekPerjanjian = $this->klien_pembayaran_m->cekPerjanjian($id_pembelian);
 				
-				if ($cekPerjanjian > 0) {
+				if (count($cekPerjanjian) > 0) {
 					//apabila perjanjian dah ada maka update kategori
 					$this->db->where('id_perjanjian', $cekPerjanjian->id_perjanjian)->update('perjanjian', array('id_kategori'=>$id_kategori));
 				}else{
