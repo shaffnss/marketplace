@@ -42,7 +42,18 @@ class ListProduk extends CI_Controller {
 		
 		$data['produks'] = $this->listProduk_model->getProdukKategori($id_kategori);
 		$data['kategoris'] = $this->listProduk_model->getKategori();
-	
+		
 		$this->load->view('landing/produk', $data);
+	}
+	
+	public function keranjang($id_produk='')
+	{
+		if($id_produk == '') {
+			redirect('ListProduk');
+		}
+		
+		$this->session->set_userdata('id_produk', array('id_roles'=>2, 'id_produk'=>$id_produk));
+		
+		redirect('login');
 	}
 }

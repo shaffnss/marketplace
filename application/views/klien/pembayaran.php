@@ -12,7 +12,7 @@ function rupiah($angka){
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <h1>Pembayaran</h1>
+    <h1>Pembayaran <?php var_dump($this->session->userdata('id_produk')); ?></h1>
   </section>
   <br>
 
@@ -127,7 +127,7 @@ function rupiah($angka){
                             <h3 class="text-center">Pilih Jenis Perjanjian dan Upload Bukti Pembayaran</h3>
 
                             <form action="<?php echo site_url('Klien_pembayaran/unggahPembayaran') ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
-                              <input type="hidden" name="id_pembelian" value="<?php echo $item->id_pembelian ?> ">
+                              <input type="hidden" name="id_pembelian" value="<?php echo $item->idPembelian ?>">
 
                               <div class="col-md-12" style="padding-top: 20px">
                                 <label >Jenis Perjanjian</label>

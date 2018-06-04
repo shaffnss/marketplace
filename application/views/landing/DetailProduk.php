@@ -75,7 +75,7 @@ $this->load->view('landing/head_landing');
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <a href="<?php echo site_url('Login/loginMe')?>" type="button" class="btn btn-primary">Login</a>
+                    <a href="<?php echo site_url('ListProduk/keranjang/'.$produks->id_produk)?>" type="button" class="btn btn-primary">Login</a>
                   </div>
                 </div>
               </div>

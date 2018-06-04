@@ -12,7 +12,23 @@ class Klien_pembayaran extends BaseController {
  
 	public function index()
 	{
-		$data["pembelian"]=$this->klien_pembayaran_m->getPembelian();
+		if($this->session->userdata('id_produk')) {	
+			$id_produk = $this->session->userdata('id_produk');
+			if($id_produk['id_roles'] == 2) {				
+				$data = array(
+					'tgl_pembelian'=>date('Y-m-d'),
+					'id_users'=>$this->session->userdata('userId'),
+					'status_pembelian'=>'proses',
+				);
+				
+				$id_pembelian = $this->klien_pembayaran_m->insertKeranjang($data);
+				$this->db->insert('detail_pembelian', array('id_pembelian'=>$id_pembelian, 'id_produk'=>$id_produk['id_produk']));
+			}
+			$this->session->unset_userdata('id_produk');
+		}
+		
+		$id_users = $this->session->userdata('userId');
+		$data["pembelian"]=$this->klien_pembayaran_m->getPembelian($id_users);
 		$data["perjanjians"]=$this->klien_pembayaran_m->getPerjanjian();
 		$this->load->view('Klien/pembayaran', $data);
 	}
