@@ -23,13 +23,14 @@ class klien_pembayaran_m extends CI_Model {
 		$this->db->where('status', 'aktif');
 		return $this->db->get('kategori_perjanjian')->result();
 	}
+	
+	public function cekPerjanjian($id_pembelian){
+		$this->db->where('id_pembelian', $id_pembelian);
+		return $this->db->get('perjanjian')->row();
+	}
 
-
-	public function insertBukti($pembelian){
-		$this->db->trans_start();
-		$this->db->insert('pembelian',$pembelian);
-		$insert_id = $this->db->insert_id();
-		$this->db->trans_complete();
-		return $insert_id;
+	public function insertBukti($pembelian, $id_pembelian){
+		$this->db->where('id_pembelian',$id_pembelian);
+		return $this->db->update('pembelian', $pembelian);
 	}
 }

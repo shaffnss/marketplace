@@ -12,14 +12,14 @@ function rupiah($angka){
     <!-- Page Content -->
     <div class="container">
 
-      <div class="row">
+      <div class="row h-100">
 
         <div class="col-lg-3">
 
           <h1 class="my-4">VokasiDev</h1>
           <div class="list-group">
             <?php foreach ($kategoris as $kategori) : ?>
-            <a href="#" class="list-group-item"><?php echo $kategori->nama_kategori ?></a>
+            <a href="<?php echo site_url('ListProduk/kategori/'.$kategori->id_kategori) ?>" class="list-group-item <?php echo ($this->uri->segment(3) == $kategori->id_kategori ? 'active' : '') ?>" ><?php echo $kategori->nama_kategori ?></a>
             <?php endforeach; ?>
           </div>
 

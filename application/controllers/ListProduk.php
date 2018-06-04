@@ -33,4 +33,16 @@ class ListProduk extends CI_Controller {
 	
 		$this->load->view('landing/produk', $data);
 	}
+	
+	public function kategori($id_kategori = '')
+	{
+		if($id_kategori == '') {
+			redirect('ListProduk');
+		}
+		
+		$data['produks'] = $this->listProduk_model->getProdukKategori($id_kategori);
+		$data['kategoris'] = $this->listProduk_model->getKategori();
+	
+		$this->load->view('landing/produk', $data);
+	}
 }

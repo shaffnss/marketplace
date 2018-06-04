@@ -60,7 +60,7 @@ function rupiah($angka){
                     <td><?php echo $item->nama_produk ?></td>
                     <td><?php echo rupiah($item->harga_produk)?></td>
                     <td><?php echo $item->nama_kategori ?></td>
-                    <td><?php if(!empty($item->bukti_pembayaran)) { ?><img src="<?php echo site_url('/assets/bukti pembayaran').$item->bukti_pembayaran ?>" class="img-responsive" style="height: 100px; width: 100px"><?php } else { echo '<span class="label label-danger">Belum Upload Bukti</span>'; } ?></td>
+                    <td><?php if(!empty($item->bukti_pembayaran)) { ?><img src="<?php echo site_url('/assets/bukti pembayaran/').$item->bukti_pembayaran ?>" class="img-responsive" style="height: 100px; width: 100px"><?php } else { echo '<span class="label label-danger">Belum Upload Bukti</span>'; } ?></td>
                     <td><?php echo $item->nama_perjanjian ?></td>
                     <td>
                       <?php if($item->status_pembelian=='proses') {
@@ -134,16 +134,22 @@ function rupiah($angka){
                                 <select class="form-control" name="nama_perjanjian">
                                  <option disabled selected="">Pilih Jenis Perjanjian</option>
                                   <?php foreach ($perjanjians as $perjanjian) { ?>
-                                    <option value="<?php echo $perjanjian->id_kategori ?>"><?php echo $perjanjian->nama_perjanjian?></option>
+                                    <option <?php echo ($perjanjian->nama_perjanjian == $item->nama_perjanjian ? 'selected' : ''); ?> value="<?php echo $perjanjian->id_kategori ?>"><?php echo $perjanjian->nama_perjanjian?></option>
                                   <?php } ?>
                                 </select>  
                               </div>
 
                               <div class="col-xs-12" style="padding-top: 20px">
                                 <label for="exampleInputFile">Upload Bukti Pembayaran</label>
-                                <input type="file" id="exampleInputFile" name="bukti_pembayaran" style="padding-top: 5px">
-
-                                <p class="help-block">Example block-level help text here.</p>
+                                <?php 
+																	if(empty($item->bukti_pembayaran)) {
+																?>
+																<input type="file" id="exampleInputFile" name="bukti_pembayaran" style="padding-top: 5px">
+																<?php
+																	}else{
+																?>
+                                <p class="help-block"><i><i class="fa fa-check" style="color: #00a65a"></i> Terimakasih. Anda telah mengupload bukti Pembayaran.</i></p>
+																<?php } ?>
                               </div>
                             </div>
                           </div> 
