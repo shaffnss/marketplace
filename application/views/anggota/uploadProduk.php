@@ -1,5 +1,11 @@
 <?php
 $this->load->view('anggota/head_anggota');
+function rupiah($angka){
+
+  $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+  return $hasil_rupiah;
+
+}
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -57,20 +63,25 @@ $this->load->view('anggota/head_anggota');
                 <td><?php echo $no ?></td>
                 <td><?php echo $data->nama_produk?></td>
                 <td><?php echo $data->nama_kategori?></td>
-                <td><?php echo $data->harga_produk?></td>
-                <td><?php echo $data->deskripsi_produk?></td>
-                <td><?php echo $data->link_demo?></td>
-                <!-- <td><?php echo $data->mockup_produk?></td> -->
+                <td><?php echo rupiah($data->harga_produk)?></td>
+                <td><?php echo $data->status_produk?></td>
+                <td><a href="<?php echo $data->link_demo?>" type="button" class="btn btn-sm btn-primary" href><i class="fa fa-link" style="color: #fff"></i></a></td>
                 <td>
                   <img src="<?php echo site_url('/assets/produk/'); echo $data->foto_produk ?>" height='100px' width='100px'>
                 </td>
                 <td>
-                  <span class="label label-success">Disetujui</span>
+                   <?php if($data->status=='proses') { ?>
+                        <span class="label label-warning">Proses</span>
+                      <?php }elseif($data->status=='diterima') { ?>
+                        <span class="label label-success">Diterima</span>
+                      <?php }else{ ?>
+                         <span class="label label-danger">Ditolak</span>
+                      <?php }?>     
                 </td>
                 <td>
-                  <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-produk"><i class="fa fa-pencil"></i>
+                  <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-produk"><i class="fa fa-pencil">Edit</i>
                   </button>
-                  <a class="btn btn-sm btn-info" style="background: #d41912; border-color: #fff"><i class="fa fa-remove"></i></a>
+                 <a onclick="return confirm('apakah anda yakin ingin menghapus produk ini?'); " href="<?php echo site_url('Anggota_uploadProduk/delete_upload/'.$data->id_produk)?>" class="btn btn-sm btn-info" style="background: #d41912; border-color: #fff"><i class="fa fa-remove"></i>Hapus</a>
                 </td>
               </tr>
 
@@ -102,7 +113,7 @@ $this->load->view('anggota/head_anggota');
                               <select class="form-control" name="jenis_produk">
                                 <option disabled selected="">---Pilih Jenis Produk---</option>
                                  <?php foreach ($kategoris as $kategori) { ?>
-                                    <option value="<?php echo $kategori->id_kategori ?>"><?php echo $kategori->nama_kategori?></option>
+                                    <option <?php if($data->nama_kategori == $kategori->nama_kategori){ echo 'selected'; }?> value="<?php echo $kategori->id_kategori ?>"><?php echo $kategori->nama_kategori?></option>
                                   <?php } ?>
                               </select>              
                             </div>
@@ -120,7 +131,7 @@ $this->load->view('anggota/head_anggota');
 
                           <div class="form-group">
                             <label for="inputEmail">Foto</label>                
-                            <input type="file" name="foto_produk">
+                            <input type="file" name=" "><br>
                             <img src="<?php echo site_url('/assets/produk/'); echo $data->foto_produk ?>" height='100px' width='100px'>             
                           </div>
                           </div>
@@ -128,7 +139,7 @@ $this->load->view('anggota/head_anggota');
 
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                          <button type="submit" class="btn btn-primary">Simpan</button>
+                          <input type="submit" class="btn btn-success" value="Simpan">
                         </div>
                       </form>
                     </div>

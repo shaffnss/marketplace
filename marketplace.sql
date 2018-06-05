@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2018 at 01:31 AM
+-- Generation Time: Jun 05, 2018 at 10:11 AM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -50,15 +50,19 @@ CREATE TABLE IF NOT EXISTS `detail_produk` (
   `status` enum('diterima','ditolak','proses') NOT NULL DEFAULT 'proses',
   `id_tim` int(11) NOT NULL,
   `id_produk` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_produk`
 --
 
 INSERT INTO `detail_produk` (`id_detail_produk`, `status`, `id_tim`, `id_produk`) VALUES
-(1, 'diterima', 51, 1),
-(2, 'ditolak', 52, 2);
+(1, 'ditolak', 51, 1),
+(2, 'diterima', 52, 2),
+(3, 'proses', 55, 1),
+(4, 'proses', 55, 1),
+(5, 'proses', 53, 1),
+(6, 'diterima', 53, 38);
 
 -- --------------------------------------------------------
 
@@ -71,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `detail_tim` (
   `id_tim` int(11) NOT NULL,
   `id_users` int(11) NOT NULL,
   `id_posisi` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_tim`
@@ -85,7 +89,14 @@ INSERT INTO `detail_tim` (`id_detail_tim`, `id_tim`, `id_users`, `id_posisi`) VA
 (11, 53, 16, 5),
 (12, 53, 13, 1),
 (13, 52, 36, 3),
-(16, 52, 40, 4);
+(16, 52, 40, 4),
+(17, 55, 41, 1),
+(18, 56, 38, 1),
+(19, 56, 16, 3),
+(20, 56, 36, 4),
+(21, 57, 38, 2),
+(22, 57, 13, 5),
+(23, 58, 40, 5);
 
 -- --------------------------------------------------------
 
@@ -163,19 +174,20 @@ INSERT INTO `kategori_perjanjian` (`id_kategori`, `nama_perjanjian`, `status`) V
 CREATE TABLE IF NOT EXISTS `kategori_produk` (
   `id_kategori` int(11) NOT NULL,
   `nama_kategori` varchar(255) NOT NULL,
-  `status_kategori` enum('aktif','nonaktif') NOT NULL DEFAULT 'aktif'
+  `status_kategori` enum('aktif','nonaktif') NOT NULL DEFAULT 'aktif',
+  `kode_jenis` char(6) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kategori_produk`
 --
 
-INSERT INTO `kategori_produk` (`id_kategori`, `nama_kategori`, `status_kategori`) VALUES
-(1, 'Website', 'aktif'),
-(3, 'Mobile Apps', 'aktif'),
-(4, 'Game', 'aktif'),
-(5, 'AI', 'aktif'),
-(6, 'Desktop', 'aktif');
+INSERT INTO `kategori_produk` (`id_kategori`, `nama_kategori`, `status_kategori`, `kode_jenis`) VALUES
+(1, 'Website', 'aktif', ''),
+(3, 'Mobile Apps', 'aktif', ''),
+(4, 'Game', 'aktif', ''),
+(5, 'AI', 'aktif', ''),
+(6, 'Desktop', 'aktif', '');
 
 -- --------------------------------------------------------
 
@@ -190,15 +202,14 @@ CREATE TABLE IF NOT EXISTS `pembelian` (
   `bukti_pembayaran` varchar(255) NOT NULL,
   `kode_pembelian` varchar(255) NOT NULL,
   `id_users` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pembelian`
 --
 
 INSERT INTO `pembelian` (`id_pembelian`, `tgl_pembelian`, `status_pembelian`, `bukti_pembayaran`, `kode_pembelian`, `id_users`) VALUES
-(1, '2018-05-09', 'proses', '', '', 13),
-(2, '2018-06-02', 'proses', '', '', 14);
+(1, '2018-05-09', 'proses', '', '', 13);
 
 -- --------------------------------------------------------
 
@@ -263,7 +274,7 @@ CREATE TABLE IF NOT EXISTS `produk` (
   `kode_produk` varchar(255) NOT NULL,
   `id_users` int(11) NOT NULL,
   `id_kategori` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `produk`
@@ -274,7 +285,24 @@ INSERT INTO `produk` (`id_produk`, `nama_produk`, `harga_produk`, `status`, `des
 (2, 'sistem absensi lab', 2000000, 'aktif', 'sistem absensi lab', 'ini', 'ini', 'www.instragram.com', '', 6, 1),
 (14, 'sistem lele', 50000, 'aktif', 'kadnwjfbw', '', 'adminlte3.png', 'www.facebook.com', '', 4, 1),
 (15, 'sistem lele', 5000, 'aktif', 'wewwdw', '', 'admin3.png', 'www.facebook.com', '', 4, 1),
-(16, 'sistem presensi lab', 1000000, 'aktif', 'bla bla bla', '', NULL, 'www.facebook.com', '', 13, 1);
+(19, 'sistem presensi kehadiran1', 50000001, 'aktif', 'bla bla                                                                                             ', '', '10__Halaman_Manage_Produk4.PNG', 'www.facebook.com', '', 13, 1),
+(22, 'sistem pkl', 100000, 'aktif', 'bla', '', 'produk1528102020.PNG', 'www.facebook.com', '', 41, 1),
+(23, 'sistem pkl', 1000000, 'aktif', 'bla', '', 'produk1528102225.PNG', 'www.facebook.com', '', 41, 1),
+(24, 'sistem pkl', 100000, 'aktif', 'bla', '', 'produk1528102284.PNG', 'www.facebook.com', '', 41, 1),
+(25, 'sistem pkl', 100000, 'aktif', 'bla', '', 'produk1528102411.PNG', 'www.facebook.com', '', 41, 1),
+(26, 'fgchjghj', 2147483647, 'aktif', 'vhjbk', '', 'produk1528102769.PNG', 'ljh', '', 41, 4),
+(27, 'lele zzz', 191919191, 'aktif', 'asdfasdfasd', '', 'produk1528103057.PNG', 'adfadfa', '', 41, 1),
+(28, 'asdlfja;klsdfja;ldskjf', 1000000, 'aktif', 'asdfasdfadf', '', 'produk1528103106.PNG', 'alksdfjk;alsdjf', '', 41, 1),
+(29, 'bismillah', 2147483647, 'aktif', 'test', '', 'produk1528103238.PNG', 'bismillah', '', 41, 3),
+(30, 'adfasdfasdf', 100000000, 'aktif', 'zdfsadfadsfa', '', 'produk1528103285.PNG', 'ad3i3i3i', '', 41, 1),
+(31, 'ojhvgpokjhbv', 183475627, 'aktif', 'sdafasdf', '', 'produk1528103319.PNG', 'asdfasdfasd', '', 41, 1),
+(32, 'masuk', 19383838, 'aktif', 'jasjsjdjd', '', 'produk1528103437.PNG', 'sadkfakdsfja', '', 41, 1),
+(33, 'amnkfnnfiefe', 1000000, 'aktif', 'mw,nf,w,f', '', 'produk1528103581.PNG', 'www.facebook.com', '', 41, 1),
+(34, 'sistem 123', 1000000, 'aktif', 'amdbajbdj', '', 'produk1528103987.PNG', 'www.facebook.com', '', 41, 1),
+(35, 'sistem 345', 5000000, 'aktif', 'bambdba', '', 'produk1528104029.PNG', 'www.facebook.com', '', 41, 4),
+(36, '123', 10000, 'aktif', 'qdwf', '', 'produk1528104068.png', 'www.facebook.com', '', 41, 5),
+(37, 'sos', 500000, 'aktif', 'jadjad', '', 'produk1528184926.PNG', 'www.facebook.com', '', 13, 1),
+(38, 'sis', 500000, 'aktif', 'kwknwnfn', '', 'produk1528185087.PNG', 'www.facebook.com', '', 13, 1);
 
 -- --------------------------------------------------------
 
@@ -308,7 +336,7 @@ CREATE TABLE IF NOT EXISTS `tim` (
   `nama_tim` varchar(50) NOT NULL,
   `status` enum('aktif','nonaktif') NOT NULL,
   `status_tim` enum('individu','tim') NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tim`
@@ -316,9 +344,13 @@ CREATE TABLE IF NOT EXISTS `tim` (
 
 INSERT INTO `tim` (`id_tim`, `nama_tim`, `status`, `status_tim`) VALUES
 (51, 'KOMSI 15', 'nonaktif', 'individu'),
-(52, 'Hore', 'aktif', 'individu'),
-(53, 'KOMSI 15', 'aktif', 'individu'),
-(54, 'icon+', 'aktif', 'individu');
+(52, 'Hore', 'nonaktif', 'tim'),
+(53, 'KOMSI 15', 'aktif', 'tim'),
+(54, 'icon+', 'nonaktif', 'individu'),
+(55, 'anggota', 'nonaktif', 'individu'),
+(56, 'BCA', 'aktif', 'tim'),
+(57, 'LAB SI', 'aktif', 'tim'),
+(58, 'HAYO', 'nonaktif', 'individu');
 
 -- --------------------------------------------------------
 
@@ -339,19 +371,19 @@ CREATE TABLE IF NOT EXISTS `users` (
   `foto` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id_users`, `nama_users`, `id_roles`, `jenis_kelamin`, `no_telpon`, `email`, `instansi`, `status_users`, `password`, `foto`, `created_at`, `updated_at`) VALUES
-(13, 'Afif Imaduddin', 3, 'Wanita', '08213456789', 'afif@gmail.com', 'UGM', 'aktif', '$2y$10$3BVef0BZKRt6nYu2snM.uuHvXly9IbLgHletB51ZuzeXb3K0341hu', 'index4.png', '2018-05-30 08:45:54', '2018-05-30 08:45:54'),
-(14, 'Fadhilah Hera', 2, 'Wanita', '0856173813', 'hera@gmail.com', 'UGM', 'aktif', '$2y$10$xD2BkpEYssDjWTvhAJBziOBLYNf.3PmXCKqRNOOpUTNXYRWe81mn.', 'index5.png', '2018-06-01 07:09:02', '2018-06-01 07:09:02'),
+(13, 'Afif Imaduddin', 3, 'Wanita', '08213456789', 'afif@gmail.com', 'UGM', 'aktif', '$2y$10$3BVef0BZKRt6nYu2snM.uuHvXly9IbLgHletB51ZuzeXb3K0341hu', 'index4.png', '2018-06-04 07:05:11', '2018-06-04 07:05:11'),
+(14, 'Fadhilah Hera', 2, 'Wanita', '0856173813', 'hera@gmail.com', 'UGM', 'aktif', '$2y$10$xD2BkpEYssDjWTvhAJBziOBLYNf.3PmXCKqRNOOpUTNXYRWe81mn.', 'index5.png', '2018-06-03 09:32:54', '2018-06-03 09:32:54'),
 (15, 'Muhammad Gorby', 2, 'Wanita', '08945638183', 'gorby@gmail.com', 'SV', 'aktif', '$2y$10$6YxnKPOT9MlZo836obELw.SKZx5oCSCs/HAndsJPklP...', 'index13.png', '2018-05-30 08:52:46', '2018-05-30 08:52:46'),
 (16, 'Fitriyanti', 3, 'Wanita', '08231646456', 'fitri@gmail.com', 'UGM', 'aktif', '$2y$10$hB5tGnTmyAT.8aFzN91w5eUNuoiV2JWVMf77yryLgkikVfc.vNKum', 'index.png', '2018-05-21 09:55:31', '2018-05-21 09:55:31'),
 (25, 'diaz', 2, 'Pria', '0856173813', 'diaz@gmail.com', 'UGM', 'aktif', '$2y$10$AWuvd0nov6rybxXJvxxsuuyapJVRAMyBwSyMQMebpm9YiR9XfXVVm', '', '2018-05-11 13:35:36', '2018-05-11 13:35:36'),
-(27, 'superadmin', 4, 'Pria', '08561738132', 'superadmin@gmail.com', 'UGM', 'aktif', '$2y$10$Qs86bQGwyb7lPaBspQA2EOE.O4X38sgizsnAfti02R/tNieA08r2C', '', '2018-05-30 08:50:19', '2018-05-30 08:50:19'),
+(27, 'superadmin', 4, 'Pria', '08561738132', 'superadmin@gmail.com', 'UGM', 'aktif', '$2y$10$Qs86bQGwyb7lPaBspQA2EOE.O4X38sgizsnAfti02R/tNieA08r2C', 'index2.png', '2018-06-05 04:31:56', '2018-06-05 04:31:56'),
 (28, 'pengelola2', 1, 'Wanita', '0856173813', 'pengelola2@gmail.com', 'UGM', 'nonaktif', '$2y$10$ZyZIzlmfSVuPuKNmLmiV8egIbFljzPFsRu/6nHSzYmKtXZBVInRFi', 'index1.png', '2018-05-30 06:44:37', '2018-05-30 06:44:37'),
 (30, 'pengelola1', 1, 'Pria', '08231646456', 'pengelola1@gmail.com', 'UGM', 'nonaktif', '$2y$10$nc6sGPa7C.4e84EPfofQhuwyliXxw.Sl6dZOoomjjKMdzMCtz5Mju', '', '2018-06-01 16:33:07', '2018-06-01 16:33:07'),
 (31, 'klien', 2, 'Wanita', '08231646456', 'klien@gmail.com', 'UGM', 'aktif', '$2y$10$1gkOl2GHP1yfdCiW1OhMbu3qBP0OFVGTl119BEB6KAi.kxpxT8e6u', '', '2018-05-26 05:35:30', '2018-05-26 05:35:30'),
@@ -360,7 +392,8 @@ INSERT INTO `users` (`id_users`, `nama_users`, `id_roles`, `jenis_kelamin`, `no_
 (37, 'test', 1, 'Pria', '08231646456', 'test@gmail.com', 'UGM', 'aktif', '$2y$10$gPMn4BGGsyR54vSmbQNWA.hvfr/ruzuJff4ZsGVXYi67f6EZAUDnC', 'index.png', '2018-05-28 07:33:57', '2018-05-28 07:33:57'),
 (38, 'shafira', 3, 'Pria', '', 'shafirafitrianissa02@gmail.com', '', 'aktif', '$2y$10$MXOSIlTj1MWfLyxXpA/eLOv6IUJtRTyrxPPWjyUw8TnFjEx.pzjgW', NULL, '2018-05-26 09:45:30', '2018-05-26 09:45:30'),
 (39, 'haha', 2, 'Pria', '08231646456', 'haha@gmail.com', 'UGMs', 'nonaktif', '$2y$10$C.jfJqQil/EKlwSm0oXyVOzwmu4vx68w6ovf2R/1sAZODP0cYLPRC', 'index15.png', '2018-06-01 16:27:14', '2018-06-01 16:27:14'),
-(40, 'hihi', 3, 'Wanita', '08231646456', 'hihi@gmail.com', 'UGM', 'nonaktif', '$2y$10$YiGISALX/7MFij2kEYfhDuCuLmkH3RqPfX9a4wR7yQ/qAP7eZ8Fny', 'index5.png', '2018-06-01 16:26:49', '2018-06-01 16:26:49');
+(40, 'hihi', 3, 'Wanita', '08231646456', 'hihi@gmail.com', 'UGM', 'nonaktif', '$2y$10$YiGISALX/7MFij2kEYfhDuCuLmkH3RqPfX9a4wR7yQ/qAP7eZ8Fny', 'index5.png', '2018-06-05 04:43:41', '2018-06-05 04:43:41'),
+(41, 'anggota', 3, NULL, NULL, 'anggota@gmail.com', NULL, 'aktif', '$2y$10$3w25VdW/fNbhqdraQPmXMuS.wXI1OWTSdVObHumcrjd4R6kmaMIsO', NULL, '2018-06-04 08:40:59', '2018-06-04 08:40:59');
 
 --
 -- Indexes for dumped tables
@@ -466,10 +499,15 @@ ALTER TABLE `users`
 ALTER TABLE `detail_pembelian`
   MODIFY `id_detail_pembelian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT for table `detail_produk`
+--
+ALTER TABLE `detail_produk`
+  MODIFY `id_detail_produk` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
 -- AUTO_INCREMENT for table `detail_tim`
 --
 ALTER TABLE `detail_tim`
-  MODIFY `id_detail_tim` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+  MODIFY `id_detail_tim` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `forgot_password`
 --
@@ -489,7 +527,7 @@ ALTER TABLE `kategori_produk`
 -- AUTO_INCREMENT for table `pembelian`
 --
 ALTER TABLE `pembelian`
-  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `perjanjian`
 --
@@ -504,7 +542,7 @@ ALTER TABLE `posisi_tim`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `roles`
 --
@@ -514,12 +552,12 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `tim`
 --
 ALTER TABLE `tim`
-  MODIFY `id_tim` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=55;
+  MODIFY `id_tim` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=59;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
+  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
 --
 -- Constraints for dumped tables
 --

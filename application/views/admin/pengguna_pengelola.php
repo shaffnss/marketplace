@@ -6,7 +6,7 @@ $this->load->view('admin/head_admin');
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <h1>Daftar Pengelola</h1>
+    <h1>Daftar Pengelola<small>Lihat, Tambah, Edit Data Pengelola</small></h1>
     <ol class="breadcrumb">
      <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
      <li><a href="#"><i class="fa fa-dashboard"></i> Pengelola</a></li>
@@ -16,7 +16,7 @@ $this->load->view('admin/head_admin');
  <section class="content-header">
   <div>
     <a href="<?php echo site_url('Admin_pengelola/tambah_pengelola')?>" type="button" class="btn btn-primary" >
-      <i class="glyphicon glyphicon-plus"></i> Tambah Pengelola
+      <i class="glyphicon glyphicon-plus"></i>Tambah Pengelola
     </a>
   </div> 
 </section>

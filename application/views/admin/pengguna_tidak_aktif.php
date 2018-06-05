@@ -103,14 +103,9 @@ $this->load->view('admin/head_admin');
                     <span class="label label-danger">Non Aktif</span>
                   <?php }?>
                 </td>
-
-                 <?php  
-                  if ($this->session->userdata('role')== 4){
-                    ?>
                 <td>
                   <a onclick="return confirm('Apakah Anda yakin akan mengaktifkan kembali user ini?'); " class="btn-sm btn-success" href="<?php echo site_url('Admin_pengelola/aktifkan/'.$data->id_users) ?>"><i class="fa fa-check"></i>Aktifkan</a>
                 </td>
-                <?php }?>
               </tr>    
               <?php $no++; } ?>
             </tbody>

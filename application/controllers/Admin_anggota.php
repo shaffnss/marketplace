@@ -6,12 +6,12 @@ class Admin_anggota extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model("admin_anggota_model");
+		$this->load->model("Admin_anggota_model");
 	}
 
 	public function index()
 	{
-		$data["anggota"]=$this->admin_anggota_model->getAnggota();
+		$data["anggota"]=$this->Admin_anggota_model->getAnggota();
 		$this->load->view('admin/pengguna_anggota',$data);
 	}
 
@@ -133,7 +133,7 @@ class Admin_anggota extends CI_Controller {
 	}
 
 	public function posisi_tim(){
-		$data["posisi"]=$this->admin_anggota_model->getPosisi();
+		$data["posisi"]=$this->Admin_anggota_model->getPosisi();
 		$this->load->view('admin/pengguna_posisi_tim',$data);
 	}
 
@@ -152,7 +152,7 @@ class Admin_anggota extends CI_Controller {
 				"nama_posisi"=>$nama_posisi,
 			);
 
-			$result = $this->admin_anggota_model->insertPosisi($data);
+			$result = $this->Admin_anggota_model->insertPosisi($data);
 
 		}
 

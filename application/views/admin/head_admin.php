@@ -134,7 +134,7 @@
 
         <li class="treeview">
           <a>
-            <i class="fa fa-money"></i> <span>Pembayaran & Pembelian</span>
+            <i class="fa fa-money"></i> <span>Pembelian & Perjanjian</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -142,21 +142,21 @@
           <ul class="treeview-menu">
             <li class=""><a href="<?php echo site_url('Admin_pembelian')?>"><i class="fa fa-list-alt"></i>Pembayaran Diproses</a></li>
             <li><a href="<?php echo site_url('Admin_pembelian/pembelianSelesai')?>"><i class="fa fa-check"></i>Pembayaran Selesai</a></li>
+            <li><a href="<?php echo site_url('Admin_perjanjian') ?>"><i class="fa fa-list-alt"></i>Perjanjian Pembelian</a></li>
           </ul>
         </li>
         
-        <li>
-          <a href="<?php echo site_url('Admin_perjanjian') ?>">
-            <i class="fa fa-file-text"></i> 
-            <span>Perjanjian Pembelian</span>
-          </a>
-        </li>
 
-        <li>
-          <a href="<?php echo site_url('Admin_perjanjian/kategori') ?>">
-            <i class="fa fa-th-list"></i> 
-            <span>Jenis Perjanjian</span>
+        <li class="treeview">
+          <a>
+            <i class="fa fa-edit"></i> <span>Perjanjian</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
+          <ul class="treeview-menu">
+            <li class=""><a href="<?php echo site_url('Admin_perjanjian/kategori')?>"><i class="fa fa-list-alt"></i>Jenis Perjanjian</a></li>
+          </ul>
         </li>
 
 
@@ -198,7 +198,7 @@
 
       <li class="treeview">
         <a>
-          <i class="fa fa-file"></i> <span>Produk</span>
+          <i class="fa fa-tv"></i> <span>Produk</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
@@ -213,7 +213,7 @@
 
         <li class="treeview">
           <a>
-            <i class="fa fa-users"></i> <span>Pengguna </span>
+            <i class="fa fa-user"></i> <span>Pengguna </span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -221,14 +221,25 @@
           <ul class="treeview-menu">
             <li class=""><a href="<?php echo site_url('Admin_klien') ?>"><i class="fa fa-user"></i> Klien </a></li>
             <li><a href="<?php echo site_url('Admin_anggota') ?>"><i class="fa fa-user"></i> Anggota Tim </a></li>
-            <li><a href="<?php echo site_url('Admin_team') ?>"><i class="fa fa-user"></i> Tim </a></li>
             <?php  
-            if ($this->session->userdata('role')== 4){
-              ?>
-              <li><a href="<?php echo site_url('Admin_pengelola') ?>"><i class="fa fa-user"></i> Pengelola</a></li>
+                  if ($this->session->userdata('role')== 4){
+                    ?>
+            <li><a href="<?php echo site_url('Admin_pengelola') ?>"><i class="fa fa-user"></i> Pengelola</a></li>
             <?php }?>
             <li><a href="<?php echo site_url('Admin_pengelola/pengguna_tidak_aktif') ?>"><i class="fa fa-user"></i> Pengguna Tidak Aktif</a></li>
-            <li><a href="<?php echo site_url('Admin_anggota/posisi_tim') ?>"><i class="fa fa-th-list"></i> Posisi Tim</a></li>
+          </ul>
+        </li>
+
+         <li class="treeview">
+          <a>
+            <i class="fa fa-users"></i> <span>Tim</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+    <li><a href="<?php echo site_url('Admin_team') ?>"><i class="fa fa-plus"></i> Tim </a></li>
+            <li><a href="<?php echo site_url('Admin_anggota/posisi_tim') ?>"><i class="fa fa-th-list"></i>Jabatan Tim</a></li>
           </ul>
         </li>   
       </section>

@@ -1,12 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class anggota_uploadProduk_model extends CI_Model {
+class Anggota_uploadProduk_model extends CI_Model {
 	public function getUpload($id_user)
 	{
 		$this->db->select("*");
+		$this->db->select("detail_produk.status as status_produk");
 		$this->db->from("produk");
 		$this->db->join("kategori_produk", "kategori_produk.id_kategori = produk.id_kategori");
+		$this->db->join("detail_produk", "detail_produk.id_produk = produk.id_produk");
 		$this->db->where("id_users", $id_user);
 		return $this->db->get()->result();
 	}
@@ -20,11 +22,10 @@ class anggota_uploadProduk_model extends CI_Model {
 	}
 	
 	//get id_users berdasarkan id_users
-	public function getTeam($id_users)
-	{
+	public function getTeam($id_users){
 		return $this->db
-		->join("detail_tim", 'detail_tim.id_tim = tim.id_tim')
-		->join("posisi_tim", 'detail_tim.id_posisi=posisi_tim.id_posisi')
+		->join("detail_tim",'detail_tim.id_tim = tim.id_tim')
+		->join("posisi_tim",'detail_tim.id_posisi=posisi_tim.id_posisi')
 		->where("detail_tim.id_users",$id_users)
 		->where("posisi_tim.nama_posisi", 'Project Manager')
 		->where("tim.status", 'aktif')
@@ -42,5 +43,10 @@ class anggota_uploadProduk_model extends CI_Model {
 		$this->db->where('detail_tim.id_users',$id_user);
 		$this->db->where('tim.status_tim','individu');
 		return $this->db->get('detail_tim')->row();
+	}
+
+	public function deleteUpload($id_produk){
+		$this->db->delete('produk', array('id_produk' =>$id_produk));
+		return TRUE;
 	}
 }

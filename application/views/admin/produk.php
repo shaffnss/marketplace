@@ -20,13 +20,13 @@ function rupiah($angka){
 		</ol>
 	</section>
 	
-	<section class="content-header">
+<!-- 	<section class="content-header">
 		<div>
-			<a href="<?php echo site_url('Admin_produk/tambahProduk')?>" type="button" class="btn btn-warning" >
+			<a href="<?php echo site_url('Admin_produk/tambahProduk')?>" type="button" class="btn btn-primary" >
 				<i class="glyphicon glyphicon-plus"></i> Tambah Produk
 			</a>
 		</div> 
-	</section>
+	</section> -->
 	
 	<!-- Main content -->
 	<section class="content">
@@ -93,7 +93,7 @@ function rupiah($angka){
 								<tbody>
 									<tr>
 										<td><?php echo $no ?></td>
-										<td><a target="_blank" href="<?php echo $data->link_demo?>"><?php echo $data->nama_produk?></a></td>
+										<td><!-- <a target="_blank" href="<?php echo $data->link_demo?>"> --><?php echo $data->nama_produk?></a></td>
 										<td><?php echo $data->nama_kategori?></td>
 										<td><?php echo rupiah($data->harga_produk)?></td>
 										<td><?php echo $data->nama_tim?></td>
@@ -190,6 +190,11 @@ function rupiah($angka){
 																	</div>
 
 																	<div class="form-group">
+																		<label for="inputName">Jenis Produk</label>
+																		<p class="form-control" name="nama_produk"><?php echo $data->nama_kategori; ?></p>
+																	</div>
+
+																	<div class="form-group">
 																		<label for="inputName">Harga Produk</label>
 																		<p class="form-control" name="harga_produk"><?php echo rupiah($data->harga_produk)?></p>
 																	</div>
@@ -201,7 +206,7 @@ function rupiah($angka){
 
 																	<div class="form-group">
 																		<label for="inputName">Deskripsi Produk</label>
-																		<textarea class="form-control" name="nama_klien"><?php echo $data->deskripsi_produk; ?></textarea>
+																		<p class="form-control" name="nama_klien"><?php echo $data->deskripsi_produk; ?></p>
 																	</div>
 
 																	<div class="form-group">
@@ -211,6 +216,7 @@ function rupiah($angka){
 																	
 																	<div class="form-group">
 																		<label for="inputName">Foto Produk</label>
+																		<br>
 																		<img src="<?php echo site_url('/assets/produk/'.$data->foto_produk); ?>" height='100px' width='100px'>
 																	</div>												
 																</div>
