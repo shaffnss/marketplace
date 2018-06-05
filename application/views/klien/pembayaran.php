@@ -36,7 +36,7 @@ function rupiah($angka){
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <table id="example1" class="table table-bordered table-striped data-tables">
+            <table class="table table-bordered table-striped data-tables">
               <thead>
                 <tr>
                   <th>ID</th>
