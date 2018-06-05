@@ -19,9 +19,8 @@ $this->load->view('anggota/head_anggota');
               </div>
         </div>
 <!-- <hr style="border-width: 1px; border-color: #DDD;"> -->
+<!--  -->
       </div>
-
-
   </section>
 
   <!-- /.content -->

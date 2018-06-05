@@ -2,7 +2,7 @@ YANG BELUM :
 
 DARI PROSES PEMBELIAN OLEH KLIEN
 1. Search produk (halaman landing page) berdasarkan keyword
-2. Membagi halaman produk per kategori
+2. Membagi halaman produk per kategori [done]
 4. Link demo 
 5. LIVE CHAT (tawk.to)
 6. Purchase (simpan di session item yang dipilih) 

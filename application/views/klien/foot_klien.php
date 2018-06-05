@@ -6,6 +6,7 @@
 	reserved.
 </footer>
 
+
 <!-- Morris.js charts -->
 <script src="<?php echo base_url('AdminLTE/bower_components/raphael/raphael.min.js') ?>"></script>
 <script src="<?php echo base_url('AdminLTE/bower_components/morris.js/morris.min.js') ?>"></script>

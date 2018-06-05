@@ -10,11 +10,12 @@ class Anggota_dashboard extends BaseController {
 		parent::__construct();
 		$this->IsLoggedIn();
 
-		
 	}
  
 	public function index()
 	{
+		// $data["tampilTim"]=$this->anggota_profile_model->getTeam($id_users);
+		// $data["detail_tim"]=$this->anggota_profile_model->getDetailTeam($id_tim);
 		$this->load->view('anggota/dashboard');
 	}
 }

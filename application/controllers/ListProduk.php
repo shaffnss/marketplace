@@ -52,7 +52,7 @@ class ListProduk extends CI_Controller {
 			redirect('ListProduk');
 		}
 		
-		$this->session->set_userdata('id_produk', array('id_roles'=>2, 'id_produk'=>$id_produk));
+		$this->session->set_userdata('id_produk', array('id_roles'=>'2', 'id_produk'=>$id_produk));
 		
 		redirect('login');
 	}

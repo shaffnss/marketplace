@@ -45,7 +45,7 @@ $this->load->view('admin/head_admin');
                 ?>
               <tbody>
                 <tr>
-                  <td><?php echo $no ?></td>
+                  <td>kode pembelian</td>
                   <td><?php echo $data->nama_users?></td>
                   <td><?php echo $data->nama_produk?></td>
                   <td><?php echo $data->nama_perjanjian?></td>

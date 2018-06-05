@@ -15,6 +15,7 @@ class Anggota_uploadProduk extends CI_Controller {
 	{
 		$id_user = $this->session->userdata('userId'); //manggil session id yg sedang login
 		$data['upload']=$this->anggota_uploadProduk_model->getUpload($id_user);
+		$data["kategoris"]=$this->anggota_uploadProduk_model->getKategori();
 		$this->load->view('anggota/uploadProduk',$data);		
 	}
 
@@ -26,62 +27,6 @@ class Anggota_uploadProduk extends CI_Controller {
 		
 		$this->load->view('anggota/tambah_upload',$data);
 	}
-
-	public function ubahProduk()
-	{
-		$config['upload_path']          = './assets/produk/';
-		$config['allowed_types']        = 'gif|jpg|png|jpeg';
-		$config['max_size']             = 3000;
-		$config['max_width']            = 5024;
-		$config['max_height']           = 5068;
-
-		$this->load->library('upload', $config);
-
-			$img = $this->upload->data();
-			$mockup_produk = $img['file_name'];
-			$id_produk= $this->input->post('id_produk', true);
-			$nama_produk = $this->input->post('nama_produk', true);
-			$jenis_produk = $this->input->post('jenis_produk', true);
-			$harga_produk = $this->input->post('harga_produk', true);
-			$deskripsi_produk = $this->input->post('deskripsi_produk', true);
-			$link_demo = $this->input->post('link_demo', true);
-
-		if( ! $this->upload->do_upload('foto_produk'))
-		{
-			
-			$data = array(
-				
-				'nama_produk'=>$nama_produk,
-				'jenis_produk' =>$jenis_produk,
-				'harga_produk' => $harga_produk,
-				'deskripsi_produk' => $deskripsi_produk,
-				'link_demo'	=> $link_demo
-
-			); 
-			//$this->session->set_flashdata('message', 'Data anggota berhasil ditambahkan');
-			$this->db->where('id_produk',$id_produk); //yg di update menjadi sesuai dengan id_produk
-			$this->db->update('produk', $data);
-			redirect('Anggota_uploadProduk');
-		}
-		else
-		{
-			
-			$data = array(
-				
-				'nama_produk'=>$nama_produk,
-				'jenis_produk' =>$jenis_produk,
-				'harga_produk' => $harga_produk,
-				'deskripsi_produk' => $deskripsi_produk,
-				'link_demo'	=> $link_demo,
-				'foto_produk' => $foto_produk,
-
-			); 
-			//$this->session->set_flashdata('message', 'Data anggota berhasil ditambahkan');
-			$this->db->where('id_produk',$id_produk); //yg di update menjadi sesuai dengan id_produk
-			$this->db->update('produk', $data);
-			redirect('Anggota_uploadProduk');
-		}
-	} 	
 
 	public function inputProduk()
 	{
@@ -101,14 +46,17 @@ class Anggota_uploadProduk extends CI_Controller {
 		else
 		{
 			$img = $this->upload->data();
-			$mockup_produk = $img['file_name'];
+			$foto_produk = $img['file_name'];
 			$nama_produk = $this->input->post('nama_produk', true);
 			$jenis_produk = $this->input->post('jenis_produk', true);
 			$harga_produk = $this->input->post('harga_produk', true);
 			$deskripsi_produk = $this->input->post('deskripsi_produk', true);
 			$link_demo = $this->input->post('link_demo', true);
 			$id_user = $this->session->userdata('userId');
-			$id_team = $this->session->userdata('id_team');
+			$id_team = $this->input->post('nama_tim');
+			if($id_team == ""){
+					redirect('Anggota_uploadProduk/tambah_uploadProduk');
+				}
 
 			$data = array(
 				'nama_produk'=>$nama_produk,
@@ -120,10 +68,22 @@ class Anggota_uploadProduk extends CI_Controller {
 				'id_users' => $id_user
 			); 
 			$id_produk = $this->db->insert('produk', $data);
-			
-			if ($id_team == -1) {
-				echo "individu";
+
+
+			//
+			$status_tim=$this->input->post('status_tim');
+			if ($status_tim == 'individu') {
+				$checkTim=$this->anggota_uploadProduk_model->checkTim($id_user);
+				$data2 = array(
+					'id_produk'=>$id_produk,
+					'id_tim'=>$checkTim->id_tim,
+					'status'=>'proses'
+				); 
+
+				$this->db->insert('detail_produk', $data2);
+				$this->session->set_flashdata('message', 'Data anggota berhasil ditambahkan');
 			}else{
+				
 				$data2 = array(
 					'id_produk'=>$id_produk,
 					'id_tim'=>$id_team,
@@ -131,10 +91,65 @@ class Anggota_uploadProduk extends CI_Controller {
 				$this->db->insert('detail_produk', $data2);
 				$this->session->set_flashdata('message', 'Data anggota berhasil ditambahkan');
 			}
-			
 			redirect('Anggota_uploadProduk');
 		}
 	}
+
+	public function ubahProduk()
+	{
+		$config['upload_path']          = './assets/produk/';
+		$config['allowed_types']        = 'gif|jpg|png|jpeg';
+		$config['max_size']             = 3000;
+		$config['max_width']            = 5024;
+		$config['max_height']           = 5068;
+
+		$this->load->library('upload', $config);
+
+			$img = $this->upload->data();
+			$foto_produk = $img['file_name'];
+			$id_produk= $this->input->post('id_produk', true);
+			$nama_produk = $this->input->post('nama_produk', true);
+			$jenis_produk = $this->input->post('jenis_produk', true);
+			$harga_produk = $this->input->post('harga_produk', true);
+			$deskripsi_produk = $this->input->post('deskripsi_produk', true);
+			$link_demo = $this->input->post('link_demo', true);
+
+		if( ! $this->upload->do_upload('foto_produk'))
+		{
+			
+			$data = array(
+				
+				'nama_produk'=>$nama_produk,
+				'jenis_produk' =>$jenis_produk,
+				'harga_produk' => $harga_produk,
+				'deskripsi_produk' => $deskripsi_produk,
+				'link_demo'	=> $link_demo
+
+			); 
+			$this->db->where('id_produk',$id_produk); //yg di update menjadi sesuai dengan id_produk
+			$this->db->update('produk', $data);
+			redirect('Anggota_uploadProduk');
+		}
+		else
+		{
+			
+			$data = array(
+				
+				'nama_produk'=>$nama_produk,
+				'nama_kategori' =>$jenis_produk,
+				'harga_produk' => $harga_produk,
+				'deskripsi_produk' => $deskripsi_produk,
+				'link_demo'	=> $link_demo,
+				'foto_produk' => $foto_produk
+
+			); 
+			$this->db->where('id_produk',$id_produk); //yg di update menjadi sesuai dengan id_produk
+			$this->db->update('produk', $data);
+			redirect('Anggota_uploadProduk');
+		}
+	} 	
+
+	
 
 }
 

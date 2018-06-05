@@ -24,12 +24,23 @@ class anggota_uploadProduk_model extends CI_Model {
 	{
 		return $this->db
 		->join("detail_tim", 'detail_tim.id_tim = tim.id_tim')
+		->join("posisi_tim", 'detail_tim.id_posisi=posisi_tim.id_posisi')
 		->where("detail_tim.id_users",$id_users)
-		->where("detail_tim.posisi_tim", 'Project Manager')
+		->where("posisi_tim.nama_posisi", 'Project Manager')
+		->where("tim.status", 'aktif')
+		->where('tim.status_tim','tim')
 		->get("tim")->result();
 	}
 	
 	public function getKategori() {
 		return $this->db->where('status_kategori', 'aktif')->get('kategori_produk')->result();
+	}
+
+	public function checkTim($id_user){
+		$this->db->join('users','users.id_users=detail_tim.id_users');
+		$this->db->join('tim','tim.id_tim=detail_tim.id_tim');
+		$this->db->where('detail_tim.id_users',$id_user);
+		$this->db->where('tim.status_tim','individu');
+		return $this->db->get('detail_tim')->row();
 	}
 }

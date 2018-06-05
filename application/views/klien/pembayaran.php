@@ -14,12 +14,16 @@ function rupiah($angka){
   <section class="content-header">
     <h1>Pembayaran <?php var_dump($this->session->userdata('id_produk')); ?></h1>
   </section>
-  <br>
 
   <!-- Main content -->
   <section class="content">
     <div class="row">
       <div class="col-xs-12">
+        <div class="callout callout-info">
+          <h4>Tata Cara Pembayaran :</h4>
+
+          <p>Silahkan lakukan pembayaran pembelian sistem anda melalui Transfer ke nomor rekening Bank BNI 009477590342929 a.n Shafira Fitrianissa</p>
+        </div>
         <div class="box">
           <div class="box-header">
             <h3 class="box-title">Pembayaran Pembelian Produk</h3>
@@ -152,32 +156,59 @@ function rupiah($angka){
 																<?php } ?>
                               </div>
                             </div>
-                          </div> 
-                          <!-- /.modal-body-->
-
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
-                            <input type="submit" name="Unggah" class="btn btn-warning" value="Unggah">
+                            <!-- /.col -->
                           </div>
-                        </form>
+                        </div>                      
+                        <hr>
+                        
+                        <h3 class="text-center">Pilih Jenis Perjanjian dan Upload Bukti Pembayaran</h3>
+
+                        <form action="<?php echo site_url('Klien_pembayaran/unggahPembayaran') ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
+                          <input type="hidden" name="id_pembelian" value="<?php echo $item->id_pembelian ?> ">
+
+                          <div class="col-md-12" style="padding-top: 20px">
+                            <label >Jenis Perjanjian</label>
+                            <select class="form-control" name="nama_perjanjian">
+                             <option disabled selected="">Pilih Jenis Perjanjian</option>
+                             <?php foreach ($perjanjians as $perjanjian) { ?>
+                              <option value="<?php echo $perjanjian->id_kategori ?>"><?php echo $perjanjian->nama_perjanjian?></option>
+                            <?php } ?>
+                          </select>  
+                        </div>
+
+                        <div class="col-xs-12" style="padding-top: 20px">
+                          <label for="exampleInputFile">Upload Bukti Pembayaran</label>
+                          <input type="file" id="exampleInputFile" name="bukti_pembayaran" style="padding-top: 5px">
+
+                          <p class="help-block">Example block-level help text here.</p>
+                        </div>
                       </div>
-                      <!-- /.modal-content -->
+                    </div> 
+                    <!-- /.modal-body-->
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
+                      <input type="submit" name="Unggah" class="btn btn-warning" value="Unggah">
                     </div>
-                    <!-- /.modal-dialog -->
-                  </div>
-                  <!-- /.modal -->
+                  </form>
+                </div>
+                <!-- /.modal-content -->
+              </div>
+              <!-- /.modal-dialog -->
             </div>
-            <!-- /.box-body -->
+            <!-- /.modal -->
           </div>
-          <!-- /.box -->
+          <!-- /.box-body -->
         </div>
+        <!-- /.box -->
       </div>
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+    </div>
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 
 
-  <?php
-  $this->load->view('klien/foot_klien');
-  ?>
+<?php
+$this->load->view('klien/foot_klien');
+?>
