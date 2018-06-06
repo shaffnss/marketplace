@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class klien_pembayaran_m extends CI_Model {
+class Klien_pembayaran_m extends CI_Model {
 
 	public function getPembelian(){
 		$this->db->select("*");

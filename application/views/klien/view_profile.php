@@ -7,6 +7,10 @@ $this->load->view('klien/head_klien');
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>Profil<small>Klien</small></h1>
+     <ol class="breadcrumb">
+      <li><a href="<?php echo site_url('Klien_dashboard')?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li class="active"> Profile</a></li>
+    </ol>
   </section>
 
   <?php 

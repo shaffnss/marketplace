@@ -10,8 +10,9 @@ status dia sedang login
 - bagian search itu sesuai dgn rembugan awal tapi ditambah search sesuai range harga
 
 2. Klien
-- Klien = Upload pembayaran dan pilih jenis perjanjian dan isi keterangan + alert  upload sukses + tunggu konfirmasi admin (klien_pembayaran)
-- bagian upload perjanjian tambahkan kolom keterangan dan juga informasi penjelasan masing-masing kategori perjanjian
+- menu invoice dan pembayaran (datanya gak bisa nampil)
+- bagian invoice (belum masuk datanya, belum bisa cetak, belum bisa generate ke pdf)
+- bagian detail pembayaran
 
 3. Anggota
 - Halaman unggah produk[done]
@@ -46,3 +47,11 @@ shg si pengelola yg dipilih jadi superadmin sementara, nah nanti kalo superadmin
                   if ($this->session->userdata('role')== 4){
                     ?>
 <?php }?>
+
+      $pnjg = strlen($item->id_pembelian);
+               if($pnjg==1){
+                $id = 'OR00'. $item->id_pembelian;
+              }elseif ($pnjg==2) {
+                $id = 'OR0'.$item->id_pembelian;
+              }else{
+                $id = 'OR'.$item->id_pembelian;

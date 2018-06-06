@@ -13,6 +13,10 @@ function rupiah($angka){
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>Keranjang</h1>
+     <ol class="breadcrumb">
+      <li><a href="<?php echo site_url('Klien_dashboard')?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li class="active"> Keranjang</a></li>
+    </ol>
   </section>
 
   <!-- Main content -->
@@ -52,17 +56,14 @@ function rupiah($angka){
                 </tr>
               </thead>
 
-              <!-- <?php 
-              $no=1;
-              foreach ($pembelian as $item) { ?> -->
-
+            
                 <tbody>
                   <tr>
-                    <!-- <td><?php echo $no ?></td>
-                    <td><?php echo $item->nama_produk ?></td>
-                    <td><?php echo rupiah($item->harga_produk)?></td>
-                    <td><?php echo $item->nama_kategori ?></td>
-                    <td><?php echo $item->deskripsi_produk ?></td> -->
+                    <td>1</td>
+                    <td>dummy</td>
+                    <td>dummy</td>
+                    <td>dummy</td>
+                    <td>dummy</td>
                     <td>
                       <div>
                         <button type="button" class="btn btn-primary">
@@ -72,7 +73,7 @@ function rupiah($angka){
                     </td>
                   </tr>
                 </tbody>
-               <!--  <?php $no++; } ?> -->
+             
               </table>
           </div>
           <!-- /.box-body -->

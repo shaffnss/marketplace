@@ -6,14 +6,22 @@ class Klien_pembayaran extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model("klien_pembayaran_m");
+		$this->load->model("Klien_pembayaran_m");
 	}
  
 	public function index()
 	{
-		$data["pembelian"]=$this->klien_pembayaran_m->getPembelian();
-		$data["perjanjians"]=$this->klien_pembayaran_m->getPerjanjian();
+		$data["pembelian"]=$this->Klien_pembayaran_m->getPembelian();
+		$data["perjanjians"]=$this->Klien_pembayaran_m->getPerjanjian();
 		$this->load->view('Klien/pembayaran', $data);
+	}
+
+	public function invoice(){
+		$this->load->view('Klien/invoice');
+	}
+
+	public function pembayaran(){
+		$this->load->view('Klien/detail_pembayaran');
 	}
 
 
@@ -39,7 +47,7 @@ class Klien_pembayaran extends CI_Controller {
 					'bukti_pembayaran'=>$bukti_pembayaran,
 				); 
 
-				$id_pembelian = $this->klien_pembayaran_m->insertBukti($data);
+				$id_pembelian = $this->Klien_pembayaran_m->insertBukti($data);
 				
 				$this->session->set_flashdata('message', 'File berhasil ditambahkan');
 				redirect('Klien_pembayaran');

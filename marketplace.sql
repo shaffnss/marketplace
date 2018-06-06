@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2018 at 10:11 AM
+-- Generation Time: Jun 06, 2018 at 11:26 AM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `detail_pembelian` (
 --
 
 INSERT INTO `detail_pembelian` (`id_detail_pembelian`, `id_pembelian`, `id_produk`) VALUES
-(1, 1, 2);
+(1, 2, 19);
 
 -- --------------------------------------------------------
 
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `detail_tim` (
   `id_tim` int(11) NOT NULL,
   `id_users` int(11) NOT NULL,
   `id_posisi` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_tim`
@@ -96,7 +96,7 @@ INSERT INTO `detail_tim` (`id_detail_tim`, `id_tim`, `id_users`, `id_posisi`) VA
 (20, 56, 36, 4),
 (21, 57, 38, 2),
 (22, 57, 13, 5),
-(23, 58, 40, 5);
+(24, 59, 42, 1);
 
 -- --------------------------------------------------------
 
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `forgot_password` (
   `id_users` int(11) NOT NULL,
   `created` datetime DEFAULT NULL,
   `expired` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `forgot_password`
@@ -143,7 +143,8 @@ INSERT INTO `forgot_password` (`id_forgot`, `token`, `id_users`, `created`, `exp
 (24, '07aa71425d978e0b05571a722e9642bb', 38, '2018-05-26 16:29:00', '2018-05-26 18:29:00'),
 (25, '7fcf5b43008ca04a668556450c7bb733', 38, '2018-05-26 16:32:00', '2018-05-26 18:32:00'),
 (26, '686e29bc9f8c608aba209742dda96885', 38, '2018-05-26 16:42:00', '2018-05-26 18:42:00'),
-(27, '3c9f9f4720662b1d1c3c69a440c57565', 38, '2018-05-26 16:45:00', '2018-05-26 18:45:00');
+(27, '3c9f9f4720662b1d1c3c69a440c57565', 38, '2018-05-26 16:45:00', '2018-05-26 18:45:00'),
+(28, 'c1c336441d6c4fd9220f7c3e118cb2ee', 42, '2018-06-05 16:13:00', '2018-06-05 18:13:00');
 
 -- --------------------------------------------------------
 
@@ -202,14 +203,15 @@ CREATE TABLE IF NOT EXISTS `pembelian` (
   `bukti_pembayaran` varchar(255) NOT NULL,
   `kode_pembelian` varchar(255) NOT NULL,
   `id_users` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pembelian`
 --
 
 INSERT INTO `pembelian` (`id_pembelian`, `tgl_pembelian`, `status_pembelian`, `bukti_pembayaran`, `kode_pembelian`, `id_users`) VALUES
-(1, '2018-05-09', 'proses', '', '', 13);
+(1, '2018-05-09', 'proses', '', '', 13),
+(2, '2018-06-06', 'proses', '', '', 14);
 
 -- --------------------------------------------------------
 
@@ -281,10 +283,6 @@ CREATE TABLE IF NOT EXISTS `produk` (
 --
 
 INSERT INTO `produk` (`id_produk`, `nama_produk`, `harga_produk`, `status`, `deskripsi_produk`, `file_produk`, `foto_produk`, `link_demo`, `kode_produk`, `id_users`, `id_kategori`) VALUES
-(1, 'sistem ta', 1000000, 'aktif', 'sistem pendaftaran tugas akhir                                                            ', 'ini yaa', '', 'www.instagram.com', '', 4, 3),
-(2, 'sistem absensi lab', 2000000, 'aktif', 'sistem absensi lab', 'ini', 'ini', 'www.instragram.com', '', 6, 1),
-(14, 'sistem lele', 50000, 'aktif', 'kadnwjfbw', '', 'adminlte3.png', 'www.facebook.com', '', 4, 1),
-(15, 'sistem lele', 5000, 'aktif', 'wewwdw', '', 'admin3.png', 'www.facebook.com', '', 4, 1),
 (19, 'sistem presensi kehadiran1', 50000001, 'aktif', 'bla bla                                                                                             ', '', '10__Halaman_Manage_Produk4.PNG', 'www.facebook.com', '', 13, 1),
 (22, 'sistem pkl', 100000, 'aktif', 'bla', '', 'produk1528102020.PNG', 'www.facebook.com', '', 41, 1),
 (23, 'sistem pkl', 1000000, 'aktif', 'bla', '', 'produk1528102225.PNG', 'www.facebook.com', '', 41, 1),
@@ -336,7 +334,7 @@ CREATE TABLE IF NOT EXISTS `tim` (
   `nama_tim` varchar(50) NOT NULL,
   `status` enum('aktif','nonaktif') NOT NULL,
   `status_tim` enum('individu','tim') NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tim`
@@ -350,7 +348,8 @@ INSERT INTO `tim` (`id_tim`, `nama_tim`, `status`, `status_tim`) VALUES
 (55, 'anggota', 'nonaktif', 'individu'),
 (56, 'BCA', 'aktif', 'tim'),
 (57, 'LAB SI', 'aktif', 'tim'),
-(58, 'HAYO', 'nonaktif', 'individu');
+(58, 'HAYO', 'nonaktif', 'individu'),
+(59, 'Izul Fanriza', 'aktif', 'individu');
 
 -- --------------------------------------------------------
 
@@ -371,7 +370,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `foto` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -393,7 +392,9 @@ INSERT INTO `users` (`id_users`, `nama_users`, `id_roles`, `jenis_kelamin`, `no_
 (38, 'shafira', 3, 'Pria', '', 'shafirafitrianissa02@gmail.com', '', 'aktif', '$2y$10$MXOSIlTj1MWfLyxXpA/eLOv6IUJtRTyrxPPWjyUw8TnFjEx.pzjgW', NULL, '2018-05-26 09:45:30', '2018-05-26 09:45:30'),
 (39, 'haha', 2, 'Pria', '08231646456', 'haha@gmail.com', 'UGMs', 'nonaktif', '$2y$10$C.jfJqQil/EKlwSm0oXyVOzwmu4vx68w6ovf2R/1sAZODP0cYLPRC', 'index15.png', '2018-06-01 16:27:14', '2018-06-01 16:27:14'),
 (40, 'hihi', 3, 'Wanita', '08231646456', 'hihi@gmail.com', 'UGM', 'nonaktif', '$2y$10$YiGISALX/7MFij2kEYfhDuCuLmkH3RqPfX9a4wR7yQ/qAP7eZ8Fny', 'index5.png', '2018-06-05 04:43:41', '2018-06-05 04:43:41'),
-(41, 'anggota', 3, NULL, NULL, 'anggota@gmail.com', NULL, 'aktif', '$2y$10$3w25VdW/fNbhqdraQPmXMuS.wXI1OWTSdVObHumcrjd4R6kmaMIsO', NULL, '2018-06-04 08:40:59', '2018-06-04 08:40:59');
+(41, 'anggota', 3, NULL, NULL, 'anggota@gmail.com', NULL, 'aktif', '$2y$10$3w25VdW/fNbhqdraQPmXMuS.wXI1OWTSdVObHumcrjd4R6kmaMIsO', NULL, '2018-06-04 08:40:59', '2018-06-04 08:40:59'),
+(42, 'Izul Fanriza', 3, NULL, NULL, 'izulfanrizaizul@gmail.com', NULL, 'aktif', '$2y$10$cJbweBGyn.BDJKMAyFGsseVHg.u.CnjiqOEj5DHGS2egi7S/DpRcy', NULL, '2018-06-05 09:12:50', '2018-06-05 09:12:50'),
+(43, 'abdur', 4, NULL, NULL, 'abdurlele@gmail.com', NULL, 'nonaktif', '$2y$10$CsvEJmK5bgaEkr5dMtFh9ObEoNfM7d4YCBgGoLp1LSlPIbDizqM7.', NULL, '2018-06-05 09:16:09', NULL);
 
 --
 -- Indexes for dumped tables
@@ -507,12 +508,12 @@ ALTER TABLE `detail_produk`
 -- AUTO_INCREMENT for table `detail_tim`
 --
 ALTER TABLE `detail_tim`
-  MODIFY `id_detail_tim` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
+  MODIFY `id_detail_tim` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `forgot_password`
 --
 ALTER TABLE `forgot_password`
-  MODIFY `id_forgot` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
+  MODIFY `id_forgot` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `kategori_perjanjian`
 --
@@ -527,7 +528,7 @@ ALTER TABLE `kategori_produk`
 -- AUTO_INCREMENT for table `pembelian`
 --
 ALTER TABLE `pembelian`
-  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `perjanjian`
 --
@@ -552,12 +553,12 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `tim`
 --
 ALTER TABLE `tim`
-  MODIFY `id_tim` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=59;
+  MODIFY `id_tim` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=60;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
+  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=44;
 --
 -- Constraints for dumped tables
 --

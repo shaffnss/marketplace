@@ -46,27 +46,20 @@ function rupiah($angka){
               </thead>
 
               <?php 
-              //$no=1;
+              $no=1;
               foreach ($pembelian as $item) { 
-               $pnjg = strlen($item->id_pembelian);
-               if($pnjg==1){
-                $id = 'OR00'. $item->id_pembelian;
-              }elseif ($pnjg==2) {
-                $id = 'OR0'.$item->id_pembelian;
-              }else{
-                $id = 'OR'.$item->id_pembelian;
-                
-                } ?>
+         
+                ?>
 
                 <tbody>
                   <tr>
-                    <td><?php echo $id ?></td>
+                    <td><?php echo $no ?></td>
                     <td><?php echo $item->nama_users; ?></td>
                     <!-- <td><?php //echo $item->email; ?></td> -->
                     <td><?php echo $item->nama_produk; ?></td>
                     <td><?php echo rupiah($item->harga_produk)?></td>
                     <td><?php echo $item->tgl_pembelian; ?></td>
-                    <td><?php echo $item->bukti_pembayaran; ?></td>
+                    <td><?php echo $item->bukti_pembayaran?></td>
                     <td><?php echo $item->file_perjanjian ?></td>
                     <td>
                       <span class="label label-warning">Proses</span>
@@ -167,7 +160,7 @@ function rupiah($angka){
                     </div>
                     <!-- /.modal -->
                   </tbody>
-                  <?php ; } ?>
+                  <?php $no++; } ?>
                 </table>
               </div>
               <!-- /.box-body -->

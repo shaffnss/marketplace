@@ -57,7 +57,7 @@
           <div class="radio">
             <label>
               <?php foreach ($data as $value) {
-                if ($value->id_roles != 1) {
+                if ($value->id_roles != 1 && $value->id_roles != 4) {
                   ?>
                   <input type="radio" name="pilihananggota" value="<?php echo $value->id_roles ?>">
                   <?php echo $value->nama_roles ?><br>
