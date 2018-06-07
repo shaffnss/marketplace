@@ -6,7 +6,7 @@ $this->load->view('admin/head_admin');
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <h1>Posisi Tim</h1>
+    <h1>Jabatan Tim</h1>
     <ol class="breadcrumb">
      <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
      <li class="active"> Posisi Tim</li>

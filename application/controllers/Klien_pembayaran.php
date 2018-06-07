@@ -8,6 +8,7 @@ class Klien_pembayaran extends BaseController {
 		parent::__construct();
 		$this->load->model("klien_pembayaran_m");
 		$this->isLoggedIn();
+		$this->load->model("Klien_pembayaran_m");
 	}
  
 	public function index()
@@ -29,11 +30,21 @@ class Klien_pembayaran extends BaseController {
 			}
 		}
 		
-		$data["pembelian"]=$this->klien_pembayaran_m->getPembelian($id_users);
-		$data["perjanjians"]=$this->klien_pembayaran_m->getPerjanjian();
+		$data["pembelian"]=$this->Klien_pembayaran_m->getPembelian();
+		$data["perjanjians"]=$this->Klien_pembayaran_m->getPerjanjian();
 		$this->load->view('Klien/pembayaran', $data);
 	}
 
+	public function invoice(){
+		$data["invoices"]=$this->Klien_pembayaran_m->getInvoice();
+		
+		$this->load->view('Klien/invoice', $data);
+	}
+
+	public function pembayaran(){
+		$data["pembayarans"]=$this->Klien_pembayaran_m->getPembayaran();
+		$this->load->view('Klien/detail_pembayaran', $data);
+	}
 
 	public function unggahPembayaran(){
 			$config['upload_path']          = './assets/bukti pembayaran/';
@@ -88,8 +99,8 @@ class Klien_pembayaran extends BaseController {
 					// 'id_kategori'=>$nama_perjanjian,
 					'bukti_pembayaran'=>$bukti_pembayaran,
 				); 
-				
-				$this->klien_pembayaran_m->insertBukti($data, $id_pembelian);
+
+				$id_pembelian = $this->Klien_pembayaran_m->insertBukti($data);
 				
 				$this->session->set_flashdata('message', 'File berhasil ditambahkan');
 				redirect('Klien_pembayaran');

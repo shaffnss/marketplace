@@ -16,10 +16,10 @@ status dia sedang login
 
 DARI ANGGOTA UPLOAD DATA PRODUK
 ANGGOTA
-12. Di button Unggah,upload produk berdasarkan nama tim terkait di drop down + alert sudah terupload dan menunggu konfirmasi admin.
+12. Di button Unggah,upload produk berdasarkan nama tim terkait di drop down + alert sudah terupload dan menunggu konfirmasi admin.[done]
 13. Anggota yang memiliki posisi sebagai PM bisa mengupload produk yang dihasilkan timnya ke admin dan
-    dropdown pilihan team yg ada di menu upload produk munculnya cuma tim yg dia join
-14. kalo individu nanti create tim (yang isinya dirinya sendiri) ketika pencet button individu
+    dropdown pilihan team yg ada di menu upload produk munculnya cuma tim yg dia join [done]
+14. kalo individu nanti create tim (yang isinya dirinya sendiri) ketika pencet button individu [done]
 15. Di fungsi Edit bagian foto (produk) diberi button untuk edit foto [DONE]
 16. Pemberian wewenang ke anggota tim mana yg project manager mana yg nggak [DONE] 
 17. anggota ditambah ganti photo [DONE]
@@ -27,7 +27,7 @@ ANGGOTA
 19. dropdown kategori dari tabel produk, ketika tambah produk get foreignkey id_kategori [done]
 20. LUPA PASSWORD [DONE]
 21. anggota tidak aktif dikasih label rolesnya dia [DONE]
-- edit data akun ngebug
+- edit data akun ngebug [done]
 
 Admin
 - Konfirmasi produk baru yg diupload klik centang + alert produk diterima [DONE]

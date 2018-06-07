@@ -6,7 +6,7 @@ class Admin_produk extends BaseController {
   function __construct()
   {
     parent::__construct();
-    $this->load->model("admin_produk_model");
+    $this->load->model("Admin_produk_model");
     $this->load->helper("form");
     $this->load->helper("url");
 		$this->isLoggedIn();
@@ -20,8 +20,8 @@ class Admin_produk extends BaseController {
 		}
 		else
 		{
-			$data['produk']=$this->admin_produk_model->getProduk();
-			$data['kategori']=$this->admin_produk_model->getKategori();
+			$data['produk']=$this->Admin_produk_model->getProduk();
+			$data['kategori']=$this->Admin_produk_model->getKategori();
 			$this->load->view('admin/produk',$data);
 		}
   }
@@ -35,8 +35,8 @@ class Admin_produk extends BaseController {
 		}
 		else
 		{
-			$data['produkDiterima']=$this->admin_produk_model->getProdukDiterima();
-			$data['kategori']=$this->admin_produk_model->getKategori();
+			$data['produkDiterima']=$this->Admin_produk_model->getProdukDiterima();
+			$data['kategori']=$this->Admin_produk_model->getKategori();
 			$this->load->view('admin/produk_diterima',$data);
 		}
   }
@@ -69,8 +69,8 @@ class Admin_produk extends BaseController {
 		}
 		else
 		{
-			$data['produk']=$this->admin_produk_model->getProdukDitolak();
-			$data['kategori']=$this->admin_produk_model->getKategori();
+			$data['produk']=$this->Admin_produk_model->getProdukDitolak();
+			$data['kategori']=$this->Admin_produk_model->getKategori();
 			$this->load->view('admin/produk_ditolak',$data);
 		}
   }
@@ -102,9 +102,9 @@ class Admin_produk extends BaseController {
 		}
 		else
 		{
-			$data["tambah_tim"]=$this->admin_produk_model->getTeam();
-			$data["tambah_produk"]=$this->admin_produk_model->getTeam();
-			$data["kategoris"]=$this->admin_produk_model->getKategori();
+			$data["tambah_tim"]=$this->Admin_produk_model->getTeam();
+			$data["tambah_produk"]=$this->Admin_produk_model->getTeam();
+			$data["kategoris"]=$this->Admin_produk_model->getKategori();
 			 
 			$this->load->view('admin/produkTambah',$data);
 		}
@@ -150,7 +150,7 @@ class Admin_produk extends BaseController {
 					'foto_produk' => $mockup_produk,
 					'id_users' => $id_users
 				); 
-				$id_produk = $this->admin_produk_model->insertProduk($data);
+				$id_produk = $this->Admin_produk_model->insertProduk($data);
 				
 				$data2 = array(
 					'id_produk'=>$id_produk,

@@ -92,7 +92,7 @@ function rupiah($angka){
               ?>
                 <tr>
                   <td><?php echo $no ?></td>
-                  <td><a target="_blank" href="<?php echo $data->link_demo?>"><?php echo $data->nama_produk?></a></td>
+                  <td><!-- <a target="_blank" href="<?php echo $data->link_demo?>"> --><?php echo $data->nama_produk?></a></td>
                   <td><?php echo $data->nama_kategori?></td>
                   <td><?php echo rupiah($data->harga_produk)?></td>
                   <td><?php echo $data->nama_tim?></td>
@@ -193,6 +193,11 @@ function rupiah($angka){
                                   </div>
 
                                   <div class="form-group">
+                                    <label for="inputName">Jenis Produk</label>
+                                    <p class="form-control" name="nama_produk"><?php echo $data->nama_kategori; ?></p>
+                                  </div>
+
+                                  <div class="form-group">
                                     <label for="inputName">Nama Tim</label>
                                     <p class="form-control" name="nama_tim"><?php echo $data->nama_tim; ?></p>
                                   </div>
@@ -208,7 +213,7 @@ function rupiah($angka){
                                   </div>
                                   
                                   <div class="form-group">
-                                    <label for="inputName">Foto Produk</label>
+                                    <label for="inputName">Foto Produk</label><br>
                                     <img src="<?php echo site_url('/assets/produk/'.$data->foto_produk); ?>" height='100px' width='100px'>
                                   </div>                        
                                 </div>

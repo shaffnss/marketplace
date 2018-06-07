@@ -31,6 +31,17 @@ $this->load->view('admin/head_admin');
 							</div><br><br>
 
 							<div class="form-group">
+								<label class="col-sm-3 control-label" style="text-align: right;">Status Tim</label> 
+								<div class="col-sm-6">       
+									<select class="form-control" name="status_tim">
+										<option value="individu" <?php if($tim[0]->status_tim == "individu") {echo "selected=selected";} ?>>Individu</option>
+										<option value="tim" <?php if($tim[0]->status_tim == "tim") {echo "selected=selected";} ?>>Tim</option>
+									</select>
+								</div>
+							</div>
+							<br><br>
+
+							<div class="form-group">
 								<label class="col-sm-3 control-label" style="text-align: right;">Status</label> 
 								<div class="col-sm-6">       
 									<select class="form-control" name="status">
@@ -41,6 +52,7 @@ $this->load->view('admin/head_admin');
 									<input type="submit" class="btn btn-success" value="Simpan">
 								</div>
 							</div><br>
+
 						</div>
 					</form>
 				</div>

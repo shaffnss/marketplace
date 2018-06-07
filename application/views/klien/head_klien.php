@@ -146,6 +146,12 @@
               <span>Pemesanan</span>
             </a>
           </li> -->
+          <li>
+            <a href="<?php echo site_url('Keranjang') ?>">
+              <i class="fa fa-cart-plus"></i>
+              <span>Keranjang</span>
+            </a>
+          </li>
 
           <li>
             <a href="<?php echo site_url('Klien_pembayaran') ?>">

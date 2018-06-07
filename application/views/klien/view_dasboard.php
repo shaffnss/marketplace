@@ -7,6 +7,9 @@ $this->load->view('klien/head_klien');
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>Dashboard<small>Control Panel</small></h1>
+       <ol class="breadcrumb">
+      <li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
+    </ol>
     </section>
 
      <!-- Main content -->

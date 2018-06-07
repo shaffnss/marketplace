@@ -1,5 +1,10 @@
 <?php
 $this->load->view('admin/head_admin');
+function rupiah($angka){
+
+	$hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+	return $hasil_rupiah;
+}
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -164,10 +169,8 @@ $this->load->view('admin/head_admin');
 									</div> -->
 									<div class="product-info">
 										<p class="product-title"><?php echo $produk->nama_produk?></p>
-											<span class="label label-info pull-right"<?php echo $produk->harga_produk?></span></a>
-											<span class="product-description">
-												Samsung 32" 1080p 60Hz LED Smart HDTV.
-											</span>
+											<span class="label label-info pull-right"><?php echo rupiah($produk->harga_produk)?></span></a>
+											<span class="product-description">By: <?php echo $produk->nama_tim?></span>
 										</div>
 									</li>
 									<?php }?>

@@ -1,6 +1,6 @@
 <?php
 $this->load->view('anggota/head_anggota');
-$this->load->model('anggota_profile_model');
+$this->load->model('Anggota_profile_model');
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -183,7 +183,7 @@ $this->load->model('anggota_profile_model');
                     <td><?php echo $item->nama_tim; ?></td>
                     <td><?php echo $item->nama_posisi; ?></td>
                     <td>
-                     <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#detail-tim<?php echo $item->id_tim; ?>">
+                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detail-tim<?php echo $item->id_tim; ?>">
                       Detail Anggota
                     </button>
                   </td>
@@ -205,7 +205,7 @@ $this->load->model('anggota_profile_model');
 
                             <?php 
                             $index=1;
-                            $detail_tim=$this->anggota_profile_model->getDetailTeam($item->id_tim);
+                            $detail_tim=$this->Anggota_profile_model->getDetailTeam($item->id_tim);
                             foreach ($detail_tim as $tim) {
                                   # code...
 

@@ -70,6 +70,7 @@ class Klien_profile extends Basecontroller {
 			$id_users= $this->input->post('id_users');
 			$this->db->where('id_users',$id_users);
 			$this->db->update('users',$klien);
+			$this->session->set_userdata('name', $nama_users);
 			redirect('Klien_profile');
 		}
 

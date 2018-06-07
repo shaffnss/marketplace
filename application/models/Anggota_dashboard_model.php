@@ -1,13 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Anggota_profile_model extends CI_Model {
-	public function getProfile(){
-		$this->db->select("*");
-		$this->db->from("users");
-		$this->db->where("id_users",$this->session->userdata('userId'));
-		return $this->db->get()->result();
-	}
+class Anggota_dashboard_model extends CI_Model {
 
 	public function getTeam($id_users)
 	{

@@ -6,7 +6,7 @@ class Anggota_uploadProduk extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model("anggota_uploadProduk_model");
+		$this->load->model("Anggota_uploadProduk_model");
 		$this->load->helper("form");
 		$this->load->helper("url");
 		}
@@ -14,16 +14,16 @@ class Anggota_uploadProduk extends CI_Controller {
 	public function index()
 	{
 		$id_user = $this->session->userdata('userId'); //manggil session id yg sedang login
-		$data['upload']=$this->anggota_uploadProduk_model->getUpload($id_user);
-		$data["kategoris"]=$this->anggota_uploadProduk_model->getKategori();
+		$data['upload']=$this->Anggota_uploadProduk_model->getUpload($id_user);
+		$data["kategoris"]=$this->Anggota_uploadProduk_model->getKategori();
 		$this->load->view('anggota/uploadProduk',$data);		
 	}
 
 	public function tambah_uploadProduk()
 	{
 		$id_users = $this->session->userdata('userId');
-		$data['id_team']=$this->anggota_uploadProduk_model->getTeam($id_users);
-		$data['kategoris']=$this->anggota_uploadProduk_model->getKategori();
+		$data['id_team']=$this->Anggota_uploadProduk_model->getTeam($id_users);
+		$data['kategoris']=$this->Anggota_uploadProduk_model->getKategori();
 		
 		$this->load->view('anggota/tambah_upload',$data);
 	}
@@ -67,13 +67,16 @@ class Anggota_uploadProduk extends CI_Controller {
 				'foto_produk' => $foto_produk,
 				'id_users' => $id_user
 			); 
-			$id_produk = $this->db->insert('produk', $data);
+			$this->db->trans_start();
+		$this->db->insert('produk', $data);
+		$id_produk = $this->db->insert_id();
+		$this->db->trans_complete();
 
 
 			//
 			$status_tim=$this->input->post('status_tim');
 			if ($status_tim == 'individu') {
-				$checkTim=$this->anggota_uploadProduk_model->checkTim($id_user);
+				$checkTim=$this->Anggota_uploadProduk_model->checkTim($id_user);
 				$data2 = array(
 					'id_produk'=>$id_produk,
 					'id_tim'=>$checkTim->id_tim,
@@ -105,8 +108,6 @@ class Anggota_uploadProduk extends CI_Controller {
 
 		$this->load->library('upload', $config);
 
-			$img = $this->upload->data();
-			$foto_produk = $img['file_name'];
 			$id_produk= $this->input->post('id_produk', true);
 			$nama_produk = $this->input->post('nama_produk', true);
 			$jenis_produk = $this->input->post('jenis_produk', true);
@@ -120,7 +121,7 @@ class Anggota_uploadProduk extends CI_Controller {
 			$data = array(
 				
 				'nama_produk'=>$nama_produk,
-				'jenis_produk' =>$jenis_produk,
+				'id_kategori' =>$jenis_produk,
 				'harga_produk' => $harga_produk,
 				'deskripsi_produk' => $deskripsi_produk,
 				'link_demo'	=> $link_demo
@@ -133,10 +134,12 @@ class Anggota_uploadProduk extends CI_Controller {
 		else
 		{
 			
+			$img = $this->upload->data();
+			$foto_produk = $img['file_name'];
 			$data = array(
 				
 				'nama_produk'=>$nama_produk,
-				'nama_kategori' =>$jenis_produk,
+				'id_kategori' =>$jenis_produk,
 				'harga_produk' => $harga_produk,
 				'deskripsi_produk' => $deskripsi_produk,
 				'link_demo'	=> $link_demo,
@@ -147,7 +150,12 @@ class Anggota_uploadProduk extends CI_Controller {
 			$this->db->update('produk', $data);
 			redirect('Anggota_uploadProduk');
 		}
-	} 	
+	} 
+
+	public function delete_upload($id_produk){
+		$this->Anggota_uploadProduk_model->deleteUpload($id_produk);
+		redirect('Anggota_uploadProduk');
+	}	
 
 	
 

@@ -6,14 +6,14 @@ class Anggota_profile extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model("anggota_profile_model");
+		$this->load->model("Anggota_profile_model");
 	}
  
 	public function index()
 	{
 		$id_users = $this->session->userdata('userId');
-		$data["profile"]=$this->anggota_profile_model->getProfile();
-		$data["tampilTim"]=$this->anggota_profile_model->getTeam($id_users);
+		$data["profile"]=$this->Anggota_profile_model->getProfile();
+		$data["tampilTim"]=$this->Anggota_profile_model->getTeam($id_users);
 		
 		$this->load->view('anggota/profile_anggota',$data);
 	}

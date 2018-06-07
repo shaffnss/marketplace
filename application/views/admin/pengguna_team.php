@@ -7,7 +7,7 @@ $this->load->view('admin/head_admin');
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <h1>Daftar Tim</h1>
+    <h1>Tim<small>Tambah, Edit, Ubah Data Tim</small></h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Tim</a></li>
     </ol>
@@ -36,6 +36,15 @@ $this->load->view('admin/head_admin');
                   <div class="form-group">
                     <label class="">Nama Tim</label>
                     <input type="text" class="form-control" id="inputName" name="nama_tim" placeholder="Masukkan Nama Tim">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="">Jenis Tim</label>
+                    <select class="form-control" name="status_tim" required="">
+                      <option disabled selected="">---Pilih Jenis Tim---</option>
+                      <option value="individu">Individu</option>
+                      <option value="tim">Tim</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -69,6 +78,7 @@ $this->load->view('admin/head_admin');
                     <th>No</th>
                     <th>Nama Team</th>
                     <th>Jumlah Anggota</th>
+                    <th>Status Tim</th>
                     <th>Status</th>
                     <th>Aksi</th>
                   </tr>
@@ -84,6 +94,14 @@ $this->load->view('admin/head_admin');
                     <td><?php echo $no ?></td>
                     <td><?php echo $data->nama_tim ?></td>
                     <td>jumlah anggota</td>
+                    <td> 
+                      <?php if($data->status_tim=='individu') {
+                        ?>
+                        <span class="label label-info">Individu</span>
+                      <?php }else{ ?>
+                        <span class="label label-primary">Tim</span>
+                      <?php }?>
+                    </td>
                     <td>
                       <?php if($data->status=='aktif') {
                         ?>
@@ -94,25 +112,25 @@ $this->load->view('admin/head_admin');
                     </td>
                     <td>
                       <a class="btn btn-sm btn-warning" href="<?php echo site_url('Admin_team/ubah_team/').$data->id_tim?>"><i class="fa fa-edit"></i></a>
-                      <a href="" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i></a>
-                      </a>
-                    </td>
-                  </tr>
-                </tbody>
-                <?php $no++; } ?>
-              </table>
-            </div>
-            <!-- /.box-body -->
+                      <!-- <a href="" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i></a> -->
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+              <?php $no++; } ?>
+            </table>
           </div>
-          <!-- /.box -->
+          <!-- /.box-body -->
         </div>
+        <!-- /.box -->
       </div>
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+    </div>
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 
 
-  <?php
-  $this->load->view('admin/foot_admin');
-  ?>
+<?php
+$this->load->view('admin/foot_admin');
+?>

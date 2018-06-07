@@ -6,22 +6,22 @@ class Admin_team extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model("admin_team_model");
+		$this->load->model("Admin_team_model");
 	}
  
 	public function index()
 	{
-		$data["tim"]=$this->admin_team_model->getTim();
+		$data["tim"]=$this->Admin_team_model->getTim();
 		$this->load->view('admin/pengguna_team',$data);
 	}
 
 
 	public function ubah_team($id_team)
 	{
-		$data['panggil_anggota']=$this->admin_team_model->getAnggota(); //panggil dari db
-		$data['anggotaTim']=$this->admin_team_model->getAnggotaTim($id_team); //panggil dari db
-		$data['tim']=$this->admin_team_model->tim($id_team);
-		$data['posisi']=$this->admin_team_model->getPosisi($id_team);
+		$data['panggil_anggota']=$this->Admin_team_model->getAnggota(); //panggil dari db
+		$data['anggotaTim']=$this->Admin_team_model->getAnggotaTim($id_team); //panggil dari db
+		$data['tim']=$this->Admin_team_model->tim($id_team);
+		$data['posisi']=$this->Admin_team_model->getPosisi($id_team);
 		$this->load->view('admin/pengguna_team_ubah',$data);
 	}
 
@@ -29,6 +29,7 @@ class Admin_team extends CI_Controller {
 	{
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nama_tim','nama tim','required');
+		$this->form_validation->set_rules('status_tim','status tim','required');
 		if($this->form_validation->run() == FALSE)
 		{
 			redirect('Admin_team');
@@ -37,12 +38,14 @@ class Admin_team extends CI_Controller {
 		{
 			//echo 'masuk';
 			$nama_tim = $this->input->post('nama_tim');
+			$status_tim = $this->input->post('status_tim');
 
 			$team =  array(
 				"nama_tim"=>$nama_tim,
+				"status_tim"=>$status_tim,
 			);
 
-			$result = $this->admin_team_model->insertTeam($team);
+			$result = $this->Admin_team_model->insertTeam($team);
 
 		}
 
@@ -69,10 +72,12 @@ class Admin_team extends CI_Controller {
 		$id_tim = $this->input->post('id_tim');
 		$nama_tim = $this->input->post('nama_tim');
 		$status = $this->input->post('status');
+		$status_tim = $this->input->post('status_tim');
 
 		$data=array(
 			'nama_tim'=>$nama_tim,
-			"status"=>$status
+			"status"=>$status,
+			"status_tim"=>$status_tim
 		);
 		$this->db->where('id_tim',$id_tim);
 		$this->db->update('tim',$data);

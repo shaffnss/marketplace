@@ -6,22 +6,18 @@ $this->load->view('admin/head_admin');
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <h1>User Anggota Tim</h1>
+    <h1>User Anggota Tim<small>Lihat, Tambah, Edit Data Pengelola</small></h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-users"></i> Anggota</a></li>
     </ol>
   </section>
 
   <section class="content-header">
-   <?php  
-   if ($this->session->userdata('role')== 4){
-    ?>
     <div>
       <a href="<?php echo site_url('Admin_Anggota/tambah_anggota')?>" type="button" class="btn btn-primary" >
         <i class="glyphicon glyphicon-plus"></i> Tambah Anggota Tim
       </a>
     </div> 
-  <?php }?>
 </section>
 
 <!-- Main content -->
@@ -45,12 +41,8 @@ $this->load->view('admin/head_admin');
                 <th>No Telpon</th>
                 <th>Instansi</th>
                 <th>Status</th>
-                <?php  
-                if ($this->session->userdata('role')== 4){
-                  ?>
                   <th>Aksi</th>
                 </tr>
-              <?php }?>
             </thead>
 
             <?php 
@@ -76,17 +68,12 @@ $this->load->view('admin/head_admin');
                       <span class="label label-danger">Non Aktif</span>
                     <?php }?>
                   </td>
-
-                  <?php  
-                  if ($this->session->userdata('role')== 4){
-                    ?>
                     <td>
                       <div>
                         <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ubah-data<?php echo $data['id_users']; ?>"><i class="fa fa-edit"></i></button>
                        <!--  <button type="button" onclick="reset_password(<?php echo $data['id_users']; ?>)" class="btn btn-sm btn-warning" style="background: #d41912; border-color: #fff"><i class="fa fa-refresh"></i>Reset</button>  -->
                       </div>   
                     </td>
-                  <?php }?>
                 </tr>
 
                 <!-- Modals Ubah Data -->
