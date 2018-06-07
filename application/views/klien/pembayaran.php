@@ -70,7 +70,7 @@ function rupiah($angka){
                     </td>
                     <td>
                       <div>
-                        <button type="button" style="text-center" class="btn btn-primary" data-toggle="modal" data-target="#ubah-data">Pembayaran</button>
+                        <a href="<?php echo site_url('Klien_pembayaran/invoice')?>" class="btn btn-primary" >Pembayaran</a>
                       </div> 
                     </td>
                   </tr>

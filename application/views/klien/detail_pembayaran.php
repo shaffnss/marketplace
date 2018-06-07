@@ -32,46 +32,51 @@ function rupiah($angka){
 				<p>Pemilihan jenis perjanjian berguna untuk menentukan tipe pembelian yang klien inginkan dengan keterangan sebagai berikut :</p>
 				<table border="3" style="border-color: transparent; border-radius: 5px;" class="table table-sm table borderless"> 
 					<tr style="height: 10px;"> 
-							<td style="width: 6%"><h5> Beli Lepas</h5></td> 
-							<td style="width: 62%"><h5> Beli lepas merupakan perjanjian dimana ketika telah melakukan pembayaran dan penyerahan, produk sepenuhnya menjadi milik klien </h5></td> 
-						</tr> 
-						<tr style="height: 30px"> 
-							<td><h5>Trial</h5></td> 
-							<td><h5> Trial merupakan perjanjian dimana ketika telah melakukan pembayaran dan penyerahan, produk hanya dapat digunakan oleh klien sesuai dengan periode penggunaan yang telah disepakati </h5></td> 
-						</tr> 
-						<br> 
-					</table> 
-				</div>
+						<td style="width: 6%"><h5> Beli Lepas</h5></td> 
+						<td style="width: 62%"><h5> Beli lepas merupakan perjanjian dimana ketika telah melakukan pembayaran dan penyerahan, produk sepenuhnya menjadi milik klien </h5></td> 
+					</tr> 
+					<tr style="height: 30px"> 
+						<td><h5>Trial</h5></td> 
+						<td><h5> Trial merupakan perjanjian dimana ketika telah melakukan pembayaran dan penyerahan, produk hanya dapat digunakan oleh klien sesuai dengan periode penggunaan yang telah disepakati </h5></td> 
+					</tr> 
+					<br> 
+				</table> 
 			</div>
 		</div>
+	</div>
 
-		<!-- Main content -->
-		<section class="content">
-			<div class="row">
-				<!-- Form Tambah Klien -->
-				<div class="col-md-12">
-					<div class="box box-solid">
-						<div class="box-header with-border">
-							<h3 class="box-title">Detail Pembelian</h3>
-						</div>
-						<!-- Table row -->
-						<div class="row">
-							<div class="col-xs-12 table-responsive">
-								<table class="table table-striped">
-									<thead>
-										<tr>
-											<th>No</th>
-											<th>Product</th>
-											<th>System Type</th>
-											<th>Price</th>
-										</tr>
-									</thead>
+	<!-- Main content -->
+	<section class="content">
+		<div class="row">
+			<!-- Form Tambah Klien -->
+			<div class="col-md-12">
+				<div class="box box-solid">
+					<div class="box-header with-border">
+						<h3 class="box-title">Detail Pembelian</h3>
+					</div>
+					<!-- Table row -->
+					<div class="row">
+						<div class="col-xs-12 table-responsive">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>No</th>
+										<th>Nama Produk</th>
+										<th>Jenis Sistem</th>
+										<th>Harga</th>
+									</tr>
+								</thead>
+
+								<?php 
+								$no=1;
+								foreach ($pembayarans as $pembayaran) { ?>
+
 									<tbody>
 										<tr>
-											<td>1</td>
-											<td>Call of Duty</td>
-											<td>Website</td>
-											<td>1000000</td>
+											<td><?php echo $no ?></td>
+											<td><?php echo $pembayaran->nama_users ?></td>
+											<td><?php echo $pembayaran->nama_kategori ?></td>
+											<td><?php echo $pembayaran->harga_produk ?></td>
 										</tr>
 									</tbody>
 								</table>
@@ -81,6 +86,7 @@ function rupiah($angka){
 						<!-- /.row -->
 					</div>
 				</div>
+					<?php $no++} ?>
 
 				<!-- upload pembayaran -->
 				<div class="col-md-12">
@@ -91,7 +97,7 @@ function rupiah($angka){
 
 						<h3 class="text-center">Pilih Jenis Perjanjian dan Upload Bukti Pembayaran</h3>
 
-						<form class="form-horizontal" method="post" action="" enctype="multipart/form-data">
+						<form class="form-horizontal" method="post" action="<?php echo site_url('Klien_pembayaran/unggahPembayaran')?>" enctype="multipart/form-data">
 
 							<div class="box-body">
 								<div class="form-group">
@@ -141,7 +147,7 @@ function rupiah($angka){
 						</form>
 
 						<div class="box-footer">
-							<a href="<?php echo site_url('Admin_klien')?>" type="button" class="btn btn-default" >
+							<a href="<?php echo site_url('Klien_pembayaran/invoice')?>" type="button" class="btn btn-default" >
 								<i class="glyphicon glyphicon-chevron-left"></i> Kembali</a>
 								<input type="submit" name="Unggah" class="btn btn-success pull-right" value="Unggah Pembayaran">
 							</div>

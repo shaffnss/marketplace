@@ -40,6 +40,7 @@ shg si pengelola yg dipilih jadi superadmin sementara, nah nanti kalo superadmin
 - bikin semacam sweet alert
 - buat alert info yang berisi peringatanuntuk mengisi data diri di menu profile secara lengkap yang muncul di bagian dashboard untuk semua user ketika user pertama kali login
 - mengganti foto di sidebar sama top bar sesuai user yang login
+- session nama dan foto kalo update di header sama sidebar
 
 
 

@@ -8,67 +8,68 @@ function rupiah($angka){
 }
 ?>
 
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <section class="content-header">
-    <h1>
-      Invoice
-      <!-- <small>#007612</small> -->
-    </h1>
-    <ol class="breadcrumb">
-      <li><a href="<?php echo site_url('Klien_dashboard')?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li><a href="<?php echo site_url('Klien_pembayaran')?>"><i class="fa fa-money"></i>Invoice & Pembayaran</a></li>
-      <li class="active">Invoice</li>
-    </ol>
-  </section>
+<body onload="window.print();">
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Invoice
+        <!-- <small>#007612</small> -->
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="<?php echo site_url('Klien_dashboard')?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="<?php echo site_url('Klien_pembayaran')?>"><i class="fa fa-money"></i>Invoice & Pembayaran</a></li>
+        <li class="active">Invoice</li>
+      </ol>
+    </section>
 
-  <div class="pad margin no-print">
-    <div class="callout callout-info" style="margin-bottom: 0!important;">
-      <h4><i class="fa fa-info"></i> Note:</h4>
-      Silahkan cetak Invoice anda. Klik tombol cetak yang berada dibawah Invoice anda.
-    </div>
-  </div>
-
-  <!-- Main content -->
-  <section class="invoice">
-    <!-- title row -->
-    <div class="row">
-      <div class="col-xs-12">
-        <h2 class="page-header">
-          <i class="fa fa-globe"></i> VokasiDev
-          <small class="pull-right">Date: 2/10/2014</small>
-        </h2>
+    <div class="pad margin no-print">
+      <div class="callout callout-info" style="margin-bottom: 0!important;">
+        <h4><i class="fa fa-info"></i> Note:</h4>
+        Silahkan cetak Invoice anda. Klik tombol cetak yang berada dibawah Invoice anda.
       </div>
-      <!-- /.col -->
     </div>
 
-    <?php 
-    $no=1;
-    foreach ($invoices as $invoice) { ?>
+    <!-- Main content -->
+    <section class="invoice">
+      <!-- title row -->
+      <div class="row">
+        <div class="col-xs-12">
+          <h2 class="page-header">
+            <i class="fa fa-globe"></i> VokasiDev
+            <small class="pull-right">Date: 2/10/2014</small>
+          </h2>
+        </div>
+        <!-- /.col -->
+      </div>
 
-      <!-- info row -->
-      <div class="row invoice-info">
-        <div class="col-sm-4 invoice-col">
-          From
-          <address>
-            <strong>VokasiDev</strong><br>
-            San Francisco, CA 94107<br>
-            Phone: (804) 123-5432<br>
-            Email: info@almasaeedstudio.com
-          </address>
-        </div>
-        <!-- /.col -->
-        <div class="col-sm-4 invoice-col">
-          To
-          <address>
-            <strong><?php echo $invoice->nama_users ?></strong><br>
-            <?php echo $invoice->instansi ?><br>
-            Phone: <?php echo $invoice->no_telpon ?><br>
-            Email: <?php echo $invoice->email ?>
-          </address>
-        </div>
-        <!-- /.col -->
+      <?php 
+      $no=1;
+      foreach ($invoices as $invoice) { ?>
+
+        <!-- info row -->
+        <div class="row invoice-info">
+          <div class="col-sm-4 invoice-col">
+            From
+            <address>
+              <strong>VokasiDev</strong><br>
+              San Francisco, CA 94107<br>
+              Phone: (804) 123-5432<br>
+              Email: info@almasaeedstudio.com
+            </address>
+          </div>
+          <!-- /.col -->
+          <div class="col-sm-4 invoice-col">
+            To
+            <address>
+              <strong><?php echo $invoice->nama_users ?></strong><br>
+              <?php echo $invoice->instansi ?><br>
+              Phone: <?php echo $invoice->no_telpon ?><br>
+              Email: <?php echo $invoice->email ?>
+            </address>
+          </div>
+          <!-- /.col -->
        <!--  <div class="col-sm-4 invoice-col">
           <b>Invoice #007612</b><br>
           <br>
@@ -86,10 +87,10 @@ function rupiah($angka){
           <table class="table table-striped">
             <thead>
               <tr>
-                <th>Number</th>
-                <th>Product Name</th>
-                <th>System Type</th>
-                <th>Price</th>
+                <th>No</th>
+                <th>Nama Produk</th>
+                <th>Jenis Sistem</th>
+                <th>Harga</th>
               </tr>
             </thead>
 
@@ -102,9 +103,9 @@ function rupiah($angka){
               </tr>
             </tbody>
           </table>
+          <?php $no++ }?>
         </div>
         <!-- /.col -->
-         <?php $no++ }?>
       </div>
       <!-- /.row -->
 
@@ -163,8 +164,8 @@ function rupiah($angka){
       <div class="clearfix"></div>
     </div>
     <!-- /.content-wrapper -->
+  </body>
 
-
-    <?php
-    $this->load->view('klien/foot_klien');
-    ?>
+  <?php
+  $this->load->view('klien/foot_klien');
+  ?>

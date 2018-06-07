@@ -17,13 +17,15 @@ class Klien_pembayaran extends CI_Controller {
 	}
 
 	public function invoice(){
-		$this->load->view('Klien/invoice');
+		$data["invoices"]=$this->Klien_pembayaran_m->getInvoice();
+		
+		$this->load->view('Klien/invoice', $data);
 	}
 
 	public function pembayaran(){
-		$this->load->view('Klien/detail_pembayaran');
+		$data["pembayarans"]=$this->Klien_pembayaran_m->getPembayaran();
+		$this->load->view('Klien/detail_pembayaran', $data);
 	}
-
 
 	public function unggahPembayaran(){
 			$config['upload_path']          = './assets/bukti pembayaran/';
