@@ -55,7 +55,7 @@
 <script>
   $(function () {
     $('#example1').DataTable()
-    $('#example2').DataTable()
+    $('.data-tables').DataTable()
     $('#example3').DataTable({
       'paging'      : true,
       'lengthChange': false,
