@@ -54,13 +54,14 @@ class Klien_pembayaran_m extends CI_Model {
 		return $this->db->get()->result();
 	}
 
-	public function getPembayaran(){
+	public function getPembayaran($id_pembelian){
 		$this->db->select("*");
 		$this->db->from("pembelian");
 		// $this->db->join("users","users.id_users=pembelian.id_users");
 		$this->db->join("detail_pembelian","detail_pembelian.id_pembelian=pembelian.id_pembelian");
 		$this->db->join("produk","produk.id_produk=detail_pembelian.id_produk");
 		$this->db->join("kategori_produk","kategori_produk.id_kategori=produk.id_kategori");
+		$this->db->where('pembelian.id_pembelian', $id_pembelian);
 		return $this->db->get()->result();
 	}
 }

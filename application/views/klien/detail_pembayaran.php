@@ -74,7 +74,7 @@ function rupiah($angka){
 									<tbody>
 										<tr>
 											<td><?php echo $no ?></td>
-											<td><?php echo $pembayaran->nama_users ?></td>
+											<td><?php echo $pembayaran->nama_produk ?></td>
 											<td><?php echo $pembayaran->nama_kategori ?></td>
 											<td><?php echo $pembayaran->harga_produk ?></td>
 										</tr>
@@ -86,7 +86,7 @@ function rupiah($angka){
 						<!-- /.row -->
 					</div>
 				</div>
-					<?php $no++} ?>
+					<?php $no++;} ?>
 
 				<!-- upload pembayaran -->
 				<div class="col-md-12">
