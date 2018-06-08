@@ -104,7 +104,7 @@ function rupiah($angka){
           </table>
         </div>
         <!-- /.col -->
-         <?php $no++ }?>
+         <?php $no++; }?>
       </div>
       <!-- /.row -->
 

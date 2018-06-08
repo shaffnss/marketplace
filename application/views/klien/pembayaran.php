@@ -70,7 +70,7 @@
 										</td>
                     <td>
                       <div>
-                        <a href="<?php echo site_url('Klien_pembayaran/invoice')?>" class="btn btn-primary" >Pembayaran</a>
+                        <a href="<?php echo site_url('Klien_pembayaran/invoice/'.$item->idPembelian)?>" class="btn btn-primary" >Pembayaran</a>
                       </div> 
                     </td>
                   </tr>
