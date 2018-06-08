@@ -41,7 +41,7 @@ $this->load->view('landing/head_landing');
           <div class="card-body">
             <h3 class="card-title"><?php echo $produks->nama_produk ?>
             <a href="<?php echo site_url('')?>" class="btn btn-primary btn-sm">Lihat Demo</a></h3>
-            <p class="card-text"><?php echo $produks->deskripsi_produk ?></p>
+            <p class="card-text"><?php echo $produks->deskripsi_produk ?> <?php var_dump($this->session->userdata('produk')) ?></p>
           </div>
 
 

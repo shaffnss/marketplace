@@ -52,24 +52,17 @@ class ListProduk extends CI_Controller {
 			redirect('ListProduk');
 		}
 		
-		// $produk = $this->listProduk_model->getDetailProduk($id_produk);
+		$produk = $this->listProduk_model->getDetailProduk($id_produk);
 		
-		// if($this->session->userdata('produk')){
+			$arrProduk = array(
+				'id_produk'=>$produk->id_produk,
+				'nama_produk'=>$produk->nama_produk,
+				'harga_produk'=>$produk->harga_produk,
+				'deskripsi_produk'=>$produk->deskripsi_produk,
+				'kategori_produk'=>$produk->nama_kategori,
+			);
 			
-		// }else{
-			// $arrProduk = array();
-		// }
-		
-		array_push($arrProduk, array(
-				'id_produk'=>$data->id_produk,
-				'nama_produk'=>$data->harga_produk,
-				'deskripsi_produk'=>$data->deskripsi_produk,
-				'kategori_produk'=>$data->nama_kategori,
-			)
-		);
-		
-		$this->session->set_userdata('produk', 
-		);
+			$this->session->set_userdata('produk', $arrProduk);
 		
 		redirect('login');
 	}

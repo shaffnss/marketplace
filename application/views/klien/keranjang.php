@@ -58,20 +58,24 @@ function rupiah($angka){
 
             
                 <tbody>
+								<?php $keranjang = $this->session->userdata('produk');
+									if($keranjang){
+								?>
                   <tr>
-                    <td><?php echo $this->session->userdata('produk'); ?></td>
-                    <td>dummy</td>
-                    <td>dummy</td>
-                    <td>dummy</td>
-                    <td>dummy</td>
+                    <td>1</td>
+                    <td><?php echo $keranjang['nama_produk'] ?></td>
+                    <td><?php echo $keranjang['harga_produk'] ?></td>
+                    <td><?php echo $keranjang['kategori_produk'] ?></td>
+                    <td><?php echo $keranjang['deskripsi_produk'] ?></td>
                     <td>
                       <div>
-                        <button type="button" class="btn btn-primary">
+                        <a href="<?php echo site_url('Klien_pembayaran/pembelian/'.$keranjang['id_produk']) ?>" class="btn btn-primary">
                           <i class="fa fa-check"></i>Beli Produk
-                        </button>
+                        </a>
                       </div> 
                     </td>
                   </tr>
+									<?php } ?>
                 </tbody>
              
               </table>

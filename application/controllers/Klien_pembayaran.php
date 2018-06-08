@@ -14,23 +14,7 @@ class Klien_pembayaran extends BaseController {
 	public function index()
 	{
 		$id_users = $this->session->userdata('userId');
-		
-		if($this->session->userdata('id_produk')) {
-			$id_produk = $this->session->userdata('id_produk');
-			if($id_produk['id_roles'] == '2') {				
-				$data = array(
-					'tgl_pembelian'=>date('Y-m-d'),
-					'id_users'=>(int)$id_users,
-					'status_pembelian'=>'proses',
-				);
-				// var_dump($data);exit;
-				
-				$id_pembelian = $this->klien_pembayaran_m->insertKeranjang($data);
-				$this->db->insert('detail_pembelian', array('id_pembelian'=>$id_pembelian, 'id_produk'=>(int)$id_produk['id_produk']));
-			}
-		}
-		
-		$data["pembelian"]=$this->Klien_pembayaran_m->getPembelian();
+		$data["pembelian"]=$this->Klien_pembayaran_m->getPembelian($id_users);
 		$data["perjanjians"]=$this->Klien_pembayaran_m->getPerjanjian();
 		$this->load->view('Klien/pembayaran', $data);
 	}
@@ -44,6 +28,24 @@ class Klien_pembayaran extends BaseController {
 	public function pembayaran(){
 		$data["pembayarans"]=$this->Klien_pembayaran_m->getPembayaran();
 		$this->load->view('Klien/detail_pembayaran', $data);
+	}
+	
+	public function pembelian($id_produk) {
+		$id_users = $this->session->userdata('userId');
+		
+		$data = array(
+			'tgl_pembelian'=>date('Y-m-d'),
+			'id_users'=>$id_users,
+			'status_pembelian'=>'proses',
+		);
+		// var_dump($data);exit;
+		
+		$id_pembelian = $this->klien_pembayaran_m->insertBukti($data);
+		$this->db->insert('detail_pembelian', array('id_pembelian'=>$id_pembelian, 'id_produk'=>$id_produk));
+		
+		$this->session->unset_userdata('produk');
+		
+		redirect('Klien_pembayaran');
 	}
 
 	public function unggahPembayaran(){
