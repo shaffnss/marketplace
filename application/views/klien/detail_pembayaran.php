@@ -103,6 +103,7 @@ function rupiah($angka){
 								<div class="form-group">
 									<label class="col-sm-2 control-label">Jenis Perjanjian</label>
 									<div class="col-sm-8">
+										<input type="hidden" name="id_pembelian" value="<?php echo $this->uri->segment(3) ?>">
 										<select class="form-control" name="nama_perjanjian">
 											<option disabled selected="">--- Pilih Jenis Perjanjian ---</option>
 											<?php foreach ($perjanjians as $perjanjian) { ?>
@@ -115,17 +116,17 @@ function rupiah($angka){
 								<div class="form-group">
 									<label for="inputName" class="col-sm-2 control-label">Keterangan Perjanjian</label>
 									<div class="col-sm-8">
-										<textarea class="form-control" rows="5" id="inputExperience" placeholder="Keterangan" name="deskripsi_produk" maxLength="255" required=""></textarea>
+										<textarea class="form-control" rows="5" id="inputExperience" placeholder="Keterangan" name="keterangan_perjanjian" maxLength="255" required=""></textarea>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label for="inputName" class="col-sm-2 control-label">Nama Bank</label>
 									<div class="col-sm-8">
-										<select class="form-control" name="jenis_kelamin" required="" value="<?php echo set_value("jenis_kelamin") ?>">
+										<select class="form-control" name="bank" required="" >
 											<option disabled selected="">--- Pilih Bank ---</option>
-											<option value="Pria">Pria</option>
-											<option value="Wanita">Wanita</option>
+											<option value="Pria">BRI</option>
+											<option value="Wanita">BCA</option>
 										</select>
 									</div>
 								</div>
@@ -133,24 +134,24 @@ function rupiah($angka){
 								<div class="form-group">
 									<label for="inputEmail" class="col-sm-2 control-label">Nominal</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control" name="nominal" placeholder="Masukkan Nominal" value="<?php echo set_value("instansi") ?>" required>
+										<input type="number" class="form-control" name="nominal" placeholder="Masukkan Nominal" value="<?php echo set_value("instansi") ?>" required>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-2 control-label">Upload Bukti</label>
 									<div class="col-sm-8">
-										<input type="file" name="foto" required>
+										<input type="file" name="bukti_pembayaran" required>
 									</div>
 								</div>
 							</div>
-						</form>
 
 						<div class="box-footer">
-							<a href="<?php echo site_url('Klien_pembayaran/invoice')?>" type="button" class="btn btn-default" >
+							<a href="<?php echo site_url('Klien_pembayaran/invoice/'.$this->uri->segment(3))?>" type="button" class="btn btn-default" >
 								<i class="glyphicon glyphicon-chevron-left"></i> Kembali</a>
-								<input type="submit" name="Unggah" class="btn btn-success pull-right" value="Unggah Pembayaran">
+								<input type="submit" class="btn btn-success pull-right" value="Unggah Pembayaran">
 							</div>
+						</form>
 						</div>
 					</div>
 					<!-- /.upload pembayaran -->

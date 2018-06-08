@@ -42,6 +42,11 @@ class Klien_pembayaran_m extends CI_Model {
 		$this->db->trans_complete();
 		return $insert_id;
 	}
+	
+	public function uploadBukti($data, $id_pembelian){
+		$this->db->where('id_pembelian',$id_pembelian);
+		return $this->db->update('pembelian',$data);
+	}
 
 	public function getInvoice($id_pembelian){
 		$this->db->select("*");

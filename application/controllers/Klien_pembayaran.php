@@ -27,6 +27,7 @@ class Klien_pembayaran extends BaseController {
 
 	public function pembayaran($id_pembelian){
 		$data["pembayarans"]=$this->Klien_pembayaran_m->getPembayaran($id_pembelian);
+		$data["perjanjians"]=$this->Klien_pembayaran_m->getPerjanjian();
 		$this->load->view('Klien/detail_pembayaran', $data);
 	}
 	
@@ -57,6 +58,9 @@ class Klien_pembayaran extends BaseController {
 			
 			$id_kategori = $this->input->post('nama_perjanjian');
 			$id_pembelian = $this->input->post('id_pembelian');
+			$keterangan_perjanjian = $this->input->post('keterangan_perjanjian');
+			$bank = $this->input->post('bank');
+			$nominal = $this->input->post('nominal');
 
 			$this->load->library('upload', $config);
 			$this->upload->initialize($config);
@@ -102,7 +106,7 @@ class Klien_pembayaran extends BaseController {
 					'bukti_pembayaran'=>$bukti_pembayaran,
 				); 
 
-				$id_pembelian = $this->Klien_pembayaran_m->insertBukti($data);
+				$id_pembelian = $this->Klien_pembayaran_m->uploadBukti($data, $id_pembelian);
 				
 				$this->session->set_flashdata('message', 'File berhasil ditambahkan');
 				redirect('Klien_pembayaran');
