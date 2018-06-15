@@ -43,9 +43,6 @@ function rupiah($angka){
       <!-- /.col -->
     </div>
 
-    <?php 
-    $no=1;
-    foreach ($invoices as $invoice) { ?>
 
       <!-- info row -->
       <div class="row invoice-info">
@@ -62,10 +59,10 @@ function rupiah($angka){
         <div class="col-sm-4 invoice-col">
           To
           <address>
-            <strong><?php echo $invoice->nama_users ?></strong><br>
-            <?php echo $invoice->instansi ?><br>
-            Phone: <?php echo $invoice->no_telpon ?><br>
-            Email: <?php echo $invoice->email ?>
+            <strong><?php echo $invoices[0]->nama_users ?></strong><br>
+            <?php echo $invoices[0]->instansi ?><br>
+            Phone: <?php echo $invoices[0]->no_telpon ?><br>
+            Email: <?php echo $invoices[0]->email ?>
           </address>
         </div>
         <!-- /.col -->
@@ -94,17 +91,20 @@ function rupiah($angka){
             </thead>
 
             <tbody>
+						<?php 
+						$no=1;
+						foreach ($invoices as $invoice) { ?>
               <tr>
                 <td><?php echo $no ?></td>
                 <td><?php echo $invoice->nama_produk ?></td>
                 <td><?php echo $invoice->nama_kategori ?></td>
                 <td><?php echo $invoice->harga_produk ?></td>
               </tr>
+						<?php $no++; }?>
             </tbody>
           </table>
         </div>
         <!-- /.col -->
-         <?php $no++; }?>
       </div>
       <!-- /.row -->
 

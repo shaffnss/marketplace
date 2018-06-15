@@ -147,7 +147,7 @@
             </a>
           </li> -->
           <li>
-            <a href="<?php echo site_url('Keranjang') ?>">
+            <a href="<?php echo site_url('ListProduk/keranjang_belanja') ?>">
               <i class="fa fa-cart-plus"></i>
               <span>Keranjang</span>
             </a>

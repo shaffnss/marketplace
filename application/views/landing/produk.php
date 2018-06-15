@@ -52,6 +52,16 @@ function rupiah($angka){
                     <p class="card-text"><?php echo $produk->deskripsi_produk ?></p>
                   </div>
                   </div>
+									<form method="post" action="<?php echo site_url('listProduk/keranjang'); ?>">
+									<div class="card-footer">
+									<a class="btn btn-light">Beli Sekarang</a>
+									<input type="hidden" name="id" value="<?php echo $produk->id_produk ?>">
+									<input type="hidden" name="nama" value="<?php echo $produk->nama_produk ?>">
+									<input type="hidden" name="harga" value="<?php echo $produk->harga_produk ?>">
+									<input type="hidden" name="gambar" value="<?php echo $produk->foto_produk ?>">
+									<button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-shopping-cart"></i></button>
+									</div>
+									</form>
               </div>
             </div>
      

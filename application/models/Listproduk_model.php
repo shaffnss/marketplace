@@ -32,4 +32,12 @@ class ListProduk_model extends CI_Model {
 		return $this->db->get('kategori_produk')->result();
 	}
 	
+	public function insertPembelian($data) {
+		$this->db->trans_start();
+		$this->db->insert('pembelian', $data);
+		$id = $this->db->insert_id();
+		$this->db->trans_complete();
+		return $id;
+	}
+	
 }

@@ -22,7 +22,15 @@
   <link href="<?php echo base_url('Landing/css/font-awesome.css') ?>" rel="stylesheet">
  
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-</head>
+	<style>
+		.badge-notify{
+   background:red;
+   position:relative;
+   top: -7px;
+   left: -3px;
+}
+	</style>
+	</head>
 
 <!-- Navigation -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -44,6 +52,10 @@
     <div class="collapse navbar-collapse navbar-dark" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
 
+				<li class="nav-item">
+          <a class="nav-link" href="<?php echo site_url('ListProduk/keranjang_belanja')?>">Keranjang <span class="badge badge-notify"><?php echo count($this->cart->contents()); ?></span></a>
+        </li>
+
         <li class="nav-item">
           <a class="nav-link" href="<?php echo site_url('ListProduk')?>">Produk</a>
         </li>
@@ -54,7 +66,7 @@
 
          <li class="nav-item">
           <a class="nav-link" href="<?php echo site_url('Register')?>">Register</a>
-        </li>
+					</li>
       </ul>
 
     </div>

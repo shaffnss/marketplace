@@ -46,24 +46,105 @@ class ListProduk extends CI_Controller {
 		$this->load->view('landing/produk', $data);
 	}
 	
-	public function keranjang($id_produk='')
-	{
-		if($id_produk == '') {
-			redirect('ListProduk');
+	public function keranjang_belanja(){
+		$isLoggedIn = $this->session->userdata ( 'isLoggedIn' );
+	
+    $data['cart'] = $this->cart->contents();
+		
+		//bila login
+		if($isLoggedIn) {
+			$this->load->view('Klien/keranjang', $data);
+		}else{
+			$this->load->view('landing/keranjang',$data);
 		}
 		
-		$produk = $this->listProduk_model->getDetailProduk($id_produk);
+  }
+	
+	public function keranjang()
+	{
+		$arr = $this->cart->contents();
+		$in_cart = false;
 		
-			$arrProduk = array(
-				'id_produk'=>$produk->id_produk,
-				'nama_produk'=>$produk->nama_produk,
-				'harga_produk'=>$produk->harga_produk,
-				'deskripsi_produk'=>$produk->deskripsi_produk,
-				'kategori_produk'=>$produk->nama_kategori,
-			);
+		foreach ($arr as $item) {
+			if ($item['id'] == $this->input->post('id')){
+				$in_cart = true;
+				break;
+			}
+		}
+		
+		if($in_cart == FALSE) {
+			$data = array(
+							'id' => $this->input->post('id'),
+							'name' => $this->input->post('nama'),
+							'price' => $this->input->post('harga'),
+							'gambar' => $this->input->post('gambar'),
+							'qty' =>1
+						);
 			
-			$this->session->set_userdata('produk', $arrProduk);
+			$this->cart->insert($data);
+		}
 		
-		redirect('login');
+		redirect('ListProduk');
+	}
+	
+	public function bayar($rowid){
+		$isLoggedIn = $this->session->userdata ( 'isLoggedIn' );
+		
+		//jika sudah login
+		if($isLoggedIn) {
+			$cart = $this->cart->contents();
+			$total = 0;
+			
+			//menghitung total
+			foreach($cart as $item){
+				$total += $item['subtotal'];
+			}
+			
+			//-----INSERT PEMBELIAN-----//
+			$data = array(
+				'tgl_pembelian' => date('Y-m-d'),
+				'total' => $total,
+				'id_users' => $this->session->userdata('userId')
+			);
+			$id_pembelian = $this->listProduk_model->insertPembelian($data); //insert sekaligus get id_pembelian yang barusan dibuat
+			
+			foreach($cart as $item){
+				//-----INSERT DETAIL PEMBELIAN-----//
+				$data2 = array(
+					'id_pembelian' => $id_pembelian,
+					'id_produk' => $item['id'],
+					'qty' => $item['qty']
+				);
+				$this->db->insert('detail_pembelian', $data2);
+			}
+			
+			if($rowid == "semua") {
+				//kosongkan keranjang
+				$this->cart->destroy();
+			}else{
+				//hapus cart yang sudah dibeli dari keranjang
+				$data = array(
+					'rowid' => $rowid,
+					'qty' =>0
+				);
+				$this->cart->update($data);
+			}
+			
+			redirect('klien_pembayaran');
+		}else{
+			//jika belum login
+			redirect('login');
+		}
+  }
+	
+	public function hapus($rowid){
+    if ($rowid =="semua"){
+        $this->cart->destroy();
+      }else{
+        $data = array('rowid' => $rowid,
+                  'qty' =>0);
+        $this->cart->update($data);
+      }
+    redirect('ListProduk/keranjang_belanja');
 	}
 }
