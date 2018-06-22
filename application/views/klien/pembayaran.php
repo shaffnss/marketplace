@@ -38,9 +38,8 @@
               <thead>
                 <tr>
                   <th>No</th>
-                  <th>Nama Produk</th>
-                  <th>Harga</th>
-                  <th>Jenis Sistem</th>
+                  <th>Total Harga</th>
+                  <th>Tanggal Pembelian</th>
                   <th>Bukti pembayaran</th>
                   <th>File Perjanjian</th>
                   <th>Status Pembayaran</th>
@@ -55,9 +54,8 @@
                 <tbody>
                   <tr>
                     <td><?php echo $no ?></td>
-                    <td><?php echo $item->nama_produk ?></td>
-                    <td><?php echo rupiah($item->harga_produk)?></td>
-                    <td><?php echo $item->nama_kategori ?></td>
+                    <td><?php echo rupiah($item->total)?></td>
+                    <td><?php echo $item->tgl_pembelian ?></td>
                     <td></td>
                     <td></td>
                     <td>

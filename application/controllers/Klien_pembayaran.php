@@ -15,7 +15,6 @@ class Klien_pembayaran extends BaseController {
 	{
 		$id_users = $this->session->userdata('userId');
 		$data["pembelian"]=$this->Klien_pembayaran_m->getPembelian($id_users);
-		$data["perjanjians"]=$this->Klien_pembayaran_m->getPerjanjian();
 		$this->load->view('Klien/pembayaran', $data);
 	}
 
