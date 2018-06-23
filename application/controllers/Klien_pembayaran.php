@@ -8,7 +8,7 @@ class Klien_pembayaran extends BaseController {
 		parent::__construct();
 		$this->load->model("klien_pembayaran_m");
 		$this->isLoggedIn();
-		$this->load->model("Klien_pembayaran_m");
+		$this->isKlien();
 	}
  
 	public function index()

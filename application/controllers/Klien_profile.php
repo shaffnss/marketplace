@@ -8,6 +8,7 @@ class Klien_profile extends Basecontroller {
 		parent::__construct();
 		$this->load->model("Klien_profile_model");
 		$this->IsLoggedIn();
+		$this->isKlien();
 	}
  
 	public function index()

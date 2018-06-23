@@ -9,6 +9,7 @@ class Klien_dashboard extends Basecontroller {
 	{
 		parent::__construct();
 		$this->IsLoggedIn();
+		$this->isKlien();
 	}
  
 	public function index()
