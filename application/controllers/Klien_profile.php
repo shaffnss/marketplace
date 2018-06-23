@@ -65,6 +65,7 @@ class Klien_profile extends Basecontroller {
 				"no_telpon"=>$no_telpon,
 				//"email"=>$email,
 				"foto"=> $foto
+				$this->session->set_userdata('foto', $foto);
 			);
 		}
 			$id_users= $this->input->post('id_users');
@@ -87,7 +88,6 @@ class Klien_profile extends Basecontroller {
 
 		if ($this->form_validation->run() ==  FALSE)
 		{
-			echo "lele";
 			$datas["profile"]=$this->Klien_profile_model->getProfile($id_users);
 			$data['body'] = $this->load->view('klien/view_profile', $datas,'');
 			$this->load->view('klien/head_admin',$data);
