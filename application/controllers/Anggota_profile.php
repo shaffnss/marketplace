@@ -1,12 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-class Anggota_profile extends CI_Controller {
+require APPPATH . '/libraries/BaseController.php';
+class Anggota_profile extends BaseController {
 
 	function __construct()
 	{
 		parent::__construct();
 		$this->load->model("Anggota_profile_model");
+		$this->isLoggedIn();
+		$this->isAnggota();
 	}
  
 	public function index()

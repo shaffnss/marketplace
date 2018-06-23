@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-class Anggota_uploadProduk extends CI_Controller {
+require APPPATH . '/libraries/BaseController.php';
+class Anggota_uploadProduk extends BaseController {
 
 	function __construct()
 	{
@@ -9,6 +9,8 @@ class Anggota_uploadProduk extends CI_Controller {
 		$this->load->model("Anggota_uploadProduk_model");
 		$this->load->helper("form");
 		$this->load->helper("url");
+		$this->isLoggedIn();
+		$this->isAnggota();
 		}
 
 	public function index()
