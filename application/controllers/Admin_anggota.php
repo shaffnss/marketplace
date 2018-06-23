@@ -1,12 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-class Admin_anggota extends CI_Controller {
+require APPPATH . '/libraries/BaseController.php';
+class Admin_anggota extends BaseController {
 
 	function __construct()
 	{
 		parent::__construct();
 		$this->load->model("Admin_anggota_model");
+		$this->isLoggedIn();
+		$this->isAdmin();
 	}
 
 	public function index()

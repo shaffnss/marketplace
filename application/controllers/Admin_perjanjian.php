@@ -1,12 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-class Admin_perjanjian extends CI_Controller {
+require APPPATH . '/libraries/BaseController.php';
+class Admin_perjanjian extends BaseController {
 
 	function __construct()
 	{
 		parent::__construct();
 		$this->load->model("Admin_perjanjian_model");
+		$this->isLoggedIn();
+		$this->isAdmin();
 	}
  
 	public function index()
