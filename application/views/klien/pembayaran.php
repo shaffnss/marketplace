@@ -50,7 +50,8 @@ function rupiah($angka){
 
               <?php 
               $no=1;
-              foreach ($pembelian as $item) { ?>
+              foreach ($pembelian as $item) { 
+                ?>
 
                 <tbody>
                   <tr>
@@ -75,7 +76,8 @@ function rupiah($angka){
                     </td>
                   </tr>
                 </tbody>
-                <?php $no++; } ?>
+                <?php $no++; } 
+                ?>
               </table>
           </div>
           <!-- /.box-body -->

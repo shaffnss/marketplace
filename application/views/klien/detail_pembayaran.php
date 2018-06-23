@@ -22,7 +22,7 @@ function rupiah($angka){
 	</section>
 
 	<div class="container" style="padding-top: 20px">
-		<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo"><i class="fa fa-info"></i> Information</button>
+			<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo"><i class="fa fa-info"></i> Informasi</button>
 	</div>
 
 	<div id="demo" class="collapse" style="padding-top: 10px">
@@ -74,11 +74,12 @@ function rupiah($angka){
 									<tbody>
 										<tr>
 											<td><?php echo $no ?></td>
-											<td><?php echo $pembayaran->nama_users ?></td>
+											<td><?php echo $pembayaran->nama_produk ?></td>
 											<td><?php echo $pembayaran->nama_kategori ?></td>
-											<td><?php echo $pembayaran->harga_produk ?></td>
+											<td><?php echo rupiah($pembayaran->harga_produk)?></td>
 										</tr>
 									</tbody>
+									<?php $no++; }?>
 								</table>
 							</div>
 							<!-- /.col -->
@@ -86,7 +87,7 @@ function rupiah($angka){
 						<!-- /.row -->
 					</div>
 				</div>
-					<?php $no++} ?>
+				
 
 				<!-- upload pembayaran -->
 				<div class="col-md-12">

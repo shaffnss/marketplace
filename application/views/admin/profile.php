@@ -22,7 +22,11 @@ $this->load->view('admin/head_admin');
           <!-- Profile Image -->
           <div class="box box-warning">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="<?php echo site_url('/assets/users/klien/').$data->foto ?>" alt="User profile picture">
+              <?php if ($data->foto !=''){?>
+              <img class="profile-user-img img-responsive img-circle" src="<?php echo site_url('/assets/users/pengelola/').$data->foto ?>" alt="User profile picture">
+            <?php }else{?>
+             <img class="profile-user-img img-responsive img-circle" src="<?php echo site_url('/assets/users/pengelola/index.png')?>" alt="User profile picture">
+            <?php }?>
 
               <h3 class="profile-username text-center"><?php echo $data->nama_users?></h3>
 
@@ -108,13 +112,13 @@ $this->load->view('admin/head_admin');
                 </div>
               </div>
 
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="inputEmail" class="col-sm-2 control-label">Email</label>
 
                 <div class="col-sm-10">
-                  <input type="email" class="form-control" name="email" value="<?php echo $data->email; ?>">
+                  <p type="email" class="form-control" name="email" value="<?php echo $data->email; ?>"></p>
                 </div>
-              </div>
+              </div> -->
 
               <div class="form-group">
                 <label for="inputTelp" class="col-sm-2 control-label">No Telpon</label>

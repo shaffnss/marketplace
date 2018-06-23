@@ -25,7 +25,7 @@ function rupiah($angka){
 
   <div class="pad margin no-print">
     <div class="callout callout-info" style="margin-bottom: 0!important;">
-      <h4><i class="fa fa-info"></i> Note:</h4>
+      <h4><i class="fa fa-info"></i> Catatan:</h4>
       Silahkan cetak Invoice anda. Klik tombol cetak yang berada dibawah Invoice anda.
     </div>
   </div>
@@ -37,7 +37,7 @@ function rupiah($angka){
       <div class="col-xs-12">
         <h2 class="page-header">
           <i class="fa fa-globe"></i> VokasiDev
-          <small class="pull-right">Date: 2/10/2014</small>
+          <!-- <small class="pull-right">Date: 2/10/2014</small> -->
         </h2>
       </div>
       <!-- /.col -->
@@ -50,7 +50,7 @@ function rupiah($angka){
       <!-- info row -->
       <div class="row invoice-info">
         <div class="col-sm-4 invoice-col">
-          From
+          Dari
           <address>
             <strong>VokasiDev</strong><br>
             San Francisco, CA 94107<br>
@@ -60,7 +60,7 @@ function rupiah($angka){
         </div>
         <!-- /.col -->
         <div class="col-sm-4 invoice-col">
-          To
+          Untuk
           <address>
             <strong><?php echo $invoice->nama_users ?></strong><br>
             <?php echo $invoice->instansi ?><br>
@@ -98,13 +98,13 @@ function rupiah($angka){
                 <td><?php echo $no ?></td>
                 <td><?php echo $invoice->nama_produk ?></td>
                 <td><?php echo $invoice->nama_kategori ?></td>
-                <td><?php echo $invoice->harga_produk ?></td>
+                <td><?php echo rupiah($invoice->harga_produk)?></td>
               </tr>
             </tbody>
           </table>
         </div>
         <!-- /.col -->
-         <?php $no++ }?>
+         <?php $no++; }?>
       </div>
       <!-- /.row -->
 
@@ -120,14 +120,14 @@ function rupiah($angka){
           </p>
         </div>
         <!-- /.col -->
-        <!-- <div class="col-xs-6">
-          <p class="lead">Amount Due 2/22/2014</p>
+        <div class="col-xs-6">
+          <p class="lead" style="margin-top: 50px; margin-left: 40px">Total Price: <?php echo rupiah($invoice->harga_produk)?></p>
 
-          <div class="table-responsive">
+          <!-- <div class="table-responsive">
             <table class="table">
               <tr>
-                <th style="width:50%">Subtotal:</th>
-                <td>$250.30</td>
+                <th style="width:50%">Total:</th>
+                <td><?php echo $invoice->harga_produk ?></td>
               </tr>
               <tr>
                 <th>Tax (9.3%)</th>
@@ -142,8 +142,8 @@ function rupiah($angka){
                 <td>$265.24</td>
               </tr>
             </table>
-          </div>
-        </div> -->
+          </div> -->
+        </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->

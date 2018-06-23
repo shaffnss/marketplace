@@ -45,7 +45,7 @@ $this->load->view('admin/head_admin');
                 ?>
               <tbody>
                 <tr>
-                  <td>kode pembelian</td>
+                  <td><?php echo $no?></td>
                   <td><?php echo $data->nama_users?></td>
                   <td><?php echo $data->nama_produk?></td>
                   <td><?php echo $data->nama_perjanjian?></td>
@@ -63,7 +63,7 @@ $this->load->view('admin/head_admin');
                       }
                     ?>
                   </td>
-                  <td><?php echo $data->file_perjanjian?></td>
+                  <td><a href="<?php echo site_url().'assets/materi/'.$data->file_perjanjian ?>" target="_blank"><i class="fa fa-file-pdf-o fa-2x" style="color:black"></i></a></td>
                   <td>
                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#upload-file"><i class="fa fa-upload"></i></button>
                   </td>

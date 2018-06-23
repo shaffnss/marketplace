@@ -93,7 +93,7 @@ $this->load->view('admin/head_admin');
                   <tr>
                     <td><?php echo $no ?></td>
                     <td><?php echo $data->nama_tim ?></td>
-                    <td>jumlah anggota</td>
+                    <td><?php echo $data->jumlah ?></td>
                     <td> 
                       <?php if($data->status_tim=='individu') {
                         ?>
@@ -111,7 +111,7 @@ $this->load->view('admin/head_admin');
                       <?php }?>
                     </td>
                     <td>
-                      <a class="btn btn-sm btn-warning" href="<?php echo site_url('Admin_team/ubah_team/').$data->id_tim?>"><i class="fa fa-edit"></i></a>
+                      <a class="btn btn-sm btn-warning" href="<?php echo site_url('Admin_team/ubah_team/').$data->idTim?>"><i class="fa fa-edit"></i></a>
                       <!-- <a href="" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i></a> -->
                     </a>
                   </td>

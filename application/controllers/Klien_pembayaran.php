@@ -12,7 +12,6 @@ class Klien_pembayaran extends CI_Controller {
 	public function index()
 	{
 		$data["pembelian"]=$this->Klien_pembayaran_m->getPembelian();
-		$data["perjanjians"]=$this->Klien_pembayaran_m->getPerjanjian();
 		$this->load->view('Klien/pembayaran', $data);
 	}
 
@@ -24,6 +23,8 @@ class Klien_pembayaran extends CI_Controller {
 
 	public function pembayaran(){
 		$data["pembayarans"]=$this->Klien_pembayaran_m->getPembayaran();
+		$data["perjanjians"]=$this->Klien_pembayaran_m->getPerjanjian();
+		
 		$this->load->view('Klien/detail_pembayaran', $data);
 	}
 

@@ -112,13 +112,13 @@ $this->load->view('klien/head_klien');
                 </div>
               </div>
 
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="inputEmail" class="col-sm-2 control-label">Email</label>
 
                 <div class="col-sm-10">
                   <input type="email" class="form-control" name="email" value="<?php echo $data->email; ?>">
                 </div>
-              </div>
+              </div> -->
 
               <div class="form-group">
                 <label for="inputTelp" class="col-sm-2 control-label">No Telpon</label>

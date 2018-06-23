@@ -13,34 +13,41 @@ status dia sedang login
 - menu invoice dan pembayaran (datanya gak bisa nampil)
 - bagian invoice (belum masuk datanya, belum bisa cetak, belum bisa generate ke pdf)
 - bagian detail pembayaran
+- kalo entitas nama bank ditambahkannya di tabel mana?
+- cetak invoice
 
 3. Anggota
 - Halaman unggah produk[done]
 - button delete di upload produk hard delete [done]
 - EDIT BAGIAN UPLOAD PRODUK [done]
+- edit data profile belum bisa diganti ganti
+- verifikasi anggota
 
 4. Admin
 - dibagian tim tambahkan status tim tersebut sebagai tim atau individu [DONE]
 - dibagian tim edit status aktif tidak aktifnya kalo di nonaktif malah ilang dari tabel[done]
-- dibagian tim hitung jumlah anggotanya belum
+- dibagian tim hitung jumlah anggotanya belum [done]
 - menu yang bisa dilihat pake roles berantakan [DONE]
 - tambah produk dibagian pilih kategori gak bisa ngeget nama kategorinya ketika input [DONE]
 - UBAH VIEW PEMBAYARAN PEMBELIAN TAMBAH KOLOM FILE PERJANJIAN DAN AKSI UPLOAD FILE PERJANJIAN TRUS UNTUK GAMBAR BUKTI PEMBAYARAN DAN PERJANJIAN DI VIEWNYA DITAMPILKAN GAMBAR ICON PDF SBG TANDA FILE UDAH ADA  
-- id dari produk adalah kombinasi string dan numeric, stringnya berupa 2 digit huruf sbg inisial jenis sistemnya sedangkan numericnya berupa int yg diambil dari id autoincrement dari tabel produk
-- superadmin wewenang utamanya tambah admin,superadmin itu cuma satu orang dan untuk mengantisipasi jika superadmin sdg dlm kondisi tdk bisa mengakses sistem 
-pake cara delegasi, jadi di bagian admin tambah edit pengelolanya semacam ditambah satu button namanya button delegasi dur, jadi ketika tombol itu di klik rolesnya superadmin dan si pengelola itu bakal tukeran 
-shg si pengelola yg dipilih jadi superadmin sementara, nah nanti kalo superadmin aslinya mau balik lagi, rolesnya bisa dibalikin spt semula 
-- IMPORT EXCEL UNTUK TAMBAH ANGGOTA DI TIM DAN DI ANGGOTA
+- kode produk, id dari produk adalah kombinasi string dan numeric, stringnya berupa 2 digit huruf sbg inisial jenis sistemnya sedangkan numericnya berupa int yg diambil dari id autoincrement dari tabel produk
+- delegasi dari superadmin ke admin [DONE]
 - di bagian tim tambah status tim [DONE]
+
 
 5. system
 - pengaturan session yang sedang login. anggota hanya bisa login pada halaman anggota, begitu jga klien dan admin.
 - EDIT TAMPILAN BAGIAN REGISTER dan login
-- dibagian login kalo si users login sedangkan superadmin belum mengaktifkan akunnya nanti keluar notif kalo akunnya belom masuk
-- bikin semacam sweet alert
-- buat alert info yang berisi peringatanuntuk mengisi data diri di menu profile secara lengkap yang muncul di bagian dashboard untuk semua user ketika user pertama kali login
+- dibagian login kalo si users login sedangkan superadmin belum mengaktifkan akunnya nanti keluar notif kalo akunnya belom diverifkasi
+- buat alert info yang berisi peringatan untuk mengisi data diri di menu profile secara lengkap yang muncul di bagian dashboard untuk semua user ketika user pertama kali login
 - mengganti foto di sidebar sama top bar sesuai user yang login
 - session nama dan foto kalo update di header sama sidebar
+- untuk isinya register isinya perlu sama kayak isi profile atau nggak
+- Ubah foto dan nama dibagian navbar dan sidebar belum bisa ngikut kalo misal ubah data di profile
+- bagian navbar di klien sama anggota belum bisa keluar biru biru kalo diklik menunya
+- verifikasi tambahan untuk anggota (misal ketika register harus upload scan ktm)
+- email verikasion untuk klien
+
 
 
 

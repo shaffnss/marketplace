@@ -6,12 +6,12 @@ class Admin_pelamar extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model("admin_pelamar_model");
+		$this->load->model("Admin_pelamar_model");
 	}
  
 	public function index()
 	{
-		$data["pelamar"]=$this->admin_pelamar_model->getPelamar();
+		$data["pelamar"]=$this->Admin_pelamar_model->getPelamar();
 		$this->load->view('admin/pelamar',$data);
 	}
 }

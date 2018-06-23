@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class anggota_password_model extends CI_Model {
+class Anggota_password_model extends CI_Model {
 	public function getProfile($id_users){
 		$this->db->select("*");
 		$this->db->from("users");

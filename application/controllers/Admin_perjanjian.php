@@ -6,17 +6,17 @@ class Admin_perjanjian extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model("admin_perjanjian_model");
+		$this->load->model("Admin_perjanjian_model");
 	}
  
 	public function index()
 	{
-		$data["perjanjian"]=$this->admin_perjanjian_model->getPerjanjian();
+		$data["perjanjian"]=$this->Admin_perjanjian_model->getPerjanjian();
 		$this->load->view('admin/perjanjian', $data);
 	}
 
 	public function kategori(){
-		$data["kategori"]=$this->admin_perjanjian_model->getKategori();
+		$data["kategori"]=$this->Admin_perjanjian_model->getKategori();
 		$this->load->view('admin/kategori_perjanjian',$data);
 	}
 
@@ -35,7 +35,7 @@ class Admin_perjanjian extends CI_Controller {
 				"nama_perjanjian"=>$nama_perjanjian,
 			);
 
-			$result = $this->admin_perjanjian_model->insertKategori($data);
+			$result = $this->Admin_perjanjian_model->insertKategori($data);
 
 		}
 
@@ -43,11 +43,10 @@ class Admin_perjanjian extends CI_Controller {
 	}
 
 	public function unggahPerjanjian(){
-			$config['upload_path']          = './assets/file/';
+			$config['upload_path']          = './assets/file_perjanjian/';
 			$config['allowed_types']        = 'pdf';
-			$config['max_size']             = 34000;
-			$config['max_width']            = 1024;
-			$config['max_height']           = 1024;
+			$config['max_size']             = 5000;
+			$config['remove_spaces'] 		= true;
 
 			$this->load->library('upload', $config);
 			$this->upload->initialize($config);
@@ -64,7 +63,7 @@ class Admin_perjanjian extends CI_Controller {
 					'file_perjanjian'=>$file_perjanjian,
 				); 
 
-				$id_perjanjian = $this->admin_perjanjian_model->insertPerjanjian($data);
+				$id_perjanjian = $this->Admin_perjanjian_model->insertPerjanjian($data);
 				
 				$this->session->set_flashdata('message', 'File berhasil ditambahkan');
 				redirect('Admin_perjanjian');

@@ -6,7 +6,7 @@ class Admin_pembelian extends BaseController {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model("admin_pembelian_model");
+		$this->load->model("Admin_pembelian_model");
 		$this->isLoggedIn();
 	}
  
@@ -18,7 +18,7 @@ class Admin_pembelian extends BaseController {
 		}
 		else
 		{
-			$data["pembelian"]=$this->admin_pembelian_model->getPembelian();
+			$data["pembelian"]=$this->Admin_pembelian_model->getPembelian();
 			$this->load->view('admin/pembelian',$data);
 		}
 	}
@@ -36,7 +36,7 @@ class Admin_pembelian extends BaseController {
 				'status_pembelian' => 'selesai'
 				// 'id_pemesanan' => 'id_pemesanan'
 			);
-			$this->admin_pembelian_model->ubahStatus($id_pembelian,$data);
+			$this->Admin_pembelian_model->ubahStatus($id_pembelian,$data);
 
 			redirect('Admin_pembelian/pembelian_selesai');
 		}
@@ -50,7 +50,7 @@ class Admin_pembelian extends BaseController {
 		}
 		else
 		{
-			$data["pembelian"]=$this->admin_pembelian_model->getPembelianSelesai();
+			$data["pembelian"]=$this->Admin_pembelian_model->getPembelianSelesai();
 			$this->load->view('admin/pembelian_selesai',$data);
 		}
 	}
