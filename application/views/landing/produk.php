@@ -54,12 +54,18 @@ function rupiah($angka){
                   </div>
 									<form method="post" action="<?php echo site_url('listProduk/keranjang'); ?>">
 									<div class="card-footer">
-									<a class="btn btn-light">Beli Sekarang</a>
-									<input type="hidden" name="id" value="<?php echo $produk->id_produk ?>">
-									<input type="hidden" name="nama" value="<?php echo $produk->nama_produk ?>">
-									<input type="hidden" name="harga" value="<?php echo $produk->harga_produk ?>">
-									<input type="hidden" name="gambar" value="<?php echo $produk->foto_produk ?>">
-									<button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-shopping-cart"></i></button>
+										<input type="hidden" name="id" value="<?php echo $produk->id_produk ?>">
+										<input type="hidden" name="nama" value="<?php echo $produk->nama_produk ?>">
+										<input type="hidden" name="harga" value="<?php echo $produk->harga_produk ?>">
+										<input type="hidden" name="gambar" value="<?php echo $produk->foto_produk ?>">
+										<div class="row">
+											<div class="col-md-8">
+												<a class="btn btn-light d-block border" href="<?php echo site_url('ListProduk/detail/'.$produk->id_produk)?>">Detail Produk</a>
+											</div>
+											<div class="col-md-4">
+												<button type="submit" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></button>
+											</div>
+										</div>
 									</div>
 									</form>
               </div>

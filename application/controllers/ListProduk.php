@@ -84,7 +84,7 @@ class ListProduk extends CI_Controller {
 			$this->cart->insert($data);
 		}
 		
-		redirect('ListProduk');
+		redirect('ListProduk/keranjang_belanja');
 	}
 	
 	public function bayar($rowid){
