@@ -47,6 +47,7 @@ status dia sedang login
 - bagian navbar di klien sama anggota belum bisa keluar biru biru kalo diklik menunya
 - verifikasi tambahan untuk anggota (misal ketika register harus upload scan ktm)
 - email verikasion untuk klien
+- ubah tampilan lupa password
 
 
 
