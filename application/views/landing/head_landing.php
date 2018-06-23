@@ -67,6 +67,42 @@
          <li class="nav-item">
           <a class="nav-link" href="<?php echo site_url('Register')?>">Register</a>
 					</li>
+					
+				<?php 
+					$role = $this->session->userdata('role');
+					$isLoggedIn = $this->session->userdata("isLoggedIn");
+					if( $isLoggedIn == TRUE){
+						if($role == 1){
+            //Login Admin
+				?>
+				<li class="nav-item">
+          <a class="nav-link" href="<?php echo site_url('Admin_dashboard')?>"><?php echo $this->session->userdata('name'); ?></a>
+				</li>
+				<?php
+            }elseif ($role == 2) {
+                //Login Klien
+        ?>
+				<li class="nav-item">
+          <a class="nav-link" href="<?php echo site_url('Klien_dashboard')?>"><?php echo $this->session->userdata('name'); ?></a>
+				</li>
+				<?php
+            }elseif ($role == 3){
+                //Login Anggota
+        ?>
+				<li class="nav-item">
+          <a class="nav-link" href="<?php echo site_url('Anggota_dashboard')?>"><?php echo $this->session->userdata('name'); ?></a>
+				</li>
+				<?php
+            }elseif ($role == 4){
+                //Login Superadmin
+        ?>
+				<li class="nav-item">
+          <a class="nav-link" href="<?php echo site_url('Admin_dashboard')?>"><?php echo $this->session->userdata('name'); ?></a>
+				</li>
+				<?php
+            }
+					}
+			?>
       </ul>
 
     </div>
