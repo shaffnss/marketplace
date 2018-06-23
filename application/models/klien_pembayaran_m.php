@@ -8,7 +8,7 @@ class Klien_pembayaran_m extends CI_Model {
 		$this->db->select("pembelian.id_pembelian as idPembelian");
 		$this->db->from("pembelian");
 		$this->db->join("perjanjian","perjanjian.id_pembelian=pembelian.id_pembelian", "left");
-		$this->db->where("pembelian.status_pembelian","proses");
+		// $this->db->where("pembelian.status_pembelian","proses");
 		$this->db->where("pembelian.id_users", $id_users);
 		$this->db->order_by("tgl_pembelian", "DESC");
 		return $this->db->get()->result();

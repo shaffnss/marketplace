@@ -56,8 +56,8 @@
                     <td><?php echo $no ?></td>
                     <td><?php echo rupiah($item->total)?></td>
                     <td><?php echo $item->tgl_pembelian ?></td>
-                    <td></td>
-                    <td></td>
+                    <td><?php if(!empty($item->bukti_pembayaran)) { ?><a target="_blank" href="<?php echo site_url("assets/bukti pembayaran/" . $item->bukti_pembayaran) ?>" ><i class="fa fa-file"></i></a><?php }else{echo "-";} ?></td>
+                    <td><?php if(!empty($item->file_perjanjian)) { ?><a target="_blank" href="<?php echo site_url("assets/bukti pembayaran/" . $item->bukti_pembayaran) ?>" ><i class="fa fa-pdf"></i></a><?php }else{echo "-";} ?></td>
                     <td>
                       <?php if($item->status_pembelian=='proses') {
 											?>

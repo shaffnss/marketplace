@@ -6,7 +6,7 @@ class Klien_pembayaran extends BaseController {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model("klien_pembayaran_m");
+		$this->load->model("Klien_pembayaran_m");
 		$this->isLoggedIn();
 		$this->isKlien();
 	}

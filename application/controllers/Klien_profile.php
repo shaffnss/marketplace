@@ -64,10 +64,9 @@ class Klien_profile extends Basecontroller {
 				"jenis_kelamin"=>$jenis_kelamin,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
-				//"email"=>$email,
-				"foto"=> $foto
-				$this->session->set_userdata('foto', $foto);
+				"foto"=> $foto,
 			);
+			$this->session->set_userdata('foto', $foto);
 		}
 			$id_users= $this->input->post('id_users');
 			$this->db->where('id_users',$id_users);

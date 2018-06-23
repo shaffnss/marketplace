@@ -65,12 +65,12 @@ $this->load->view('admin/head_admin');
                   </td>
                   <td><a href="<?php echo site_url().'assets/materi/'.$data->file_perjanjian ?>" target="_blank"><i class="fa fa-file-pdf-o fa-2x" style="color:black"></i></a></td>
                   <td>
-                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#upload-file"><i class="fa fa-upload"></i></button>
+										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#upload-file<?php echo $data->id_pembelian ?>"><i class="fa fa-upload"></i></button>
                   </td>
                 </tr>
 
                  <!-- Modal Upload File-->
-                <div class="modal fade" id="upload-file">
+                <div class="modal fade" id="upload-file<?php echo $data->id_pembelian ?>">
                     <div class="modal-dialog">
                       <div class="modal-content">
 
@@ -86,7 +86,7 @@ $this->load->view('admin/head_admin');
                               <div class="form-group">
                                 <label for="exampleInputFile">Unggah File</label>
                                 <input type="file" name="file_perjanjian">
-                                <input type="hidden" name="id_pembelian" value="<?php echo $data->id_pembelian ?> ">
+                                <input type="text" name="id_pembelian" value="<?php echo $data->id_pembelian ?>">
 
                                 <p class="help-block">Example block-level help text here.</p>
                               </div>
