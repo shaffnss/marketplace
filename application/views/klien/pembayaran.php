@@ -73,7 +73,8 @@
                     </td>
                   </tr>
                 </tbody>
-                <?php $no++; } ?>
+                <?php $no++; } 
+                ?>
               </table>
           </div>
           <!-- /.box-body -->

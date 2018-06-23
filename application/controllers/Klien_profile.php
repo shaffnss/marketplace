@@ -6,14 +6,14 @@ class Klien_profile extends Basecontroller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model("klien_profile_model");
+		$this->load->model("Klien_profile_model");
 		$this->IsLoggedIn();
 	}
  
 	public function index()
 	{
 		$id_users = $this->session->userdata('userId');
-		$data["profile"]=$this->klien_profile_model->getProfile($id_users);
+		$data["profile"]=$this->Klien_profile_model->getProfile($id_users);
 		$this->load->view('klien/view_profile',$data);
 	}
 
@@ -34,7 +34,7 @@ class Klien_profile extends Basecontroller {
 			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
 			$instansi = $this->input->post('instansi', true);
 			$no_telpon = $this->input->post('no_telpon', true);
-			$email = $this->input->post('email', true);
+			//$email = $this->input->post('email', true);
 			$klien =  array(
 				"id_roles"=>2,
 				"id_users"=>$id_users,
@@ -42,7 +42,7 @@ class Klien_profile extends Basecontroller {
 				"jenis_kelamin"=>$jenis_kelamin,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
-				"email"=>$email
+				//"email"=>$email
 			);
 		}
 		else //jika update foto
@@ -55,7 +55,7 @@ class Klien_profile extends Basecontroller {
 			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
 			$instansi = $this->input->post('instansi', true);
 			$no_telpon = $this->input->post('no_telpon', true);
-			$email = $this->input->post('email', true);
+			//$email = $this->input->post('email', true);
 			$klien =  array(
 				"id_roles"=>2,
 				"id_users"=>$id_users,
@@ -63,7 +63,7 @@ class Klien_profile extends Basecontroller {
 				"jenis_kelamin"=>$jenis_kelamin,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
-				"email"=>$email,
+				//"email"=>$email,
 				"foto"=> $foto
 			);
 		}
@@ -76,7 +76,7 @@ class Klien_profile extends Basecontroller {
 
 		public function ubahPassword(){
 		$id_users=$this->session->userdata('userId');
-		$datas["profile"]=$this->klien_profile_model->getProfile($id_users);	
+		$datas["profile"]=$this->Klien_profile_model->getProfile($id_users);	
 		$passLama = $this->input->post('passwordLama');
 		$passBaru = password_hash($this->input->post('passwordBaru'), PASSWORD_DEFAULT);
 		$passRe = password_hash($this->input->post('re_password'), PASSWORD_DEFAULT);
@@ -88,7 +88,7 @@ class Klien_profile extends Basecontroller {
 		if ($this->form_validation->run() ==  FALSE)
 		{
 			echo "lele";
-			$datas["profile"]=$this->klien_profile_model->getProfile($id_users);
+			$datas["profile"]=$this->Klien_profile_model->getProfile($id_users);
 			$data['body'] = $this->load->view('klien/view_profile', $datas,'');
 			$this->load->view('klien/head_admin',$data);
 		}else{

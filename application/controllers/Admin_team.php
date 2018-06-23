@@ -8,21 +8,11 @@ class Admin_team extends CI_Controller {
 		parent::__construct();
 		$this->load->model("Admin_team_model");
 	}
- 
+
 	public function index()
 	{
 		$data["tim"]=$this->Admin_team_model->getTim();
 		$this->load->view('admin/pengguna_team',$data);
-	}
-
-
-	public function ubah_team($id_team)
-	{
-		$data['panggil_anggota']=$this->Admin_team_model->getAnggota(); //panggil dari db
-		$data['anggotaTim']=$this->Admin_team_model->getAnggotaTim($id_team); //panggil dari db
-		$data['tim']=$this->Admin_team_model->tim($id_team);
-		$data['posisi']=$this->Admin_team_model->getPosisi($id_team);
-		$this->load->view('admin/pengguna_team_ubah',$data);
 	}
 
 	public function inputNamaTeam() //MENGINPUTKAN NAMA TIM KE VIEW
@@ -52,22 +42,6 @@ class Admin_team extends CI_Controller {
 		redirect('Admin_team');
 	}
 
-	public function tambahAnggota() //TAMBAH ANGGOTA DIBAGIAN UBAH TEAM
-	{
-		$id_tim = $this->input->post('id_tim');
-		$id_users = $this->input->post('id_users');
-		$id_posisi = $this->input->post('id_posisi');
-
-		$data=array(
-			'id_tim'=>$id_tim,
-			'id_users'=>$id_users,
-			'id_posisi'=>$id_posisi
-		);
-		$this->db->insert('detail_tim',$data);
-
-		redirect('Admin_team/ubah_team/'.$id_tim);
-	}
-
 	public function ubahNamaTim(){
 		$id_tim = $this->input->post('id_tim');
 		$nama_tim = $this->input->post('nama_tim');
@@ -81,6 +55,31 @@ class Admin_team extends CI_Controller {
 		);
 		$this->db->where('id_tim',$id_tim);
 		$this->db->update('tim',$data);
+		redirect('Admin_team/ubah_team/'.$id_tim);
+	}
+
+	public function ubah_team($id_team)
+	{
+		$data['panggil_anggota']=$this->Admin_team_model->getAnggota(); //panggil dari db
+		$data['anggotaTim']=$this->Admin_team_model->getAnggotaTim($id_team); //panggil dari db
+		$data['tim']=$this->Admin_team_model->tim($id_team);
+		$data['posisi']=$this->Admin_team_model->getPosisi($id_team);
+		$this->load->view('admin/pengguna_team_ubah',$data);
+	}
+
+	public function tambahAnggota() //TAMBAH ANGGOTA DIBAGIAN UBAH TEAM
+	{
+		$id_tim = $this->input->post('id_tim');
+		$id_users = $this->input->post('id_users');
+		$id_posisi = $this->input->post('id_posisi');
+
+		$data=array(
+			'id_tim'=>$id_tim,
+			'id_users'=>$id_users,
+			'id_posisi'=>$id_posisi
+		);
+		$this->db->insert('detail_tim',$data);
+
 		redirect('Admin_team/ubah_team/'.$id_tim);
 	}
 

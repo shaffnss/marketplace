@@ -6,13 +6,13 @@ class Admin_profile extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model("admin_profile_model");
+		$this->load->model("Admin_profile_model");
 	}
 
 	public function index()
 	{
 		$id_users=$this->session->userdata('userId');
-		$data["profile"]=$this->admin_profile_model->getProfile($id_users);
+		$data["profile"]=$this->Admin_profile_model->getProfile($id_users);
 		$this->load->view('admin/profile',$data);
 	}
 
@@ -33,7 +33,7 @@ class Admin_profile extends CI_Controller {
 			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
 			$instansi = $this->input->post('instansi', true);
 			$no_telpon = $this->input->post('no_telpon', true);
-			$email = $this->input->post('email', true);
+			//$email = $this->input->post('email', true);
 			$pengelola =  array(
 				"id_roles"=>1,
 				"id_users"=>$id_users,
@@ -41,7 +41,7 @@ class Admin_profile extends CI_Controller {
 				"jenis_kelamin"=>$jenis_kelamin,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
-				"email"=>$email
+				//"email"=>$email
 			);
 		}
 		else //jika update foto
@@ -54,7 +54,7 @@ class Admin_profile extends CI_Controller {
 			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
 			$instansi = $this->input->post('instansi', true);
 			$no_telpon = $this->input->post('no_telpon', true);
-			$email = $this->input->post('email', true);
+			//$email = $this->input->post('email', true);
 			$pengelola =  array(
 				"id_roles"=>1,
 				"id_users"=>$id_users,
@@ -62,19 +62,22 @@ class Admin_profile extends CI_Controller {
 				"jenis_kelamin"=>$jenis_kelamin,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
-				"email"=>$email,
+				//"email"=>$email,
 				"foto"=> $foto
 			);
+
 		}
 		$id_users= $this->input->post('id_users');
 		$this->db->where('id_users',$id_users);
 		$this->db->update('users',$pengelola);
+		$this->session->set_userdata($sessionArray);
+		$this->session->set_userdata('name', $nama_users);
 		redirect('Admin_profile');
 	}
 
 	public function ubahPassword(){
 		$id_users=$this->session->userdata('userId');
-		$datas["profile"]=$this->admin_profile_model->getProfile($id_users);	
+		$datas["profile"]=$this->Admin_profile_model->getProfile($id_users);	
 
 		$passLama = $this->input->post('passwordLama');
 		$passBaru = password_hash($this->input->post('passwordBaru'), PASSWORD_DEFAULT);
@@ -86,7 +89,7 @@ class Admin_profile extends CI_Controller {
 
 		if ($this->form_validation->run() ==  FALSE)
 		{
-			$datas["profile"]=$this->admin_profile_model->getProfile($id_users);
+			$datas["profile"]=$this->Admin_profile_model->getProfile($id_users);
 			$data['body'] = $this->load->view('admin/profile', $datas,'');
 			$this->load->view('admin/head_admin',$data);
 		}else{

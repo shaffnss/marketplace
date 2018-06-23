@@ -6,19 +6,19 @@ class Anggota_password extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model("anggota_password_model");
+		$this->load->model("Anggota_password_model");
 	}
 
 	public function index()
 	{
 		$id_users=$this->session->userdata('userId');
-		$data["profile"]=$this->anggota_password_model->getProfile($id_users);
+		$data["profile"]=$this->Anggota_password_model->getProfile($id_users);
 		$this->load->view('anggota/ubah_password');
 	}
 
 	public function ubahPassword(){
 		$id_users=$this->session->userdata('userId');
-		$datas["profile"]=$this->anggota_password_model->getProfile($id_users);	
+		$datas["profile"]=$this->Anggota_password_model->getProfile($id_users);	
 
 		$passLama = $this->input->post('passwordLama');
 		$passBaru = password_hash($this->input->post('passwordBaru'), PASSWORD_DEFAULT);
@@ -30,7 +30,7 @@ class Anggota_password extends CI_Controller {
 
 		if ($this->form_validation->run() ==  FALSE)
 		{
-			$datas["profile"]=$this->admin_profile_model->getProfile($id_users);
+			$datas["profile"]=$this->Admin_profile_model->getProfile($id_users);
 			$data['body'] = $this->load->view('anggota/ubah_password', $datas,'');
 			$this->load->view('anggota/head_anggota',$data);
 		}else{

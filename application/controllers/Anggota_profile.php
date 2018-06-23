@@ -14,7 +14,6 @@ class Anggota_profile extends CI_Controller {
 		$id_users = $this->session->userdata('userId');
 		$data["profile"]=$this->Anggota_profile_model->getProfile();
 		$data["tampilTim"]=$this->Anggota_profile_model->getTeam($id_users);
-		
 		$this->load->view('anggota/profile_anggota',$data);
 	}
 
@@ -30,18 +29,20 @@ class Anggota_profile extends CI_Controller {
 
 		if( ! $this->upload->do_upload('foto')) //jika tidak update foto 
 		{	
+			$id_users = $this->input->post('id_users', true);
 			$nama_users = $this->input->post('nama_users', true);
 			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
 			$instansi = $this->input->post('instansi', true);
 			$no_telpon = $this->input->post('no_telpon', true);
-			$email = $this->input->post('email', true);
+			//$email = $this->input->post('email', true);
 			$anggota =  array(
 				"id_roles"=>3,
+				"id_users"=>$id_users,
 				"nama_users"=>$nama_users,
 				"jenis_kelamin"=>$jenis_kelamin,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
-				"email"=>$email
+				//"email"=>$email
 			);
 		}
 		else //jika update foto
@@ -49,24 +50,27 @@ class Anggota_profile extends CI_Controller {
 
 			$img = $this->upload->data();
 			$foto = $img['file_name'];
+			$id_users = $this->input->post('id_users', true);
 			$nama_users = $this->input->post('nama_users', true);
 			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
 			$instansi = $this->input->post('instansi', true);
 			$no_telpon = $this->input->post('no_telpon', true);
-			$email = $this->input->post('email', true);
+			//$email = $this->input->post('email', true);
 			$anggota =  array(
 				"id_roles"=>3,
+				"id_users"=>$id_users,
 				"nama_users"=>$nama_users,
 				"jenis_kelamin"=>$jenis_kelamin,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
-				"email"=>$email,
+				//"email"=>$email,
 				"foto"=> $foto
 			);
 		}
-			$id_users = $this->session->userdata('userId');
+			$id_users= $this->input->post('id_users');
 			$this->db->where('id_users',$id_users);
 			$this->db->update('users',$anggota);
+			$this->session->set_userdata('name', $nama_users);
 			redirect('Anggota_profile');
 		}
 }

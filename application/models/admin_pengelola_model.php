@@ -25,4 +25,16 @@ class Admin_pengelola_model extends CI_Model {
 		$this->db->order_by("nama_roles");
 		return $this->db->get('users')->result();
 	}
+
+	public function getJadisuperadmin($id_users, $id_admin){
+		$data['id_roles'] = 4;
+		$this->db->where('id_users', $id_admin);
+		$this->db->update('users', $data);
+
+		$data['id_roles'] = 1;
+		$this->db->where('id_users', $id_users);
+		$this->db->update('users', $data);
+	}
+
+	
 }

@@ -6,12 +6,12 @@ class Admin_klien extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model("admin_klien_model");
+		$this->load->model("Admin_klien_model");
 	}
 
 	public function index()
 	{
-		$data["klien"]=$this->admin_klien_model->getKlien();
+		$data["klien"]=$this->Admin_klien_model->getKlien();
 		$this->load->view('admin/pengguna_klien',$data);
 	}
 
