@@ -71,7 +71,7 @@
 										<td><?php echo $item['qty']; ?></td>
 										<td>Rp <?php echo number_format($item['subtotal'],0,',','.'); ?></td>
 										<td>
-											<a href="<?php echo site_url('ListProduk/bayar/'.$item['rowid']); ?>" class="btn btn-success"><i class="fa fa-check"></i></a>
+											<a href="<?php echo site_url('ListProduk/bayarid/'.$item['rowid']); ?>" class="btn btn-success"><i class="fa fa-check"></i></a>
 											<a href="<?php echo site_url('ListProduk/hapus/'.$item['rowid']); ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
 										</td>
 									</tr>
@@ -85,7 +85,7 @@
 						</tfoot>
 					</table>
 					<a href="<?php echo site_url('ListProduk/hapus/semua'); ?>" class="btn btn-danger">Kosongkan</a>
-					<a href="<?php echo site_url('ListProduk/bayar/semua'); ?>" class="btn btn-primary">Bayar</a>
+					<a href="<?php echo site_url('ListProduk/bayar'); ?>" class="btn btn-primary">Bayar</a>
 				</div>
 				<!-- /.box-body -->
 			</div>

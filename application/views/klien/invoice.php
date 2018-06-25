@@ -33,6 +33,8 @@ function rupiah($angka){
   <!-- Main content -->
   <section class="invoice">
     <!-- title row -->
+		<?php var_dump($this->cart->contents()['1f0e3dad99908345f7439f8ffabdffc4']);
+		?>
     <div class="row">
       <div class="col-xs-12">
         <h2 class="page-header">
