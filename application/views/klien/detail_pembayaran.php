@@ -125,8 +125,8 @@ function rupiah($angka){
 									<div class="col-sm-8">
 										<select class="form-control" name="bank" required="" >
 											<option disabled selected="">--- Pilih Bank ---</option>
-											<option value="Pria">BRI</option>
-											<option value="Wanita">BCA</option>
+											<option value="BRI">BRI</option>
+											<option value="BCA">BCA</option>
 										</select>
 									</div>
 								</div>

@@ -154,7 +154,7 @@ function rupiah($angka){
         <div class="col-xs-12">
           <a href="<?php echo site_url('Klien_pembayaran')?>" type="button" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i> Kembali</a>
           <a href="invoice-print.html" target="_blank" class="btn btn-default pull-right"><i class="fa fa-print"></i> Print</a>
-          <a href="<?php echo site_url('Klien_pembayaran/pembayaran')?>" target="_blank" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</a>
+          <a href="<?php echo site_url('Klien_pembayaran/pembayaran')?>" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</a>
           <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
             <i class="fa fa-download"></i> Generate PDF</button>
           </div>

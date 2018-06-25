@@ -98,18 +98,24 @@ class ListProduk extends CI_Controller {
 			//menghitung total
 			foreach($cart as $item){
 				$total += $item['subtotal'];
+				$id_produk = $item['id'];
 			}
+			
+			$get_kode = $this->db->join('kategori_produk', 'produk.id_kategori=kategori_produk.id_kategori')->where('id_produk', $id_produk)->get('produk')->row();
+			$randomstring = random_string('alnum', 6);
 			
 			//-----INSERT PEMBELIAN-----//
 			$data = array(
 				'tgl_pembelian' => date('Y-m-d'),
 				'total' => $total,
-				'id_users' => $this->session->userdata('userId')
+				'id_users' => $this->session->userdata('userId'),
+				'kode_pembelian'=>$get_kode->kode_jenis."-".strtoupper($randomstring)
 			);
 			$id_pembelian = $this->listProduk_model->insertPembelian($data); //insert sekaligus get id_pembelian yang barusan dibuat
 			
 			foreach($cart as $item){
-				//-----INSERT DETAIL PEMBELIAN-----//
+			
+				//-----INSERT DETAIL PEMBELIAN-----//				
 				$data2 = array(
 					'id_pembelian' => $id_pembelian,
 					'id_produk' => $item['id'],

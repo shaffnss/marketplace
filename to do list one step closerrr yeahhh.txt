@@ -6,7 +6,7 @@
 - tampilan halaman seluruh produk
 - tampilan detail produk
 - tombol purchase (simpan di session item yang dipilih) = KLIEN KLIK PURCHASE->REGS->LOGIN->masuk ke dashboard klien, kalo klien statusnya masih login dan kembali ke halaman landing di halaman landing pojok kanan ada
-status dia sedang login 
+status dia sedang login [DONE]
 - bagian search itu sesuai dgn rembugan awal tapi ditambah search sesuai range harga
 
 2. Klien
@@ -20,7 +20,7 @@ status dia sedang login
 - Halaman unggah produk[done]
 - button delete di upload produk hard delete [done]
 - EDIT BAGIAN UPLOAD PRODUK [done]
-- edit data profile belum bisa diganti ganti
+- edit data profile belum bisa diganti ganti [done]
 - verifikasi anggota
 
 4. Admin
@@ -36,7 +36,7 @@ status dia sedang login
 
 
 5. system
-- pengaturan session yang sedang login. anggota hanya bisa login pada halaman anggota, begitu jga klien dan admin.
+- pengaturan session yang sedang login. anggota hanya bisa login pada halaman anggota, begitu jga klien dan admin. [DONE]
 - EDIT TAMPILAN BAGIAN REGISTER dan login
 - dibagian login kalo si users login sedangkan superadmin belum mengaktifkan akunnya nanti keluar notif kalo akunnya belom diverifkasi
 - buat alert info yang berisi peringatan untuk mengisi data diri di menu profile secara lengkap yang muncul di bagian dashboard untuk semua user ketika user pertama kali login
