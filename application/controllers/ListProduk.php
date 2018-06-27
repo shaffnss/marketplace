@@ -138,14 +138,9 @@ class ListProduk extends CI_Controller {
 		
 		//jika sudah login
 		if($isLoggedIn) {
-			$cart = $this->cart->contents()[$rowid];
+			$cart = $this->cart->contents();
+			$cart = $cart[$rowid];
 			$total = 0;
-			
-			//menghitung total
-			foreach($cart as $item){
-				$total += $item['subtotal'];
-				$id_produk = $item['id'];
-			}
 			
 			$get_kode = $this->db->join('kategori_produk', 'produk.id_kategori=kategori_produk.id_kategori')->where('id_produk', $cart['id'])->get('produk')->row();
 			$randomstring = random_string('alnum', 6);

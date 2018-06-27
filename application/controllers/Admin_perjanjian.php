@@ -48,13 +48,14 @@ class Admin_perjanjian extends BaseController {
 			$config['upload_path']          = './assets/file_perjanjian/';
 			$config['allowed_types']        = 'pdf';
 			$config['max_size']             = 5000;
-			$config['remove_spaces'] 		= true;
+			$config['max_width']            = 5024;
+			$config['max_height']           = 5024;
 
 			$this->load->library('upload', $config);
 			$this->upload->initialize($config);
 			if( ! $this->upload->do_upload('file_perjanjian'))
 			{
-				echo 'Gagal upload, resolusi atau ukuran foto melebihi batas!';
+				$this->session->set_flashdata('message', 'Gagal upload, resolusi atau ukuran foto melebihi batas!');
 			}else{
 				$file_perjanjian = $this->upload->data();
 				$id_pembelian = $this->input->post('id_pembelian', true);
@@ -68,8 +69,8 @@ class Admin_perjanjian extends BaseController {
 				$id_perjanjian = $this->Admin_perjanjian_model->insertPerjanjian($data);
 				
 				$this->session->set_flashdata('message', 'File berhasil ditambahkan');
-				redirect('Admin_perjanjian');
 	}
+	redirect('Admin_perjanjian');
 }
 
 	public function ubahKategori(){

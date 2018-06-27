@@ -33,8 +33,6 @@ function rupiah($angka){
   <!-- Main content -->
   <section class="invoice">
     <!-- title row -->
-		<?php var_dump($this->cart->contents()['1f0e3dad99908345f7439f8ffabdffc4']);
-		?>
     <div class="row">
       <div class="col-xs-12">
         <h2 class="page-header">
@@ -122,12 +120,12 @@ function rupiah($angka){
         </div>
         <!-- /.col -->
         <div class="col-xs-6">
-          <p class="lead"><small>Lakukan Pembayaran Sebelum </small> <?php echo date("d F Y", strtotime("+1 day", strtotime($invoice->tgl_pembelian))) ?></p>
+          <p class="lead"><small>Lakukan Pembayaran Sebelum </small> <?php echo date("d F Y", strtotime("+1 day", strtotime($invoices[0]->tgl_pembelian))) ?></p>
           <div class="table-responsive">
             <table class="table">
               <tr>
                 <th style="width:50%">Total:</th>
-                <td><?php echo rupiah($invoice->harga_produk) ?></td>
+                <td><?php echo rupiah($invoices[0]->total) ?></td>
               </tr>
               <tr>
                 <th>Diskon</th>
@@ -135,7 +133,7 @@ function rupiah($angka){
               </tr>
               <tr>
                 <th>Total:</th>
-                <td><?php echo rupiah($invoice->harga_produk) ?></td>
+                <td><?php echo rupiah($invoices[0]->total) ?></td>
               </tr>
             </table>
           </div>

@@ -12,6 +12,7 @@ class Admin_pembelian_model extends CI_Model {
 		$this->db->join("kategori_produk","kategori_produk.id_kategori=produk.id_kategori");
 		$this->db->join("perjanjian","perjanjian.id_pembelian=pembelian.id_pembelian");
 		$this->db->where("pembelian.status_pembelian","proses");
+		$this->db->order_by('pembelian.tgl_pembelian', 'DESC');
 		return $this->db->get()->result();
 	}
 

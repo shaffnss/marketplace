@@ -10,6 +10,7 @@ class Admin_perjanjian_model extends CI_Model {
 		$this->db->join("detail_pembelian","pembelian.id_pembelian=detail_pembelian.id_pembelian");
 		$this->db->join("produk","produk.id_produk=detail_pembelian.id_produk");
 		$this->db->join("users","pembelian.id_users=users.id_users");
+		$this->db->order_by('pembelian.tgl_pembelian', 'DESC');
 		return $this->db->get()->result();
 	}
 

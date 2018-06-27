@@ -28,6 +28,7 @@ $this->load->view('admin/head_admin');
               <tr>
                 <th>No</th>
                 <th>Nama Klien</th>
+                <th>Kode Pembelian</th>
                 <th>Nama Produk</th>
                 <th>Kategori Perjanjian</th>
                 <th>Keterangan</th>
@@ -46,6 +47,7 @@ $this->load->view('admin/head_admin');
               <tbody>
                 <tr>
                   <td><?php echo $no?></td>
+                  <td><?php echo $data->kode_pembelian ?></td>
                   <td><?php echo $data->nama_users?></td>
                   <td><?php echo $data->nama_produk?></td>
                   <td><?php echo $data->nama_perjanjian?></td>
@@ -63,7 +65,7 @@ $this->load->view('admin/head_admin');
                       }
                     ?>
                   </td>
-                  <td><a href="<?php echo site_url().'assets/materi/'.$data->file_perjanjian ?>" target="_blank"><i class="fa fa-file-pdf-o fa-2x" style="color:black"></i></a></td>
+                  <td><?php if($data->file_perjanjian){ ?><a href="<?php echo site_url().'assets/materi/'.$data->file_perjanjian ?>" target="_blank"><i class="fa fa-file-pdf-o fa-2x" style="color:black"></i></a><?php }else{echo '-';} ?></td>
                   <td>
 										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#upload-file<?php echo $data->id_pembelian ?>"><i class="fa fa-upload"></i></button>
                   </td>

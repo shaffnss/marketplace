@@ -26,7 +26,7 @@ class Admin_pembelian extends BaseController {
 		);
 		$this->Admin_pembelian_model->ubahStatus($id_pembelian,$data);
 
-		redirect('Admin_pembelian/pembelian_selesai');
+		redirect('Admin_perjanjian');
 	}
 
 	public function pembelianSelesai()
