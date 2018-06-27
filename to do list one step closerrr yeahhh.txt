@@ -21,7 +21,7 @@ status dia sedang login
 - button delete di upload produk hard delete [done]
 - EDIT BAGIAN UPLOAD PRODUK [done]
 - edit data profile belum bisa diganti ganti
-- verifikasi anggota
+- verifikasi anggota [done]
 
 4. Admin
 - dibagian tim tambahkan status tim tersebut sebagai tim atau individu [DONE]
@@ -39,14 +39,16 @@ status dia sedang login
 - pengaturan session yang sedang login. anggota hanya bisa login pada halaman anggota, begitu jga klien dan admin.
 - EDIT TAMPILAN BAGIAN REGISTER dan login
 - dibagian login kalo si users login sedangkan superadmin belum mengaktifkan akunnya nanti keluar notif kalo akunnya belom diverifkasi
-- buat alert info yang berisi peringatan untuk mengisi data diri di menu profile secara lengkap yang muncul di bagian dashboard untuk semua user ketika user pertama kali login
 - mengganti foto di sidebar sama top bar sesuai user yang login
 - session nama dan foto kalo update di header sama sidebar
-- untuk isinya register isinya perlu sama kayak isi profile atau nggak
+- untuk isinya register isinya perlu sama kayak isi profile atau nggak [done]
 - Ubah foto dan nama dibagian navbar dan sidebar belum bisa ngikut kalo misal ubah data di profile
-- bagian navbar di klien sama anggota belum bisa keluar biru biru kalo diklik menunya
-- verifikasi tambahan untuk anggota (misal ketika register harus upload scan ktm)
-- email verikasion untuk klien
+- bagian navbar di klien sama anggota belum bisa keluar biru biru kalo diklik menunya [done]
+- verifikasi tambahan untuk anggota (misal ketika register harus upload scan ktm)[done]
+- email verikasion untuk klien berupa pop up alert semisal akun belum aktif
+- ubah tampilan lupa password [done]
+- misahin login dan registrasi antara klien dan anggota, pengelola,superpengelola [done]
+- loginnya belum terbatasi untuk user tertentu
 
 
 

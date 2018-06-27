@@ -34,47 +34,73 @@
     </div>
 
     <div class="register-box-body">
-      <p class="login-box-msg">Daftar Akun Baru</p>
+      <p class="login-box-msg">Daftar Akun Anggota</p>
       <?php 
-      echo validation_errors();
-      echo form_open('register');?>
+        if(validation_errors() != false){
+          echo "<script>alert('Please recheck your data')</script>" ;
+        }
+        echo form_open_multipart('RegisterAnggota');
+      ?>
       <!-- <form action="<?php //echo site_url('Register')?>" method="post"> -->
-        <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Nama Lengkap" name="nama">
-          <span class="glyphicon glyphicon-user form-control-feedback"></span>
-        </div>
-        <div class="form-group">        
-          <select class="form-control" name="jenis_kelamin">
-            <option disabled selected>Pilih Jenis Kelamin</option>
-            <option value="Pria">Pria</option>
-            <option value="Wanita">Wanita</option>
-          </select>
-        </div>
-        <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="No Telefon" name="no_telpon">
-          <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
-        </div>
-        <div class="form-group has-feedback">
-          <input type="email" class="form-control" placeholder="Alamat Email" name="email">
-          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-        </div>
-        <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Nama Instansi" name="instansi">
-          <span class="glyphicon glyphicon-briefcase form-control-feedback"></span>
-        </div>
-        <div class="form-group has-feedback">
-          <input type="password" class="form-control" placeholder="Password" name="password">
-          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-        </div>
+        <div class="form-group">
+      <label>Nomor Induk Mahasiswa</label>
+      <input type="text" class="form-control" placeholder="NIM" name="nim" required="">
+      <span class="glyphicon glyphicon-briefcase form-control-feedback"></span>
+    </div>
+        <div class="form-group">
+         <label>Nama Lengkap</label>
+         <input type="text" class="form-control" placeholder="Nama Lengkap" name="nama" required="">
+         <span class="glyphicon glyphicon-user form-control-feedback"></span>
+       </div>
+       <div class="form-group">   
+        <label>Jenis Kelamin</label>     
+        <select class="form-control" name="jenis_kelamin" required="">
+          <option disabled selected>Pilih Jenis Kelamin</option>
+          <option value="Pria">Pria</option>
+          <option value="Wanita">Wanita</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Nomor Telefon</label>
+        <input type="text" class="form-control" placeholder="Nomor Telefon" name="no_telpon" required="">
+        <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
+      </div>
+      <div class="form-group">
+       <label>Email</label>
+       <input type="email" class="form-control" placeholder="Alamat Email" name="email" required="">
+       <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+     </div>
+     <div class="form-group">
+      <label>Nama Instansi</label>
+      <input type="text" class="form-control" placeholder="Nama Instansi" name="instansi" required="">
+      <span class="glyphicon glyphicon-briefcase form-control-feedback"></span>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" class="form-control" placeholder="Password" name="password" required="">
+      <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+    </div>
+    <div class="form-group">
+      <label>Unggah File Scan KTM/Kartu KAGAMA</label>
+      <input type="file" name="ktm" required>
+    </div>
 
-      <div class="row">
+            <div class="row">
+        <!-- <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox"> I agree to the <a href="#">terms</a>
+            </label>
+          </div>
+        </div> -->
+        <!-- /.col -->
         <div class="col-xs-12">
           <button type="submit" class="btn btn-primary btn-block btn-flat" value="register" name="register">Register</button>
         </div>
         <br>
         <br>
         <br>
-        <p style="text-align: center;">Sudah memiliki akun? Silahkan&nbsp<a href="<?php echo site_url('login') ?>">Login</a> &nbsp;disini</p>
+        <p style="text-align: center;">Sudah memiliki akun? Silahkan&nbsp<a href="<?php echo site_url('Login_anggota') ?>">Login</a> &nbsp;disini</p>
         <!-- /.col -->
       </div>
       <?php echo form_close()?>

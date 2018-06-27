@@ -106,7 +106,6 @@ class Admin_profile extends CI_Controller {
             }else{
                 echo "<script>alert('Password Lama Anda Salah');document.location='../Admin_profile'</script>";
             }
-
 		}
 	}
 

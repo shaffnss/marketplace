@@ -30,7 +30,7 @@
 <body class="hold-transition login-page">
   <div class="login-box">
    <div class="login-logo">
-     <a href="../../index2.html"><b>E</b>APPS</a>
+     <a href="<?php echo site_url('Home')?>"><b>VokasiDev</b></a>
    </div>
    <div class="login-box-body">
      <p class="login-box-msg">Masukkan Alamat Email Anda</p>

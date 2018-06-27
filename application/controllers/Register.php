@@ -15,13 +15,17 @@ class Register extends CI_Controller {
 		if ($this->input->post('register')){
 			$nama = $this->input->post('nama');
 			$email = $this->input->post('email');
+			$no_telpon = $this->input->post('no_telpon');
+			$jenis_kelamin = $this->input->post('jenis_kelamin');
+			$instansi = $this->input->post('instansi');
 			$password = $this->input->post('password');
-			$level = $this->input->post('pilihananggota');
 
-			$this->form_validation->set_rules('nama','Nama','required|trim');
-			$this->form_validation->set_rules('email','Email','required|trim');
-			$this->form_validation->set_rules('password','Password','required|trim');
-			$this->form_validation->set_rules('pilihananggota','Pilihan Anggota','required|trim');
+			$this->form_validation->set_rules('nama','nama','required|trim');
+			$this->form_validation->set_rules('email','email','required|trim');
+			$this->form_validation->set_rules('no_telpon','no_telpon','required|trim');
+			$this->form_validation->set_rules('jenis_kelamin','jenis_kelamin','required|trim');
+			$this->form_validation->set_rules('instansi','instansi','required|trim');
+			$this->form_validation->set_rules('password','password','required|trim');
 
 			if ($this->form_validation->run() == FALSE) {
 				$this->load->view('register',$data,'');		
@@ -29,26 +33,14 @@ class Register extends CI_Controller {
 				$users = array(
 					'nama_users'=>$nama,
 					'email'=>$email,
-					'id_roles' =>$level,
+					'no_telpon'=>$no_telpon,
+					'jenis_kelamin'=>$jenis_kelamin,
+					'instansi'=>$instansi,
+					'id_roles' =>2, //id_roles klien
 					'password' =>password_hash($password, PASSWORD_DEFAULT)
-				); 
-				$id_users=$this->Register_model->createAnggota($users);
-
-			//apabila regis dengan level anggota maka akan langsung create tim di db
-			if($level == 3){
-				$tim = array(
-					'nama_tim'=>$nama,
-					'status'=>'aktif',
-					'status_tim' =>'individu',
-				); 
-				$id_tim =$this->Register_model->createTeam($tim);
-				$detail_tim = array(
-					'id_tim'=>$id_tim,
-					'id_users'=>$id_users,
-					'id_posisi' =>1,
-				); 
-				$this->db->insert('detail_tim',$detail_tim);
-			}
+				);
+			
+				$id_users=$this->Register_model->createKlien($users);
 
 				redirect('login');	
 			}
@@ -56,8 +48,10 @@ class Register extends CI_Controller {
 			
 			$this->load->view('register',$data,'');	
 		}
-		
-		
+	}
+
+	public function anggota(){
+		$this->load->view('reg_anggota');
 	}
 
 
