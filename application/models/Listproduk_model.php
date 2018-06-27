@@ -5,7 +5,7 @@ class ListProduk_model extends CI_Model {
 	public function getProduk(){
 		$this->db->where('status', 'aktif'); //nge get produk dimana statusnya itu tersedia
 		return $this->db->get('produk')->result(); // datanya diambil dari table produk
-	}
+	} 
 	
 	public function getDetailProduk($id_produk){
 		$this->db->join('kategori_produk', 'kategori_produk.id_kategori=produk.id_kategori');
