@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class ListProduk_model extends CI_Model {
 	public function getProduk(){
 		$this->db->where('status', 'aktif'); //nge get produk dimana statusnya itu tersedia
@@ -37,5 +36,4 @@ class ListProduk_model extends CI_Model {
 		$this->db->trans_complete();
 		return $id;
 	}
-
 }
