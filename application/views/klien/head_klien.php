@@ -152,12 +152,22 @@
               <span>Keranjang</span>
             </a>
           </li>
-
-          <li>
-            <a href="<?php echo site_url('Klien_pembayaran') ?>">
-              <i class="fa fa-money"></i>
-              <span>Pembayaran</span>
-            </a>
+					<li class="treeview">
+						<a>
+							<i class="fa fa-money"></i> <span>Pembayaran</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							<li class=""><a href="<?php echo site_url('Klien_pembayaran')?>"><i class="fa fa-list-alt"></i>Pembayaran Diproses</a></li>
+							<li><a href="<?php echo site_url('Klien_pembayaran/pembayaranSelesai')?>"><i class="fa fa-check"></i>Pembayaran Selesai</a></li>
+						</ul>
+					</li>
+					<li>
+						<div style="margin-top: 10px;" class="col-md-12">
+							<a class="btn btn-success" style="display: block; color: white;" href="<?php echo site_url('ListProduk') ?>">Lihat Produk</a>
+						</div>
           </li>
         </ul>
       </section>

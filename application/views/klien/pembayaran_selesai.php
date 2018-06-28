@@ -41,7 +41,7 @@
                   <th>Kode Pembelian</th>
                   <th>Total Harga</th>
                   <th>Tanggal Pembelian</th>
-                  <th>Bukti pembayaran</th>
+                  <th>File Perjanjian</th>
                   <th>Status Pembayaran</th>
                   <th>Aksi</th>
 								</tr>
@@ -57,7 +57,7 @@
                     <td><?php echo $item->kode_pembelian ?></td>
                     <td><?php echo rupiah($item->total)?></td>
                     <td><?php echo date("d F Y", strtotime($item->tgl_pembelian)) ?></td>
-                    <td><?php if(!empty($item->bukti_pembayaran)) { ?><a target="_blank" href="<?php echo site_url("assets/bukti pembayaran/" . $item->bukti_pembayaran) ?>" ><i class="fa fa-file"></i></a><?php }else{echo "-";} ?></td>
+                    <td><?php if(!empty($item->file_perjanjian)) { ?><a target="_blank" href="<?php echo site_url("assets/file_perjanjian/" . $item->file_perjanjian) ?>" ><i class="fa fa-file"></i></a><?php }else{echo "-";} ?></td>
                     <td>
                       <?php if($item->status_pembelian=='proses') {
 											?>
@@ -68,7 +68,7 @@
 										</td>
                     <td>
                       <div>
-                        <a href="<?php echo site_url('Klien_pembayaran/invoice/'.$item->idPembelian)?>" class="btn btn-primary" >Pembayaran</a>
+                        <a href="<?php echo site_url('Klien_pembayaran/invoice/'.$item->idPembelian)?>" title="invoice" class="btn btn-warning" ><i class="fa fa-file"></i> Invoices</a>
                       </div> 
                     </td>
                   </tr>

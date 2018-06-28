@@ -146,7 +146,9 @@ function rupiah($angka){
       <div class="row no-print">
         <div class="col-xs-12">
           <a href="<?php echo site_url('Klien_pembayaran')?>" type="button" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i> Kembali</a>
-          <a href="<?php echo site_url('Klien_pembayaran/pembayaran/'.$invoices[0]->id_pembelian)?>" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Lanjutkan Pembayaran</a>
+          <?php if(empty($invoices[0]->bukti_pembayaran)): ?>
+					<a href="<?php echo site_url('Klien_pembayaran/pembayaran/'.$invoices[0]->id_pembelian)?>" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Lanjutkan Pembayaran</a>
+					<?php endif; ?>
           <button type="button" onclick="window.print();" class="btn btn-primary pull-right" style="margin-right: 5px;">
             <i class="fa fa-download"></i> Cetak Invoice</button>
           </div>
