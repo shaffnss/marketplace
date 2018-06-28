@@ -65,8 +65,8 @@
 									<thead>
 										<tr>
 											<th>No</th>
-											<th>Nama Klien</th>
 											<th>Kode Pembelian</th>
+											<th>Nama Klien</th>
 											<th>Nama Produk</th>
 											<th>Kategori Perjanjian</th>
 											<th>Keterangan</th>

@@ -66,7 +66,7 @@ class Admin_perjanjian extends BaseController {
 					'file_perjanjian'=>$file_perjanjian,
 				); 
 
-				$id_perjanjian = $this->Admin_perjanjian_model->insertPerjanjian($data);
+				$id_perjanjian = $this->Admin_perjanjian_model->insertPerjanjian($data, $id_pembelian);
 				
 				$this->session->set_flashdata('success', 'File berhasil ditambahkan');
 	}

@@ -10,11 +10,11 @@ status dia sedang login [DONE]
 - bagian search itu sesuai dgn rembugan awal tapi ditambah search sesuai range harga
 
 2. Klien
-- menu invoice dan pembayaran (datanya gak bisa nampil)
-- bagian invoice (belum masuk datanya, belum bisa cetak, belum bisa generate ke pdf)
-- bagian detail pembayaran
-- kalo entitas nama bank ditambahkannya di tabel mana?
-- cetak invoice
+- menu invoice dan pembayaran (datanya gak bisa nampil) [done]
+- bagian invoice (belum masuk datanya, belum bisa cetak, belum bisa generate ke pdf) [done]
+- bagian detail pembayaran [done]
+- kalo entitas nama bank ditambahkannya di tabel mana? [done]
+- cetak invoice [done]
 
 3. Anggota
 - Halaman unggah produk[done]

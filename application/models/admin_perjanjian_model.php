@@ -28,11 +28,8 @@ class Admin_perjanjian_model extends CI_Model {
 		return $insert_id;
 	}
 
-	public function insertPerjanjian($perjanjian){
-		$this->db->trans_start();
-		$this->db->insert('perjanjian',$perjanjian);
-		$insert_id = $this->db->insert_id();
-		$this->db->trans_complete();
-		return $insert_id;
+	public function insertPerjanjian($data, $id_pembelian){
+		$this->db->where('id_pembelian',$id_pembelian);
+		return $this->db->update('perjanjian',$data);
 	}
 }
