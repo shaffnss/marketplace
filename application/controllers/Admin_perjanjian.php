@@ -15,7 +15,7 @@ class Admin_perjanjian extends BaseController {
 	{
 		$data["perjanjian"]=$this->Admin_perjanjian_model->getPerjanjian();
 		$this->load->view('admin/perjanjian', $data);
-	}
+		}
 
 	public function kategori(){
 		$data["kategori"]=$this->Admin_perjanjian_model->getKategori();
@@ -29,7 +29,7 @@ class Admin_perjanjian extends BaseController {
 		{
 			redirect('Admin_perjanjian/kategori_perjanjian');
 		}
-		else
+		else 
 		{
 			$nama_perjanjian = $this->input->post('nama_perjanjian');
 
@@ -55,7 +55,7 @@ class Admin_perjanjian extends BaseController {
 			$this->upload->initialize($config);
 			if( ! $this->upload->do_upload('file_perjanjian'))
 			{
-				$this->session->set_flashdata('message', 'Gagal upload, resolusi atau ukuran foto melebihi batas!');
+				$this->session->set_flashdata('error', $this->upload->display_errors());
 			}else{
 				$file_perjanjian = $this->upload->data();
 				$id_pembelian = $this->input->post('id_pembelian', true);
@@ -68,7 +68,7 @@ class Admin_perjanjian extends BaseController {
 
 				$id_perjanjian = $this->Admin_perjanjian_model->insertPerjanjian($data);
 				
-				$this->session->set_flashdata('message', 'File berhasil ditambahkan');
+				$this->session->set_flashdata('success', 'File berhasil ditambahkan');
 	}
 	redirect('Admin_perjanjian');
 }

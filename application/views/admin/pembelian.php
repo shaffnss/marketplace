@@ -87,7 +87,7 @@ function rupiah($angka){
                             <div class="box-body">
                               <div class="form-group">
                                 <label for="inputName">ID Produk</label>
-                                <input type="text" class="form-control" id="inputName" name="id_pembelian" value="<?php echo $item->id_pembelian; ?>" required>
+                                <p><?php echo $item->id_pembelian; ?></p>
                               </div>
 
                               <div class="form-group">
