@@ -30,11 +30,11 @@
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
-      <a href="<?php echo site_url('Home')?>"><b>Marketplace TA</b></a>
+      <a href="<?php echo site_url('Home')?>"><b>VokasiDev</b></a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-      <p class="login-box-msg">Masuk ke Marketplace TA</p>
+      <p class="login-box-msg">Masuk ke VokasiDev</p>
       <form action="<?php echo site_url('Login/loginMe')?>" method="post">
         <div class="form-group has-feedback">
           <input type="email" class="form-control" name="email" placeholder="Email">

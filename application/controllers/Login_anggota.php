@@ -7,7 +7,7 @@
  * @version : 1.1
  * @since : 15 November 2016
  */
-class Login extends CI_Controller
+class Login_anggota extends CI_Controller
 {
     /**
      * This is default constructor of the class
@@ -15,7 +15,7 @@ class Login extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('login_model');
+        $this->load->model('LoginAnggota_m');
     }
 
     /**
@@ -36,14 +36,11 @@ class Login extends CI_Controller
         
         if(!isset($isLoggedIn) || $isLoggedIn != TRUE)
         {
-            $this->load->view('login');
+            $this->load->view('loginAnggota');
         }
         else
         {
-            if($role == 1){
-                //Login Admin
-                redirect('Admin_dashboard');
-            }elseif ($role == 2) {
+            if($role == 2) {
                 //Login Klien
                 redirect('Klien_dashboard');
             }elseif ($role == 3){
@@ -75,7 +72,7 @@ class Login extends CI_Controller
             $email = $this->input->post('email');
             $password = $this->input->post('password');
             
-            $result = $this->login_model->loginMe($email, $password);
+            $result = $this->LoginAnggota_m->loginMe($email, $password);
             
             if(count($result) > 0)
             {
@@ -111,7 +108,7 @@ class Login extends CI_Controller
         {
             $this->session->set_flashdata('error', 'Email or password mismatch');
 
-            redirect('/login');
+            redirect('Login_anggota');
         }
     }
 
@@ -119,7 +116,7 @@ class Login extends CI_Controller
         public function logout() {
             $this->session->sess_destroy();
 
-            redirect('login');
+            redirect('Login_anggota');
 
         }
 

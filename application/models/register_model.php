@@ -2,7 +2,7 @@
 
 class Register_model extends CI_Model{
 
-	public function createAnggota($users){
+	public function createKlien($users){
 		$this->db->trans_start();
 		$this->db->insert('users',$users);
 		$insert_id = $this->db->insert_id();
@@ -10,12 +10,5 @@ class Register_model extends CI_Model{
 		return $insert_id;
 	}
 
-	public function createTeam($tim){
-		$this->db->trans_start();
-		$this->db->insert('tim',$tim);
-		$insert_id = $this->db->insert_id();
-		$this->db->trans_complete();
-		return $insert_id;
-	}	
 }
 ?>
