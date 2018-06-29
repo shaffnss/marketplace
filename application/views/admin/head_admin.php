@@ -80,96 +80,96 @@
            <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <?php if ($this->session->userdata('foto') !=''){?>
-             <img src="<?php echo base_url().'/assets/users/pengelola/'.$this->session->userdata('foto')?>" class="user-image" alt="User Image">
-            <?php }else{?>
-             <img class="user-image" src="<?php echo site_url('/assets/users/pengelola/index.png')?>" alt="User profile picture">
-            <?php }?>
-              <span class="hidden-xs"><?php echo $this->session->userdata('name');?></span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                 <?php if ($this->session->userdata('foto') !=''){?>
-             <img src="<?php echo base_url().'/assets/users/pengelola/'.$this->session->userdata('foto')?>" class="img-circle" alt="User Image">
-            <?php }else{?>
-             <img class="img-circle" src="<?php echo site_url('/assets/users/pengelola/index.png')?>" alt="User profile picture">
-            <?php }?>
+               <img src="<?php echo base_url().'/assets/users/pengelola/'.$this->session->userdata('foto')?>" class="user-image" alt="User Image">
+             <?php }else{?>
+               <img class="user-image" src="<?php echo site_url('/assets/users/pengelola/index.png')?>" alt="User profile picture">
+             <?php }?>
+             <span class="hidden-xs"><?php echo $this->session->userdata('name');?></span>
+           </a>
+           <ul class="dropdown-menu">
+            <!-- User image -->
+            <li class="user-header">
+             <?php if ($this->session->userdata('foto') !=''){?>
+               <img src="<?php echo base_url().'/assets/users/pengelola/'.$this->session->userdata('foto')?>" class="img-circle" alt="User Image">
+             <?php }else{?>
+               <img class="img-circle" src="<?php echo site_url('/assets/users/pengelola/index.png')?>" alt="User profile picture">
+             <?php }?>
 
-                <p>
-                  <?php echo $this->session->userdata('name');?>
-                </p>
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="<?php echo site_url('Admin_profile') ?>" class="btn btn-default btn-flat">Profile</a>
-                </div>
-                <div class="pull-right">
-                  <a href="<?php echo site_url('login/logout') ?>" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
-            </ul>
+             <p>
+              <?php echo $this->session->userdata('name');?>
+            </p>
+          </li>
+          <!-- Menu Footer-->
+          <li class="user-footer">
+            <div class="pull-left">
+              <a href="<?php echo site_url('Admin_profile') ?>" class="btn btn-default btn-flat">Profile</a>
+            </div>
+            <div class="pull-right">
+              <a href="<?php echo site_url('login/logout') ?>" class="btn btn-default btn-flat">Sign out</a>
+            </div>
           </li>
         </ul>
-      </div>
-    </nav>
-  </header>
-  
-  <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-      <!-- Sidebar user panel -->
-      <div class="user-panel">
-        <div class="pull-left image">
-           <?php if ($this->session->userdata('foto') !=''){?>
-             <img src="<?php echo base_url().'/assets/users/pengelola/'.$this->session->userdata('foto')?>" class="img-circle" alt="User Image">
-            <?php }else{?>
-             <img class="img-circle" src="<?php echo site_url('/assets/users/pengelola/index.png')?>" alt="User profile picture">
-            <?php }?>
-        </div>
-        <div class="pull-left info">
-          <p><?php echo $this->session->userdata('name');?></p>
-        </div>
-      </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+</header>
 
-      <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MENU</li>
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <!-- Sidebar user panel -->
+    <div class="user-panel">
+      <div class="pull-left image">
+       <?php if ($this->session->userdata('foto') !=''){?>
+         <img src="<?php echo base_url().'/assets/users/pengelola/'.$this->session->userdata('foto')?>" class="img-circle" alt="User Image">
+       <?php }else{?>
+         <img class="img-circle" src="<?php echo site_url('/assets/users/pengelola/index.png')?>" alt="User profile picture">
+       <?php }?>
+     </div>
+     <div class="pull-left info">
+      <p><?php echo $this->session->userdata('name');?></p>
+    </div>
+  </div>
 
-        <li>
-          <a href="<?php echo site_url('Admin_dashboard') ?>">
-            <i class="fa fa-dashboard"></i> 
-            <span>Dashboard</span>
-          </a>
-        </li>
+  <!-- sidebar menu: : style can be found in sidebar.less -->
+  <ul class="sidebar-menu" data-widget="tree">
+    <li class="header">MENU</li>
 
-        <li class="treeview">
-          <a>
-            <i class="fa fa-money"></i> <span>Pembelian & Perjanjian</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class=""><a href="<?php echo site_url('Admin_pembelian')?>"><i class="fa fa-list-alt"></i>Pembayaran Diproses</a></li>
-            <li><a href="<?php echo site_url('Admin_pembelian/pembelianSelesai')?>"><i class="fa fa-check"></i>Pembayaran Selesai</a></li>
-            <li><a href="<?php echo site_url('Admin_perjanjian') ?>"><i class="fa fa-list-alt"></i>Perjanjian Pembelian</a></li>
-          </ul>
-        </li>
-        
+    <li>
+      <a href="<?php echo site_url('Admin_dashboard') ?>">
+        <i class="fa fa-dashboard"></i> 
+        <span>Dashboard</span>
+      </a>
+    </li>
 
-        <li class="treeview">
-          <a>
-            <i class="fa fa-edit"></i> <span>Perjanjian</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class=""><a href="<?php echo site_url('Admin_perjanjian/kategori')?>"><i class="fa fa-list-alt"></i>Jenis Perjanjian</a></li>
-          </ul>
-        </li>
+    <li class="treeview">
+      <a>
+        <i class="fa fa-money"></i> <span>Pembelian & Perjanjian</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li class=""><a href="<?php echo site_url('Admin_pembelian')?>"><i class="fa fa-list-alt"></i>Pembayaran Diproses</a></li>
+        <li><a href="<?php echo site_url('Admin_pembelian/pembelianSelesai')?>"><i class="fa fa-check"></i>Pembayaran Selesai</a></li>
+        <li><a href="<?php echo site_url('Admin_perjanjian') ?>"><i class="fa fa-list-alt"></i>Perjanjian Pembelian</a></li>
+      </ul>
+    </li>
+
+
+    <li class="treeview">
+      <a>
+        <i class="fa fa-edit"></i> <span>Perjanjian</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li class=""><a href="<?php echo site_url('Admin_perjanjian/kategori')?>"><i class="fa fa-list-alt"></i>Jenis Perjanjian</a></li>
+      </ul>
+    </li>
 
 
         <!-- <li class="treeview">
@@ -223,37 +223,48 @@
         </ul>
       </li>
 
-        <li class="treeview">
-          <a>
-            <i class="fa fa-user"></i> <span>Pengguna </span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class=""><a href="<?php echo site_url('Admin_klien') ?>"><i class="fa fa-user"></i> Klien </a></li>
-            <li><a href="<?php echo site_url('Admin_anggota') ?>"><i class="fa fa-user"></i> Anggota Tim </a></li>
-            <?php  
-                  if ($this->session->userdata('role')== 4){
-                    ?>
+      <li class="treeview">
+        <a>
+          <i class="fa fa-user"></i> <span>Pengguna </span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li class=""><a href="<?php echo site_url('Admin_klien') ?>"><i class="fa fa-user"></i> Klien </a></li>
+          <li class="treeview">
+            <a href="#"><i class="fa fa-user"></i> Anggota
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="<?php echo site_url('Admin_anggota') ?>"><i class="fa fa-circle-o"></i> Data Anggota</a></li>
+              <li><a href="<?php echo site_url('Admin_anggota/aktivasi_anggota') ?>"><i class="fa fa-circle-o"></i> Aktivasi Anggota Baru</a></li>
+            </ul>
+          </li>
+          
+          <?php  
+          if ($this->session->userdata('role')== 4){
+            ?>
             <li><a href="<?php echo site_url('Admin_pengelola') ?>"><i class="fa fa-user"></i> Pengelola</a></li>
-            <?php }?>
-            <li><a href="<?php echo site_url('Admin_pengelola/pengguna_tidak_aktif') ?>"><i class="fa fa-user"></i> Pengguna Tidak Aktif</a></li>
-          </ul>
-        </li>
+          <?php }?>
+          <li><a href="<?php echo site_url('Admin_pengelola/pengguna_tidak_aktif') ?>"><i class="fa fa-user"></i> Pengguna Tidak Aktif</a></li>
+        </ul>
+      </li>
 
-         <li class="treeview">
-          <a>
-            <i class="fa fa-users"></i> <span>Tim</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-    <li><a href="<?php echo site_url('Admin_team') ?>"><i class="fa fa-plus"></i> Tim </a></li>
-            <li><a href="<?php echo site_url('Admin_anggota/posisi_tim') ?>"><i class="fa fa-th-list"></i>Jabatan Tim</a></li>
-          </ul>
-        </li>   
-      </section>
-      <!-- /.sidebar -->
-    </aside>
+      <li class="treeview">
+        <a>
+          <i class="fa fa-users"></i> <span>Tim</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="<?php echo site_url('Admin_team') ?>"><i class="fa fa-plus"></i> Tim </a></li>
+          <li><a href="<?php echo site_url('Admin_anggota/posisi_tim') ?>"><i class="fa fa-th-list"></i>Jabatan Tim</a></li>
+        </ul>
+      </li>   
+    </section>
+    <!-- /.sidebar -->
+  </aside>

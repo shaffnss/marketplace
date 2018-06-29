@@ -63,7 +63,7 @@ $this->load->view('admin/head_admin');
                       }
                     ?>
                   </td>
-                  <td><a href="<?php echo site_url().'assets/materi/'.$data->file_perjanjian ?>" target="_blank"><i class="fa fa-file-pdf-o fa-2x" style="color:black"></i></a></td>
+                  <td><a href="<?php echo site_url().'assets/perjanjian/'.$data->file_perjanjian ?>" target="_blank"><i class="fa fa-file-pdf-o fa-2x" style="color:black"></i></a></td>
                   <td>
                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#upload-file"><i class="fa fa-upload"></i></button>
                   </td>

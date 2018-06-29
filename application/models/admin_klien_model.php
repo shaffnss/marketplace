@@ -18,4 +18,12 @@ class Admin_klien_model extends CI_Model {
 		$this->db->trans_complete();
 		return $insert_id;
 	}
+
+	// public function getAktivasi(){;
+	// 	$this->db->join("roles","users.id_roles=roles.id_roles");
+	// 	$this->db->where("roles.nama_roles","klien");
+	// 	$this->db->where("updated_at",NULL);
+	// 	//$this->db->order_by("created_at");
+	// 	return $this->db->get('users')->result();
+	// }
 }

@@ -49,6 +49,7 @@ status dia sedang login
 - ubah tampilan lupa password [done]
 - misahin login dan registrasi antara klien dan anggota, pengelola,superpengelola [done]
 - loginnya belum terbatasi untuk user tertentu
+- pengguna tidak aktif [done]
 
 
 

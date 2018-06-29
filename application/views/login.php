@@ -32,6 +32,8 @@
     <div class="login-logo">
       <a href="<?php echo site_url('Home')?>"><b>VokasiDev</b></a>
     </div>
+   
+    
     <!-- /.login-logo -->
     <div class="login-box-body">
       <p class="login-box-msg">Masuk ke VokasiDev</p>
@@ -44,12 +46,12 @@
           <input type="password" class="form-control" name="password" placeholder="Password">
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
-      
-      <div class="row">
-      <div class="col-xs-12">
-        <input type="submit" class="btn btn-primary btn-block btn-flat" value="Masuk" name="masuk">
-      </div>
-      </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <input type="submit" class="btn btn-primary btn-block btn-flat" value="Masuk" name="masuk">
+          </div>
+        </div>
       </form>
       <br>
       <p style="text-align: center;">Belum memiliki akun? Silahkan &nbsp;<a href="<?php echo site_url('Register') ?>">Register</a> &nbsp;disini</p>

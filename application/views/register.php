@@ -33,6 +33,16 @@
       <a href="<?php echo site_url('Home')?>"><b>VokasiDev</b></a>
     </div>
 
+ <!-- Alert -->
+    <?php if ($this->session->flashdata('message')): ?>
+      <div class="alert alert-<?php echo $this->session->flashdata('style'); ?> fade-in">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong><?php echo $this->session->flashdata('alert'); ?></strong>&nbsp; 
+        </br><?php echo $this->session->flashdata('message'); ?>
+      </div>
+    <?php endif; ?>
+    
+    <!-- End Alert -->
     <div class="register-box-body">
       <p class="login-box-msg">Daftar Akun Baru</p>
       <?php 
@@ -40,30 +50,30 @@
       echo form_open('register');?>
       <!-- <form action="<?php //echo site_url('Register')?>" method="post"> -->
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Nama Lengkap" name="nama">
+          <input type="text" class="form-control" placeholder="Nama Lengkap" name="nama" required="">
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group">        
-          <select class="form-control" name="jenis_kelamin">
+          <select class="form-control" name="jenis_kelamin" required="">
             <option disabled selected>Pilih Jenis Kelamin</option>
             <option value="Pria">Pria</option>
             <option value="Wanita">Wanita</option>
           </select>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="No Telefon" name="no_telpon">
+          <input type="text" class="form-control" placeholder="No Telefon" name="no_telpon" required="">
           <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="email" class="form-control" placeholder="Alamat Email" name="email">
+          <input type="email" class="form-control" placeholder="Alamat Email" name="email" required="">
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Nama Instansi" name="instansi">
+          <input type="text" class="form-control" placeholder="Nama Instansi" name="instansi" required="">
           <span class="glyphicon glyphicon-briefcase form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="password" class="form-control" placeholder="Password" name="password">
+          <input type="password" class="form-control" placeholder="Password" name="password" required="">
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
 

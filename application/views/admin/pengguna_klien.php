@@ -36,6 +36,7 @@ $this->load->view('admin/head_admin');
         <div class="box-body">
           <table id="example1" class="table table-bordered table-striped">
             <thead>
+              <tr>
               <th>No</th>
               <th>Foto</th>
               <th>Nama Klien</th>
@@ -44,9 +45,7 @@ $this->load->view('admin/head_admin');
               <th>No Telfon</th>
               <th>E-mail</th>
               <th>Status</th>
-               
               <th>Aksi</th>
-            
             </tr>
           </thead>
 
@@ -73,8 +72,6 @@ $this->load->view('admin/head_admin');
                     <span class="label label-danger">Non Aktif</span>
                   <?php }?>
                 </td>
-
-                 
                 <td>
                   <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ubah-klien<?php echo $data->id_users; ?>"><i class="fa fa-edit"></i>
                   </button>    

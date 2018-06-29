@@ -118,9 +118,26 @@ class Admin_klien extends CI_Controller {
 				"foto"=> $foto
 			);
 		}
-			$id_users= $this->input->post('id_users');
-			$this->db->where('id_users',$id_users);
-			$this->db->update('users',$klien);
-			redirect('Admin_klien');
-		}
+		$id_users= $this->input->post('id_users');
+		$this->db->where('id_users',$id_users);
+		$this->db->update('users',$klien);
+		redirect('Admin_klien');
+	}
+
+	// public function aktivasi_klien()
+	// {
+	// 	$data["aktivasi"]=$this->Admin_klien_model->getAktivasi();
+	// 	$this->load->view('admin/klien_baru', $data);
+	// }
+
+	// public function aktifkan($id_users)
+	// {
+	// 	$result = $this->db->where('id_users',$id_users)
+	// 	->update('users', array('status_users'=>'aktif'));
+		
+	// 	if ($result == TRUE) $this->session->set_flashdata('success','Klien berhasil diaktifkan');
+	// 	else $this->session->set_flashdata('error','Klien gagal diaktifkan');
+		
+	// 	redirect('Admin_klien/klien_baru');
+	// }
 }
