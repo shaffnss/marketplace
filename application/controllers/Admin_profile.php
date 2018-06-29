@@ -34,7 +34,21 @@ class Admin_profile extends CI_Controller {
 			$instansi = $this->input->post('instansi', true);
 			$no_telpon = $this->input->post('no_telpon', true);
 			//$email = $this->input->post('email', true);
-			$pengelola =  array(
+
+			$role = $this->session->userdata('role');
+
+			if($role == 4){
+				$pengelola =  array(
+				"id_roles"=>4,
+				"id_users"=>$id_users,
+				"nama_users"=>$nama_users,
+				"jenis_kelamin"=>$jenis_kelamin,
+				"instansi"=>$instansi,
+				"no_telpon"=>$no_telpon,
+				//"email"=>$email
+			);
+			}elseif ($role == 1){
+				$pengelola =  array(
 				"id_roles"=>1,
 				"id_users"=>$id_users,
 				"nama_users"=>$nama_users,
@@ -43,10 +57,10 @@ class Admin_profile extends CI_Controller {
 				"no_telpon"=>$no_telpon,
 				//"email"=>$email
 			);
+			}
 		}
 		else //jika update foto
 		{
-
 			$img = $this->upload->data();
 			$foto = $img['file_name'];
 			$id_users = $this->input->post('id_users', true);
@@ -55,6 +69,10 @@ class Admin_profile extends CI_Controller {
 			$instansi = $this->input->post('instansi', true);
 			$no_telpon = $this->input->post('no_telpon', true);
 			//$email = $this->input->post('email', true);
+
+			$role = $this->session->userdata('role');
+
+			if($role == 4){
 			$pengelola =  array(
 				"id_roles"=>1,
 				"id_users"=>$id_users,
@@ -65,7 +83,17 @@ class Admin_profile extends CI_Controller {
 				//"email"=>$email,
 				"foto"=> $foto
 			);
-
+		}elseif($role == 1){
+			"id_roles"=>1,
+				"id_users"=>$id_users,
+				"nama_users"=>$nama_users,
+				"jenis_kelamin"=>$jenis_kelamin,
+				"instansi"=>$instansi,
+				"no_telpon"=>$no_telpon,
+				//"email"=>$email,
+				"foto"=> $foto
+			);
+}
 		}
 		$id_users= $this->input->post('id_users');
 		$this->db->where('id_users',$id_users);
@@ -74,6 +102,7 @@ class Admin_profile extends CI_Controller {
 		$this->session->set_userdata('name', $nama_users);
 		redirect('Admin_profile');
 	}
+
 
 	public function ubahPassword(){
 		$id_users=$this->session->userdata('userId');
