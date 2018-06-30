@@ -37,10 +37,10 @@ status dia sedang login [DONE]
 
 5. system
 - pengaturan session yang sedang login. anggota hanya bisa login pada halaman anggota, begitu jga klien dan admin. [DONE]
-- EDIT TAMPILAN BAGIAN REGISTER dan login
-- mengganti foto di sidebar sama top bar sesuai user yang login
+- EDIT TAMPILAN BAGIAN REGISTER dan login [DONE]
+- mengganti foto di sidebar sama top bar sesuai user yang login [DONE]
 - untuk isinya register isinya perlu sama kayak isi profile atau nggak [done]
-- Ubah foto dan nama dibagian navbar dan sidebar belum bisa ngikut kalo misal ubah data di profile
+- Ubah foto dan nama dibagian navbar dan sidebar belum bisa ngikut kalo misal ubah data di profile [DONE]
 - bagian navbar di klien sama anggota belum bisa keluar biru biru kalo diklik menunya [done]
 - verifikasi tambahan untuk anggota (misal ketika register harus upload scan ktm)[done]
 - email verikasion untuk klien berupa pop up alert semisal akun belum aktif [done]

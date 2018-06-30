@@ -52,6 +52,7 @@ class Klien_profile extends Basecontroller {
 			$img = $this->upload->data();
 			$foto = $img['file_name'];
 			$id_users = $this->input->post('id_users', true);
+			$nama_foto = $this->input->post('nama_foto', true);
 			$nama_users = $this->input->post('nama_users', true);
 			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
 			$instansi = $this->input->post('instansi', true);
@@ -67,6 +68,7 @@ class Klien_profile extends Basecontroller {
 				"foto"=> $foto,
 			);
 			$this->session->set_userdata('foto', $foto);
+			unlink('./assets/users/klien/'.$nama_foto);
 		}
 			$id_users= $this->input->post('id_users');
 			$this->db->where('id_users',$id_users);

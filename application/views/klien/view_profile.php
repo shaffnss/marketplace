@@ -92,6 +92,7 @@ $this->load->view('klien/head_klien');
             <div class="active tab-pane" id="ubahData">
               <form action="<?php echo site_url('Klien_profile/ubahKlien') ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
                <input type="hidden" class="form-control" name="id_users" value="<?php echo $data->id_users; ?>">
+               <input type="text" name="nama_foto" value="<?php echo $data->foto; ?>">
 
                <div class="form-group">
                 <label for="inputName" class="col-sm-2 control-label">Nama</label>
