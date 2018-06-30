@@ -33,13 +33,11 @@ function rupiah($angka){
               <thead>
                 <tr>
                   <th>No</th>
+                  <th>Kode Pembelian</th>
                   <th>Nama Klien</th>
-                  <!-- <th>Email</th> -->
-                  <th>Produk</th>
-                  <th>Harga</th>
+                  <th>Total</th>
                   <th>Tgl Pembelian</th>
                   <th>Bukti Pembayaran</th>
-                  <th>Perjanjian</th>
                   <th>Status</th>
                   <th>Aksi</th>
                 </tr>
@@ -54,13 +52,11 @@ function rupiah($angka){
                 <tbody>
                   <tr>
                     <td><?php echo $no ?></td>
+                    <td><?php echo $item->kode_pembelian; ?></td>
                     <td><?php echo $item->nama_users; ?></td>
-                    <!-- <td><?php //echo $item->email; ?></td> -->
-                    <td><?php echo $item->nama_produk; ?></td>
-                    <td><?php echo rupiah($item->harga_produk)?></td>
+                    <td><?php echo rupiah($item->total)?></td>
                     <td><?php echo $item->tgl_pembelian; ?></td>
                     <td><?php echo $item->bukti_pembayaran?></td>
-                    <td><?php echo $item->file_perjanjian ?></td>
                     <td>
                       <span class="label label-warning">Proses</span>
                     </td>
@@ -80,16 +76,11 @@ function rupiah($angka){
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">Detail <?php echo $item->nama_produk; ?></h4>
+                            <h4 class="modal-title">Detail Pembelian <?php echo $item->kode_pembelian; ?></h4>
                           </div>
                           <div class="modal-body">
                            <!--  <form action="<?php //echo site_url('Admin_pembelian/ubahPembelian') ?>" enctype="multipart/form-data" method="POST" class="form-horizontal"> -->
                             <div class="box-body">
-                              <div class="form-group">
-                                <label for="inputName">ID Produk</label>
-                                <p><?php echo $item->id_pembelian; ?></p>
-                              </div>
-
                               <div class="form-group">
                                 <label for="inputName">Nama Klien</label>
                                 <p class="form-control" name="nama_klien"><?php echo $item->nama_users; ?></p>
@@ -111,18 +102,8 @@ function rupiah($angka){
                               </div>
 
                               <div class="form-group">
-                                <label for="inputName">Nama Produk</label>
-                                <p class="form-control" name="email"><?php echo $item->nama_produk; ?></p>
-                              </div>
-
-                              <div class="form-group">
-                                <label for="inputName">Jenis Produk</label>
-                                <p class="form-control" name="email"><?php echo $item->nama_kategori; ?></p>
-                              </div>
-
-                              <div class="form-group">
-                                <label for="inputName">Harga</label>
-                                <p class="form-control" name="harga_produk"><?php echo rupiah($item->harga_produk)?></p>
+                                <label for="inputName">Total</label>
+                                <p class="form-control" name="harga_produk"><?php echo rupiah($item->total)?></p>
                               </div>
 
                               <div class="form-group">
@@ -130,20 +111,14 @@ function rupiah($angka){
                                 <p class="form-control" name="tgl_pembelian"><?php echo $item->tgl_pembelian; ?></p>
                               </div>
 
-                               <!--  <div class="form-group">
-                                  <label for="inputName">Foto Produk</label>
-                                  <img src="<?php //echo site_url('/assets/produk/'.$item->foto_produk); ?>" height='100px' width='100px'>
-                                </div> -->
-
                                 <div class="form-group">
                                   <label for="inputName">Bukti Pembayaran</label>
-                                  <img src="<?php echo site_url('/assets/produk/'.$item->bukti_pembayaran); ?>" height='100px' width='100px'>
+                                  <?php if($item->bukti_pembayaran){ ?>
+																	<p><img src="<?php echo site_url('/assets/bukti pembayaran/'.$item->bukti_pembayaran); ?>" height='100px' width='100px'></p>
                                   <!-- <p class="form-control" name="nama_produk"><?php //echo $item->bukti_pembayaran?></p> -->
-                                </div>
-
-                                <div class="form-group">
-                                  <label for="inputName">Perjanjian</label>
-                                  <p class="form-control" name="file_perjanjian"><?php echo $item->file_perjanjian?></p>
+																	<?php }else{ ?>
+																	<p><span class="label label-warning">Belum upload bukti pembayaran</span></p>
+																	<?php } ?>
                                 </div>
 
                               </div>

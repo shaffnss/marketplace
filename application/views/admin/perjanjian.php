@@ -70,7 +70,7 @@
 											<th>Nama Produk</th>
 											<th>Kategori Perjanjian</th>
 											<th>Keterangan</th>
-											<th>Status Pembelian</th>
+											<th>Status Perjanjian</th>
 											<th>File Perjanjian</th>
 											<th>Upload File</th>
 										</tr>
@@ -80,7 +80,7 @@
 										$no=1;
 										foreach ($perjanjian as $data) {
 											# code...
-											if($data->status_pembelian == "proses") {
+											if($data->status_perjanjian == "proses") {
 											?>
 											<tbody>
 												<tr>
@@ -172,7 +172,7 @@
 										$no=1;
 										foreach ($perjanjian as $data) {
 											# code...
-											if($data->status_pembelian == "selesai") {
+											if($data->status_perjanjian == "selesai") {
 											?>
 											<tbody>
 												<tr>
