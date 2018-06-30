@@ -20,7 +20,7 @@ status dia sedang login [DONE]
 - Halaman unggah produk[done]
 - button delete di upload produk hard delete [done]
 - EDIT BAGIAN UPLOAD PRODUK [done]
-- edit data profile belum bisa diganti ganti
+- edit data profile belum bisa diganti ganti [DONE]
 - verifikasi anggota [done]
 
 4. Admin
@@ -29,8 +29,8 @@ status dia sedang login [DONE]
 - dibagian tim hitung jumlah anggotanya belum [done]
 - menu yang bisa dilihat pake roles berantakan [DONE]
 - tambah produk dibagian pilih kategori gak bisa ngeget nama kategorinya ketika input [DONE]
-- UBAH VIEW PEMBAYARAN PEMBELIAN TAMBAH KOLOM FILE PERJANJIAN DAN AKSI UPLOAD FILE PERJANJIAN TRUS UNTUK GAMBAR BUKTI PEMBAYARAN DAN PERJANJIAN DI VIEWNYA DITAMPILKAN GAMBAR ICON PDF SBG TANDA FILE UDAH ADA  
-- kode produk, id dari produk adalah kombinasi string dan numeric, stringnya berupa 2 digit huruf sbg inisial jenis sistemnya sedangkan numericnya berupa int yg diambil dari id autoincrement dari tabel produk
+- UBAH VIEW PEMBAYARAN PEMBELIAN TAMBAH KOLOM FILE PERJANJIAN DAN AKSI UPLOAD FILE PERJANJIAN TRUS UNTUK GAMBAR BUKTI PEMBAYARAN DAN PERJANJIAN DI VIEWNYA DITAMPILKAN GAMBAR ICON PDF SBG TANDA FILE UDAH ADA [DONE]
+- kode produk, id dari produk adalah kombinasi string dan numeric, stringnya berupa 2 digit huruf sbg inisial jenis sistemnya sedangkan numericnya berupa int yg diambil dari id autoincrement dari tabel produk [DONE]
 - delegasi dari superadmin ke admin [DONE]
 - di bagian tim tambah status tim [DONE]
 
