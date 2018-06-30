@@ -36,15 +36,13 @@ class Anggota_profile extends BaseController {
 			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
 			$instansi = $this->input->post('instansi', true);
 			$no_telpon = $this->input->post('no_telpon', true);
-			//$email = $this->input->post('email', true);
+			$email = $this->input->post('email', true);
 			$anggota =  array(
-				"id_roles"=>3,
-				"id_users"=>$id_users,
 				"nama_users"=>$nama_users,
 				"jenis_kelamin"=>$jenis_kelamin,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
-				//"email"=>$email
+				"email"=>$email
 			);
 		}
 		else //jika update foto
@@ -57,17 +55,17 @@ class Anggota_profile extends BaseController {
 			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
 			$instansi = $this->input->post('instansi', true);
 			$no_telpon = $this->input->post('no_telpon', true);
-			//$email = $this->input->post('email', true);
+			$email = $this->input->post('email', true);
 			$anggota =  array(
-				"id_roles"=>3,
-				"id_users"=>$id_users,
 				"nama_users"=>$nama_users,
 				"jenis_kelamin"=>$jenis_kelamin,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
-				//"email"=>$email,
+				"email"=>$email,
 				"foto"=> $foto
 			);
+			$this->session->set_userdata('foto', $foto);
+			unlink('./assets/users/anggota/'.$nama_foto);
 		}
 			$id_users= $this->input->post('id_users');
 			$this->db->where('id_users',$id_users);

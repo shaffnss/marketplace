@@ -59,11 +59,7 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-               <?php if ($this->session->userdata('foto') !=''){?>
-             <img src="<?php echo base_url().'/assets/users/anggota/'.$this->session->userdata('foto')?>" class="user-image" alt="User Image">
-            <?php }else{?>
-             <img class="user-image" src="<?php echo site_url('/assets/users/anggota/index.png')?>" alt="User profile picture">
-            <?php }?>
+             <img src="<?php echo base_url().'/assets/users/anggota/'.$this->session->userdata('foto')?>" onerror="this.src='<?php echo site_url('assets/users/anggota/index.png'); ?>'" class="user-image" alt="User Image">
               <span class="hidden-xs"><?php echo $this->session->userdata('name');?></span>
             </a>
             <ul class="dropdown-menu" style="width: 50px">
@@ -92,11 +88,7 @@
          <!-- Sidebar user panel -->
          <div class="user-panel">
           <div class="pull-left image">
-             <?php if ($this->session->userdata('foto') !=''){?>
-             <img src="<?php echo base_url().'/assets/users/anggota/'.$this->session->userdata('foto')?>" class="img-circle" alt="User Image">
-            <?php }else{?>
-             <img class="img-circle" src="<?php echo site_url('/assets/users/anggota/index.png')?>" alt="User profile picture">
-            <?php }?>
+             <img src="<?php echo base_url().'/assets/users/anggota/'.$this->session->userdata('foto')?>" onerror="this.src='<?php echo site_url('assets/users/anggota/index.png'); ?>'" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
             <br
@@ -121,13 +113,6 @@
               <span>Profile</span>
             </a>
           </li>
-          
-          <!-- <li>
-            <a href="<?php //echo site_url('Anggota_proyek') ?>">
-              <i class="fa fa-tasks"></i>
-              <span>Proyek</span>
-            </a>
-          </li> -->
 
           <li>
             <a href="<?php echo site_url('Anggota_uploadProduk') ?>">
@@ -138,15 +123,3 @@
         </ul>
       </section>
     </aside>
-
-
-
-
-
-
-
-    
-
-
-
-
