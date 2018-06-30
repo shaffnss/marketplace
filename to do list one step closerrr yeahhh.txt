@@ -1,4 +1,4 @@
-
+2:10 PM 29/6/2018
 1. Landing
 - Search produk (halaman landing page) berdasarkan keyword dan range harga
 - Link demo 
@@ -38,17 +38,16 @@ status dia sedang login [DONE]
 5. system
 - pengaturan session yang sedang login. anggota hanya bisa login pada halaman anggota, begitu jga klien dan admin. [DONE]
 - EDIT TAMPILAN BAGIAN REGISTER dan login
-- dibagian login kalo si users login sedangkan superadmin belum mengaktifkan akunnya nanti keluar notif kalo akunnya belom diverifkasi
 - mengganti foto di sidebar sama top bar sesuai user yang login
-- session nama dan foto kalo update di header sama sidebar
 - untuk isinya register isinya perlu sama kayak isi profile atau nggak [done]
 - Ubah foto dan nama dibagian navbar dan sidebar belum bisa ngikut kalo misal ubah data di profile
 - bagian navbar di klien sama anggota belum bisa keluar biru biru kalo diklik menunya [done]
 - verifikasi tambahan untuk anggota (misal ketika register harus upload scan ktm)[done]
-- email verikasion untuk klien berupa pop up alert semisal akun belum aktif
+- email verikasion untuk klien berupa pop up alert semisal akun belum aktif [done]
 - ubah tampilan lupa password [done]
 - misahin login dan registrasi antara klien dan anggota, pengelola,superpengelola [done]
 - loginnya belum terbatasi untuk user tertentu
+- pengguna tidak aktif [done]
 
 
 

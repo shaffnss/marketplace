@@ -253,7 +253,6 @@
 </div>
 <!-- /.content-wrapper -->
 
-
 <?php
 	$this->load->view('admin/foot_admin');
 	?>																				

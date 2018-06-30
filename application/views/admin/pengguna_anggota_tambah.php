@@ -88,6 +88,13 @@ $this->load->view('admin/head_admin');
               </div>
             </div>
 
+             <div class="form-group">
+              <label class="col-sm-2 control-label">Upload Berkas (KTM/Kartu Kagama)</label>
+              <div class="col-sm-8">
+                <input type="file" name="ktm" required>
+              </div>
+            </div>
+
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-12">
                 <input type="submit" class="btn btn-success" value="Tambah">

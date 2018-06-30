@@ -10,5 +10,26 @@ class Register_model extends CI_Model{
 		return $insert_id;
 	}
 
+	public function cekEmail($email){
+		$this->db->select('email');
+		$this->db->from('users');
+		$this->db->where('email',$email);
+
+		$query= $this->db->get();
+
+		return $query;
+	}
+
+	public function changeActiveState($key){
+		$this->load->database();
+		$data= array(
+			'validasi' => '1',
+			'status_users' => 'aktif'
+		);
+		$this->db->where('md5(id_users)', $key);
+		$this->db->update('users', $data);
+		return true;
+	}
+
 }
 ?>

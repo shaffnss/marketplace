@@ -35,7 +35,7 @@ class Admin_anggota extends BaseController {
 	{
 		$config['upload_path']          = './assets/users/anggota';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
-		$config['max_size']             = 300;
+		$config['max_size']             = 50000000;
 		$config['max_width']            = 1024;
 		$config['max_height']           = 768;
 
@@ -57,6 +57,16 @@ class Admin_anggota extends BaseController {
 			$instansi = $this->input->post('instansi', true);
 			$password = $this->input->post('password', true);
 
+			if( ! $this->upload->do_upload('ktm'))
+			{
+				$data_error['error_upload'] = $this->upload->display_errors();
+			// echo 'Gagal upload, resolusi atau ukuran foto melebihi batas!';
+				$this->load->view('admin/pengguna_anggota_tambah',$data_error);
+			}else{ 
+				$ktm=$this->upload->data();
+				$ktm1=$ktm['file_name'];
+			}
+
 			$data =  array(
 				"id_roles"=>3,
 				"nama_users"=>$nama_users,
@@ -68,7 +78,8 @@ class Admin_anggota extends BaseController {
 				"password"=>PASSWORD_HASH($password,PASSWORD_DEFAULT)
 			);
 
-			$this->db->insert('users', $data);
+			$id_users=$this->Admin_anggota_model->insertAnggota($users, $ktm);
+			//$this->db->insert('users', $data);
 			redirect('Admin_anggota');
 		}
 	}
@@ -82,7 +93,6 @@ class Admin_anggota extends BaseController {
 		$config['max_height']           = 768;
 
 		$this->load->library('upload', $config);
-
 		if( ! $this->upload->do_upload('foto')) //jika tidak update foto 
 		{	
 			$id_users = $this->input->post('id_users', true);
@@ -105,7 +115,6 @@ class Admin_anggota extends BaseController {
 		}
 		else //jika update foto
 		{
-
 			$img = $this->upload->data();
 			$foto = $img['file_name'];
 			$id_users = $this->input->post('id_users', true);
@@ -173,5 +182,22 @@ class Admin_anggota extends BaseController {
 		$this->db->where('id_posisi',$id_posisi);
 		$this->db->update('posisi_tim',$data);
 		redirect('Admin_anggota/posisi_tim');
+	}
+
+	public function aktivasi_anggota()
+	{
+		$data["aktivasi"]=$this->Admin_anggota_model->getAktivasi();
+		$this->load->view('admin/pengguna_anggota_baru', $data);
+	}
+
+	public function aktifkan($id_users)
+	{
+		$result = $this->db->where('id_users',$id_users)
+		->update('users', array('status_users'=>'aktif'));
+		
+		if ($result == TRUE) $this->session->set_flashdata('success','Anggota berhasil diaktifkan');
+		else $this->session->set_flashdata('error','Anggota gagal diaktifkan');
+		
+		redirect('Admin_anggota/pengguna_anggota_baru');
 	}
 }

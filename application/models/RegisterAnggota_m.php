@@ -9,7 +9,6 @@ class RegisterAnggota_m extends CI_Model{
 		// id_users = $insert_id
 		$data = array(
 			'ktm' => $ktm,
-			'nim' => $nim,
 			'id_users' => $insert_id
 		) ;
 		$this->db->insert('detail_anggota', $data) ; //data ktm

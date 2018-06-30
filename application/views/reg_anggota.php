@@ -36,17 +36,17 @@
     <div class="register-box-body">
       <p class="login-box-msg">Daftar Akun Anggota</p>
       <?php 
-        if(validation_errors() != false){
-          echo "<script>alert('Please recheck your data')</script>" ;
-        }
-        echo form_open_multipart('RegisterAnggota');
+      if(validation_errors() != false){
+        echo "<script>alert('Please recheck your data')</script>" ;
+      }
+      echo form_open_multipart('RegisterAnggota');
       ?>
       <!-- <form action="<?php //echo site_url('Register')?>" method="post"> -->
-        <div class="form-group">
-      <label>Nomor Induk Mahasiswa</label>
-      <input type="text" class="form-control" placeholder="NIM" name="nim" required="">
-      <span class="glyphicon glyphicon-briefcase form-control-feedback"></span>
-    </div>
+       <!--  <div class="form-group">
+          <label>Nomor Induk Mahasiswa</label><small style="color: #808080"> (*kosongkan jika anda alumni)</small>
+          <input type="text" class="form-control" placeholder="NIM" name="nim">
+          <span class="glyphicon glyphicon-briefcase form-control-feedback"></span>
+        </div> -->
         <div class="form-group">
          <label>Nama Lengkap</label>
          <input type="text" class="form-control" placeholder="Nama Lengkap" name="nama" required="">
@@ -85,7 +85,7 @@
       <input type="file" name="ktm" required>
     </div>
 
-            <div class="row">
+    <div class="row">
         <!-- <div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
