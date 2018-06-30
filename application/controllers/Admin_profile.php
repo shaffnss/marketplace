@@ -84,6 +84,7 @@ class Admin_profile extends CI_Controller {
 				"foto"=> $foto
 			);
 		}elseif($role == 1){
+			$pengelola =  array(
 			"id_roles"=>1,
 				"id_users"=>$id_users,
 				"nama_users"=>$nama_users,
