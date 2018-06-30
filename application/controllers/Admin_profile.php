@@ -29,79 +29,42 @@ class Admin_profile extends BaseController {
 		$this->load->library('upload', $config);
 
 		if( ! $this->upload->do_upload('foto')) //jika tidak update foto 
-		{	
-			$id_users = $this->input->post('id_users', true);
+		{
 			$nama_users = $this->input->post('nama_users', true);
 			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
 			$instansi = $this->input->post('instansi', true);
 			$no_telpon = $this->input->post('no_telpon', true);
-			//$email = $this->input->post('email', true);
 
-			$role = $this->session->userdata('role');
-
-			if($role == 4){
-				$pengelola =  array(
-				"id_roles"=>4,
-				"id_users"=>$id_users,
+			$pengelola =  array(
 				"nama_users"=>$nama_users,
 				"jenis_kelamin"=>$jenis_kelamin,
 				"instansi"=>$instansi,
-				"no_telpon"=>$no_telpon,
-				//"email"=>$email
+				"no_telpon"=>$no_telpon
 			);
-			}elseif ($role == 1){
-				$pengelola =  array(
-				"id_roles"=>1,
-				"id_users"=>$id_users,
-				"nama_users"=>$nama_users,
-				"jenis_kelamin"=>$jenis_kelamin,
-				"instansi"=>$instansi,
-				"no_telpon"=>$no_telpon,
-				//"email"=>$email
-			);
-			}
 		}
 		else //jika update foto
 		{
 			$img = $this->upload->data();
 			$foto = $img['file_name'];
-			$id_users = $this->input->post('id_users', true);
 			$nama_users = $this->input->post('nama_users', true);
+			$nama_foto = $this->input->post('nama_foto', true);
 			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
 			$instansi = $this->input->post('instansi', true);
 			$no_telpon = $this->input->post('no_telpon', true);
-			//$email = $this->input->post('email', true);
-
-			$role = $this->session->userdata('role');
-
-			if($role == 4){
+			
 			$pengelola =  array(
-				"id_roles"=>1,
-				"id_users"=>$id_users,
 				"nama_users"=>$nama_users,
 				"jenis_kelamin"=>$jenis_kelamin,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
-				//"email"=>$email,
 				"foto"=> $foto
 			);
-		}elseif($role == 1){
-			$pengelola =  array(
-			"id_roles"=>1,
-				"id_users"=>$id_users,
-				"nama_users"=>$nama_users,
-				"jenis_kelamin"=>$jenis_kelamin,
-				"instansi"=>$instansi,
-				"no_telpon"=>$no_telpon,
-				//"email"=>$email,
-				"foto"=> $foto
-			);
-}
+			$this->session->set_userdata('foto', $foto);
+			unlink('./assets/users/pengelola/'.$nama_foto);
 		}
 		$id_users= $this->input->post('id_users');
 		$this->db->where('id_users',$id_users);
 		$this->db->update('users',$pengelola);
-		$this->session->set_userdata($sessionArray);
 		$this->session->set_userdata('name', $nama_users);
 		redirect('Admin_profile');
 	}
