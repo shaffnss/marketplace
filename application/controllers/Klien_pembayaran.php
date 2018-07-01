@@ -6,9 +6,9 @@ class Klien_pembayaran extends BaseController {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model("klien_pembayaran_m");
-		$this->isLoggedIn();
 		$this->load->model("Klien_pembayaran_m");
+		$this->isLoggedIn();
+		$this->isKlien();
 	}
  
 	public function index()
@@ -16,6 +16,13 @@ class Klien_pembayaran extends BaseController {
 		$id_users = $this->session->userdata('userId');
 		$data["pembelian"]=$this->Klien_pembayaran_m->getPembelian($id_users);
 		$this->load->view('Klien/pembayaran', $data);
+	}
+	
+	public function pembayaranSelesai()
+	{
+		$id_users = $this->session->userdata('userId');
+		$data["pembelian"]=$this->Klien_pembayaran_m->getPembelianSelesai($id_users);
+		$this->load->view('Klien/pembayaran_selesai', $data);
 	}
 
 	public function invoice($id_pembelian){
@@ -33,17 +40,18 @@ class Klien_pembayaran extends BaseController {
 	public function pembelian($id_produk) {
 		$id_users = $this->session->userdata('userId');
 		
+		$get_kode = $this->db->join('kategori_produk', 'produk.id_kategori=kategori_produk.id_kategori')->where('id_produk', $id_produk)->get('produk')->row();
+		$randomstring = random_string('alpha', 4);
+		
 		$data = array(
 			'tgl_pembelian'=>date('Y-m-d'),
 			'id_users'=>$id_users,
 			'status_pembelian'=>'proses',
+			'kode_pembelian'=>$get_kode->kode_jenis."-".$randomstring
 		);
-		// var_dump($data);exit;
 		
-		$id_pembelian = $this->klien_pembayaran_m->insertBukti($data);
+		$id_pembelian = $this->Klien_pembayaran_m->insertBukti($data);
 		$this->db->insert('detail_pembelian', array('id_pembelian'=>$id_pembelian, 'id_produk'=>$id_produk));
-		
-		$this->session->unset_userdata('produk');
 		
 		redirect('Klien_pembayaran');
 	}
@@ -52,8 +60,8 @@ class Klien_pembayaran extends BaseController {
 			$config['upload_path']          = './assets/bukti pembayaran/';
 			$config['allowed_types']        = 'gif|jpg|png|jpeg|pdf';
 			$config['max_size']             = 3000;
-			$config['max_width']            = 1024;
-			$config['max_height']           = 1024;
+			$config['max_width']            = 5024;
+			$config['max_height']           = 5024;
 			
 			$id_kategori = $this->input->post('nama_perjanjian');
 			$id_pembelian = $this->input->post('id_pembelian');
@@ -65,7 +73,7 @@ class Klien_pembayaran extends BaseController {
 			$this->upload->initialize($config);
 			if( ! $this->upload->do_upload('bukti_pembayaran'))
 			{
-				$cekPerjanjian = $this->klien_pembayaran_m->cekPerjanjian($id_pembelian);
+				$cekPerjanjian = $this->Klien_pembayaran_m->cekPerjanjian($id_pembelian);
 				
 				if (count($cekPerjanjian) > 0) {
 					//apabila perjanjian dah ada maka update kategori
@@ -74,6 +82,7 @@ class Klien_pembayaran extends BaseController {
 					//apabila perjanjian belum ada maka insert kategori perjanjian
 					$dataPerjanjian = array(
 						'id_pembelian' => $id_pembelian,
+						'keterangan' => $keterangan_perjanjian,
 						'id_kategori' => $id_kategori
 					);
 					$this->db->insert('perjanjian', $dataPerjanjian);
@@ -86,7 +95,7 @@ class Klien_pembayaran extends BaseController {
 				// $nama_perjanjian =$this->input->post('nama_perjanjian', true);
 				$bukti_pembayaran = $bukti_pembayaran['file_name'];
 				
-				$cekPerjanjian = $this->klien_pembayaran_m->cekPerjanjian($id_pembelian);
+				$cekPerjanjian = $this->Klien_pembayaran_m->cekPerjanjian($id_pembelian);
 				
 				if (count($cekPerjanjian) > 0) {
 					//apabila perjanjian dah ada maka update kategori
@@ -95,6 +104,7 @@ class Klien_pembayaran extends BaseController {
 					//apabila perjanjian belum ada maka insert kategori perjanjian
 					$dataPerjanjian = array(
 						'id_pembelian' => $id_pembelian,
+						'keterangan' => $keterangan_perjanjian,
 						'id_kategori' => $id_kategori
 					);
 					$this->db->insert('perjanjian', $dataPerjanjian);

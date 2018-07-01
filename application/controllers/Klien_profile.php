@@ -8,6 +8,7 @@ class Klien_profile extends Basecontroller {
 		parent::__construct();
 		$this->load->model("Klien_profile_model");
 		$this->IsLoggedIn();
+		$this->isKlien();
 	}
  
 	public function index()
@@ -51,6 +52,7 @@ class Klien_profile extends Basecontroller {
 			$img = $this->upload->data();
 			$foto = $img['file_name'];
 			$id_users = $this->input->post('id_users', true);
+			$nama_foto = $this->input->post('nama_foto', true);
 			$nama_users = $this->input->post('nama_users', true);
 			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
 			$instansi = $this->input->post('instansi', true);
@@ -63,9 +65,10 @@ class Klien_profile extends Basecontroller {
 				"jenis_kelamin"=>$jenis_kelamin,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
-				//"email"=>$email,
-				"foto"=> $foto
+				"foto"=> $foto,
 			);
+			$this->session->set_userdata('foto', $foto);
+			unlink('./assets/users/klien/'.$nama_foto);
 		}
 			$id_users= $this->input->post('id_users');
 			$this->db->where('id_users',$id_users);
@@ -87,7 +90,6 @@ class Klien_profile extends Basecontroller {
 
 		if ($this->form_validation->run() ==  FALSE)
 		{
-			echo "lele";
 			$datas["profile"]=$this->Klien_profile_model->getProfile($id_users);
 			$data['body'] = $this->load->view('klien/view_profile', $datas,'');
 			$this->load->view('klien/head_admin',$data);

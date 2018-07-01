@@ -1,8 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-require APPPATH. '/libraries/BaseController.php';
-
+require APPPATH . '/libraries/BaseController.php';
 class Admin_dashboard extends BaseController {
 
 	function __construct()
@@ -12,6 +10,8 @@ class Admin_dashboard extends BaseController {
 		$this->load->model("admin_produk_model");
 		$this->load->model("admin_pembelian_model");
 		$this->load->model("admin_klien_model");
+		$this->isLoggedIn();
+		$this->isAdmin();
 		
 	}
  

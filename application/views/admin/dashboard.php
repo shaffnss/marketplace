@@ -110,13 +110,13 @@ function rupiah($angka){
 						<!-- /.box-header -->
 						<div class="box-body">
 							<div class="table-responsive">
-								<table class="table no-margin">
+								<table class="table no-margin datatable" id="example1">
 									<thead>
 										<tr>
 											<th>Kode Pembelian</th>
-											<th>Nama Produk</th>
 											<th>Status</th>
 											<th>Nama Klien</th>
+											<th>Bukti Pembayaran</th>
 										</tr>
 									</thead>
 
@@ -125,12 +125,10 @@ function rupiah($angka){
 										?>
 										<tbody>
 											<tr>
-												<td>
-													<a href="pages/examples/invoice.html">OR9842</a>
-												</td>
-												<td><?php echo $dashboard->nama_produk?></td>
+												<td><?php echo $dashboard->kode_pembelian?></td>
 												<td><span class="label label-warning">Proses</span></td>
 												<td><?php echo $dashboard->nama_users?></td>
+												<td><?php if($dashboard->bukti_pembayaran){ ?><a href="<?php echo site_url('assets/bukti pembayaran/'.$dashboard->bukti_pembayaran) ?>"><i class="fa fa-file"></i></a><?php }else{echo "<i style='color: #dd4b39' class='fa fa-close'></i>";} ?></td>
 											</tr>
 										</tbody>
 									<?php }?>

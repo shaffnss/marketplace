@@ -8,50 +8,30 @@ class Admin_pembelian extends BaseController {
 		parent::__construct();
 		$this->load->model("Admin_pembelian_model");
 		$this->isLoggedIn();
+		$this->isAdmin();
 	}
  
 	public function index()
 	{
-		if($this->isAdmin() == TRUE)
-		{
-			$this->loadThis();
-		}
-		else
-		{
-			$data["pembelian"]=$this->Admin_pembelian_model->getPembelian();
-			$this->load->view('admin/pembelian',$data);
-		}
+		$data["pembelian"]=$this->Admin_pembelian_model->getPembelian();
+		$this->load->view('admin/pembelian',$data);
 	}
 	
 
 	public function ubahStatus($id_pembelian) 
 	{
-		if($this->isAdmin() == TRUE)
-		{
-			$this->loadThis();
-		}
-		else
-		{
-			$data = array(
-				'status_pembelian' => 'selesai'
-				// 'id_pemesanan' => 'id_pemesanan'
-			);
-			$this->Admin_pembelian_model->ubahStatus($id_pembelian,$data);
+		$data = array(
+			'status_pembelian' => 'selesai'
+			// 'id_pemesanan' => 'id_pemesanan'
+		);
+		$this->Admin_pembelian_model->ubahStatus($id_pembelian,$data);
 
-			redirect('Admin_pembelian/pembelian_selesai');
-		}
+		redirect('Admin_perjanjian');
 	}
 
 	public function pembelianSelesai()
 	{
-		if($this->isAdmin() == TRUE)
-		{
-			$this->loadThis();
-		}
-		else
-		{
-			$data["pembelian"]=$this->Admin_pembelian_model->getPembelianSelesai();
-			$this->load->view('admin/pembelian_selesai',$data);
-		}
+		$data["pembelian"]=$this->Admin_pembelian_model->getPembelianSelesai();
+		$this->load->view('admin/pembelian_selesai',$data);
 	}
 }

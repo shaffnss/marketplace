@@ -22,7 +22,7 @@ function rupiah($angka){
  <section class="content-header">
   <div>
     <a href="<?php echo site_url('Anggota_uploadProduk/tambah_uploadProduk')?>" type="button" class="btn btn-primary" >
-      <i class="glyphicon glyphicon-plus"></i>Unggah
+      <i class="fa fa-plus"></i> Unggah Produk
     </a>
   </div> 
 </section>
@@ -64,10 +64,12 @@ function rupiah($angka){
                 <td><?php echo $data->nama_produk?></td>
                 <td><?php echo $data->nama_kategori?></td>
                 <td><?php echo rupiah($data->harga_produk)?></td>
-                <td><?php echo $data->status_produk?></td>
-                <td><a href="<?php echo $data->link_demo?>" type="button" class="btn btn-sm btn-primary" href><i class="fa fa-link" style="color: #fff"></i></a></td>
-                <td>
-                  <img src="<?php echo site_url('/assets/produk/'); echo $data->foto_produk ?>" height='100px' width='100px'>
+                <td><?php echo $data->deskripsi_produk?></td>
+                <td><a target="_blank" href="<?php echo $data->link_demo?>" class="btn btn-sm btn-primary" href><i class="fa fa-link" style="color: #fff"></i></a></td>
+                <td class="text-center">
+									<?php if($data->foto_produk) { ?>
+                  <img src="<?php echo site_url('/assets/produk/'.$data->foto_produk); ?>" height="100px" width="100px">
+									<?php }else{echo "-";} ?>
                 </td>
                 <td>
                    <?php if($data->status=='proses') { ?>
@@ -98,24 +100,28 @@ function rupiah($angka){
                         <form action="<?php echo site_url('Anggota_uploadProduk/ubahProduk') ?>" enctype="multipart/form-data" method="POST" class="form-horizontal">
                           <div class="box-body">
                             <input type="hidden" class="form-control" id="inputName" name="id_produk" value="<?php echo $data->id_produk; ?>" required="">   
+                            <input type="text" name="nama_file" value="<?php echo $data->file_produk; ?>" >   
+                            <input type="text" name="nama_foto" value="<?php echo $data->foto_produk; ?>" >   
 
                             <div class="form-group">
                               <label for="inputName">Nama Produk</label>
                               <input type="text" class="form-control" id="inputName" name="nama_produk" value="<?php echo $data->nama_produk; ?>" required="">  
                             </div>
-
                             <div class="form-group">
-                              <label for="inputPrice">Harga</label><input type="number" class="form-control" name="harga_produk" value="<?php echo $data->harga_produk; ?>" required="">
-                            </div>
-
-                            <div class="form-group">
-                              <label >Jenis Produk</label>
-                              <select class="form-control" name="jenis_produk">
-                                <option disabled selected="">---Pilih Jenis Produk---</option>
-                                 <?php foreach ($kategoris as $kategori) { ?>
-                                    <option <?php if($data->nama_kategori == $kategori->nama_kategori){ echo 'selected'; }?> value="<?php echo $kategori->id_kategori ?>"><?php echo $kategori->nama_kategori?></option>
-                                  <?php } ?>
-                              </select>              
+															<div class="row">
+																<div class="col-md-6">
+																	<label for="inputPrice">Harga</label><input type="number" class="form-control" name="harga_produk" value="<?php echo $data->harga_produk; ?>" required="">
+																</div>
+																<div class="col-md-6">
+																	<label >Jenis Produk</label>
+																	<select class="form-control" name="jenis_produk">
+																		<option disabled selected="">---Pilih Jenis Produk---</option>
+																		 <?php foreach ($kategoris as $kategori) { ?>
+																				<option <?php if($data->nama_kategori == $kategori->nama_kategori){ echo 'selected'; }?> value="<?php echo $kategori->id_kategori ?>"><?php echo $kategori->nama_kategori?></option>
+																			<?php } ?>
+																	</select>              
+																</div>
+															</div>
                             </div>
 
                             <div class="form-group">
@@ -130,9 +136,24 @@ function rupiah($angka){
                           </div>
 
                           <div class="form-group">
-                            <label for="inputEmail">Foto</label>                
-                            <input type="file" name=" "><br>
-                            <img src="<?php echo site_url('/assets/produk/'); echo $data->foto_produk ?>" height='100px' width='100px'>             
+														<div class="row">
+															<div class="col-md-6">
+																<label for="inputEmail">Foto</label>                
+																<input type="file" name="foto_produk">
+																<p class="text-muted small"><i>File dalam bentuk gif | jpg | png | jpeg, max size 7MB</i></p><br>
+																<?php if($data->foto_produk){ ?>
+																<img src="<?php echo site_url('/assets/produk/'); echo $data->foto_produk ?>" height='100px' width='100px'>             
+																<?php } ?>
+															</div>
+															<div class="col-md-6">
+																<label for="inputEmail">File Produk</label>                
+																<input type="file" name="file_produk">
+																<p class="text-muted small"><i>File dalam bentuk .zip, max size 7MB</i></p>
+																<?php if($data->file_produk){ ?>
+																<a target="_blank" class="btn btn-success btn-sm" href="<?php echo site_url('assets/file_produk/'.$data->file_produk); ?>"><i class="fa fa-file"></i> Download File</a>
+																<?php } ?>
+															</div>
+														</div>
                           </div>
                           </div>
                         </div>

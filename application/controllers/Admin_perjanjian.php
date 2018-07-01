@@ -1,19 +1,21 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-class Admin_perjanjian extends CI_Controller {
+require APPPATH . '/libraries/BaseController.php';
+class Admin_perjanjian extends BaseController {
 
 	function __construct()
 	{
 		parent::__construct();
 		$this->load->model("Admin_perjanjian_model");
+		$this->isLoggedIn();
+		$this->isAdmin();
 	}
  
 	public function index()
 	{
 		$data["perjanjian"]=$this->Admin_perjanjian_model->getPerjanjian();
 		$this->load->view('admin/perjanjian', $data);
-	}
+		}
 
 	public function kategori(){
 		$data["kategori"]=$this->Admin_perjanjian_model->getKategori();
@@ -27,7 +29,7 @@ class Admin_perjanjian extends CI_Controller {
 		{
 			redirect('Admin_perjanjian/kategori_perjanjian');
 		}
-		else
+		else 
 		{
 			$nama_perjanjian = $this->input->post('nama_perjanjian');
 
@@ -46,13 +48,14 @@ class Admin_perjanjian extends CI_Controller {
 			$config['upload_path']          = './assets/file_perjanjian/';
 			$config['allowed_types']        = 'pdf';
 			$config['max_size']             = 5000;
-			$config['remove_spaces'] 		= true;
+			$config['max_width']            = 5024;
+			$config['max_height']           = 5024;
 
 			$this->load->library('upload', $config);
 			$this->upload->initialize($config);
 			if( ! $this->upload->do_upload('file_perjanjian'))
 			{
-				echo 'Gagal upload, resolusi atau ukuran foto melebihi batas!';
+				$this->session->set_flashdata('error', $this->upload->display_errors());
 			}else{
 				$file_perjanjian = $this->upload->data();
 				$id_pembelian = $this->input->post('id_pembelian', true);
@@ -63,11 +66,11 @@ class Admin_perjanjian extends CI_Controller {
 					'file_perjanjian'=>$file_perjanjian,
 				); 
 
-				$id_perjanjian = $this->Admin_perjanjian_model->insertPerjanjian($data);
+				$id_perjanjian = $this->Admin_perjanjian_model->insertPerjanjian($data, $id_pembelian);
 				
-				$this->session->set_flashdata('message', 'File berhasil ditambahkan');
-				redirect('Admin_perjanjian');
+				$this->session->set_flashdata('success', 'File berhasil ditambahkan');
 	}
+	redirect('Admin_perjanjian');
 }
 
 	public function ubahKategori(){

@@ -79,13 +79,13 @@
            <!-- User Account: style can be found in dropdown.less -->
            <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?php echo base_url('AdminLTE/dist/img/user2-160x160.jpg') ?>" class="user-image" alt="User Image">
+              <img src="<?php echo site_url('assets/users/klien/'.$this->session->userdata('foto')) ?>" onerror="this.src='<?php echo site_url('assets/users/klien/index.png'); ?>'"  class="user-image" alt="User Image">
               <span class="hidden-xs"><?php echo $this->session->userdata('name');?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?php echo base_url('AdminLTE/dist/img/user2-160x160.jpg') ?>" class="img-circle" alt="User Image">
+                <img src="<?php echo site_url('assets/users/klien/'.$this->session->userdata('foto')) ?>" onerror="this.src='<?php echo site_url('assets/users/klien/index.png'); ?>'" class="img-circle" alt="User Image">
 
                 <p>
                   <?php echo $this->session->userdata('name');?>
@@ -114,7 +114,7 @@
          <!-- Sidebar user panel -->
          <div class="user-panel">
           <div class="pull-left image">
-            <img src="<?php echo base_url('AdminLTE/dist/img/user2-160x160.jpg') ?>" class="img-circle" alt="User Image">
+            <img src="<?php echo site_url('assets/users/klien/'.$this->session->userdata('foto')) ?>" onerror="this.src='<?php echo site_url('assets/users/klien/index.png'); ?>'" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
             <br
@@ -139,38 +139,29 @@
               <span>Profile</span>
             </a>
           </li>
-
-          <!-- <li>
-            <a href="<?php //echo site_url('Klien_pemesanan') ?>">
-              <i class="fa fa-file-text-o"></i>
-              <span>Pemesanan</span>
-            </a>
-          </li> -->
           <li>
             <a href="<?php echo site_url('ListProduk/keranjang_belanja') ?>">
               <i class="fa fa-cart-plus"></i>
               <span>Keranjang</span>
             </a>
           </li>
-
-          <li>
-            <a href="<?php echo site_url('Klien_pembayaran') ?>">
-              <i class="fa fa-money"></i>
-              <span>Pembayaran</span>
-            </a>
+					<li class="treeview">
+						<a>
+							<i class="fa fa-money"></i> <span>Pembayaran</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							<li class=""><a href="<?php echo site_url('Klien_pembayaran')?>"><i class="fa fa-list-alt"></i>Pembayaran Diproses</a></li>
+							<li><a href="<?php echo site_url('Klien_pembayaran/pembayaranSelesai')?>"><i class="fa fa-check"></i>Pembayaran Selesai</a></li>
+						</ul>
+					</li>
+					<li>
+						<div style="margin-top: 10px;" class="col-md-12">
+							<a class="btn btn-success" style="display: block; color: white;" href="<?php echo site_url('ListProduk') ?>">Lihat Produk</a>
+						</div>
           </li>
         </ul>
       </section>
     </aside>
-
-
-
-
-
-
-
-    
-
-
-
-

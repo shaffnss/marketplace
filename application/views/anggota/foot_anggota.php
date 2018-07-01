@@ -48,6 +48,22 @@
 <script src="<?php echo base_url('AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>
 
 <script>
+	
+	/** add active class and stay opened when selected */
+		var url = window.location;
+		
+		// for sidebar menu entirely but not cover treeview
+		$('ul.sidebar-menu a').filter(function() {
+			return this.href == url;
+		}).parent().addClass('active');
+		
+		// for treeview
+		$('ul.treeview-menu a').filter(function() {
+			return this.href == url;
+		}).parentsUntil(".sidebar-menu > .treeview-menu").addClass('active');
+	</script>
+
+<script>
   $(function () {
     $('#example1').DataTable()
     $('#example2').DataTable()
