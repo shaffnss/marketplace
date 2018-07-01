@@ -25,7 +25,7 @@ class Register extends CI_Controller {
 			if($cekEmail->num_rows() > 0){
 				$this->session->set_flashdata('style','danger');
 				$this->session->set_flashdata('alert','Register Gagal');
-				$this->session->set_flashdata('message','email sudah terdaftar');
+				$this->session->set_flashdata('message','Email sudah terdaftar');
 				redirect('Register');
 			}
 
