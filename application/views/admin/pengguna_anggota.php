@@ -44,7 +44,7 @@ $this->load->view('admin/head_admin');
                     <th>Instansi</th>
                     <th>Berkas</th>
                     <th>Status</th>
-                    <th>Aksi</th>
+                    <!-- <th>Aksi</th> -->
                   </tr>
                 </thead>
 
