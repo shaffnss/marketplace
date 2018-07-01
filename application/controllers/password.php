@@ -51,24 +51,22 @@ class Password extends CI_Controller {
 		if ($simpan > 0){
 
     // email link reset
-			$config['protocol'] = "smtp";
-			$config['smtp-crypto'] = 'ssl';
-			$config['smtp_host'] = "ssl://smtp.googlemail.com";
-			$config['smtp_port'] = "465";
-		    $config['smtp_user'] = "komsidev@gmail.com"; // ganti dengan emailmu sendiri
-		    $config['smtp_pass'] = "Komsidev7"; // ganti dengan password emailmu
-		    $config['charset'] = "iso-8859-1";
-		    $config['wordwrap'] = TRUE;
-		    $config['mailtype'] = "html";
-		    $config['newline'] = "\r\n";
-		    $config['crlf'] = "\r\n";
+			$config['protocol'] = 'smtp';
+				$config['smtp_host'] = 'ssl://smtp.googlemail.com';
+				$config['smtp_port'] = 465;
+				$config['smtp_user'] = 'komsidev@gmail.com';
+         		$config['smtp_pass'] = 'Komsidev2018';  //senders password
+         		$config['mailtype'] = 'html';
+         		$config['charset'] = 'iso-8859-1';
+         		$config['wordwrap'] = 'TRUE';
+         		$config['crlf'] = "\r\n";
+         		$config['newline'] = "\r\n";
 
     $this->load->library('email', $config);
-
     $this->email->initialize($config);
+    $this->email->set_newline("\r\n");
 
-
-    $this->email->from('komsidev@gmail.com', 'My-Apps');
+    $this->email->from('komsidev@gmail.com', 'VokasiDev');
     $this->email->to($email);
     $this->email->subject('Reset Password');
 
@@ -77,10 +75,11 @@ class Password extends CI_Controller {
     	Klik disini untuk reset password anda : http://localhost/marketplaceta/password/reset/token/".$tokenstring
     );
 
-    if (!$this->email->send()) {
-    	echo $this->email->print_debugger();
-    	exit;
-    }
+    // if (!$this->email->send()) {
+    // 	//echo $this->email->print_debugger();
+    // 	//exit;
+    // }
+    $this->email->send();
 
     $this->session->set_flashdata('style', 'success');
     $this->session->set_flashdata('alert', 'Berhasil !');
