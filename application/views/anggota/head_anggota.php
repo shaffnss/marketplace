@@ -73,7 +73,7 @@
                 <hr>
               </li>
               <li>
-                <a href="<?php echo site_url('login/logout') ?>"></i>Sign out</a>
+                <a href="<?php echo site_url('login_anggota/logout') ?>"></i>Sign out</a>
                 <br>
               </li>
             </ul>
