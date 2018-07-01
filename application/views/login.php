@@ -30,7 +30,7 @@
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
-      <a href="<?php echo site_url('Home')?>"><b>VokasiDev</b></a>
+      <a href="<?php echo site_url('Home')?>"><b>VokasiDev</b><br>Login</a>
     </div>
    
     

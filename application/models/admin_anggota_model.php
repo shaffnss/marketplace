@@ -43,9 +43,9 @@ class Admin_anggota_model extends CI_Model {
 
 	public function getAktivasi(){;
 		$this->db->join("roles","users.id_roles=roles.id_roles");
-		$this->db->where("roles.nama_roles","anggota");
 		$this->db->join("detail_anggota","users.id_users=detail_anggota.id_users",'left');
-		$this->db->where("updated_at",NULL);
+		$this->db->where("users.updated_at",NULL);
+		$this->db->where("roles.nama_roles","anggota");
 		//$this->db->order_by("created_at");
 		return $this->db->get('users')->result();
 	}
