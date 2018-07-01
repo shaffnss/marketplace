@@ -217,7 +217,7 @@ $this->load->model('Anggota_profile_model');
                                         <h5><?php echo $index ?></h5>
                                       </div>
                                       <div class="col-md-2">
-                                        <img style="height: 50px; width: 50px; border-radius: 100%" src="<?php echo site_url('assets/users/klien/'.$tim->foto) ?>">
+                                        <img onerror="this.src='<?php echo site_url('assets/users/anggota/index.png'); ?>'" style="height: 50px; width: 50px; border-radius: 100%" src="<?php echo site_url('assets/users/klien/'.$tim->foto) ?>">
                                       </div>
                                       <div class="col-md-2">
                                         <h5><?php echo $tim->nama_users; ?></h5>

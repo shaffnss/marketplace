@@ -22,7 +22,7 @@ function rupiah($angka){
  <section class="content-header">
   <div>
     <a href="<?php echo site_url('Anggota_uploadProduk/tambah_uploadProduk')?>" type="button" class="btn btn-primary" >
-      <i class="glyphicon glyphicon-plus"></i>Unggah
+      <i class="fa fa-plus"></i> Unggah Produk
     </a>
   </div> 
 </section>

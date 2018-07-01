@@ -79,7 +79,7 @@ $this->load->view('anggota/head_anggota');
                                         <h5><?php echo $index ?></h5>
                                       </div>
                                       <div class="col-md-2">
-                                        <img style="height: 50px; width: 50px; border-radius: 100%" src="<?php echo site_url('assets/users/klien/'.$tim->foto) ?>">
+                                        <img style="height: 50px; width: 50px; border-radius: 100%" src="<?php echo site_url('assets/users/klien/'.$tim->foto) ?>" onerror="this.src='<?php echo site_url('assets/users/anggota/index.png'); ?>'" >
                                       </div>
                                       <div class="col-md-2">
                                         <h5><?php echo $tim->nama_users; ?></h5>
