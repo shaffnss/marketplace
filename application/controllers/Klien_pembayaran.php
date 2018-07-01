@@ -43,15 +43,12 @@ class Klien_pembayaran extends BaseController {
 		$get_kode = $this->db->join('kategori_produk', 'produk.id_kategori=kategori_produk.id_kategori')->where('id_produk', $id_produk)->get('produk')->row();
 		$randomstring = random_string('alpha', 4);
 		
-		var_dump($random_string);exit;
-		
 		$data = array(
 			'tgl_pembelian'=>date('Y-m-d'),
 			'id_users'=>$id_users,
 			'status_pembelian'=>'proses',
-			'kode_pembelian'=>$get_kode->kode_jenis."-".strtoupper($randomstring)
+			'kode_pembelian'=>$get_kode->kode_jenis."-".$randomstring
 		);
-		// var_dump($data);exit;
 		
 		$id_pembelian = $this->Klien_pembayaran_m->insertBukti($data);
 		$this->db->insert('detail_pembelian', array('id_pembelian'=>$id_pembelian, 'id_produk'=>$id_produk));

@@ -139,13 +139,6 @@
               <span>Profile</span>
             </a>
           </li>
-
-          <!-- <li>
-            <a href="<?php //echo site_url('Klien_pemesanan') ?>">
-              <i class="fa fa-file-text-o"></i>
-              <span>Pemesanan</span>
-            </a>
-          </li> -->
           <li>
             <a href="<?php echo site_url('ListProduk/keranjang_belanja') ?>">
               <i class="fa fa-cart-plus"></i>
@@ -172,15 +165,3 @@
         </ul>
       </section>
     </aside>
-
-
-
-
-
-
-
-    
-
-
-
-

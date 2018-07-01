@@ -24,7 +24,7 @@ function rupiah($angka){
   </section>
 
   <div class="pad margin no-print">
-    <div class="callout callout-info" style="margin-bottom: 0!important;">
+    <div class="callout callout-warning" style="margin-bottom: 0!important;">
       <h4><i class="fa fa-info"></i> Catatan:</h4>
       Silahkan cetak Invoice anda. Klik tombol cetak yang berada dibawah Invoice anda.
     </div>
@@ -70,7 +70,9 @@ function rupiah($angka){
           <b>Invoice </b><br>
           <br>
           <b>Order ID:</b> <?php echo $invoices[0]->kode_pembelian ?><br>
-          <b>Payment Due:</b> <?php echo date("d F Y", strtotime("+1 day", strtotime($invoices[0]->tgl_pembelian))) ?><br>
+          <?php if(empty($invoices[0]->bukti_pembayaran)): ?>
+					<b>Payment Due:</b> <?php echo date("d F Y", strtotime("+1 day", strtotime($invoices[0]->tgl_pembelian))) ?><br>
+					<?php endif; ?>
         </div>
         <!-- /.col -->
       </div>
@@ -115,13 +117,16 @@ function rupiah($angka){
           <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
             Bank BNI <br>
             009477590342929 <br>
-            a.n John Doe
+            a.n Shafira Fitrianissa
           </p>
         </div>
         <!-- /.col -->
         <div class="col-xs-6">
+					<?php if(empty($invoices[0]->bukti_pembayaran)): ?>
           <p class="lead"><small>Lakukan Pembayaran Sebelum </small> <?php echo date("d F Y", strtotime("+1 day", strtotime($invoices[0]->tgl_pembelian))) ?></p>
-          <div class="table-responsive">
+					<?php endif; ?>
+          
+					<div class="table-responsive">
             <table class="table">
               <tr>
                 <th style="width:50%">Total:</th>

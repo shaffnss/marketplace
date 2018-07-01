@@ -23,23 +23,11 @@
 <section class="content">
 	<div class="row">
 		<div class="col-xs-12">
-			<!-- <div class="callout callout-info">
-				<h4>Tata Cara Pembayaran :</h4>
-				
-				<p>Silahkan lakukan pembayaran pembelian sistem anda melalui Transfer ke nomor rekening Bank BNI 009477590342929 a.n Shafira Fitrianissa</p>
-			</div> -->
 			<div class="box">
 				<div class="box-header">
 					<h3 class="box-title">Keranjang Produk</h3>
 					
 					<div class="box-tools">
-						<!-- <div class="input-group input-group-sm" style="width: 150px;">
-							<input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-							
-							<div class="input-group-btn">
-							<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-							</div>
-						</div> -->
 					</div>
 				</div>
 				<!-- /.box-header -->
@@ -75,7 +63,7 @@
 											<a href="<?php echo site_url('ListProduk/hapus/'.$item['rowid']); ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
 										</td>
 									</tr>
-								<?php }}else{echo'<tr><td colspan="6" align="center">Keranjang Belanja Kosong.<br><a class="btn btn-success btn-sm" href="'.site_url('ListProduk').'">Pilih Produk</a></td></tr>'; } ?>
+								<?php }}else{echo'<tr><td colspan="6" align="center">Keranjang Belanja Kosong.<br><a style="margin-top: 10px" class="btn btn-success btn-sm" href="'.site_url('ListProduk').'">Pilih Produk</a></td></tr>'; } ?>
 						</tbody>
 						<tfoot>
 							<tr>
@@ -84,8 +72,10 @@
 							</tr>
 						</tfoot>
 					</table>
+					<?php if(count($cart) > 0) { ?>
 					<a href="<?php echo site_url('ListProduk/hapus/semua'); ?>" class="btn btn-danger">Kosongkan</a>
 					<a href="<?php echo site_url('ListProduk/bayar'); ?>" class="btn btn-primary">Bayar</a>
+					<?php } ?>
 				</div>
 				<!-- /.box-body -->
 			</div>

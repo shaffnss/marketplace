@@ -23,10 +23,10 @@
   <section class="content">
     <div class="row">
       <div class="col-xs-12">
-        <div class="callout callout-info">
-          <h4>Tata Cara Pembayaran :</h4>
+        <div class="callout callout-warning">
+          <h4>Lanjutkan Pembayaran Anda :D</h4>
 					
-          <p>Silahkan lakukan pembayaran pembelian sistem anda melalui Transfer ke nomor rekening Bank BNI 009477590342929 a.n Shafira Fitrianissa</p>
+          <p>Silahkan lakukan lanjutkan pembayaran dengan upload struk bukti pembayaran pada pembelian Anda</p>
 				</div>
         <div class="box">
           <div class="box-header">
@@ -68,7 +68,7 @@
 										</td>
                     <td>
                       <div>
-                        <a href="<?php echo site_url('Klien_pembayaran/invoice/'.$item->idPembelian)?>" class="btn btn-primary" >Pembayaran</a>
+                        <a href="<?php echo site_url('Klien_pembayaran/invoice/'.$item->idPembelian)?>" class="btn btn-success btn-sm" ><i class="fa fa-check"></i> Pembayaran</a>
                       </div> 
                     </td>
                   </tr>

@@ -24,9 +24,9 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="callout callout-info">
-          <h4>Tata Cara Pembayaran :</h4>
+          <h4>Selesaikan Pembelian Anda!</h4>
 					
-          <p>Silahkan lakukan pembayaran pembelian sistem anda melalui Transfer ke nomor rekening Bank BNI 009477590342929 a.n Shafira Fitrianissa</p>
+          <p>Silahkan menunggu Admin mengunggah file perjanjian (lisensi) untuk transaksi pembelian Anda. Informasi lebih lanjut silahkan hubungi <b>0858-2929-2124 (Admin)</b>.</p>
 				</div>
         <div class="box">
           <div class="box-header">
