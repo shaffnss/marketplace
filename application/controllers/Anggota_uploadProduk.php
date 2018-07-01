@@ -133,16 +133,18 @@ class Anggota_uploadProduk extends BaseController {
 
 		$this->load->library('upload', $config);
 
-			$id_produk= $this->input->post('id_produk', true);
-			$nama_produk = $this->input->post('nama_produk', true);
-			$jenis_produk = $this->input->post('jenis_produk', true);
-			$harga_produk = $this->input->post('harga_produk', true);
-			$deskripsi_produk = $this->input->post('deskripsi_produk', true);
-			$link_demo = $this->input->post('link_demo', true);
+		$id_produk= $this->input->post('id_produk', true);
+		$nama_produk = $this->input->post('nama_produk', true);
+		$jenis_produk = $this->input->post('jenis_produk', true);
+		$harga_produk = $this->input->post('harga_produk', true);
+		$deskripsi_produk = $this->input->post('deskripsi_produk', true);
+		$link_demo = $this->input->post('link_demo', true);
+		$foto_produk = $this->input->post('foto_produk', true);
+		$file_produk = $this->input->post('file_produk', true);
 
+		
 		if( ! $this->upload->do_upload('foto_produk'))
 		{
-			
 			$data = array(
 				
 				'nama_produk'=>$nama_produk,
@@ -151,14 +153,11 @@ class Anggota_uploadProduk extends BaseController {
 				'deskripsi_produk' => $deskripsi_produk,
 				'link_demo'	=> $link_demo
 
-			); 
-			$this->db->where('id_produk',$id_produk); //yg di update menjadi sesuai dengan id_produk
-			$this->db->update('produk', $data);
-			redirect('Anggota_uploadProduk');
+			);
 		}
 		else
 		{
-			
+			unlink('./assets/produk/'.$foto_produk); //hapus file yang lama
 			$img = $this->upload->data();
 			$foto_produk = $img['file_name'];
 			$data = array(
@@ -170,11 +169,37 @@ class Anggota_uploadProduk extends BaseController {
 				'link_demo'	=> $link_demo,
 				'foto_produk' => $foto_produk
 
-			); 
-			$this->db->where('id_produk',$id_produk); //yg di update menjadi sesuai dengan id_produk
-			$this->db->update('produk', $data);
-			redirect('Anggota_uploadProduk');
+			);
 		}
+
+		$config['upload_path']          = './assets/file_produk/';
+		$config['allowed_types']        = 'zip';
+		$config['max_size']             = 7000;
+		$this->load->library('upload', $config);
+		$this->upload->initialize($config);
+		
+		if( ! $this->upload->do_upload('file_produk'))
+		{
+			$errorp = 1;
+		}
+		else
+		{
+			unlink('./assets/file_produk/'.$file_produk); //hapus file yang lama
+			$errorp = 0;
+			$file_produk = $this->upload->data();
+			$data['file_produk'] = $file_produk['file_name'];
+		}
+		
+		$this->db->where('id_produk',$id_produk); //yg di update menjadi sesuai dengan id_produk
+		$this->db->update('produk', $data);
+
+		if($errorp){
+			$this->session->set_flashdata('message', 'Data produk berhasil diubah, namun file produk tidak di upload');
+		}else{
+			$this->session->set_flashdata('message', 'Data produk berhasil diubah');
+		}
+		
+		redirect('Anggota_uploadProduk');
 	} 
 
 	public function delete_upload($id_produk){
