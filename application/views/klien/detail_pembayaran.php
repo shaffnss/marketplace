@@ -127,6 +127,7 @@ function rupiah($angka){
 											<option disabled selected="">--- Pilih Bank ---</option>
 											<option value="BRI">BRI</option>
 											<option value="BCA">BCA</option>
+											<option value="BCA">BNI</option>
 										</select>
 									</div>
 								</div>

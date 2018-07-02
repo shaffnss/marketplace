@@ -55,7 +55,7 @@ $this->load->view('admin/head_admin');
             <tbody>
               <tr>
                <td><?php echo $no ?></td>
-                <td><img src="<?php echo site_url('/assets/users/pengelola/').$data->foto ?>" class="img-responsive" style="height: 100px; width: 100px"></td>
+                <td><img src="<?php echo site_url('/assets/users/pengelola/').$data->foto ?>" onerror="this.src='<?php echo site_url('assets/users/anggota/index.png'); ?>'" class="img-responsive" style="height: 100px; width: 100px"></td>
                 <td><?php echo $data->nama_users?></td>
                 <td><?php echo $data->jenis_kelamin?></td>
                 <td><?php echo $data->instansi?></td>
@@ -73,7 +73,9 @@ $this->load->view('admin/head_admin');
                       <td>
                         <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ubah-pengelola<?php echo $data->id_users; ?>"><i class="fa fa-edit"></i>
                         </button> 
+                        <?php if($data->status_users=='aktif' && $data->validasi== 1){?>
                         <a onclick="return confirm('apakah anda ingin ingin menjadikan <?php echo $data->nama_users ?> sebagai superadmin?');" href="<?php echo site_url('Admin_pengelola/jadisuperadmin/'.$data->id_users)?>" class="btn btn-sm btn-info" style="background: #4e9e02; border-color: #fff"></i> Jadi Superadmin</a>
+                      <?php }?>
                       </td>
                   </tr>
 

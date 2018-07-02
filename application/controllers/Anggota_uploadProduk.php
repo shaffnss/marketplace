@@ -34,15 +34,18 @@ class Anggota_uploadProduk extends BaseController {
 	{
 		$config['upload_path']          = './assets/produk/';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
-		$config['max_size']             = 2000;
-		$config['max_width']            = 5024;
-		$config['max_height']           = 5068;
+		$config['max_size']             = 9000;
+		$config['max_width']            = 20000;
+		$config['max_height']           = 20000;
 		$config['file_name'] = "produk".time();
 
 		$this->load->library('upload', $config);
 		if( ! $this->upload->do_upload('foto_produk'))
 		{
-			$this->session->set_flashdata('error', 'Gagal upload, resolusi atau ukuran foto melebihi batas!');
+			$this->session->set_flashdata('style','danger');
+		$this->session->set_flashdata('alert','Gagal upload');
+		$this->session->set_flashdata('message','resolusi atau ukuran foto melebihi batas!');
+
 			redirect('Anggota_uploadProduk/tambah_uploadProduk');
 		}
 		else

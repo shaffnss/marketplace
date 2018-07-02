@@ -44,7 +44,7 @@
 
    <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>V</b>D</span>
       <!-- logo for regular state and mobile devices -->
@@ -73,7 +73,7 @@
                 <hr>
               </li>
               <li>
-                <a href="<?php echo site_url('login/logout') ?>"></i>Sign out</a>
+                <a href="<?php echo site_url('login_anggota/logout') ?>"></i>Sign out</a>
                 <br>
               </li>
             </ul>

@@ -111,10 +111,10 @@ $this->load->model('Anggota_profile_model');
                   </select>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="inputEmail" class="">Email</label>
                   <input type="email" class="form-control" name="email" value="<?php echo $data->email; ?>">
-                </div>
+                </div> -->
 
                 <div class="form-group">
                   <label for="inputTelp" class="">No Telpon</label>

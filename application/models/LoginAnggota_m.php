@@ -15,6 +15,8 @@ class LoginAnggota_m extends CI_Model
         $this->db->join('roles as r','r.id_roles = u.id_roles');
         $this->db->where('u.email', $email);
         $this->db->where('u.status_users', 'aktif');
+        $this->db->where('u.validasi', 1);
+        $this->db->where('u.id_roles !=', 2);
         $query = $this->db->get();
         
         $user = $query->result();

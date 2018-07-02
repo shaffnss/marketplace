@@ -55,6 +55,7 @@ class RegisterAnggota extends CI_Controller {
 						'no_telpon'=>$no_telpon,
 						'instansi'=>$instansi,
 						'id_roles' =>3,
+						'validasi' =>1,
 						'password' =>password_hash($password, PASSWORD_DEFAULT)
 					); 
 					$id_users=$this->RegisterAnggota_m->createAnggota($users, $ktm);

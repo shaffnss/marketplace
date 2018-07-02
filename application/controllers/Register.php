@@ -82,7 +82,7 @@ class Register extends CI_Controller {
 
 			   Selamat datang di VokasiDev
 			   <br/>
-			   Silahkan verikafisi akun anda untuk melanjutkan pembelian anda lakukan <a href="'.site_url("Register/verifikasi/$encrypted_id").'">Login</a> dengan menggunakan:<br/>
+			   Silahkan verifikasi akun anda untuk melanjutkan pembelian anda lakukan <a href="'.site_url("Register/verifikasi/$encrypted_id").'">Login</a> dengan menggunakan:<br/>
 			   Email: '.$email.'<br/>
 			   Password: '.$this->input->post('password').'<br/>
 			   <br/>
@@ -98,6 +98,10 @@ class Register extends CI_Controller {
 			   $this->email->subject($subject);
 			   $this->email->message($message);
 			   $this->email->send();
+
+			   $this->session->set_flashdata('style','info');
+		$this->session->set_flashdata('alert','Silahkan Cek Email Anda');
+		//$this->session->set_flashdata('message','');
 
 			   redirect('login');	
 			}

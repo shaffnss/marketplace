@@ -57,7 +57,7 @@
                     <td><?php echo $item->kode_pembelian ?></td>
                     <td><?php echo rupiah($item->total)?></td>
                     <td><?php echo date("d F Y", strtotime($item->tgl_pembelian)) ?></td>
-                    <td><?php if(!empty($item->file_perjanjian)) { ?><a target="_blank" href="<?php echo site_url("assets/file_perjanjian/" . $item->file_perjanjian) ?>" ><i class="fa fa-file"></i></a><?php }else{echo "-";} ?></td>
+                    <td><?php if(!empty($item->file_perjanjian)) { ?><a target="_blank" href="<?php echo site_url("assets/file_perjanjian/" . $item->file_perjanjian) ?>" ><i class="fa fa-download fa-2x" ></i></a><?php }else{echo "-";} ?></td>
                     <td>
                       <?php if($item->status_pembelian=='proses') {
 											?>

@@ -50,9 +50,9 @@ function rupiah($angka){
           Dari
           <address>
             <strong>VokasiDev</strong><br>
-            San Francisco, CA 94107<br>
-            Phone: (804) 123-5432<br>
-            Email: info@almasaeedstudio.com
+            Sekolah Vokasi, Yogyakarta<br>
+            Phone: (0274) 541020<br>
+            Email: komsidev@gmail.com
           </address>
         </div>
         <!-- /.col -->
@@ -67,7 +67,7 @@ function rupiah($angka){
         </div>
         <!-- /.col -->
        <div class="col-sm-4 invoice-col">
-          <b>Invoice </b><br>
+          <b>Invoice Information :</b><br>
           <br>
           <b>Order ID:</b> <?php echo $invoices[0]->kode_pembelian ?><br>
           <?php if(empty($invoices[0]->bukti_pembayaran)): ?>

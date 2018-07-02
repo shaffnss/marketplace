@@ -56,7 +56,7 @@ $this->load->view('admin/head_admin');
                   <tbody>
                     <tr>
                       <td><?php echo $no ?></td>
-                      <td><img src="<?php echo site_url('/assets/users/anggota/').$data['foto'] ?>" class="img-responsive" style="height: 80px; width: 80px"></td>
+                      <td><img src="<?php echo site_url('/assets/users/anggota/'.$data['foto']) ?>" onerror="this.src='<?php echo site_url('assets/users/anggota/index.png'); ?>'" class="img-responsive" style="height: 80px; width: 80px"></td>
                       <td><?php echo $data['nama_users']?></td>
                       <td><?php echo $data['jenis_kelamin']?></td>
                       <td><?php echo $data['email']?></td>
@@ -99,7 +99,7 @@ $this->load->view('admin/head_admin');
                               <form action="<?php echo site_url('Admin_anggota/ubahAnggota') ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
 
                                 <div class="box-body">
-                                  <input type="hidden" class="form-control" id="inputName" name="id_users" value="<?php echo $data['id_users']; ?>">
+                                  <input type="text" class="form-control" id="inputName" name="id_users" value="<?php echo $data['idu']; ?>">
 
                                   <div class="form-group">
                                     <label class="">Nama Anggota</label>
@@ -181,27 +181,3 @@ $this->load->view('admin/head_admin');
           <?php
           $this->load->view('admin/foot_admin');
           ?>
-
-    <!--   <script type="text/javascript">
-        function reset_password(id){
-          if(confirm('Apakah anda yakin akan reset password ?')){
-
-            $.ajax({
-              url: "<?php echo base_url('Admin_anggota/reset')?>/"+ id,
-              type: "GET",
-              dataType: "JSON",
-              success: function(data)
-              {
-                if (data.status==true) {
-                  alert("Password baru adalah "+data.data);
-                  location.reload();
-                }
-              },
-              error: function(jqXHR, textStatus, errorThrown)
-              {
-                alert('Error deleting data');
-              }
-            });
-          }
-        }
-      </script> -->

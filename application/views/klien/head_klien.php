@@ -58,7 +58,7 @@
 
   <header class="main-header">
       <!-- Logo -->
-      <a href="index2.html" class="logo">
+      <a class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>V</b>D</span>
         <!-- logo for regular state and mobile devices -->
@@ -85,7 +85,7 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?php echo site_url('assets/users/klien/'.$this->session->userdata('foto')) ?>" onerror="this.src='<?php echo site_url('assets/users/klien/index.png'); ?>'" class="img-circle" alt="User Image">
+                <img src="<?php echo site_url('/assets/users/klien/'.$this->session->userdata('foto')) ?>" onerror="this.src='<?php echo site_url('assets/users/klien/index.png'); ?>'" class="img-circle" alt="User Image">
 
                 <p>
                   <?php echo $this->session->userdata('name');?>
@@ -133,12 +133,12 @@
             </a>
           </li>
 
-          <li>
+          <!-- <li>
             <a href="<?php echo site_url('Klien_Profile') ?>">
               <i class="fa fa-user"></i>
               <span>Profile</span>
             </a>
-          </li>
+          </li> -->
           <li>
             <a href="<?php echo site_url('ListProduk/keranjang_belanja') ?>">
               <i class="fa fa-cart-plus"></i>

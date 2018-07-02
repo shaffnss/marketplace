@@ -56,7 +56,8 @@ class Admin_pengelola extends BaseController {
 				"jenis_kelamin"=>$jenis_kelamin,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
-				"posisi"=>"pengelola",
+				//"posisi"=>"pengelola",
+				'validasi'=>1,
 				"email"=>$email,
 				'foto'=>$foto,
 				"password"=>PASSWORD_HASH($password,PASSWORD_DEFAULT)
@@ -151,7 +152,7 @@ class Admin_pengelola extends BaseController {
 		$id_users = $this->session->userdata('userId');
 		$data= $this->Admin_pengelola_model->getJadiSuperadmin($id_users, $id_admin);
 		session_destroy();
-		$lokasi = base_url('Login');
+		$lokasi = base_url('Login_anggota');
 		//redirect('Login');
 		echo "<script>alert('Anda berhasil memberikan hak akses anda sebagai Superadmin');</script>";
 		echo "<script>location='".$lokasi."';</script>";

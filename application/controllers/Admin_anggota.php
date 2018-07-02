@@ -74,6 +74,7 @@ class Admin_anggota extends BaseController {
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
 				"email"=>$email,
+				'validasi'=>1,
 				'foto'=>$foto,
 				"password"=>PASSWORD_HASH($password,PASSWORD_DEFAULT)
 			);
@@ -198,6 +199,6 @@ class Admin_anggota extends BaseController {
 		if ($result == TRUE) $this->session->set_flashdata('success','Anggota berhasil diaktifkan');
 		else $this->session->set_flashdata('error','Anggota gagal diaktifkan');
 		
-		redirect('Admin_anggota/pengguna_anggota_baru');
+		redirect('Admin_anggota');
 	}
 }
