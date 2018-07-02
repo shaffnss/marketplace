@@ -67,6 +67,15 @@ $this->load->view('anggota/head_anggota');
               <label class="col-sm-2 control-label">Upload Screenshot Tampilan Sistem</label>
               <div class="col-sm-8">
                 <input type="file" name="foto_produk" placeholder="inputkan mockup produk" required="">
+								<p class="text-muted"><i>File dalam bentuk gif | jpg | png | jpeg, max size 7MB</i></p>
+              </div>
+            </div>
+						
+						<div class="form-group">
+              <label class="col-sm-2 control-label">Upload System</label>
+              <div class="col-sm-8">
+                <input type="file" name="file_produk" placeholder="inputkan mockup produk" required="">
+								<p class="text-muted"><i>File dalam bentuk .zip, max size 7MB</i></p>
               </div>
             </div>
 

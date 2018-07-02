@@ -24,11 +24,7 @@ $this->load->model('Anggota_profile_model');
         <!-- Profile Image -->
         <div class="box box-primary">
           <div class="box-body box-profile">
-            <?php if ($data->foto !=''){?>
-              <img class="profile-user-img img-responsive img-circle" src="<?php echo site_url('/assets/users/anggota/').$data->foto ?>" alt="User profile picture">
-            <?php }else{?>
-             <img class="profile-user-img img-responsive img-circle" src="<?php echo site_url('/assets/users/anggota/index.png')?>" alt="User profile picture">
-            <?php }?>
+              <img class="profile-user-img img-responsive img-circle" src="<?php echo site_url('/assets/users/anggota/').$data->foto ?>" onerror="this.src='<?php echo site_url('assets/users/anggota/index.png'); ?>'" alt="User profile picture">
            <h3 class="profile-username text-center">
             <?php echo $data->nama_users?>
           </h3>
@@ -50,7 +46,7 @@ $this->load->model('Anggota_profile_model');
           </p>
           <hr>
 
-          <strong><i class="fa fa-map-marker margin-r-5"></i>Jenis Kelamin</strong>
+          <strong><i class="fa fa-user margin-r-5"></i>Jenis Kelamin</strong>
           <p class="text-muted">
             <?php echo $data->jenis_kelamin?>
           </p>
@@ -68,7 +64,7 @@ $this->load->model('Anggota_profile_model');
           </p>
           <hr>
 
-          <strong><i class="fa fa-map-marker margin-r-5"></i> No Telpon</strong>
+          <strong><i class="fa fa-phone margin-r-5"></i> No Telpon</strong>
           <p class="text-muted">
             <?php echo $data->no_telpon?>
           </p>
@@ -99,7 +95,8 @@ $this->load->model('Anggota_profile_model');
           <form action="<?php echo site_url('Anggota_profile/ubahAnggota') ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
             <div class="modal-body">
               <div class="box-body">
-                <input type="hidden" class="form-control" name="id_users" required="">
+                <input type="hidden" class="form-control" name="id_users" value="<?php echo $data->id_users ?>" >
+								<input type="hidden" name="nama_foto" value="<?php echo $data->foto; ?>">
 
                 <div class="form-group">
                   <label for="inputName" class="">Nama Anggota</label>
@@ -114,10 +111,10 @@ $this->load->model('Anggota_profile_model');
                   </select>
                 </div>
 
-                <!-- <div class="form-group">
+                <div class="form-group">
                   <label for="inputEmail" class="">Email</label>
-                  <input type="email" class="form-control" name="email" value="<?php //echo $data->email; ?>">
-                </div> -->
+                  <input type="email" class="form-control" name="email" value="<?php echo $data->email; ?>">
+                </div>
 
                 <div class="form-group">
                   <label for="inputTelp" class="">No Telpon</label>
@@ -220,7 +217,7 @@ $this->load->model('Anggota_profile_model');
                                         <h5><?php echo $index ?></h5>
                                       </div>
                                       <div class="col-md-2">
-                                        <img style="height: 50px; width: 50px; border-radius: 100%" src="<?php echo site_url('assets/users/klien/'.$tim->foto) ?>">
+                                        <img onerror="this.src='<?php echo site_url('assets/users/anggota/index.png'); ?>'" style="height: 50px; width: 50px; border-radius: 100%" src="<?php echo site_url('assets/users/klien/'.$tim->foto) ?>">
                                       </div>
                                       <div class="col-md-2">
                                         <h5><?php echo $tim->nama_users; ?></h5>

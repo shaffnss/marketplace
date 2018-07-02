@@ -22,11 +22,7 @@ $this->load->view('admin/head_admin');
           <!-- Profile Image -->
           <div class="box box-warning">
             <div class="box-body box-profile">
-              <?php if ($data->foto !=''){?>
-              <img class="profile-user-img img-responsive img-circle" src="<?php echo site_url('/assets/users/pengelola/').$data->foto ?>" alt="User profile picture">
-            <?php }else{?>
-             <img class="profile-user-img img-responsive img-circle" src="<?php echo site_url('/assets/users/pengelola/index.png')?>" alt="User profile picture">
-            <?php }?>
+              <img class="profile-user-img img-responsive img-circle" src="<?php echo site_url('/assets/users/pengelola/').$data->foto ?>" onerror="this.src='<?php echo site_url('assets/users/pengelola/index.png'); ?>'" alt="User profile picture">
 
               <h3 class="profile-username text-center"><?php echo $data->nama_users?></h3>
 
@@ -63,7 +59,7 @@ $this->load->view('admin/head_admin');
 
               <hr>
 
-              <strong><i class="fa fa-map-marker margin-r-5"></i> No Telfon</strong>
+              <strong><i class="fa fa-phone margin-r-5"></i> No Telfon</strong>
 
               <p class="text-muted"><?php echo $data->no_telpon?></p>
 
@@ -92,6 +88,7 @@ $this->load->view('admin/head_admin');
             <div class="active tab-pane" id="ubahData">
               <form action="<?php echo site_url('Admin_profile/ubahPengelola') ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
                <input type="hidden" class="form-control" name="id_users" value="<?php echo $data->id_users; ?>">
+               <input type="hidden" name="nama_foto" value="<?php echo $data->foto; ?>">
 
                <div class="form-group">
                 <label for="inputName" class="col-sm-2 control-label">Nama</label>
@@ -111,14 +108,6 @@ $this->load->view('admin/head_admin');
                   </select>
                 </div>
               </div>
-
-              <!-- <div class="form-group">
-                <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-
-                <div class="col-sm-10">
-                  <p type="email" class="form-control" name="email" value="<?php echo $data->email; ?>"></p>
-                </div>
-              </div> -->
 
               <div class="form-group">
                 <label for="inputTelp" class="col-sm-2 control-label">No Telpon</label>

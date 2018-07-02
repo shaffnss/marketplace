@@ -7,7 +7,7 @@
  * @version : 1.1
  * @since : 15 November 2016
  */
-class BaseController extends CI_Controller {
+ class BaseController extends CI_Controller {
 	protected $role = '';
 	protected $vendorId = '';
 	protected $name = '';
@@ -52,9 +52,9 @@ class BaseController extends CI_Controller {
 	 */
 	function isAdmin() {
 		if ($this->role == 1 || $this->role == 4) {
-			return false;
-		} else {
 			return true;
+		} else {
+			redirect('Error');
 		}
 	}
 	
@@ -63,9 +63,9 @@ class BaseController extends CI_Controller {
 	 */
 	function isKlien() {
 		if ($this->role != 2) {
-			return true;
+			redirect('Error');
 		} else {
-			return false;
+			return true;
 		}
 	}
 	
@@ -74,9 +74,9 @@ class BaseController extends CI_Controller {
 	 */
 	function isAnggota() {
 		if ($this->role != 3) {
-			return true;
+			redirect('Error');
 		} else {
-			return false;
+			return true;
 		}
 	}
 	

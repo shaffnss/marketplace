@@ -24,7 +24,7 @@ function rupiah($angka){
   </section>
 
   <div class="pad margin no-print">
-    <div class="callout callout-info" style="margin-bottom: 0!important;">
+    <div class="callout callout-warning" style="margin-bottom: 0!important;">
       <h4><i class="fa fa-info"></i> Catatan:</h4>
       Silahkan cetak Invoice anda. Klik tombol cetak yang berada dibawah Invoice anda.
     </div>
@@ -66,13 +66,14 @@ function rupiah($angka){
           </address>
         </div>
         <!-- /.col -->
-       <!--  <div class="col-sm-4 invoice-col">
-          <b>Invoice #007612</b><br>
+       <div class="col-sm-4 invoice-col">
+          <b>Invoice </b><br>
           <br>
-          <b>Order ID:</b> 4F3S8J<br>
-          <b>Payment Due:</b> 2/22/2014<br>
-          <b>Account:</b> 968-34567
-        </div> -->
+          <b>Order ID:</b> <?php echo $invoices[0]->kode_pembelian ?><br>
+          <?php if(empty($invoices[0]->bukti_pembayaran)): ?>
+					<b>Payment Due:</b> <?php echo date("d F Y", strtotime("+1 day", strtotime($invoices[0]->tgl_pembelian))) ?><br>
+					<?php endif; ?>
+        </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
@@ -116,33 +117,31 @@ function rupiah($angka){
           <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
             Bank BNI <br>
             009477590342929 <br>
-            a.n John Doe
+            a.n Shafira Fitrianissa
           </p>
         </div>
         <!-- /.col -->
         <div class="col-xs-6">
-          <p class="lead" style="margin-top: 50px; margin-left: 40px">Total Price: <?php echo rupiah($invoice->harga_produk)?></p>
-
-          <!-- <div class="table-responsive">
+					<?php if(empty($invoices[0]->bukti_pembayaran)): ?>
+          <p class="lead"><small>Lakukan Pembayaran Sebelum </small> <?php echo date("d F Y", strtotime("+1 day", strtotime($invoices[0]->tgl_pembelian))) ?></p>
+					<?php endif; ?>
+          
+					<div class="table-responsive">
             <table class="table">
               <tr>
                 <th style="width:50%">Total:</th>
-                <td><?php echo $invoice->harga_produk ?></td>
+                <td><?php echo rupiah($invoices[0]->total) ?></td>
               </tr>
               <tr>
-                <th>Tax (9.3%)</th>
-                <td>$10.34</td>
-              </tr>
-              <tr>
-                <th>Shipping:</th>
-                <td>$5.80</td>
+                <th>Diskon</th>
+                <td>0</td>
               </tr>
               <tr>
                 <th>Total:</th>
-                <td>$265.24</td>
+                <td><?php echo rupiah($invoices[0]->total) ?></td>
               </tr>
             </table>
-          </div> -->
+          </div>
         </div>
         <!-- /.col -->
       </div>
@@ -152,10 +151,11 @@ function rupiah($angka){
       <div class="row no-print">
         <div class="col-xs-12">
           <a href="<?php echo site_url('Klien_pembayaran')?>" type="button" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i> Kembali</a>
-          <a href="invoice-print.html" target="_blank" class="btn btn-default pull-right"><i class="fa fa-print"></i> Print</a>
-          <a href="<?php echo site_url('Klien_pembayaran/pembayaran/'.$invoices[0]->id_pembelian)?>" target="_blank" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</a>
-          <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
-            <i class="fa fa-download"></i> Generate PDF</button>
+          <?php if(empty($invoices[0]->bukti_pembayaran)): ?>
+					<a href="<?php echo site_url('Klien_pembayaran/pembayaran/'.$invoices[0]->id_pembelian)?>" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Lanjutkan Pembayaran</a>
+					<?php endif; ?>
+          <button type="button" onclick="window.print();" class="btn btn-primary pull-right" style="margin-right: 5px;">
+            <i class="fa fa-download"></i> Cetak Invoice</button>
           </div>
         </div>
       </section>

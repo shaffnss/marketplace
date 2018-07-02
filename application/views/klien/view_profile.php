@@ -26,7 +26,7 @@ $this->load->view('klien/head_klien');
           <!-- Profile Image -->
           <div class="box box-warning">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="<?php echo site_url('/assets/users/klien/').$data->foto ?>" alt="User profile picture">
+              <img class="profile-user-img img-responsive img-circle" src="<?php echo site_url('/assets/users/klien/').$data->foto ?>" onerror="this.src='<?php echo site_url('assets/users/klien/index.png'); ?>'" alt="User profile picture">
 
               <h3 class="profile-username text-center"><?php echo $data->nama_users?></h3>
 
@@ -92,6 +92,7 @@ $this->load->view('klien/head_klien');
             <div class="active tab-pane" id="ubahData">
               <form action="<?php echo site_url('Klien_profile/ubahKlien') ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
                <input type="hidden" class="form-control" name="id_users" value="<?php echo $data->id_users; ?>">
+               <input type="hidden" name="nama_foto" value="<?php echo $data->foto; ?>">
 
                <div class="form-group">
                 <label for="inputName" class="col-sm-2 control-label">Nama</label>
