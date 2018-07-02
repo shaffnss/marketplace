@@ -17,31 +17,14 @@
 			<br>
 			<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<img class="d-block w-100" src="<?php echo base_url('img/produk-1.jpg') ?>" alt="First slide">
-					</div>
-					<div class="carousel-item">
-						<img class="d-block w-100" src="<?php echo base_url('img/produk-2.jpg') ?>" alt="Second slide">
-					</div>
-					<div class="carousel-item">
-						<img class="d-block w-100" src="<?php echo base_url('img/produk-3.jpg') ?>" alt="Third slide">
-					</div>
-				</div>
-				<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="sr-only">Previous</span>
-				</a>
-				<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="sr-only">Next</span>
-				</a>
+					<img class="d-block w-100" src="<?php echo site_url('assets/produk/'.$produks->foto_produk) ?>" onerror="this.src='<?php echo site_url('assets/produk/hal_admin.JPg'); ?>'" alt="Foto Produk">
 			</div>
 			
 			<div class="card mt-4">
 				<div class="card-body">
 					<h3 class="card-title"><?php echo $produks->nama_produk ?>
-					<a href="<?php echo site_url('')?>" class="btn btn-primary btn-sm">Lihat Demo</a></h3>
-					<p class="card-text"><?php echo $produks->deskripsi_produk ?> <?php var_dump($this->session->userdata('produk')) ?></p>
+					<a target="_blank" href="<?php echo $produks->link_demo ?>" class="btn btn-primary float-right">Lihat Demo</a></h3>
+					<p class="card-text"><?php echo $produks->deskripsi_produk ?> </p>
 				</div>
 				
 				<!-- Button trigger modal -->
@@ -62,6 +45,7 @@
 	</div>
 	<!-- /.col-lg-9 -->
 	
+</div>
 </div>
 <!-- /.container -->
 
