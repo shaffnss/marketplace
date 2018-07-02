@@ -58,7 +58,7 @@ $this->load->view('admin/head_admin');
             <tbody>
               <tr>
                 <td><?php echo $no ?></td>
-                <td><img src="<?php echo site_url('/assets/users/klien/').$data->foto ?>" class="img-responsive" style="height: 100px; width: 100px"></td>
+                <td><img src="<?php echo site_url('/assets/users/klien/').$data->foto ?>" onerror="this.src='<?php echo site_url('assets/users/anggota/index.png'); ?>'" class="img-responsive" style="height: 100px; width: 100px"></td>
                 <td><?php echo $data->nama_users?></td>
                 <td><?php echo $data->jenis_kelamin?></td>
                 <td><?php echo $data->instansi?></td>
@@ -161,9 +161,11 @@ $this->load->view('admin/head_admin');
       <!-- /.box -->
 
 
-    </section>
     <!-- /.content -->
   </div>
+	</div>
+	</section>
+</div>
   <!-- /.content-wrapper -->
 
 

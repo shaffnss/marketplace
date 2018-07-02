@@ -79,7 +79,7 @@ $this->load->view('admin/head_admin');
             ?>
               <tr>
                 <td><?php echo $no ?></td>
-                <td><img src="<?php echo site_url('/assets/users/klien/').$data->foto ?>" class="img-responsive" style="height: 80px; width: 80px"></td>
+                <td><img src="<?php echo site_url('/assets/users/klien/').$data->foto ?>" onerror="this.src='<?php echo site_url('assets/users/anggota/index.png'); ?>'" class="img-responsive" style="height: 80px; width: 80px"></td>
                 <td><?php echo $data->nama_users?></td>
                 <td><?php echo $data->jenis_kelamin?></td>
                 <td><?php echo $data->instansi?></td>

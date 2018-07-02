@@ -40,18 +40,12 @@ class Login extends CI_Controller
         }
         else
         {
-            if($role == 1){
+            if($role == 2){
                 //Login Admin
                 redirect('Admin_dashboard');
-            }elseif ($role == 2) {
-                //Login Klien
-                redirect('Klien_dashboard');
-            }elseif ($role == 3){
-                //Login Anggota
-                redirect('Anggota_dashboard');
-            }elseif ($role == 4){
+            }else{
                 //Login Superadmin
-                redirect('Admin_dashboard');    
+                $this->load->view('login');
             }
         }
     }
@@ -92,19 +86,12 @@ class Login extends CI_Controller
 
                     $this->session->set_userdata($sessionArray);
                     
-                    if($res->id_roles == 1){
-                //Login Admin
-                        redirect('Admin_dashboard');
-                    }elseif ($res->id_roles == 2) {
-                //Login Klien
-                        redirect('Klien_dashboard');
-                    }elseif ($res->id_roles == 3){
-                //Login Anggota
-                     redirect('Anggota_dashboard');
-                 }elseif ($res->id_roles == 4){
-                //Login Superadmin
-                    redirect('Admin_dashboard');
-                }
+                    if($res->id_roles == 2){
+											//Login Admin
+                      redirect('Klien_dashboard');
+										}else{
+											$this->load->view('login');
+										}
             }
         }
         else
