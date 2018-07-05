@@ -12,10 +12,10 @@ function rupiah($angka){
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <h1>Pembayaran Pembelian Produk</h1>
+    <h1>Pembayaran Produk Diproses</h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li class="active"> Pembelian</li>
+      <li class="active"> Pembayaran</li>
     </ol>
   </section>
 

@@ -76,9 +76,9 @@ $this->load->view('admin/head_admin');
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Nama Team</th>
+                    <th>Nama Tim</th>
                     <th>Jumlah Anggota</th>
-                    <th>Status Tim</th>
+                    <th>Jenis Tim</th>
                     <th>Status</th>
                     <th>Aksi</th>
                   </tr>

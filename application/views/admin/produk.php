@@ -67,7 +67,7 @@ function rupiah($angka){
 								<tr>
 									<th>No</th>
 									<th>Nama Produk</th>
-									<th>Jenis Sistem</th>
+									<th>Jenis Produk</th>
 									<th>Harga</th>
 									<th>Team Pembuat</th>
 									<th>Link Demo</th>

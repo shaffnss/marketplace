@@ -113,8 +113,8 @@ function rupiah($angka){
 										?>
                   </td>
                   <td class="text-center">
-                    <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ubah-produk<?php echo $data->id_produk; ?>" onclick="ubah-produk"><i class="fa fa-edit">Edit</i>
-                    </button>
+                    <!-- <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ubah-produk<?php echo $data->id_produk; ?>" onclick="ubah-produk"><i class="fa fa-edit">Edit</i>
+                    </button> -->
                     <a href="<?php echo site_url('Admin_produk/diterima/'.$data->id_detail_produk)?>" class="btn btn-sm btn-info" style="background: #4e9e02; border-color: #fff"><i class="fa fa-check"></i>Terima</a>
                     <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#lihat-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff"><i class="fa fa-eye"></i>Lihat
                     </button>

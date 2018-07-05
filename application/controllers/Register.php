@@ -100,10 +100,10 @@ class Register extends CI_Controller {
 			   $this->email->send();
 
 			   $this->session->set_flashdata('style','info');
-		$this->session->set_flashdata('alert','Silahkan Cek Email Anda');
-		//$this->session->set_flashdata('message','');
+			   $this->session->set_flashdata('alert','Silahkan Cek Email Anda');
+			   $this->session->set_flashdata('message','Verifikasi email anda agar dapat mengakses sistem');
 
-			   redirect('login');	
+			   redirect('register');	
 			}
 		}else{
 

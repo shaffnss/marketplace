@@ -37,26 +37,30 @@ class Klien_pembayaran extends BaseController {
 		$this->load->view('Klien/detail_pembayaran', $data);
 	}
 	
-	public function pembelian($id_produk) {
-		$id_users = $this->session->userdata('userId');
+	public function pembelian($id_produk) { //unggah bukti pembelian
+		$id_users = $this->session->userdata('userId'); //unggah per user
 		
-		$get_kode = $this->db->join('kategori_produk', 'produk.id_kategori=kategori_produk.id_kategori')->where('id_produk', $id_produk)->get('produk')->row();
-		$randomstring = random_string('alpha', 4);
+		$get_kode = $this->db->join('kategori_produk', 'produk.id_kategori=kategori_produk.id_kategori')
+		->where('id_produk', $id_produk)->get('produk')->row(); //create kode pembelian
+
+		$randomstring = random_string('alpha', 4); 
 		
+		//--INSERT DETAIL PEMBELIAN--
 		$data = array(
 			'tgl_pembelian'=>date('Y-m-d'),
 			'id_users'=>$id_users,
 			'status_pembelian'=>'proses',
 			'kode_pembelian'=>$get_kode->kode_jenis."-".$randomstring
 		);
-		
+
+		 //insert data pembelian
 		$id_pembelian = $this->Klien_pembayaran_m->insertBukti($data);
 		$this->db->insert('detail_pembelian', array('id_pembelian'=>$id_pembelian, 'id_produk'=>$id_produk));
 		
 		redirect('Klien_pembayaran');
 	}
 
-	public function unggahPembayaran(){
+	public function unggahPembayaran(){ //unggah detail pembelian 
 			$config['upload_path']          = './assets/bukti pembayaran/';
 			$config['allowed_types']        = 'gif|jpg|png|jpeg|pdf';
 			$config['max_size']             = 3000;
@@ -77,7 +81,8 @@ class Klien_pembayaran extends BaseController {
 				
 				if (count($cekPerjanjian) > 0) {
 					//apabila perjanjian dah ada maka update kategori
-					$this->db->where('id_perjanjian', $cekPerjanjian->id_perjanjian)->update('perjanjian', array('id_kategori'=>$id_kategori));
+					$this->db->where('id_perjanjian', $cekPerjanjian->id_perjanjian)->update('perjanjian', 
+						array('id_kategori'=>$id_kategori));
 				}else{
 					//apabila perjanjian belum ada maka insert kategori perjanjian
 					$dataPerjanjian = array(
@@ -92,14 +97,15 @@ class Klien_pembayaran extends BaseController {
 				redirect('Klien_pembayaran');
 			}else{
 				$bukti_pembayaran = $this->upload->data();
-				// $nama_perjanjian =$this->input->post('nama_perjanjian', true);
+				
 				$bukti_pembayaran = $bukti_pembayaran['file_name'];
 				
 				$cekPerjanjian = $this->Klien_pembayaran_m->cekPerjanjian($id_pembelian);
 				
 				if (count($cekPerjanjian) > 0) {
 					//apabila perjanjian dah ada maka update kategori
-					$this->db->where('id_perjanjian', $cekPerjanjian->id_perjanjian)->update('perjanjian', array('id_kategori'=>$id_kategori));
+					$this->db->where('id_perjanjian', $cekPerjanjian->id_perjanjian)->update('perjanjian',
+					 array('id_kategori'=>$id_kategori));
 				}else{
 					//apabila perjanjian belum ada maka insert kategori perjanjian
 					$dataPerjanjian = array(

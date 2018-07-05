@@ -147,14 +147,14 @@
           </li>
 					<li class="treeview">
 						<a>
-							<i class="fa fa-money"></i> <span>Pembayaran</span>
+							<i class="fa fa-money"></i> <span>Pembelian</span>
 							<span class="pull-right-container">
 								<i class="fa fa-angle-left pull-right"></i>
 							</span>
 						</a>
 						<ul class="treeview-menu">
-							<li class=""><a href="<?php echo site_url('Klien_pembayaran')?>"><i class="fa fa-list-alt"></i>Pembayaran Diproses</a></li>
-							<li><a href="<?php echo site_url('Klien_pembayaran/pembayaranSelesai')?>"><i class="fa fa-check"></i>Pembayaran Selesai</a></li>
+							<li class=""><a href="<?php echo site_url('Klien_pembayaran')?>"><i class="fa fa-list-alt"></i>Pembelian Diproses</a></li>
+							<li><a href="<?php echo site_url('Klien_pembayaran/pembayaranSelesai')?>"><i class="fa fa-check"></i>Pembelian Selesai</a></li>
 						</ul>
 					</li>
 					<li>
