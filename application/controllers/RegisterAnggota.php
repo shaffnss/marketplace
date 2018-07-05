@@ -9,7 +9,7 @@ class RegisterAnggota extends CI_Controller {
 		$this->load->model("RegisterAnggota_m");
 	}
 
-	public function index()
+	public function index() //fungsi register anggota
 	{
 		$data['data'] = $this->db->get('roles')->result();
 		if ($this->input->post('register')){
@@ -19,36 +19,29 @@ class RegisterAnggota extends CI_Controller {
 			$config['remove_spaces'] 		= true;
 
 			$this->load->library('upload', $config);
-			// $this->upload->initialize($config);
 			if(!$this->upload->do_upload('ktm'))
 			{
 				$error = array('error' => $this->upload->display_errors());
-				//echo 'Gagal upload, resolusi atau ukuran foto melebihi batas!';
 			}else{
 				$ktm = $this->upload->data()['file_name'];
-				//$nim = $this->input->post('nim');
 				$nama = $this->input->post('nama');
 				$jenkel = $this->input->post('jenis_kelamin');
 				$no_telpon = $this->input->post('no_telpon');
 				$email = $this->input->post('email');
 				$instansi = $this->input->post('instansi');
-				$password = $this->input->post('password');
-			//$level = $this->input->post('pilihananggota');	
+				$password = $this->input->post('password');	
 
 				$this->form_validation->set_rules('nama','nama','required|trim');
-				//$this->form_validation->set_rules('nim','nim','required|trim');
 				$this->form_validation->set_rules('email','email','required|trim');
 				$this->form_validation->set_rules('no_telpon','no_telpon','required|trim');
 				$this->form_validation->set_rules('jenis_kelamin','jenis_kelamin','required|trim');
 				$this->form_validation->set_rules('instansi','instansi','required|trim');
 				$this->form_validation->set_rules('password','password','required|trim');
 
-				if ($this->form_validation->run() == FALSE) {
-					// echo 'ERROR VALIDASI GAGAL';
-					// $this->session->set_flashdata('') ;
+				if ($this->form_validation->run() == FALSE) { //jika validasi salah
 					$this->load->view('reg_anggota', $data);
 				}else{
-					$users = array(
+					$users = array( //jika validasi benar
 						'nama_users'=>$nama,
 						'email'=>$email,
 						'jenis_kelamin'=>$jenkel,
@@ -60,7 +53,6 @@ class RegisterAnggota extends CI_Controller {
 					); 
 					$id_users=$this->RegisterAnggota_m->createAnggota($users, $ktm);
 					$this->session->set_flashdata('message', 'Register Berhasil');
-					// redirect('login');
 
 			//apabila regis dengan level anggota maka akan langsung create tim di db
 					$tim = array(

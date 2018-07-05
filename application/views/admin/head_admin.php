@@ -79,13 +79,13 @@
            <!-- User Account: style can be found in dropdown.less -->
            <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-               <img src="<?php echo base_url().'/assets/users/pengelola/'.$this->session->userdata('foto')?>" onerror="this.src='<?php echo site_url('assets/users/pengelola/index.png'); ?>'" class="user-image" alt="User Image">
+             <img src="<?php echo base_url().'/assets/users/pengelola/'.$this->session->userdata('foto')?>" onerror="this.src='<?php echo site_url('assets/users/pengelola/index.png'); ?>'" class="user-image" alt="User Image">
              <span class="hidden-xs"><?php echo $this->session->userdata('name');?></span>
            </a>
            <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header">
-               <img src="<?php echo base_url().'/assets/users/pengelola/'.$this->session->userdata('foto')?>" onerror="this.src='<?php echo site_url('assets/users/pengelola/index.png'); ?>'" class="img-circle" alt="User Image">
+             <img src="<?php echo base_url().'/assets/users/pengelola/'.$this->session->userdata('foto')?>" onerror="this.src='<?php echo site_url('assets/users/pengelola/index.png'); ?>'" class="img-circle" alt="User Image">
 
              <p>
               <?php echo $this->session->userdata('name');?>
@@ -114,7 +114,7 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
       <div class="pull-left image">
-         <img src="<?php echo base_url().'/assets/users/pengelola/'.$this->session->userdata('foto')?>" onerror="this.src='<?php echo site_url('assets/users/pengelola/index.png'); ?>'" class="img-circle" alt="User Image">
+       <img src="<?php echo base_url().'/assets/users/pengelola/'.$this->session->userdata('foto')?>" onerror="this.src='<?php echo site_url('assets/users/pengelola/index.png'); ?>'" class="img-circle" alt="User Image">
      </div>
      <div class="pull-left info">
       <p><?php echo $this->session->userdata('name');?></p>
@@ -134,20 +134,26 @@
 
     <li class="treeview">
       <a>
-        <i class="fa fa-money"></i> <span>Pembayaran & Perjanjian</span>
+        <i class="fa fa-money"></i> <span>Pembelian & Perjanjian</span>
         <span class="pull-right-container">
           <i class="fa fa-angle-left pull-right"></i>
         </span>
       </a>
       <ul class="treeview-menu">
-        <li class=""><a href="<?php echo site_url('Admin_pembelian')?>"><i class="fa fa-list-alt"></i>Pembayaran Diproses</a></li>
-        <li><a href="<?php echo site_url('Admin_pembelian/pembelianSelesai')?>"><i class="fa fa-check"></i>Pembayaran Selesai</a></li>
+        <li class=""><a href="<?php echo site_url('Admin_pembelian')?>"><i class="fa fa-list-alt"></i>Pembelian Diproses</a></li>
+        <li><a href="<?php echo site_url('Admin_pembelian/pembelianSelesai')?>"><i class="fa fa-check"></i>Pembelian Selesai</a></li>
         <li><a href="<?php echo site_url('Admin_perjanjian') ?>"><i class="fa fa-list-alt"></i>Perjanjian Pembelian</a></li>
       </ul>
     </li>
 
+    <li>
+      <a href="<?php echo site_url('Admin_perjanjian/kategori')?>">
+        <i class="fa fa-list-alt"></i> 
+        <span>Jenis Perjanjian</span>
+      </a>
+    </li>
 
-    <li class="treeview">
+   <!--  <li class="treeview">
       <a>
         <i class="fa fa-edit"></i> <span>Perjanjian</span>
         <span class="pull-right-container">
@@ -157,7 +163,7 @@
       <ul class="treeview-menu">
         <li class=""><a href="<?php echo site_url('Admin_perjanjian/kategori')?>"><i class="fa fa-list-alt"></i>Jenis Perjanjian</a></li>
       </ul>
-    </li>
+    </li> -->
 
 
         <!-- <li class="treeview">

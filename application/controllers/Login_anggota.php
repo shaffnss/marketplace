@@ -110,10 +110,8 @@
 		public function logout() {
 			$this->session->sess_destroy();
 			
-			redirect('Login_anggota');
-			
-		}
-		
+			redirect('Login_anggota');	
+		}		
 	}
 	
 ?>

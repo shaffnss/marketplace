@@ -50,11 +50,11 @@
       <p class="login-box-msg">Masuk ke VokasiDev</p>
       <form action="<?php echo site_url('Login/loginMe')?>" method="post">
         <div class="form-group has-feedback">
-          <input type="email" class="form-control" name="email" placeholder="Email">
+          <input type="email" class="form-control" name="email" placeholder="Email" required="">
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="password" class="form-control" name="password" placeholder="Password">
+          <input type="password" class="form-control" name="password" placeholder="Password" required="">
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
 
