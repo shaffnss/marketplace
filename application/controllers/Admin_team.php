@@ -11,37 +11,9 @@ class Admin_team extends BaseController {
 		$this->isAdmin();
 	}
 
-	public function index()
-	{
+	public function index(){
 		$data["tim"]=$this->Admin_team_model->getTim();
 		$this->load->view('admin/pengguna_team',$data);
-	}
-
-	public function inputNamaTeam() //MENGINPUTKAN NAMA TIM KE VIEW
-	{
-		$this->load->library('form_validation');
-		$this->form_validation->set_rules('nama_tim','nama tim','required');
-		$this->form_validation->set_rules('status_tim','status tim','required');
-		if($this->form_validation->run() == FALSE)
-		{
-			redirect('Admin_team');
-		}
-		else
-		{
-			//echo 'masuk';
-			$nama_tim = $this->input->post('nama_tim');
-			$status_tim = $this->input->post('status_tim');
-
-			$team =  array(
-				"nama_tim"=>$nama_tim,
-				"status_tim"=>$status_tim,
-			);
-
-			$result = $this->Admin_team_model->insertTeam($team);
-
-		}
-
-		redirect('Admin_team');
 	}
 
 	public function ubahNamaTim(){
@@ -60,8 +32,29 @@ class Admin_team extends BaseController {
 		redirect('Admin_team/ubah_team/'.$id_tim);
 	}
 
-	public function ubah_team($id_team)
-	{
+	public function inputNamaTeam(){ //MENGINPUTKAN NAMA TIM KE VIEW
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('nama_tim','nama tim','required');
+		$this->form_validation->set_rules('status_tim','status tim','required');
+		if($this->form_validation->run() == FALSE)
+		{
+			redirect('Admin_team');
+		}else{
+			//echo 'masuk';
+			$nama_tim = $this->input->post('nama_tim');
+			$status_tim = $this->input->post('status_tim');
+
+			$team =  array(
+				"nama_tim"=>$nama_tim,
+				"status_tim"=>$status_tim,
+			);
+
+			$result = $this->Admin_team_model->insertTeam($team);
+		}
+		redirect('Admin_team');
+	}
+
+	public function ubah_team($id_team){
 		$data['panggil_anggota']=$this->Admin_team_model->getAnggota(); //panggil dari db
 		$data['anggotaTim']=$this->Admin_team_model->getAnggotaTim($id_team); //panggil dari db
 		$data['tim']=$this->Admin_team_model->tim($id_team);
@@ -69,8 +62,7 @@ class Admin_team extends BaseController {
 		$this->load->view('admin/pengguna_team_ubah',$data);
 	}
 
-	public function tambahAnggota() //TAMBAH ANGGOTA DIBAGIAN UBAH TEAM
-	{
+	public function tambahAnggota(){ //TAMBAH ANGGOTA DIBAGIAN UBAH TEAM
 		$id_tim = $this->input->post('id_tim');
 		$id_users = $this->input->post('id_users');
 		$id_posisi = $this->input->post('id_posisi');
@@ -85,8 +77,7 @@ class Admin_team extends BaseController {
 		redirect('Admin_team/ubah_team/'.$id_tim);
 	}
 
-	public function hapusAnggota($id_detail_tim,$id_team) //HAPUS ANGGOTA DIBAGIAN UBAH TIM
-	{
+	public function hapusAnggota($id_detail_tim,$id_team){ //HAPUS ANGGOTA DIBAGIAN UBAH TIM
 		$this->db->where('id_detail_tim',$id_detail_tim);
 		$this->db->delete('detail_tim');
 		redirect('Admin_team/ubah_team/'.$id_team);

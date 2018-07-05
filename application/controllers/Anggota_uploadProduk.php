@@ -11,27 +11,23 @@ class Anggota_uploadProduk extends BaseController {
 		$this->load->helper("url");
 		$this->isLoggedIn();
 		$this->isAnggota();
-		}
+	}
 
-	public function index()
-	{
+	public function index(){
 		$id_user = $this->session->userdata('userId'); //manggil session id yg sedang login
 		$data['upload']=$this->Anggota_uploadProduk_model->getUpload($id_user);
 		$data["kategoris"]=$this->Anggota_uploadProduk_model->getKategori();
 		$this->load->view('anggota/uploadProduk',$data);		
 	}
 
-	public function tambah_uploadProduk()
-	{
+	public function tambah_uploadProduk(){
 		$id_users = $this->session->userdata('userId');
 		$data['id_team']=$this->Anggota_uploadProduk_model->getTeam($id_users);
 		$data['kategoris']=$this->Anggota_uploadProduk_model->getKategori();
-		
 		$this->load->view('anggota/tambah_upload',$data);
 	}
 
-	public function inputProduk()
-	{
+	public function inputProduk(){
 		$config['upload_path']          = './assets/produk/';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
 		$config['max_size']             = 9000;
@@ -43,13 +39,11 @@ class Anggota_uploadProduk extends BaseController {
 		if( ! $this->upload->do_upload('foto_produk'))
 		{
 			$this->session->set_flashdata('style','danger');
-		$this->session->set_flashdata('alert','Gagal upload');
-		$this->session->set_flashdata('message','resolusi atau ukuran foto melebihi batas!');
+			$this->session->set_flashdata('alert','Gagal upload');
+			$this->session->set_flashdata('message','resolusi atau ukuran foto melebihi batas!');
 
 			redirect('Anggota_uploadProduk/tambah_uploadProduk');
-		}
-		else
-		{
+		}else{
 			$img = $this->upload->data();
 			$foto_produk = $img['file_name'];
 			$nama_produk = $this->input->post('nama_produk', true);
@@ -80,14 +74,10 @@ class Anggota_uploadProduk extends BaseController {
 			$this->load->library('upload', $config);
 			$this->upload->initialize($config);
 			
-			
-			if( ! $this->upload->do_upload('file_produk'))
-			{
+			if( ! $this->upload->do_upload('file_produk')){
 				$errorp = 1;
 				var_dump($this->upload->display_errors());exit;
-			}
-			else
-			{
+			}else{
 				$errorp = 0;
 				$file_produk = $this->upload->data();
 				$data['file_produk'] = $file_produk['file_name'];
@@ -121,7 +111,6 @@ class Anggota_uploadProduk extends BaseController {
 			}else{
 				$this->session->set_flashdata('message', 'Data produk berhasil ditambahkan');
 			}
-			
 			redirect('Anggota_uploadProduk');
 		}
 	}
@@ -145,7 +134,6 @@ class Anggota_uploadProduk extends BaseController {
 		$foto_produk = $this->input->post('foto_produk', true);
 		$file_produk = $this->input->post('file_produk', true);
 
-		
 		if( ! $this->upload->do_upload('foto_produk'))
 		{
 			$data = array(
@@ -155,23 +143,18 @@ class Anggota_uploadProduk extends BaseController {
 				'harga_produk' => $harga_produk,
 				'deskripsi_produk' => $deskripsi_produk,
 				'link_demo'	=> $link_demo
-
 			);
-		}
-		else
-		{
+		}else{
 			unlink('./assets/produk/'.$foto_produk); //hapus file yang lama
 			$img = $this->upload->data();
 			$foto_produk = $img['file_name'];
 			$data = array(
-				
 				'nama_produk'=>$nama_produk,
 				'id_kategori' =>$jenis_produk,
 				'harga_produk' => $harga_produk,
 				'deskripsi_produk' => $deskripsi_produk,
 				'link_demo'	=> $link_demo,
 				'foto_produk' => $foto_produk
-
 			);
 		}
 

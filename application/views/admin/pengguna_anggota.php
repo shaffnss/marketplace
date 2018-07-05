@@ -99,7 +99,7 @@ $this->load->view('admin/head_admin');
                               <form action="<?php echo site_url('Admin_anggota/ubahAnggota') ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
 
                                 <div class="box-body">
-                                  <input type="text" class="form-control" id="inputName" name="id_users" value="<?php echo $data['idu']; ?>">
+                                  <input type="hidden" class="form-control" id="inputName" name="id_users" value="<?php echo $data['idu']; ?>">
 
                                   <div class="form-group">
                                     <label class="">Nama Anggota</label>

@@ -140,7 +140,7 @@ function rupiah($angka){
 								</div> -->
 
 								<div class="form-group">
-									<label class="col-sm-2 control-label">Upload Bukti</label>
+									<label class="col-sm-2 control-label">Upload Bukti Pembayaran</label>
 									<div class="col-sm-8">
 										<input type="file" name="bukti_pembayaran" required>
 									</div>

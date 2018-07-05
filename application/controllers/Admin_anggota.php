@@ -11,28 +11,17 @@ class Admin_anggota extends BaseController {
 		$this->isAdmin();
 	}
 
-	public function index()
-	{
+	public function index(){
 		$data["anggota"]=$this->Admin_anggota_model->getAnggota();
 		$this->load->view('admin/pengguna_anggota',$data);
 	}
 
-	public function tambah_anggota()
-	{
+	public function tambah_anggota(){
 		$data["error_upload"] = "";
 		$this->load->view('admin/pengguna_anggota_tambah');
 	}
 
-	// public function reset($id){
-	// 	$this->load->helper('string');
-	// 	$reset=random_string('alnum',8);
-	// 	$this->db->where('id_users',$id);
-	// 	$this->db->update('users', array('password'=>PASSWORD_HASH($reset,PASSWORD_DEFAULT)));
-	// 	echo json_encode(array("status" => true, 'data'=>$reset));
-	// }
-
-	public function inputAnggota()
-	{
+	public function inputAnggota(){
 		$config['upload_path']          = './assets/users/anggota';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
 		$config['max_size']             = 50000000;
@@ -43,11 +32,8 @@ class Admin_anggota extends BaseController {
 		if( ! $this->upload->do_upload('foto'))
 		{
 			$data_error['error_upload'] = $this->upload->display_errors();
-			// echo 'Gagal upload, resolusi atau ukuran foto melebihi batas!';
 			$this->load->view('admin/pengguna_anggota_tambah',$data_error);
-		}
-		else
-		{
+		}else{
 			$img = $this->upload->data();
 			$foto = $img['file_name'];
 			$nama_users = $this->input->post('nama_users', true);
@@ -60,13 +46,11 @@ class Admin_anggota extends BaseController {
 			if( ! $this->upload->do_upload('ktm'))
 			{
 				$data_error['error_upload'] = $this->upload->display_errors();
-			// echo 'Gagal upload, resolusi atau ukuran foto melebihi batas!';
 				$this->load->view('admin/pengguna_anggota_tambah',$data_error);
 			}else{ 
 				$ktm=$this->upload->data();
 				$ktm1=$ktm['file_name'];
 			}
-
 			$data =  array(
 				"id_roles"=>3,
 				"nama_users"=>$nama_users,
@@ -80,13 +64,11 @@ class Admin_anggota extends BaseController {
 			);
 
 			$id_users=$this->Admin_anggota_model->insertAnggota($users, $ktm);
-			//$this->db->insert('users', $data);
 			redirect('Admin_anggota');
 		}
 	}
 
-	public function ubahAnggota()
-	{
+	public function ubahAnggota(){
 		$config['upload_path']          = './assets/users/anggota';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
 		$config['max_size']             = 300;
@@ -113,9 +95,7 @@ class Admin_anggota extends BaseController {
 				"email"=>$email,
 				"status_users"=>$status_users,
 			);
-		}
-		else //jika update foto
-		{
+		}else{ //jika update foto
 			$img = $this->upload->data();
 			$foto = $img['file_name'];
 			$id_users = $this->input->post('id_users', true);
@@ -155,9 +135,7 @@ class Admin_anggota extends BaseController {
 		if($this->form_validation->run() == FALSE)
 		{
 			redirect('Admin_anggota/posisi_tim');
-		}
-		else
-		{
+		}else{
 			$nama_posisi = $this->input->post('nama_posisi');
 
 			$data =  array(
@@ -167,7 +145,6 @@ class Admin_anggota extends BaseController {
 			$result = $this->Admin_anggota_model->insertPosisi($data);
 
 		}
-
 		redirect('Admin_anggota/posisi_tim');
 	}
 
@@ -185,14 +162,12 @@ class Admin_anggota extends BaseController {
 		redirect('Admin_anggota/posisi_tim');
 	}
 
-	public function aktivasi_anggota()
-	{
+	public function aktivasi_anggota(){
 		$data["aktivasi"]=$this->Admin_anggota_model->getAktivasi();
 		$this->load->view('admin/pengguna_anggota_baru', $data);
 	}
 
-	public function aktifkan($id_users)
-	{
+	public function aktifkan($id_users){
 		$result = $this->db->where('id_users',$id_users)
 		->update('users', array('status_users'=>'aktif'));
 		

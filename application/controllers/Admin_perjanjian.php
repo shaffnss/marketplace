@@ -28,9 +28,7 @@ class Admin_perjanjian extends BaseController {
 		if($this->form_validation->run() == FALSE)
 		{
 			redirect('Admin_perjanjian/kategori_perjanjian');
-		}
-		else 
-		{
+		}else {
 			$nama_perjanjian = $this->input->post('nama_perjanjian');
 
 			$data =  array(
@@ -40,11 +38,24 @@ class Admin_perjanjian extends BaseController {
 			$result = $this->Admin_perjanjian_model->insertKategori($data);
 
 		}
-
 		redirect('Admin_perjanjian/kategori');
 	}
 
-	public function unggahPerjanjian(){
+	public function ubahKategori(){
+		$id_kategori = $this->input->post('id_kategori');
+		$nama_perjanjian = $this->input->post('nama_perjanjian');
+		$status = $this->input->post('status');
+
+		$data=array(
+			'nama_perjanjian'=>$nama_perjanjian,
+			"status"=>$status
+		);
+		$this->db->where('id_kategori',$id_kategori);
+		$this->db->update('kategori_perjanjian',$data);
+		redirect('Admin_perjanjian/kategori');
+	}
+
+	public function unggahPerjanjian(){ //fungsi unggah perjanjian
 			$config['upload_path']          = './assets/file_perjanjian/';
 			$config['allowed_types']        = 'pdf';
 			$config['max_size']             = 5000;
@@ -73,17 +84,4 @@ class Admin_perjanjian extends BaseController {
 	redirect('Admin_perjanjian');
 }
 
-	public function ubahKategori(){
-		$id_kategori = $this->input->post('id_kategori');
-		$nama_perjanjian = $this->input->post('nama_perjanjian');
-		$status = $this->input->post('status');
-
-		$data=array(
-			'nama_perjanjian'=>$nama_perjanjian,
-			"status"=>$status
-		);
-		$this->db->where('id_kategori',$id_kategori);
-		$this->db->update('kategori_perjanjian',$data);
-		redirect('Admin_perjanjian/kategori');
-	}
 }

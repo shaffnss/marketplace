@@ -10,7 +10,7 @@ class Anggota_profile extends BaseController {
 		$this->isLoggedIn();
 		$this->isAnggota();
 	}
- 
+	
 	public function index()
 	{
 		$id_users = $this->session->userdata('userId');
@@ -19,8 +19,7 @@ class Anggota_profile extends BaseController {
 		$this->load->view('anggota/profile_anggota',$data);
 	}
 
-	public function ubahAnggota()
-	{
+	public function ubahAnggota(){
 		$config['upload_path']          = './assets/users/anggota';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
 		$config['max_size']             = 300;
@@ -44,10 +43,7 @@ class Anggota_profile extends BaseController {
 				"no_telpon"=>$no_telpon,
 				"email"=>$email
 			);
-		}
-		else //jika update foto
-		{
-
+		}else{ //jika update foto
 			$img = $this->upload->data();
 			$foto = $img['file_name'];
 			$id_users = $this->input->post('id_users', true);
@@ -67,10 +63,10 @@ class Anggota_profile extends BaseController {
 			$this->session->set_userdata('foto', $foto);
 			unlink('./assets/users/anggota/'.$nama_foto);
 		}
-			$id_users= $this->input->post('id_users');
-			$this->db->where('id_users',$id_users);
-			$this->db->update('users',$anggota);
-			$this->session->set_userdata('name', $nama_users);
-			redirect('Anggota_profile');
-		}
+		$id_users= $this->input->post('id_users');
+		$this->db->where('id_users',$id_users);
+		$this->db->update('users',$anggota);
+		$this->session->set_userdata('name', $nama_users);
+		redirect('Anggota_profile');
+	}
 }

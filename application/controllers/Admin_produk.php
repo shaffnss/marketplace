@@ -3,34 +3,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require APPPATH . '/libraries/BaseController.php';
 class Admin_produk extends BaseController {
 
-  function __construct()
-  {
-    parent::__construct();
-    $this->load->model("Admin_produk_model");
-    $this->load->helper("form");
-    $this->load->helper("url");
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->model("Admin_produk_model");
+		$this->load->helper("form");
+		$this->load->helper("url");
 		$this->isLoggedIn();
 		$this->isAdmin();
-  }
+	}
 	
-  function index()
-  {
+	function index(){
 		$data['produk']=$this->Admin_produk_model->getProduk();
 		$data['kategori']=$this->Admin_produk_model->getKategori();
 		$this->load->view('admin/produk',$data);
-  }
-  
+	}
+
+	function tambahProduk(){
+		$data["tambah_tim"]=$this->Admin_produk_model->getTeam();
+		$data["tambah_produk"]=$this->Admin_produk_model->getTeam();
+		$data["kategoris"]=$this->Admin_produk_model->getKategori();
+		
+		$this->load->view('admin/produkTambah',$data);
+	}  
+
   //fungsi untuk mengarah ke halaman produk dengan status diterima
-  function produk_diterima()
-  {
+	function produk_diterima(){
 		$data['produkDiterima']=$this->Admin_produk_model->getProdukDiterima();
 		$data['kategori']=$this->Admin_produk_model->getKategori();
 		$this->load->view('admin/produk_diterima',$data);
-  }
-  
+	}
+
   //fungsi untuk merubah status detail produk menjadi diterima
-  function diterima($id_detail_produk)
-  {
+	function diterima($id_detail_produk){
 		$result = $this->db->where('id_detail_produk', $id_detail_produk)
 		->update('detail_produk', array('status'=>'diterima'));
 		
@@ -38,19 +43,17 @@ class Admin_produk extends BaseController {
 		else $this->session->set_flashdata('error','Produk gagal dieksekusi');
 		
 		redirect('Admin_produk/produk_diterima');
-  }
-  
-  //fungsi untuk mengarah ke halaman produk dengan status diterima
- function produk_ditolak()
-  {
+	}
+
+  //fungsi untuk mengarah ke halaman produk dengan status ditolak
+	function produk_ditolak(){
 		$data['produk']=$this->Admin_produk_model->getProdukDitolak();
 		$data['kategori']=$this->Admin_produk_model->getKategori();
 		$this->load->view('admin/produk_ditolak',$data);
-  }
-  
+	}
+
   //fungsi untuk merubah status detail produk menjadi ditolak
-  function ditolak($id_detail_produk)
-  {
+	function ditolak($id_detail_produk){
 		$result = $this->db->where('id_detail_produk', $id_detail_produk)
 		->update('detail_produk', array('status'=>'ditolak'));
 		
@@ -58,19 +61,9 @@ class Admin_produk extends BaseController {
 		else $this->session->set_flashdata('error','Produk gagal dieksekusi');
 		
 		redirect('Admin_produk/produk_ditolak');
-  } 
+	} 
 
-  function tambahProduk()
-  {
-		$data["tambah_tim"]=$this->Admin_produk_model->getTeam();
-		$data["tambah_produk"]=$this->Admin_produk_model->getTeam();
-		$data["kategoris"]=$this->Admin_produk_model->getKategori();
-		 
-		$this->load->view('admin/produkTambah',$data);
-  }  
-
-  function inputProduk()
-  {
+	function inputProduk(){
 		$config['upload_path']          = './assets/produk/';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
 		$config['max_size']             = 3000;
@@ -115,9 +108,8 @@ class Admin_produk extends BaseController {
 			redirect('Admin_produk');
 		}
 	}
-		
-	function editProduk()
-	{
+
+	function editProduk(){
 		$id_produk= $this->input->post('id_produk', true);
 		$status_produk = $this->input->post('status_produk', true);
 		

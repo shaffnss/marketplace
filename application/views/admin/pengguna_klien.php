@@ -94,7 +94,7 @@ $this->load->view('admin/head_admin');
                           <div class="box-body">
                             <input type="hidden" class="form-control" id="inputName" name="id_users" value="<?php echo $data->id_users; ?>" required>
 
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                               <label class="">Nama Klien</label>
                               <input type="text" class="form-control" id="inputName" name="nama_users" value="<?php echo $data->nama_users; ?>">
                             </div>
@@ -125,7 +125,7 @@ $this->load->view('admin/head_admin');
                             <div class="form-group">
                               <label class="">Upload Foto</label>
                               <input type="file" name="foto" value="<?php echo $data->foto; ?>">
-                            </div>
+                            </div> -->
 
                             <div class="form-group">
                               <label for="produk">Status</label>

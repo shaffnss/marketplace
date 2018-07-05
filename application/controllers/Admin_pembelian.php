@@ -11,26 +11,21 @@ class Admin_pembelian extends BaseController {
 		$this->isAdmin();
 	}
  
-	public function index()
-	{
+	public function index(){
 		$data["pembelian"]=$this->Admin_pembelian_model->getPembelian();
 		$this->load->view('admin/pembelian',$data);
 	}
 	
-
-	public function ubahStatus($id_pembelian) 
-	{
+	public function ubahStatus($id_pembelian){
 		$data = array(
 			'status_pembelian' => 'selesai'
-			// 'id_pemesanan' => 'id_pemesanan'
 		);
 		$this->Admin_pembelian_model->ubahStatus($id_pembelian,$data);
 
 		redirect('Admin_perjanjian');
 	}
 
-	public function pembelianSelesai()
-	{
+	public function pembelianSelesai(){
 		$data["pembelian"]=$this->Admin_pembelian_model->getPembelianSelesai();
 		$this->load->view('admin/pembelian_selesai',$data);
 	}
