@@ -113,12 +113,11 @@ function rupiah($angka){
         <!-- accepted payments column -->
         <div class="col-xs-6">
           <p class="lead">Payment Infromation:</p>
-
-          <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-            Bank BNI <br>
-            009477590342929 <br>
-            a.n Shafira Fitrianissa
-          </p>
+          <p class="text-muted well well-sm no-shadow">
+            <?php foreach($bank as $b){ ?>
+						Bank <?= $b->nama_bank ?> | <?= $b->no_rekening ?> a.n <?= $b->nama_pemilik ?> <br>
+						<?php } ?>
+					</p>
         </div>
         <!-- /.col -->
         <div class="col-xs-6">

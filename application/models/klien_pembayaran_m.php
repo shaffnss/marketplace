@@ -74,4 +74,8 @@ class Klien_pembayaran_m extends CI_Model {
 		$this->db->where('pembelian.id_pembelian', $id_pembelian);
 		return $this->db->get()->result();
 	}
+	
+	public function getBank() {
+		return $this->db->get('bank')->result();
+	}
 }

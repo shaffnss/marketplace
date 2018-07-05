@@ -27,7 +27,7 @@ class Klien_pembayaran extends BaseController {
 
 	public function invoice($id_pembelian){
 		$data["invoices"]=$this->Klien_pembayaran_m->getInvoice($id_pembelian);
-		
+		$data["bank"]=$this->Klien_pembayaran_m->getBank();	
 		$this->load->view('Klien/invoice', $data);
 	}
 
