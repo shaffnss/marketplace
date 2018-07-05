@@ -153,55 +153,6 @@
       </a>
     </li>
 
-   <!--  <li class="treeview">
-      <a>
-        <i class="fa fa-edit"></i> <span>Perjanjian</span>
-        <span class="pull-right-container">
-          <i class="fa fa-angle-left pull-right"></i>
-        </span>
-      </a>
-      <ul class="treeview-menu">
-        <li class=""><a href="<?php echo site_url('Admin_perjanjian/kategori')?>"><i class="fa fa-list-alt"></i>Jenis Perjanjian</a></li>
-      </ul>
-    </li> -->
-
-
-        <!-- <li class="treeview">
-          <a >
-            <i class="fa fa-file"></i> <span>Transaksi</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="treeview">
-              <a href="">
-              <i class="fa fa-file-text-o"></i>Pemesanan
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-              </a>
-              <ul class="treeview-menu">
-                  <li><a href="<?php //echo site_url('Admin_transaksi_pemesanan/statusProses')?>"><i class="fa fa-list-alt"></i>Diproses</a></li>
-                  <li><a href="<?php //echo site_url('Admin_transaksi_pemesanan/statusSelesai')?>"><i class="fa fa-check"></i>Selesai</a></li>
-              </ul>
-            </li>
-         
-          <li class="treeview">
-            <a >
-              <i class="fa fa-shopping-cart"></i>Pembelian
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="<?php //echo site_url('Admin_pembelian')?>"><i class="fa fa-list-alt"></i>Diproses</a></li>
-              <li><a href="<?php //echo site_url('Admin_pembelian/pembelian_selesai')?>"><i class="fa fa-check"></i>Selesai</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li> -->
-
       <li class="treeview">
         <a>
           <i class="fa fa-tv"></i> <span>Produk</span>
@@ -258,7 +209,14 @@
           <li><a href="<?php echo site_url('Admin_team') ?>"><i class="fa fa-plus"></i> Tim </a></li>
           <li><a href="<?php echo site_url('Admin_anggota/posisi_tim') ?>"><i class="fa fa-th-list"></i>Jabatan Tim</a></li>
         </ul>
-      </li>   
+      </li>
+			
+			<li>
+				<a href="<?php echo site_url('Admin_bank')?>">
+					<i class="fa fa-bank"></i> 
+					<span>Kelola Bank</span>
+				</a>
+			</li>
     </section>
     <!-- /.sidebar -->
   </aside>
