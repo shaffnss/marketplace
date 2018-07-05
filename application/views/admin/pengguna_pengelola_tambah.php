@@ -77,7 +77,7 @@ $this->load->view('admin/head_admin');
              <div class="form-group">
               <label for="inputExperience" class="col-sm-2 control-label">Password</label>
               <div class="col-sm-8">
-               <input type="text" class="form-control" name="password" placeholder="Password">
+               <input type="password" class="form-control" name="password" placeholder="Password">
              </div>
            </div>
 

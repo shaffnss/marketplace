@@ -8,7 +8,7 @@ class ListProduk extends CI_Controller {
 		parent::__construct();
 		$this->load->model('listProduk_model');
 	}
- 
+
 	public function index()
 	{
 		$data['produks'] = $this->listProduk_model->getProduk();
@@ -20,17 +20,17 @@ class ListProduk extends CI_Controller {
 	public function detail($id_produk)
 	{
 		$data['produks'] = $this->listProduk_model->getDetailProduk($id_produk);
-	
+
 		$this->load->view('landing/DetailProduk', $data);
 	}
 	
 	public function search()
 	{
 		$nama_produk = $this->input->post('nama_produk');
-	
+
 		$data['produks'] = $this->listProduk_model->getNamaProduk($nama_produk);
 		$data['kategoris'] = $this->listProduk_model->getKategori();
-	
+
 		$this->load->view('landing/produk', $data);
 	}
 	
@@ -46,10 +46,9 @@ class ListProduk extends CI_Controller {
 		$this->load->view('landing/produk', $data);
 	}
 	
-	public function keranjang_belanja(){
+	public function keranjang_belanja(){ //fungsi keranjang pada landing
 		$isLoggedIn = $this->session->userdata ( 'isLoggedIn' );
-	
-    $data['cart'] = $this->cart->contents();
+		$data['cart'] = $this->cart->contents();
 		
 		//bila login
 		if($isLoggedIn) {
@@ -57,10 +56,9 @@ class ListProduk extends CI_Controller {
 		}else{
 			$this->load->view('landing/keranjang',$data);
 		}
-		
-  }
+	}
 	
-	public function keranjang()
+	public function keranjang() //fungsi untuk menampilkan detail produk yang dipilih
 	{
 		$arr = $this->cart->contents();
 		$in_cart = false;
@@ -74,12 +72,12 @@ class ListProduk extends CI_Controller {
 		
 		if($in_cart == FALSE) {
 			$data = array(
-							'id' => $this->input->post('id'),
-							'name' => $this->input->post('nama'),
-							'price' => $this->input->post('harga'),
-							'gambar' => $this->input->post('gambar'),
-							'qty' =>1
-						);
+				'id' => $this->input->post('id'),
+				'name' => $this->input->post('nama'),
+				'price' => $this->input->post('harga'),
+				'gambar' => $this->input->post('gambar'),
+				'qty' =>1
+			);
 			
 			$this->cart->insert($data);
 		}
@@ -87,7 +85,7 @@ class ListProduk extends CI_Controller {
 		redirect('ListProduk/keranjang_belanja');
 	}
 	
-	public function bayar(){
+	public function bayar(){ //fungsi pada button bayar
 		$isLoggedIn = $this->session->userdata ( 'isLoggedIn' );
 		
 		//jika sudah login
@@ -101,7 +99,9 @@ class ListProduk extends CI_Controller {
 				$id_produk = $item['id'];
 			}
 			
-			$get_kode = $this->db->join('kategori_produk', 'produk.id_kategori=kategori_produk.id_kategori')->where('id_produk', $id_produk)->get('produk')->row();
+			$get_kode = $this->db->join('kategori_produk', 'produk.id_kategori=kategori_produk.id_kategori')
+			->where('id_produk', $id_produk)->get('produk')->row();
+
 			$randomstring = random_string('alnum', 6);
 			
 			//-----INSERT PEMBELIAN-----//
@@ -111,7 +111,8 @@ class ListProduk extends CI_Controller {
 				'id_users' => $this->session->userdata('userId'),
 				'kode_pembelian'=>$get_kode->kode_jenis."-".strtoupper($randomstring)
 			);
-			$id_pembelian = $this->listProduk_model->insertPembelian($data); //insert sekaligus get id_pembelian yang barusan dibuat
+			$id_pembelian = $this->listProduk_model->insertPembelian($data); 
+			//insert sekaligus get id_pembelian yang barusan dibuat
 			
 			foreach($cart as $item){
 				//-----INSERT DETAIL PEMBELIAN BANYAK BARANG-----//				
@@ -125,15 +126,15 @@ class ListProduk extends CI_Controller {
 			
 			//kosongkan keranjang
 			$this->cart->destroy();
-				
+
 			redirect('klien_pembayaran');
 		}else{
 			//jika belum login
 			redirect('login');
 		}
-  }
+	}
 	
-	public function bayarid($rowid){
+	public function bayarid($rowid){ //fungsi bayar apabila dipilih per produk
 		$isLoggedIn = $this->session->userdata ( 'isLoggedIn' );
 		
 		//jika sudah login
@@ -142,7 +143,9 @@ class ListProduk extends CI_Controller {
 			$cart = $cart[$rowid];
 			$total = 0;
 			
-			$get_kode = $this->db->join('kategori_produk', 'produk.id_kategori=kategori_produk.id_kategori')->where('id_produk', $cart['id'])->get('produk')->row();
+			$get_kode = $this->db->join('kategori_produk', 'produk.id_kategori=kategori_produk.id_kategori')
+			->where('id_produk', $cart['id'])->get('produk')->row();
+
 			$randomstring = random_string('alnum', 6);
 			
 			//-----INSERT PEMBELIAN-----//
@@ -152,7 +155,8 @@ class ListProduk extends CI_Controller {
 				'id_users' => $this->session->userdata('userId'),
 				'kode_pembelian'=>$get_kode->kode_jenis."-".strtoupper($randomstring)
 			);
-			$id_pembelian = $this->listProduk_model->insertPembelian($data); //insert sekaligus get id_pembelian yang barusan dibuat
+			$id_pembelian = $this->listProduk_model->insertPembelian($data); 
+			//insert sekaligus get id_pembelian yang barusan dibuat
 			
 			//-----INSERT DETAIL PEMBELIAN 1 BARANG-----//				
 			$data2 = array(
@@ -161,7 +165,7 @@ class ListProduk extends CI_Controller {
 				'qty' => $cart['qty']
 			);
 			$this->db->insert('detail_pembelian', $data2);
-		
+
 			//hapus cart yang sudah dibeli dari keranjang
 			$data = array(
 				'rowid' => $rowid,
@@ -175,16 +179,16 @@ class ListProduk extends CI_Controller {
 			//jika belum login
 			redirect('login');
 		}
-  }
+	}
 	
-	public function hapus($rowid){
-    if ($rowid =="semua"){
-        $this->cart->destroy();
-      }else{
-        $data = array('rowid' => $rowid,
-                  'qty' =>0);
-        $this->cart->update($data);
-      }
-    redirect('ListProduk/keranjang_belanja');
+	public function hapus($rowid){ //fungsi button hapus per produk di keranjang
+		if ($rowid =="semua"){
+			$this->cart->destroy();
+		}else{
+			$data = array('rowid' => $rowid,
+				'qty' =>0);
+			$this->cart->update($data);
+		}
+		redirect('ListProduk/keranjang_belanja');
 	}
 }

@@ -32,6 +32,17 @@
     <div class="login-logo">
       <a href="<?php echo site_url('Home')?>"><b>VokasiDev</b><br>Login</a>
     </div>
+
+     <!-- Alert -->
+    <?php if ($this->session->flashdata('message')): ?>
+      <div class="alert alert-<?php echo $this->session->flashdata('style'); ?> fade-in">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong><?php echo $this->session->flashdata('alert'); ?></strong>&nbsp; 
+        </br><?php echo $this->session->flashdata('message'); ?>
+      </div>
+    <?php endif; ?>
+    
+    <!-- End Alert -->
    
     
     <!-- /.login-logo -->

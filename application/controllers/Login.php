@@ -80,22 +80,22 @@ class Login extends CI_Controller
                         'roleText'=>$res->nama_roles,
                         'email'=>$res->email,
                         'name'=>$res->nama_users,
-                        'foto'=>$res->foto_users,
+                        'foto'=>$res->foto,
                         'isLoggedIn' => TRUE
                     );
 
                     $this->session->set_userdata($sessionArray);
-                    
+
                     if($res->id_roles == 2){
 											//Login Admin
                       redirect('Klien_dashboard');
-										}else{
-											$this->load->view('login');
-										}
-            }
-        }
-        else
-        {
+                  }else{
+                     $this->load->view('login');
+                 }
+             }
+         }
+         else
+         {
             $this->session->set_flashdata('error', 'Email or password mismatch');
 
             redirect('/login');
@@ -103,12 +103,12 @@ class Login extends CI_Controller
     }
 
 }
-        public function logout() {
-            $this->session->sess_destroy();
+public function logout() {
+    $this->session->sess_destroy();
 
-            redirect('login');
+    redirect('login');
 
-        }
+}
 
 }
 

@@ -12,10 +12,10 @@ function rupiah($angka){
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <h1>Pembayaran Pembelian Produk</h1>
+    <h1>Pembayaran Produk Diproses</h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li class="active"> Pembelian</li>
+      <li class="active"> Pembayaran</li>
     </ol>
   </section>
 
@@ -56,7 +56,7 @@ function rupiah($angka){
                     <td><?php echo $item->nama_users; ?></td>
                     <td><?php echo rupiah($item->total)?></td>
                     <td><?php echo $item->tgl_pembelian; ?></td>
-                    <td><?php echo $item->bukti_pembayaran?></td>
+                    <td><?php if(!empty($item->bukti_pembayaran)) { ?><a target="_blank" href="<?php echo site_url("assets/bukti pembayaran/" . $item->bukti_pembayaran) ?>" ><i class="fa fa-file fa-2x"></i></a><?php }else{echo "-";} ?></td>
                     <td>
                       <span class="label label-warning">Proses</span>
                     </td>
@@ -64,7 +64,7 @@ function rupiah($angka){
                       <div>
                         <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#detail-pembelian<?php echo $item->id_pembelian; ?>" style="background:#1a75ff; border-color:#fff" onclick="detail-produk"><i class="fa fa-eye"></i>
                         </button>
-                        <a href="<?php echo site_url('Admin_pembelian/ubahStatus/'.$item->id_pembelian)?>" class="btn btn-sm btn-success"><i class="fa fa-check"></i></a>
+                        <a href="<?php echo site_url('Admin_pembelian/ubahStatus/'.$item->id_pembelian)?>" class="btn btn-sm btn-success"><i class="fa fa-check"></i> Selesai</a>
                       </div>
                     </td>
                   </tr>

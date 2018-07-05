@@ -11,14 +11,14 @@ class Klien_profile extends Basecontroller {
 		$this->isKlien();
 	}
  
-	public function index()
+	public function index() //tampilan halaman profile
 	{
 		$id_users = $this->session->userdata('userId');
 		$data["profile"]=$this->Klien_profile_model->getProfile($id_users);
 		$this->load->view('klien/view_profile',$data);
 	}
 
-	public function ubahKlien()
+	public function ubahKlien() //fungsi ubah data klien 
 	{
 		$config['upload_path']          = './assets/users/klien';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
@@ -45,10 +45,7 @@ class Klien_profile extends Basecontroller {
 				"no_telpon"=>$no_telpon,
 				//"email"=>$email
 			);
-		}
-		else //jika update foto
-		{
-
+		}else{ //jika update foto
 			$img = $this->upload->data();
 			$foto = $img['file_name'];
 			$id_users = $this->input->post('id_users', true);
@@ -77,7 +74,7 @@ class Klien_profile extends Basecontroller {
 			redirect('Klien_profile');
 		}
 
-		public function ubahPassword(){
+		public function ubahPassword(){ //fungsi ubah password
 		$id_users=$this->session->userdata('userId');
 		$datas["profile"]=$this->Klien_profile_model->getProfile($id_users);	
 		$passLama = $this->input->post('passwordLama');

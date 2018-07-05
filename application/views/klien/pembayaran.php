@@ -24,9 +24,9 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="callout callout-warning">
-          <h4>Lanjutkan Pembayaran Anda :D</h4>
+          <h4>Lanjutkan Pembayaran Anda</h4>
 					
-          <p>Silahkan lakukan lanjutkan pembayaran dengan upload struk bukti pembayaran pada pembelian Anda</p>
+          <p>Silahkan lanjutkan pembayaran dengan upload bukti pembayaran pada pembelian Anda</p>
 				</div>
         <div class="box">
           <div class="box-header">
@@ -57,7 +57,7 @@
                     <td><?php echo $item->kode_pembelian ?></td>
                     <td><?php echo rupiah($item->total)?></td>
                     <td><?php echo date("d F Y", strtotime($item->tgl_pembelian)) ?></td>
-                    <td><?php if(!empty($item->bukti_pembayaran)) { ?><a target="_blank" href="<?php echo site_url("assets/bukti pembayaran/" . $item->bukti_pembayaran) ?>" ><i class="fa fa-file"></i></a><?php }else{echo "-";} ?></td>
+                    <td><?php if(!empty($item->bukti_pembayaran)) { ?><a target="_blank" href="<?php echo site_url("assets/bukti pembayaran/" . $item->bukti_pembayaran) ?>" ><i class="fa fa-file fa-2x"></i></a><?php }else{echo "-";} ?></td>
                     <td>
                       <?php if($item->status_pembelian=='proses') {
 											?>

@@ -22,7 +22,7 @@ function rupiah($angka){
 	</section>
 
 	<div class="container" style="padding-top: 20px">
-			<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo"><i class="fa fa-info"></i> Informasi</button>
+			<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo"><i class="fa fa-info"></i> Informasi Perjanjian</button>
 	</div>
 
 	<div id="demo" class="collapse" style="padding-top: 10px">
@@ -120,23 +120,24 @@ function rupiah($angka){
 									</div>
 								</div>
 
-								<div class="form-group">
+								<!-- <div class="form-group">
 									<label for="inputName" class="col-sm-2 control-label">Nama Bank</label>
 									<div class="col-sm-8">
 										<select class="form-control" name="bank" required="" >
 											<option disabled selected="">--- Pilih Bank ---</option>
 											<option value="BRI">BRI</option>
 											<option value="BCA">BCA</option>
+											<option value="BCA">BNI</option>
 										</select>
 									</div>
-								</div>
+								</div> -->
 
-								<div class="form-group">
+								<!-- <div class="form-group">
 									<label for="inputEmail" class="col-sm-2 control-label">Nominal</label>
 									<div class="col-sm-8">
 										<input type="number" class="form-control" name="nominal" placeholder="Masukkan Nominal" value="<?php echo set_value("instansi") ?>" required>
 									</div>
-								</div>
+								</div> -->
 
 								<div class="form-group">
 									<label class="col-sm-2 control-label">Upload Bukti</label>

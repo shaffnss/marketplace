@@ -58,7 +58,7 @@
   <div class="wrapper">
     <header class="main-header">
       <!-- Logo -->
-      <a href="index2.html" class="logo">
+      <a class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>V</b>D</span>
         <!-- logo for regular state and mobile devices -->
@@ -134,7 +134,7 @@
 
     <li class="treeview">
       <a>
-        <i class="fa fa-money"></i> <span>Pembelian & Perjanjian</span>
+        <i class="fa fa-money"></i> <span>Pembayaran & Perjanjian</span>
         <span class="pull-right-container">
           <i class="fa fa-angle-left pull-right"></i>
         </span>

@@ -35,7 +35,7 @@
 					<table id="example1" class="table table-bordered table-striped data-tables">
 						<thead>
 							<tr>
-								<th>No</th>
+								<th>Foto produk</th>
 								<th>Nama Produk</th>
 								<th>Harga</th>
 								<th>Jenis Sistem</th>

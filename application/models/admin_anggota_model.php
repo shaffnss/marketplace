@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Admin_anggota_model extends CI_Model {
 	public function getAnggota(){
 		$this->db->select("*");
+		$this->db->select("users.id_users as idu");
 		$this->db->from("users");
 		$this->db->join("roles","users.id_roles=roles.id_roles");
 		$this->db->join("detail_anggota","users.id_users=detail_anggota.id_users",'left');
@@ -46,6 +47,7 @@ class Admin_anggota_model extends CI_Model {
 		$this->db->join("detail_anggota","users.id_users=detail_anggota.id_users",'left');
 		$this->db->where("users.updated_at",NULL);
 		$this->db->where("roles.nama_roles","anggota");
+		$this->db->where("users.status_users","nonaktif");
 		//$this->db->order_by("created_at");
 		return $this->db->get('users')->result();
 	}

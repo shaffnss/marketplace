@@ -14,13 +14,13 @@ $this->load->view('admin/head_admin');
  </section>
 
 
- <section class="content-header">
+ <!-- <section class="content-header">
   <div>
     <a href="<?php echo site_url('Admin_klien/tambah_klien')?>" type="button" class="btn btn-primary" >
       <i class="glyphicon glyphicon-plus"></i> Tambah Klien
     </a>
   </div> 
-</section>
+</section> -->
 
 
 <!-- Main content -->
@@ -39,7 +39,7 @@ $this->load->view('admin/head_admin');
               <tr>
               <th>No</th>
               <th>Foto</th>
-              <th>Nama Klien</th>
+              <th>Nama</th>
               <th>Jenis Kelamin</th>
               <th>Instansi</th>
               <th>No Telfon</th>

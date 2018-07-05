@@ -7,46 +7,25 @@ $this->load->view('landing/head_landing');
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-         <!--  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
-        </ol>
-        <div class="carousel-inner" role="listbox">
-          <!-- Slide One - Set the background image for this slide in the line below -->
-          <div class="carousel-item active" style="background-image: url('<?php echo base_url('img/web-background.png') ?>'); background-size: 100%">
-            <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-              <form role="form" method="POST" action="<?php echo site_url('ListProduk/search') ?>">
-                <div class="form-row">
-                  <div class="col-12 col-md-9 mb-2 mb-md-0">
-                    <input type="text" name="nama_produk" class="form-control form-control-lg" placeholder="Search...">
-                  </div>
-                  <div class="col-12 col-md-3">
-                    <button type="submit" class="btn btn-block btn-lg btn-primary"><i class="fa fa-search"></i></button>
-                  </div>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <!-- Slide One - Set the background image for this slide in the line below -->
+        <div class="carousel-item active" style="background-image: url('<?php echo base_url('img/web-background.png') ?>'); background-size: 100%">
+          <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+            <form role="form" method="POST" action="<?php echo site_url('ListProduk/search') ?>">
+              <div class="form-row">
+                <div class="col-12 col-md-9 mb-2 mb-md-0">
+                  <input type="text" name="nama_produk" class="form-control form-control-lg" placeholder="Search...">
                 </div>
-              </form>
-            </div>
-            <div class="carousel-caption d-none d-md-block">
-            </div>
+                <div class="col-12 col-md-3">
+                  <button type="submit" class="btn btn-block btn-lg btn-primary"><i class="fa fa-search"></i></button>
+                </div>
+              </div>
+            </form>
           </div>
-          <!-- Slide Two - Set the background image for this slide in the line below -->
-          <!-- <div class="carousel-item" style="background-image: url('<?php //echo base_url('img/slide-2.jpg') ?>')">
-            <div class="carousel-caption d-none d-md-block">
-            </div>
+          <div class="carousel-caption d-none d-md-block">
           </div>
-          Slide Three - Set the background image for this slide in the line below
-          <div class="carousel-item" style="background-image: url('<?php //echo base_url('img/slide-3.jpg') ?>')">
-            <div class="carousel-caption d-none d-md-block">
-            </div>
-          </div> -->
         </div>
-       <!--  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a> -->
       </div>
     </header>
 
@@ -79,7 +58,7 @@ $this->load->view('landing/head_landing');
 <section class="jumbotron text-center">
   <div class="container">
     <h2 class="jumbotron-heading">About Us</h2>
-    <h3 class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</h3>
+    <h3 class="lead text-muted">Vokasi Dev memudahkan anda menemukan aplikasi yang anda butuhkan.</h3>
     <p>
 
     </p>
@@ -116,38 +95,7 @@ $this->load->view('landing/head_landing');
 </div>
 <!-- /.row -->
 
-        <!-- <div class="col-lg-2 mb-4">
-          
-        </div>
 
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100">
-            <h4 class="card-header">Membeli Produk</h4>
-            <div class="card-body">
-              <p class="card-text">VokasiDev menyediakan produk-produk yang siap Anda beli</p>
-            </div>
-            <div class="card-footer">
-              <a href="<?php //echo site_url('ListProduk')?>" class="btn btn-primary">Lihat Produk</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100">
-            <h4 class="card-header">Memesan Produk Kustom</h4>
-            <div class="card-body">
-              <p class="card-text">Pesan produk sesuai keinginan dan kebutuhan anda</p>
-            </div>
-            <div class="card-footer">
-              <a href="<?php //echo site_url('Contact')?>" class="btn btn-primary">Pesan Produk</a>
-            </div>
-          </div>
-        </div>
-
-         <div class="col-lg-2 mb-4">
-          
-         </div> -->
-
-         <?php
-         $this->load->view('landing/foot_landing');
-         ?>
+<?php
+$this->load->view('landing/foot_landing');
+?>

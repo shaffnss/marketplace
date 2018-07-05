@@ -31,7 +31,7 @@ $this->load->view('admin/head_admin');
 							</div><br><br>
 
 							<div class="form-group">
-								<label class="col-sm-3 control-label" style="text-align: right;">Status Tim</label> 
+								<label class="col-sm-3 control-label" style="text-align: right;">Jenis Tim</label> 
 								<div class="col-sm-6">       
 									<select class="form-control" name="status_tim">
 										<option value="individu" <?php if($tim[0]->status_tim == "individu") {echo "selected=selected";} ?>>Individu</option>

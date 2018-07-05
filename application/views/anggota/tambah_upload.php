@@ -9,8 +9,19 @@ $this->load->view('anggota/head_anggota');
     <h1>Upload Produk</h1>
   </section>
 
+
   <!-- Main content -->
   <section class="content">
+    <!-- Alert -->
+    <?php if ($this->session->flashdata('message')): ?>
+      <div class="alert alert-<?php echo $this->session->flashdata('style'); ?> fade-in">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong><?php echo $this->session->flashdata('alert'); ?></strong>&nbsp; 
+        </br><?php echo $this->session->flashdata('message'); ?>
+      </div>
+    <?php endif; ?>
+    
+    <!-- End Alert -->
    <div class="row">
     <!-- Form pemesanan -->
     <div class="col-md-12">

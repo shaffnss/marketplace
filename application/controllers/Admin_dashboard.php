@@ -11,8 +11,7 @@ class Admin_dashboard extends BaseController {
 		$this->load->model("admin_pembelian_model");
 		$this->load->model("admin_klien_model");
 		$this->isLoggedIn();
-		$this->isAdmin();
-		
+		$this->isAdmin();	
 	}
  
 	public function index()
