@@ -9,57 +9,46 @@ class ListProduk extends CI_Controller {
 		$this->load->model('listProduk_model');
 	}
 
-	public function index()
-	{
+	public function index(){ //fungsi untuk menampilkan produk sesuai kategori
 		$data['produks'] = $this->listProduk_model->getProduk();
 		$data['kategoris'] = $this->listProduk_model->getKategori();
-		
 		$this->load->view('landing/produk', $data);
 	}
 
-	public function detail($id_produk)
-	{
-		$data['produks'] = $this->listProduk_model->getDetailProduk($id_produk);
-
-		$this->load->view('landing/DetailProduk', $data);
-	}
-	
-	public function search()
-	{
-		$nama_produk = $this->input->post('nama_produk');
-
-		$data['produks'] = $this->listProduk_model->getNamaProduk($nama_produk);
-		$data['kategoris'] = $this->listProduk_model->getKategori();
-
-		$this->load->view('landing/produk', $data);
-	}
-	
-	public function kategori($id_kategori = '')
-	{
+	public function kategori($id_kategori = ''){
 		if($id_kategori == '') {
 			redirect('ListProduk');
 		}
-		
 		$data['produks'] = $this->listProduk_model->getProdukKategori($id_kategori);
 		$data['kategoris'] = $this->listProduk_model->getKategori();
-		
 		$this->load->view('landing/produk', $data);
 	}
+
+	public function search(){
+		$nama_produk = $this->input->post('nama_produk');
+		$data['produks'] = $this->listProduk_model->getNamaProduk($nama_produk);
+		$data['kategoris'] = $this->listProduk_model->getKategori();
+		$this->load->view('landing/produk', $data);
+	}
+
+	public function detail($id_produk){
+		$data['produks'] = $this->listProduk_model->getDetailProduk($id_produk);
+		$this->load->view('landing/DetailProduk', $data);
+	}
 	
-	public function keranjang_belanja(){ //fungsi keranjang pada landing
+	public function keranjang_belanja(){ //menampilkan keranjang
 		$isLoggedIn = $this->session->userdata ( 'isLoggedIn' );
 		$data['cart'] = $this->cart->contents();
 		
 		//bila login
 		if($isLoggedIn) {
 			$this->load->view('Klien/keranjang', $data);
-		}else{
+		}else{ //jika tidak login
 			$this->load->view('landing/keranjang',$data);
 		}
 	}
 	
-	public function keranjang() //fungsi untuk menampilkan detail produk yang dipilih
-	{
+	public function keranjang(){ //fungsi untuk menampilkan detail produk yang dipilih
 		$arr = $this->cart->contents();
 		$in_cart = false;
 		
@@ -81,7 +70,6 @@ class ListProduk extends CI_Controller {
 			
 			$this->cart->insert($data);
 		}
-		
 		redirect('ListProduk/keranjang_belanja');
 	}
 	

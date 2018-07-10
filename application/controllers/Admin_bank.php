@@ -11,8 +11,7 @@ class Admin_bank extends BaseController {
 		$this->isAdmin();
 	}
  
-	public function index()
-	{
+	public function index(){ //menampilkan view bank
 		$data["bank"]=$this->Admin_bank_model->getBank();
 		$this->load->view('admin/bank',$data);
 	}
@@ -29,9 +28,7 @@ class Admin_bank extends BaseController {
 		);
 		
 		$this->Admin_bank_model->tambahBank($data);
-		
 		$this->session->set_flashdata('success', 'Berhasil! Bank berhasil ditambahkan.');
-		
 		redirect('Admin_bank');
 	}
 	

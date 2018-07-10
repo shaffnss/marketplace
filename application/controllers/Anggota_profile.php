@@ -11,8 +11,7 @@ class Anggota_profile extends BaseController {
 		$this->isAnggota();
 	}
 	
-	public function index()
-	{
+	public function index(){
 		$id_users = $this->session->userdata('userId');
 		$data["profile"]=$this->Anggota_profile_model->getProfile();
 		$data["tampilTim"]=$this->Anggota_profile_model->getTeam($id_users);
@@ -35,13 +34,11 @@ class Anggota_profile extends BaseController {
 			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
 			$instansi = $this->input->post('instansi', true);
 			$no_telpon = $this->input->post('no_telpon', true);
-			$email = $this->input->post('email', true);
 			$anggota =  array(
 				"nama_users"=>$nama_users,
 				"jenis_kelamin"=>$jenis_kelamin,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
-				"email"=>$email
 			);
 		}else{ //jika update foto
 			$img = $this->upload->data();
@@ -51,13 +48,11 @@ class Anggota_profile extends BaseController {
 			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
 			$instansi = $this->input->post('instansi', true);
 			$no_telpon = $this->input->post('no_telpon', true);
-			$email = $this->input->post('email', true);
 			$anggota =  array(
 				"nama_users"=>$nama_users,
 				"jenis_kelamin"=>$jenis_kelamin,
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
-				"email"=>$email,
 				"foto"=> $foto
 			);
 			$this->session->set_userdata('foto', $foto);

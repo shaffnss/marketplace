@@ -11,15 +11,13 @@ class Klien_pembayaran extends BaseController {
 		$this->isKlien();
 	}
  
-	public function index()
-	{
+	public function index(){
 		$id_users = $this->session->userdata('userId');
 		$data["pembelian"]=$this->Klien_pembayaran_m->getPembelian($id_users);
 		$this->load->view('Klien/pembayaran', $data);
 	}
 	
-	public function pembayaranSelesai()
-	{
+	public function pembayaranSelesai(){
 		$id_users = $this->session->userdata('userId');
 		$data["pembelian"]=$this->Klien_pembayaran_m->getPembelianSelesai($id_users);
 		$this->load->view('Klien/pembayaran_selesai', $data);
@@ -39,10 +37,9 @@ class Klien_pembayaran extends BaseController {
 	
 	public function pembelian($id_produk) { //unggah bukti pembelian
 		$id_users = $this->session->userdata('userId'); //unggah per user
-		
 		$get_kode = $this->db->join('kategori_produk', 'produk.id_kategori=kategori_produk.id_kategori')
 		->where('id_produk', $id_produk)->get('produk')->row(); //create kode pembelian
-
+		
 		$randomstring = random_string('alpha', 4); 
 		
 		//--INSERT DETAIL PEMBELIAN--

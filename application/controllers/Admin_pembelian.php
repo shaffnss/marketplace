@@ -21,7 +21,6 @@ class Admin_pembelian extends BaseController {
 			'status_pembelian' => 'selesai'
 		);
 		$this->Admin_pembelian_model->ubahStatus($id_pembelian,$data);
-
 		redirect('Admin_perjanjian');
 	}
 
