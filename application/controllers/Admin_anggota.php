@@ -60,10 +60,11 @@ class Admin_anggota extends BaseController {
 				"email"=>$email,
 				'validasi'=>1,
 				'foto'=>$foto,
+				'instansi'=>'UGM',
 				"password"=>PASSWORD_HASH($password,PASSWORD_DEFAULT)
 			);
 
-			$id_users=$this->Admin_anggota_model->insertAnggota($users, $ktm);
+			$id_users=$this->Admin_anggota_model->insertAnggota($users, $ktm1);
 			redirect('Admin_anggota');
 		}
 	}

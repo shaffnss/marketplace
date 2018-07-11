@@ -54,10 +54,6 @@ class Anggota_uploadProduk extends BaseController {
 			$id_user = $this->session->userdata('userId');
 			$id_team = $this->input->post('nama_tim');
 			
-			if($id_team == ""){
-				redirect('Anggota_uploadProduk/tambah_uploadProduk');
-			}
-			
 			$data = array(
 				'nama_produk'=>$nama_produk,
 				'id_kategori' =>$jenis_produk,
@@ -76,7 +72,6 @@ class Anggota_uploadProduk extends BaseController {
 			
 			if( ! $this->upload->do_upload('file_produk')){
 				$errorp = 1;
-				var_dump($this->upload->display_errors());exit;
 			}else{
 				$errorp = 0;
 				$file_produk = $this->upload->data();

@@ -1,4 +1,4 @@
-<?php<?php
+<?php
 $this->load->view('admin/head_admin');
 // var_dump($tim);
 ?>
@@ -30,7 +30,6 @@ $this->load->view('admin/head_admin');
 
           <form class="form-horizontal" method="post" action="<?php echo site_url('Admin_team/inputNamaTeam') ?>">
             <div class="modal-body">
-              <form action="" method="post" class="form-horizontal">
                 <div class="box-body">
 
                   <div class="form-group">
@@ -72,8 +71,8 @@ $this->load->view('admin/head_admin');
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
+              <table id="example1" class="table table-bordered table-striped dataTables">
+								<thead>
                   <tr>
                     <th>No</th>
                     <th>Nama Tim</th>
@@ -83,13 +82,13 @@ $this->load->view('admin/head_admin');
                     <th>Aksi</th>
                   </tr>
                 </thead>
+                 <tbody>
                 <?php 
                 $no=1;
                 foreach ($tim as $data) {
                     # code...
 
                  ?>
-                 <tbody>
                   <tr>
                     <td><?php echo $no ?></td>
                     <td><?php echo $data->nama_tim ?></td>
@@ -113,11 +112,10 @@ $this->load->view('admin/head_admin');
                     <td>
                       <a class="btn btn-sm btn-warning" href="<?php echo site_url('Admin_team/ubah_team/').$data->idTim?>"><i class="fa fa-edit"></i></a>
                       <!-- <a href="" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i></a> -->
-                    </a>
                   </td>
                 </tr>
-              </tbody>
               <?php $no++; } ?>
+              </tbody>
             </table>
           </div>
           <!-- /.box-body -->

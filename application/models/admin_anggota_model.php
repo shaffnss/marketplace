@@ -14,7 +14,7 @@ class Admin_anggota_model extends CI_Model {
 		return $this->db->get()->result_array();
 	}
 
-	public function insertAnggota($anggota){
+	public function insertAnggota($anggota, $ktm){
 		$this->db->trans_start();
 		$this->db->insert('users',$anggota);
 		$insert_id = $this->db->insert_id();
