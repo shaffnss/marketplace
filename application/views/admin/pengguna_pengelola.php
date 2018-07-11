@@ -23,8 +23,39 @@ $this->load->view('admin/head_admin');
 
 <!-- Main content -->
 <section class="content">
-  <div class="row">
+<div class="row">
+      <div class="col-md-12">
+        <?php
+        $this->load->helper('form');
+        $error = $this->session->flashdata('error');
+        if($error)
+        {
+          ?>
+          <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <?php echo $this->session->flashdata('error'); ?>                    
+          </div>
+        <?php } ?>
+        <?php  
+        $success = $this->session->flashdata('success');
+        if($success)
+        {
+          ?>
+          <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <?php echo $this->session->flashdata('success'); ?>
+          </div>
+        <?php } ?>
 
+        <div class="row">
+          <div class="col-md-12">
+            <?php echo validation_errors('<div class="alert alert-danger alert-dismissable">', ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>'); ?>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  <div class="row">
     <!-- Form Daftar Klien -->
     <div class="col-md-12">
       <div class="box">
@@ -38,7 +69,7 @@ $this->load->view('admin/head_admin');
               <th>Foto</th>
               <th>Nama Pengelola</th>
               <th>Jenis Kelamin</th>
-              <th>Instansi</th>
+             <!--  <th>Instansi</th> -->
               <th>No Telfon</th>
               <th>E-mail</th>
               <th>Status</th>
@@ -58,7 +89,7 @@ $this->load->view('admin/head_admin');
                 <td><img src="<?php echo site_url('/assets/users/pengelola/').$data->foto ?>" onerror="this.src='<?php echo site_url('assets/users/anggota/index.png'); ?>'" class="img-responsive" style="height: 100px; width: 100px"></td>
                 <td><?php echo $data->nama_users?></td>
                 <td><?php echo $data->jenis_kelamin?></td>
-                <td><?php echo $data->instansi?></td>
+               <!--  <td><?php echo $data->instansi?></td> -->
                 <td><?php echo $data->no_telpon?></td>
                 <td><?php echo $data->email?></td>
                 <td>
@@ -95,7 +126,7 @@ $this->load->view('admin/head_admin');
                               <div class="box-body">
                                 <input type="hidden" class="form-control" id="inputName" name="id_users" value="<?php echo $data->id_users; ?>" required>
 
-                                <div class="form-group">
+                               <!--  <div class="form-group">
                                   <label class="">Nama Pengelola</label>
                                   <input type="text" class="form-control" id="inputName" name="nama_users" value="<?php echo $data->nama_users; ?>">
                                 </div>
@@ -106,14 +137,14 @@ $this->load->view('admin/head_admin');
                                     <option value="Pria" <?php if($data->jenis_kelamin == "Pria") {echo "selected=selected";} ?>>Pria</option>
                                     <option value="Wanita" <?php if($data->jenis_kelamin == "Wanita") {echo "selected=selected";} ?>>Wanita</option>
                                   </select>
-                                </div>
+                                </div> -->
 
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                   <label class="">Instansi</label>
                                   <input type="text" class="form-control" id="inputName" name="instansi" value="<?php echo $data->instansi; ?>" required>
                                 </div>
-
-                                <div class="form-group">
+ -->
+                               <!--  <div class="form-group">
                                   <label class="">No Telpon</label>
                                   <input type="text" class="form-control" id="inputName" name="no_telpon" value="<?php echo $data->no_telpon; ?>" required>
                                 </div>
@@ -127,7 +158,7 @@ $this->load->view('admin/head_admin');
                                   <label class="">Upload Foto</label>
                                   <input type="file" name="foto" value="<?php echo $data->foto; ?>">
                                 </div>
-
+ -->
                                 <div class="form-group">
                                   <label for="produk">Status</label>
                                   <div class="radio">

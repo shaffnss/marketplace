@@ -72,7 +72,6 @@ function rupiah($angka){
 									<th>Team Pembuat</th>
 									<th>Link Demo</th>
 									<th>Status Penerimaan</th>
-									<!-- <th>Status Produk</th> -->
 									<th>Aksi</th>
 								</tr>
 							</thead>
@@ -104,12 +103,10 @@ function rupiah($angka){
 										</td> -->
 										<td class="text-center">
 											<div class="row">
-												<button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#lihat-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff"><i class="fa fa-eye"></i>Lihat
+												<button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#lihat-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff"><i class="fa fa-eye"></i> Detail
 												</button>
-												<a onclick="return confirm('apakah anda yakin ingin menerima produk ini?'); " href="<?php echo site_url('Admin_produk/diterima/'.$data->id_detail_produk)?>" class="btn btn-sm btn-info" style="background: #4e9e02; border-color: #fff"><i class="fa fa-check"></i>Terima</a>
-												<a onclick="return confirm('apakah anda yakin ingin menolak produk ini?'); " href="<?php echo site_url('Admin_produk/ditolak/'.$data->id_detail_produk)?>" class="btn btn-sm btn-info" style="background: #d41912; border-color: #fff"><i class="fa fa-remove"></i>Tolak</a>
-												<!-- <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ubah-produk<?php echo $data->id_produk; ?>" onclick="ubah-produk"><i class="fa fa-edit"></i>
-												</button> -->
+												<a onclick="return confirm('apakah anda yakin ingin menerima produk ini?'); " href="<?php echo site_url('Admin_produk/diterima/'.$data->id_detail_produk)?>" class="btn btn-sm btn-info" style="background: #4e9e02; border-color: #fff"><i class="fa fa-check"></i> Terima</a>
+												<a onclick="return confirm('apakah anda yakin ingin menolak produk ini?'); " href="<?php echo site_url('Admin_produk/ditolak/'.$data->id_detail_produk)?>" class="btn btn-sm btn-info" style="background: #d41912; border-color: #fff"><i class="fa fa-remove"></i> Tolak</a>
 											</div>
 										</td>
 									</tr>
@@ -124,7 +121,6 @@ function rupiah($angka){
 															<h4 class="modal-title">Detail <?php echo $data->nama_produk; ?></h4>
 														</div>
 														<div class="modal-body">
-															<!--  <form action="<?php //echo site_url('Admin_pembelian/ubahPembelian') ?>" enctype="multipart/form-data" method="POST" class="form-horizontal"> -->
 																<div class="box-body">
 																	<div class="form-group">
 																		<div class="row">
@@ -167,9 +163,6 @@ function rupiah($angka){
 																	<div class="form-group">
 																		<label for="inputName">Deskripsi Produk</label>
 																		<p class="form-control" name="nama_klien"><?php echo $data->deskripsi_produk; ?></p>
-																	</div>
-
-																	<div class="form-group">
 																	</div>
 																	
 																	<div class="form-group">

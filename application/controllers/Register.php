@@ -9,8 +9,7 @@ class Register extends CI_Controller {
 		$this->load->model("Register_model");
 	}
 
-	public function index()
-	{
+	public function index(){
 		$data['data'] = $this->db->get('roles')->result();
 		if ($this->input->post('register')){
 			$nama = $this->input->post('nama');
@@ -20,7 +19,7 @@ class Register extends CI_Controller {
 			$instansi = $this->input->post('instansi');
 			$password = $this->input->post('password');
 
-			// cek email udah ada apa belom
+			// cek email udah ada pada database atau belum
 			$cekEmail = $this->Register_model->cekEmail($email);
 			if($cekEmail->num_rows() > 0){
 				$this->session->set_flashdata('style','danger');
@@ -28,7 +27,6 @@ class Register extends CI_Controller {
 				$this->session->set_flashdata('message','Email sudah terdaftar');
 				redirect('Register');
 			}
-
 			$this->form_validation->set_rules('nama','nama','required|trim');
 			$this->form_validation->set_rules('email','email','required|trim');
 			$this->form_validation->set_rules('no_telpon','no_telpon','required|trim');
@@ -52,8 +50,7 @@ class Register extends CI_Controller {
 
 				$id_users=$this->Register_model->createKlien($users);
 
-				//ENKRIPSI ID
-				$encrypted_id = md5($id_users);
+				$encrypted_id = md5($id_users); //ENKRIPSI ID
 
 				$this->load->helper(array('form','url'));
 
@@ -68,7 +65,6 @@ class Register extends CI_Controller {
          		$config['crlf'] = "\r\n";
          		$config['newline'] = "\r\n";
 
-
          		$this->load->library('email', $config);
          		$this->email->initialize($config);
          		$this->email->set_newline("\r\n");
@@ -82,17 +78,16 @@ class Register extends CI_Controller {
 
 			   Selamat datang di VokasiDev
 			   <br/>
-			   Silahkan verifikasi akun anda untuk melanjutkan pembelian anda lakukan <a href="'.site_url("Register/verifikasi/$encrypted_id").'">Login</a> dengan menggunakan:<br/>
+			   Silahkan verifikasi akun anda untuk melanjutkan pembelian anda lakukan 
+			   <a href="'.site_url("Register/verifikasi/$encrypted_id").'">Login</a> dengan menggunakan:<br/>
 			   Email: '.$email.'<br/>
 			   Password: '.$this->input->post('password').'<br/>
 			   <br/>
 			   <br/	>
 			   Admin VokasiDev
 			   </body>
-			   </html>';
-			    // body email is end
+			   </html>';// body email is end
 
-			    // $this->email->set_newline("\r\n");
 			   $this->email->from('komsidev@gmail.com','VokasiDev'); //sender email
 			   $this->email->to($address);
 			   $this->email->subject($subject);
@@ -106,7 +101,6 @@ class Register extends CI_Controller {
 			   redirect('register');	
 			}
 		}else{
-
 			$this->load->view('register',$data,'');	
 		}
 	}

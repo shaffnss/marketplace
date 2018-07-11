@@ -19,6 +19,11 @@ class Admin_klien_model extends CI_Model {
 		return $insert_id;
 	}
 
+	public function editKlien($data, $id_users){
+		$this->db->where('id_users', $id_users);
+		return $this->db->update('users', $data);
+	}
+
 	// public function getAktivasi(){;
 	// 	$this->db->join("roles","users.id_roles=roles.id_roles");
 	// 	$this->db->where("roles.nama_roles","klien");

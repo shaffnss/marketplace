@@ -10,12 +10,12 @@ class Admin_perjanjian extends BaseController {
 		$this->isLoggedIn();
 		$this->isAdmin();
 	}
- 
+
 	public function index()
 	{
 		$data["perjanjian"]=$this->Admin_perjanjian_model->getPerjanjian();
 		$this->load->view('admin/perjanjian', $data);
-		}
+	}
 
 	public function kategori(){
 		$data["kategori"]=$this->Admin_perjanjian_model->getKategori();
@@ -23,21 +23,20 @@ class Admin_perjanjian extends BaseController {
 	}
 
 	public function inputKategori(){
-		$this->load->library('form_validation');
-		$this->form_validation->set_rules('nama_perjanjian','nama perjanjian','required');
-		if($this->form_validation->run() == FALSE)
-		{
-			redirect('Admin_perjanjian/kategori_perjanjian');
-		}else {
-			$nama_perjanjian = $this->input->post('nama_perjanjian');
+		$nama_perjanjian = $this->input->post('nama_perjanjian');
 
-			$data =  array(
-				"nama_perjanjian"=>$nama_perjanjian,
-			);
+		$data = array(
+			'nama_perjanjian' => $nama_perjanjian,
+		);
+		
+		$this->Admin_perjanjian_model->insertKategori($data);
+		$this->session->set_flashdata('success', 'Berhasil! Jenis kategori berhasil ditambah.');
+		redirect('Admin_perjanjian/kategori');
+	}
 
-			$result = $this->Admin_perjanjian_model->insertKategori($data);
-
-		}
+	public function hapusPerjanjian($id_kategori) {
+		$this->db->where('id_kategori', $id_kategori)->delete('kategori_perjanjian');
+		$this->session->set_flashdata('success', 'Data jenis kategori berhasil dihapus.');
 		redirect('Admin_perjanjian/kategori');
 	}
 
@@ -52,36 +51,37 @@ class Admin_perjanjian extends BaseController {
 		);
 		$this->db->where('id_kategori',$id_kategori);
 		$this->db->update('kategori_perjanjian',$data);
+		$this->session->set_flashdata('success', 'Berhasil! Data jenis kategori berhasil diubah.');
 		redirect('Admin_perjanjian/kategori');
 	}
 
 	public function unggahPerjanjian(){ //fungsi unggah perjanjian
-			$config['upload_path']          = './assets/file_perjanjian/';
-			$config['allowed_types']        = 'pdf';
-			$config['max_size']             = 5000;
-			$config['max_width']            = 5024;
-			$config['max_height']           = 5024;
+		$config['upload_path']          = './assets/file_perjanjian/';
+		$config['allowed_types']        = 'pdf';
+		$config['max_size']             = 5000;
+		$config['max_width']            = 5024;
+		$config['max_height']           = 5024;
 
-			$this->load->library('upload', $config);
-			$this->upload->initialize($config);
-			if( ! $this->upload->do_upload('file_perjanjian'))
-			{
-				$this->session->set_flashdata('error', $this->upload->display_errors());
-			}else{
-				$file_perjanjian = $this->upload->data();
-				$id_pembelian = $this->input->post('id_pembelian', true);
-				$file_perjanjian = $file_perjanjian['file_name'];
+		$this->load->library('upload', $config);
+		$this->upload->initialize($config);
+		if( ! $this->upload->do_upload('file_perjanjian'))
+		{
+			$this->session->set_flashdata('error', $this->upload->display_errors());
+		}else{
+			$file_perjanjian = $this->upload->data();
+			$id_pembelian = $this->input->post('id_pembelian', true);
+			$file_perjanjian = $file_perjanjian['file_name'];
 
-				$data = array(
-					'id_pembelian'=>$id_pembelian,
-					'file_perjanjian'=>$file_perjanjian,
-				); 
+			$data = array(
+				'id_pembelian'=>$id_pembelian,
+				'file_perjanjian'=>$file_perjanjian,
+			); 
 
-				$id_perjanjian = $this->Admin_perjanjian_model->insertPerjanjian($data, $id_pembelian);
-				
-				$this->session->set_flashdata('success', 'File berhasil ditambahkan');
+			$id_perjanjian = $this->Admin_perjanjian_model->insertPerjanjian($data, $id_pembelian);
+
+			$this->session->set_flashdata('success', 'File berhasil ditambahkan');
+		}
+		redirect('Admin_perjanjian');
 	}
-	redirect('Admin_perjanjian');
-}
 
 }

@@ -66,6 +66,7 @@ class Admin_profile extends BaseController {
 		$this->db->where('id_users',$id_users);
 		$this->db->update('users',$pengelola);
 		$this->session->set_userdata('name', $nama_users);
+		$this->session->set_flashdata('success', 'Berhasil! Data diri berhasil diubah.');
 		redirect('Admin_profile');
 	}
 

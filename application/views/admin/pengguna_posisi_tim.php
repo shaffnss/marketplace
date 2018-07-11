@@ -9,14 +9,14 @@ $this->load->view('admin/head_admin');
     <h1>Jabatan Tim</h1>
     <ol class="breadcrumb">
      <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-     <li class="active"> Posisi Tim</li>
+     <li class="active"> Jabatan Tim</li>
 
    </ol>
  </section>
 
  <section class="content-header">
   <div>
-   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPosisi"><i class="glyphicon glyphicon-plus"></i> Tambah Posisi </button>   
+   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPosisi"><i class="glyphicon glyphicon-plus"></i> Tambah Jabatan </button>   
  </div> 
 
  <!-- Modals tambah Kategori -->
@@ -26,14 +26,14 @@ $this->load->view('admin/head_admin');
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Tambah Posisi</h4>
+          <h4 class="modal-title">Tambah Jabatan</h4>
         </div>
 
         <div class="modal-body">
           <div class="box-body">
            <form class="form-horizontal" method="post" action="<?php echo site_url('Admin_anggota/inputPosisi') ?>">
             <div class="form-group">
-              <label class="">Nama Posisi</label>
+              <label class="">Nama Jabatan</label>
               <input type="text" class="form-control" name="nama_posisi" placeholder="Nama Posisi" required="">
             </div>
 
@@ -55,6 +55,38 @@ $this->load->view('admin/head_admin');
 
 <!-- Main content -->
 <section class="content">
+<div class="row">
+      <div class="col-md-12">
+        <?php
+        $this->load->helper('form');
+        $error = $this->session->flashdata('error');
+        if($error)
+        {
+          ?>
+          <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <?php echo $this->session->flashdata('error'); ?>                    
+          </div>
+        <?php } ?>
+        <?php  
+        $success = $this->session->flashdata('success');
+        if($success)
+        {
+          ?>
+          <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <?php echo $this->session->flashdata('success'); ?>
+          </div>
+        <?php } ?>
+
+        <div class="row">
+          <div class="col-md-12">
+            <?php echo validation_errors('<div class="alert alert-danger alert-dismissable">', ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>'); ?>
+          </div>
+        </div>
+      </div>
+    </div>
+
   <div class="row">
     <div class="col-xs-12">
       <div class="box">
@@ -67,7 +99,7 @@ $this->load->view('admin/head_admin');
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Nama Posisi</th>
+                <th>Nama Jabatan</th>
                 <th>Status</th>
                 <th>Aksi</th>
               </tr>
@@ -90,8 +122,8 @@ $this->load->view('admin/head_admin');
                     <?php }?>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ubah-posisi<?php echo $data->id_posisi; ?>" onclick="ubah-produk"><i class="fa fa-edit"></i>
-                    </button>
+                    <button type="button" class="btn btn-warning glyphicon glyphicon-edit" data-toggle="modal" data-target="#ubah-posisi<?php echo $data->id_posisi; ?>" onclick="ubah-produk"></button>
+                    <a onclick="return confirm('Apakah Anda yakin ingin menghapus Jabatan ini?');" class="btn btn-danger glyphicon glyphicon-remove" href="<?php echo site_url('Admin_anggota/hapusPosisi/'.$data->id_posisi); ?>"></a>
                   </td>
                 </tr>
 
@@ -110,7 +142,7 @@ $this->load->view('admin/head_admin');
                               <input type="hidden" class="form-control" id="inputName" name="id_posisi" value="<?php echo $data->id_posisi; ?>">   
 
                               <div class="form-group">
-                                <label for="inputName">Nama Posisi</label>
+                                <label for="inputName">Nama Jabatan</label>
                                 <input type="text" class="form-control" id="inputName" name="nama_posisi" value="<?php echo $data->nama_posisi; ?>">
                               </div>
 

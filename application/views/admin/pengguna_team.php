@@ -30,91 +30,90 @@ $this->load->view('admin/head_admin');
 
           <form class="form-horizontal" method="post" action="<?php echo site_url('Admin_team/inputNamaTeam') ?>">
             <div class="modal-body">
-                <div class="box-body">
+              <div class="box-body">
 
-                  <div class="form-group">
-                    <label class="">Nama Tim</label>
-                    <input type="text" class="form-control" id="inputName" name="nama_tim" placeholder="Masukkan Nama Tim">
-                  </div>
+                <div class="form-group">
+                  <label class="">Nama Tim</label>
+                  <input type="text" class="form-control" id="inputName" name="nama_tim" placeholder="Masukkan Nama Tim">
+                </div>
 
-                  <div class="form-group">
-                    <label class="">Jenis Tim</label>
-                    <select class="form-control" name="status_tim" required="">
-                      <option disabled selected="">---Pilih Jenis Tim---</option>
-                      <option value="individu">Individu</option>
-                      <option value="tim">Tim</option>
-                    </select>
-                  </div>
+                <div class="form-group">
+                  <label class="">Jenis Tim</label>
+                  <select class="form-control" name="status_tim" required="">
+                    <option disabled selected="">---Pilih Jenis Tim---</option>
+                    <option value="individu">Individu</option>
+                    <option value="tim">Tim</option>
+                  </select>
                 </div>
               </div>
-
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                <input type="submit" class="btn btn-success" value="Simpan">
-              </div>
-            </form>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Daftar Tim</h3>
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped dataTables">
-								<thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Nama Tim</th>
-                    <th>Jumlah Anggota</th>
-                    <th>Jenis Tim</th>
-                    <th>Status</th>
-                    <th>Aksi</th>
-                  </tr>
-                </thead>
-                 <tbody>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+              <input type="submit" class="btn btn-success" value="Simpan">
+            </div>
+          </form>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title">Daftar Tim</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Nama Tim</th>
+                  <th>Jumlah Anggota</th>
+                  <th>Jenis Tim</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
                 <?php 
                 $no=1;
                 foreach ($tim as $data) {
                     # code...
 
                  ?>
-                  <tr>
-                    <td><?php echo $no ?></td>
-                    <td><?php echo $data->nama_tim ?></td>
-                    <td><?php echo $data->jumlah ?></td>
-                    <td> 
-                      <?php if($data->status_tim=='individu') {
-                        ?>
-                        <span class="label label-info">Individu</span>
-                      <?php }else{ ?>
-                        <span class="label label-primary">Tim</span>
-                      <?php }?>
-                    </td>
-                    <td>
-                      <?php if($data->status=='aktif') {
-                        ?>
-                        <span class="label label-success">Aktif</span>
-                      <?php }else{ ?>
-                        <span class="label label-danger">Non Aktif</span>
-                      <?php }?>
-                    </td>
-                    <td>
-                      <a class="btn btn-sm btn-warning" href="<?php echo site_url('Admin_team/ubah_team/').$data->idTim?>"><i class="fa fa-edit"></i></a>
-                      <!-- <a href="" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i></a> -->
+                 <tr>
+                  <td><?php echo $no ?></td>
+                  <td><?php echo $data->nama_tim ?></td>
+                  <td><?php echo $data->jumlah ?></td>
+                  <td> 
+                    <?php if($data->status_tim=='individu') {
+                      ?>
+                      <span class="label label-info">Individu</span>
+                    <?php }else{ ?>
+                      <span class="label label-primary">Tim</span>
+                    <?php }?>
+                  </td>
+                  <td>
+                    <?php if($data->status=='aktif') {
+                      ?>
+                      <span class="label label-success">Aktif</span>
+                    <?php }else{ ?>
+                      <span class="label label-danger">Non Aktif</span>
+                    <?php }?>
+                  </td>
+                  <td>
+                    <a class="btn btn-sm btn-warning" href="<?php echo site_url('Admin_team/ubah_team/').$data->idTim?>"><i class="fa fa-edit"></i></a>
                   </td>
                 </tr>
-              <?php $no++; } ?>
+                <?php $no++; } ?>
               </tbody>
             </table>
           </div>

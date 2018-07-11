@@ -7,7 +7,6 @@ class Admin_pengelola_model extends CI_Model {
 		$this->db->from("users");
 		$this->db->join("roles","users.id_roles=roles.id_roles");
 		$this->db->where("roles.nama_roles","pengelola");
-		//$this->db->where("status_users", "aktif");
 		return $this->db->get()->result();
 	}
 
@@ -35,6 +34,12 @@ class Admin_pengelola_model extends CI_Model {
 		$this->db->where('id_users', $id_users);
 		$this->db->update('users', $data);
 	}
+
+	public function editPengelola($data, $id_users){
+		$this->db->where('id_users', $id_users);
+		return $this->db->update('users', $data);
+	}
+
 
 	
 }

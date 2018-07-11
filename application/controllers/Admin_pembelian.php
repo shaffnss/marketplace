@@ -21,7 +21,7 @@ class Admin_pembelian extends BaseController {
 			'status_pembelian' => 'selesai'
 		);
 		$this->Admin_pembelian_model->ubahStatus($id_pembelian,$data);
-
+		$this->session->set_flashdata('success', 'Pembelian telah diterima');
 		redirect('Admin_perjanjian');
 	}
 

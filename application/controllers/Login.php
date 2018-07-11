@@ -54,25 +54,20 @@ class Login extends CI_Controller
     /**
      * This function used to logged in user
      */
-    public function loginMe()
-    {
+    public function loginMe(){
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|max_length[128]|trim');
-        $this->form_validation->set_rules('password', 'Password', 'required|max_length[32]');
+        $this->form_validation->set_rules('email','Email','required|valid_email|max_length[128]|trim');
+        $this->form_validation->set_rules('password','Password','required|max_length[32]');
         
         if($this->form_validation->run() == FALSE)
         {
             $this->index();
-        }
-        else
-        {
+        }else{
             $email = $this->input->post('email');
             $password = $this->input->post('password');
-            
             $result = $this->login_model->loginMe($email, $password);
             
-            if(count($result) > 0)
-            {
+            if(count($result) > 0){
                 foreach ($result as $res)
                 {
                     $sessionArray = array('userId'=>$res->id_users,
@@ -87,22 +82,18 @@ class Login extends CI_Controller
                     $this->session->set_userdata($sessionArray);
 
                     if($res->id_roles == 2){
-											//Login Admin
                       redirect('Klien_dashboard');
                   }else{
                      $this->load->view('login');
                  }
              }
-         }
-         else
-         {
+         }else{
             $this->session->set_flashdata('error', 'Email or password mismatch');
-
             redirect('/login');
         }
     }
-
 }
+
 public function logout() {
     $this->session->sess_destroy();
 

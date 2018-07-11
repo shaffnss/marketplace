@@ -115,8 +115,8 @@ function rupiah($angka){
                   <td class="text-center">
                     <!-- <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ubah-produk<?php echo $data->id_produk; ?>" onclick="ubah-produk"><i class="fa fa-edit">Edit</i>
                     </button> -->
-                    <a href="<?php echo site_url('Admin_produk/diterima/'.$data->id_detail_produk)?>" class="btn btn-sm btn-info" style="background: #4e9e02; border-color: #fff"><i class="fa fa-check"></i>Terima</a>
-                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#lihat-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff"><i class="fa fa-eye"></i>Lihat
+                    <a href="<?php echo site_url('Admin_produk/diterima/'.$data->id_detail_produk)?>" class="btn btn-sm btn-info" style="background: #4e9e02; border-color: #fff"><i class="fa fa-check"></i> Terima</a>
+                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#lihat-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff"><i class="fa fa-eye"></i> Detail
                     </button>
 										</td>
                 </tr>
@@ -127,7 +127,7 @@ function rupiah($angka){
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span></button>
-                          <h4 class="modal-title">Ubah Data Produk Ditolak</h4>
+                          <h4 class="modal-title"> Ubah Data Produk Ditolak</h4>
                         </div>
                         <div class="modal-body">
                           <form action="<?php echo site_url('Admin_produk/editProduk'); ?>" method="POST" class="form-horizontal">
@@ -135,7 +135,7 @@ function rupiah($angka){
                               <input type="hidden" class="form-control" id="inputName" name="id_produk" value="<?php echo $data->id_produk; ?>" required>   
 
                               <div class="form-group">
-                                <label for="inputName">Nama Produk</label>
+                                <label for="inputName"> Nama Produk</label>
                                 <p><?php echo $data->nama_produk; ?></p>
                               </div>
 
@@ -143,10 +143,10 @@ function rupiah($angka){
                                 <label for="produk">Status</label>
                                     <div class="radio">
                                       <label>
-                                        <input <?php echo ($data->status_produk=='aktif' ? 'checked' : '') ?> type="radio" name="status_produk" id="optionsAktif" value="aktif" >Aktif
+                                        <input <?php echo ($data->status_produk=='aktif' ? 'checked' : '') ?> type="radio" name="status_produk" id="optionsAktif" value="aktif" > Aktif
                                       </label>
                                       <label>
-                                        <input <?php echo ($data->status_produk=='nonaktif' ? 'checked' : '') ?> type="radio" name="status_produk" id="optionsTdkAktif" value="nonaktif">Tidak Aktif
+                                        <input <?php echo ($data->status_produk=='nonaktif' ? 'checked' : '') ?> type="radio" name="status_produk" id="optionsTdkAktif" value="nonaktif"> Tidak Aktif
                                       </label>
                                     </div>
                               </div>
@@ -154,7 +154,7 @@ function rupiah($angka){
                           </div>
 
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal"> Close</button>
                             <input type="submit" class="btn btn-primary" value="Simpan">
                           </div>
                         </form>

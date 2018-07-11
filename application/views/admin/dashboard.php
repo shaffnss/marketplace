@@ -100,12 +100,6 @@ function rupiah($angka){
 					<div class="box box-info">
 						<div class="box-header with-border">
 							<h3 class="box-title">Pembelian Terbaru</h3>
-
-							<div class="box-tools pull-right">
-								<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-								</button>
-								<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-							</div>
 						</div>
 						<!-- /.box-header -->
 						<div class="box-body">
@@ -150,50 +144,41 @@ function rupiah($angka){
 					<div class="box box-primary">
 						<div class="box-header with-border">
 							<h3 class="box-title">Produk Masuk Terbaru</h3>
-							<div class="box-tools pull-right">
-								<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-								</button>
-								<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-							</div>
 						</div>
 						<!-- /.box-header -->
 						<div class="box-body">
 							
 							<ul class="products-list product-list-in-box">
 								<?php foreach ($produks as $produk) { ?>
-								<li class="item">
-									<!-- <div class="product-img">
-										<img src="<img class="card-img-top" src="" alt="Product Image">
-									</div> -->
+									<li class="item">
 									<div class="product-info">
 										<p class="product-title"><?php echo $produk->nama_produk?></p>
-											<span class="label label-info pull-right"><?php echo rupiah($produk->harga_produk)?></span></a>
-											<span class="product-description">By: <?php echo $produk->nama_tim?></span>
-										</div>
-									</li>
-									<?php }?>
-								</ul>
-							</div>
-							<!-- /.box-body -->
-							<div class="box-footer text-center">
-								<a href="<?php echo site_url('Admin_produk') ?>" class="uppercase">Lihat Semua Produk</a>
-							</div>
-							<!-- /.box-footer -->
-						</div>
-						<!-- /.box -->
+										<span class="label label-info pull-right"><?php echo rupiah($produk->harga_produk)?></span></a>
+										<span class="product-description">By: <?php echo $produk->nama_tim?></span>
+									</div>
+								</li>
+							<?php }?>
+						</ul>
 					</div>
-					<!-- /.col-md-4 -->
+					<!-- /.box-body -->
+					<div class="box-footer text-center">
+						<a href="<?php echo site_url('Admin_produk') ?>" class="uppercase">Lihat Semua Produk</a>
+					</div>
+					<!-- /.box-footer -->
 				</div>
-				<!-- /.row -->
-			</section>
-			<!-- Box Notifikasi (End) -->
+				<!-- /.box -->
+			</div>
+			<!-- /.col-md-4 -->
+		</div>
+		<!-- /.row -->
+	</section>
+	<!-- Box Notifikasi (End) -->
 
-		</section>
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 
-		<!-- /.content -->
-	</div>
-	<!-- /.content-wrapper -->
-
-	<?php
-	$this->load->view('admin/foot_admin');
-	?>
+<?php
+$this->load->view('admin/foot_admin');
+?>
