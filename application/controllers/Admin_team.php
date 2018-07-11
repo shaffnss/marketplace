@@ -29,6 +29,7 @@ class Admin_team extends BaseController {
 		);
 		$this->db->where('id_tim',$id_tim);
 		$this->db->update('tim',$data);
+		$this->session->set_flashdata('success', 'Berhasil! Data tim berhasil diubah.');
 		redirect('Admin_team/ubah_team/'.$id_tim);
 	}
 
@@ -40,7 +41,6 @@ class Admin_team extends BaseController {
 		{
 			redirect('Admin_team');
 		}else{
-			//echo 'masuk';
 			$nama_tim = $this->input->post('nama_tim');
 			$status_tim = $this->input->post('status_tim');
 
@@ -50,6 +50,7 @@ class Admin_team extends BaseController {
 			);
 
 			$result = $this->Admin_team_model->insertTeam($team);
+			$this->session->set_flashdata('success', 'Berhasil! Nama tim berhasil ditambahkan.');
 		}
 		redirect('Admin_team');
 	}
@@ -73,7 +74,6 @@ class Admin_team extends BaseController {
 			'id_posisi'=>$id_posisi
 		);
 		$this->db->insert('detail_tim',$data);
-
 		redirect('Admin_team/ubah_team/'.$id_tim);
 	}
 

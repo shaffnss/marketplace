@@ -30,9 +30,8 @@ class Admin_kategori_produk extends BaseController {
 			);
 
 			$result = $this->admin_kategoriProduk_model->insertKategori($data);
-
+			$this->session->set_flashdata('success', 'Berhasil! Kategori produk berhasil ditambahkan.');
 		}
-
 		redirect('Admin_kategori_produk');
 	}
 
@@ -47,6 +46,12 @@ class Admin_kategori_produk extends BaseController {
 		);
 		$this->db->where('id_kategori',$id_kategori);
 		$this->db->update('kategori_produk',$data);
+		redirect('Admin_kategori_produk');
+	}
+
+	public function hapusKategori($id_kategori) {
+		$this->db->where('id_kategori', $id_kategori)->delete('kategori_produk');
+		$this->session->set_flashdata('success', 'Data kategori produk berhasil dihapus.');
 		redirect('Admin_kategori_produk');
 	}
 }

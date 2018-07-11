@@ -25,10 +25,42 @@ $this->load->view('admin/head_admin');
     <!-- Main content -->
     <section class="content">
       <div class="row">
+      <div class="col-md-12">
+        <?php
+        $this->load->helper('form');
+        $error = $this->session->flashdata('error');
+        if($error)
+        {
+          ?>
+          <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <?php echo $this->session->flashdata('error'); ?>                    
+          </div>
+        <?php } ?>
+        <?php  
+        $success = $this->session->flashdata('success');
+        if($success)
+        {
+          ?>
+          <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <?php echo $this->session->flashdata('success'); ?>
+          </div>
+        <?php } ?>
+
+        <div class="row">
+          <div class="col-md-12">
+            <?php echo validation_errors('<div class="alert alert-danger alert-dismissable">', ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>'); ?>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Tabel Anggota Team</h3>
+              
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -41,10 +73,9 @@ $this->load->view('admin/head_admin');
                     <th>Jenis Kelamin</th>
                     <th>E-mail</th>
                     <th>No Telpon</th>
-                    <th>Instansi</th>
                     <th>Berkas</th>
                     <th>Status</th>
-                    <!-- <th>Aksi</th> -->
+                    <th>Aksi</th>
                   </tr>
                 </thead>
 
@@ -61,7 +92,6 @@ $this->load->view('admin/head_admin');
                       <td><?php echo $data['jenis_kelamin']?></td>
                       <td><?php echo $data['email']?></td>
                       <td><?php echo $data['no_telpon']?></td>
-                      <td><?php echo $data['instansi']?></td>
                       <td>
                         <?php if ($data['ktm'] !=''){?>
                           <a href="<?php echo site_url().'assets/users/anggota/'.$data['ktm'] ?>" target="_blank"><i class="fa fa-file-pdf-o fa-2x" style="color:black"></i></a>
@@ -100,45 +130,7 @@ $this->load->view('admin/head_admin');
 
                                 <div class="box-body">
                                   <input type="hidden" class="form-control" id="inputName" name="id_users" value="<?php echo $data['idu']; ?>">
-
-                                  <div class="form-group">
-                                    <label class="">Nama Anggota</label>
-                                    <input type="text" class="form-control" id="inputName" name="nama_users" value="<?php echo $data['nama_users']; ?>">
-                                  </div>
-
-                                  <div class="form-group">
-                                    <label>Jenis Kelamin</label>        
-                                    <select class="form-control" name="jenis_kelamin">
-                                      <option value="Pria" <?php if($data['jenis_kelamin'] == "Pria") {echo "selected=selected";} ?>>Pria</option>
-                                      <option value="Wanita" <?php if($data['jenis_kelamin'] == "Wanita") {echo "selected=selected";} ?>>Wanita</option>
-                                    </select>
-                                  </div>
-
-                                  <div class="form-group">
-                                    <label class="">Instansi</label>
-                                    <input type="text" class="form-control" id="inputName" name="instansi" value="<?php echo $data['instansi']; ?>">
-                                  </div>
-
-                                  <div class="form-group">
-                                    <label for="inputEmail" class="">Email</label>
-                                    <input type="email" class="form-control" id="inputEmail" name="email" value="<?php echo $data['email']; ?>">
-                                  </div>
-
-                                  <div class="form-group">
-                                    <label for="inputTelp" class="">No Telpon</label>
-                                    <input type="text" class="form-control" id="inputName" name="no_telpon" value="<?php echo $data['no_telpon']; ?>">
-                                  </div>
-
-                                  <div class="form-group">
-                                    <label class="">Upload Foto</label>
-                                    <input type="file" name="foto" value="<?php echo $data['foto']; ?>">
-                                  </div>
-
-                                  <div class="form-group">
-                                    <label class="">Upload Berkas (KTM/Kartu Kagama)</label>
-                                    <input type="file" name="ktm" value="<?php echo $data['ktm']; ?>">
-                                  </div>
-
+                                  
                                   <div class="form-group">
                                     <label>Status</label>
                                     <div class="radio">

@@ -55,6 +55,38 @@ $this->load->view('admin/head_admin');
 
 <!-- Main content -->
 <section class="content">
+<div class="row">
+      <div class="col-md-12">
+        <?php
+        $this->load->helper('form');
+        $error = $this->session->flashdata('error');
+        if($error)
+        {
+          ?>
+          <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <?php echo $this->session->flashdata('error'); ?>                   
+          </div>
+        <?php } ?>
+        <?php  
+        $success = $this->session->flashdata('success');
+        if($success)
+        {
+          ?>
+          <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <?php echo $this->session->flashdata('success'); ?>
+          </div>
+        <?php } ?>
+
+        <div class="row">
+          <div class="col-md-12">
+            <?php echo validation_errors('<div class="alert alert-danger alert-dismissable">', ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>'); ?>
+          </div>
+        </div>
+      </div>
+    </div>
+
   <div class="row">
     <div class="col-xs-12">
       <div class="box">
@@ -90,8 +122,8 @@ $this->load->view('admin/head_admin');
                     <?php }?>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ubah-kategori<?php echo $data->id_kategori; ?>" onclick="ubah-produk"><i class="fa fa-edit"></i>
-                    </button>
+                   <a class="btn btn-warning glyphicon glyphicon-edit" data-target="#ubah-kategori<?php echo $data->id_kategori; ?>" data-toggle="modal"></a>
+                    <a onclick="return confirm('Apakah Anda yakin ingin menghapus kategori ini?');" class="btn btn-danger glyphicon glyphicon-remove" href="<?php echo site_url('Admin_perjanjian/hapusPerjanjian/'.$data->id_kategori); ?>"></a>
                   </td>
                 </tr>
 

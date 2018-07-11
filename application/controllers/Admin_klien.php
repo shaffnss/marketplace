@@ -66,38 +66,16 @@ class Admin_klien extends BaseController {
 	}
 
 	public function ubahKlien(){ //ubah data klien
-		$config['upload_path']          = './assets/users/klien';
-		$config['allowed_types']        = 'gif|jpg|png|jpeg';
-		$config['max_size']             = 300;
-		$config['max_width']            = 1024;
-		$config['max_height']           = 768;
-
-		$this->load->library('upload', $config);
-
-		if( ! $this->upload->do_upload('foto')) //jika tidak update foto 
-		{	
-			$id_users = $this->input->post('id_users', true);
-			$status_users = $this->input->post('status_users', true);
-			$klien =  array(
-				"id_roles"=>2,
-				"id_users"=>$id_users,
-				"status_users"=>$status_users
-			);
-	}else{ //jika update foto
-		$img = $this->upload->data();
-		$foto = $img['file_name'];
-		$id_users = $this->input->post('id_users', true);
-		$status_users = $this->input->post('status_users', true);
-		$klien =  array(
-			"id_roles"=>2,
-			"id_users"=>$id_users,
-			"status_users"=>$status_users,
+		$status_users = $this->input->post('status_users');
+		$id_users = $this->input->post('id_users');
+		
+		$data = array(
+			'status_users' => $status_users
 		);
-	}
-	$id_users= $this->input->post('id_users');
-	$this->db->where('id_users',$id_users);
-	$this->db->update('users',$klien);
-	redirect('Admin_klien');
+		
+		$this->Admin_klien_model->editKlien($data, $id_users);
+		$this->session->set_flashdata('success', 'Klien dinon-aktfikan.');
+		redirect('Admin_klien');
 }
 
 	// public function aktivasi_klien()

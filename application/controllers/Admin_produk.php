@@ -54,8 +54,9 @@ class Admin_produk extends BaseController {
 
   //fungsi untuk merubah status detail produk menjadi ditolak
 	function ditolak($id_detail_produk){
-		$result = $this->db->where('id_detail_produk', $id_detail_produk)
-		->update('detail_produk', array('status'=>'ditolak'));
+		$result = $this->db->where('id_detail_produk', $id_detail_produk)->update('detail_produk', array('status'=>'ditolak'));
+		$id_produk = $this->db->where('id_detail_produk', $id_detail_produk)->get('detail_produk')->row()->id_produk;
+		$result = $this->db->where('id_produk', $id_produk)->update('produk', array('status'=>'nonaktif'));
 		
 		if ($result == TRUE) $this->session->set_flashdata('success','Produk berhasil ditolak');
 		else $this->session->set_flashdata('error','Produk gagal dieksekusi');
@@ -121,7 +122,7 @@ class Admin_produk extends BaseController {
 		$this->db->update('produk', $data);
 		
 		$this->session->set_flashdata('success', 'Status produk berhasil diubah');
-		redirect('Admin_produk');
+		redirect('Admin_produk/produk_diterima');
 	}
 }
 

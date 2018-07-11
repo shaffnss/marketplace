@@ -45,18 +45,13 @@ class Admin_bank extends BaseController {
 		);
 		
 		$this->Admin_bank_model->editBank($data, $id_bank);
-		
-		$this->session->set_flashdata('success', 'Berhasil! Bank berhasil diubah.');
-		
+		$this->session->set_flashdata('success', 'Berhasil! Data bank berhasil diubah.');
 		redirect('Admin_bank');
 	}
 	
 	public function hapusBank($id_bank) {
-		
 		$this->db->where('id_bank', $id_bank)->delete('bank');
-		
-		$this->session->set_flashdata('success', 'Berhasil! Bank berhasil didelete.');
-		
+		$this->session->set_flashdata('success', 'Data bank berhasil dihapus.');
 		redirect('Admin_bank');
 	}
 }

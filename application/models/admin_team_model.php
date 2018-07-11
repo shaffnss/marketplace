@@ -8,6 +8,7 @@ class Admin_team_model extends CI_Model {
 		$this->db->from("tim");
 		$this->db->join("detail_tim", "tim.id_tim=detail_tim.id_tim", "left");
 		$this->db->group_by("detail_tim.id_tim");
+		$this->db->order_by("status_tim");
 		return $this->db->get()->result();
 	}
 

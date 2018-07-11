@@ -14,7 +14,7 @@ class Admin_anggota_model extends CI_Model {
 		return $this->db->get()->result_array();
 	}
 
-	public function insertAnggota($anggota){
+	public function insertAnggota($anggota, $ktm){
 		$this->db->trans_start();
 		$this->db->insert('users',$anggota);
 		$insert_id = $this->db->insert_id();
@@ -40,6 +40,11 @@ class Admin_anggota_model extends CI_Model {
 		$insert_id = $this->db->insert_id();
 		$this->db->trans_complete();
 		return $insert_id;
+	}
+
+	public function editAnggota($data, $id_users){
+		$this->db->where('id_users', $id_users);
+		return $this->db->update('users', $data);
 	}
 
 	public function getAktivasi(){;

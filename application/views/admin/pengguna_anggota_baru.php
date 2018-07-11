@@ -65,7 +65,7 @@ $this->load->view('admin/head_admin');
               <th>Jenis Kelamin</th>
               <th>E-mail</th>
               <th>No Telpon</th>
-              <th>Instansi</th>
+              <!-- <th>Instansi</th> -->
               <th>Berkas</th>
               <th>Status</th>
               <th>Aksi</th>
@@ -86,7 +86,7 @@ $this->load->view('admin/head_admin');
                 <td><?php echo $data->jenis_kelamin?></td>
                 <td><?php echo $data->email?></td>
                 <td><?php echo $data->no_telpon?></td>
-                <td><?php echo $data->instansi?></td>
+
                 <td>
                   <?php if ($data->ktm !=''){?>
                     <a href="<?php echo site_url().'assets/users/anggota/'.$data->ktm ?>" target="_blank"><i class="fa fa-file-pdf-o fa-2x" style="color:black"></i></a>
