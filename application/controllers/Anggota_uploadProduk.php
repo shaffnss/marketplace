@@ -53,7 +53,7 @@ class Anggota_uploadProduk extends BaseController {
 			$link_demo = $this->input->post('link_demo', true);
 			$id_user = $this->session->userdata('userId');
 			$id_team = $this->input->post('nama_tim');
-			
+			// var_dump("lele");exit;
 			$data = array(
 				'nama_produk'=>$nama_produk,
 				'id_kategori' =>$jenis_produk,

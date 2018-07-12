@@ -100,13 +100,8 @@ function rupiah($angka){
                         <form action="<?php echo site_url('Anggota_uploadProduk/ubahProduk') ?>" enctype="multipart/form-data" method="POST" class="form-horizontal">
                           <div class="box-body">
                             <input type="hidden" class="form-control" id="inputName" name="id_produk" value="<?php echo $data->id_produk; ?>" required="">   
-<<<<<<< HEAD
-                            <input type="text" name="nama_file" value="<?php echo $data->file_produk; ?>" >   
-                            <input type="text" name="nama_foto" value="<?php echo $data->foto_produk; ?>" >   
-=======
                             <input type="hidden" name="nama_file" value="<?php echo $data->file_produk; ?>" >   
-                            <input type="hidden" name="nama_foto" value="<?php echo $data->foto_produk; ?>" >   
->>>>>>> c3dd93aabc831d07600af66ccfeee777d0177a8f
+                            <input type="hidden" name="nama_foto" value="<?php echo $data->foto_produk; ?>" >
 
                             <div class="form-group">
                               <label for="inputName">Nama Produk</label>
