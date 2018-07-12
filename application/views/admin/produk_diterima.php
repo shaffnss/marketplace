@@ -201,7 +201,7 @@ function rupiah($angka){
 
                                 <div class="form-group">
                                   <label for="inputName">Deskripsi Produk</label>
-                                  <p class="form-control" name="nama_klien"><?php echo $data->deskripsi_produk; ?></p>
+                                  <textarea readonly="" rows="5" class="form-control"> name="nama_klien"><?php echo $data->deskripsi_produk; ?></textarea>
                                 </div>
 
                                   <div class="form-group">

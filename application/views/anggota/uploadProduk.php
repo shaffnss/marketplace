@@ -64,7 +64,7 @@ function rupiah($angka){
                 <td><?php echo $data->nama_produk?></td>
                 <td><?php echo $data->nama_kategori?></td>
                 <td><?php echo rupiah($data->harga_produk)?></td>
-                <td><?php echo $data->deskripsi_produk?></td>
+                <td><?php echo substr($data->deskripsi_produk, 0, 100)?>..</td>
                 <td><a target="_blank" href="<?php echo $data->link_demo?>" class="btn btn-sm btn-primary" href><i class="fa fa-link" style="color: #fff"></i></a></td>
                 <td class="text-center">
 									<?php if($data->foto_produk) { ?>

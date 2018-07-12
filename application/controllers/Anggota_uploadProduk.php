@@ -3,8 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require APPPATH . '/libraries/BaseController.php';
 class Anggota_uploadProduk extends BaseController {
 
-	function __construct()
-	{
+	function __construct(){
 		parent::__construct();
 		$this->load->model("Anggota_uploadProduk_model");
 		$this->load->helper("form");
@@ -65,13 +64,15 @@ class Anggota_uploadProduk extends BaseController {
 			); 
 			
 			$config['upload_path']          = './assets/file_produk/';
-			$config['allowed_types']        = 'zip';
+			$config['allowed_types']        = 'zip|rar';
 			$config['max_size']             = 7000;
 			$this->load->library('upload', $config);
 			$this->upload->initialize($config);
 			
 			if( ! $this->upload->do_upload('file_produk')){
 				$errorp = 1;
+				var_dump($this->upload->display_errors());
+			exit;
 			}else{
 				$errorp = 0;
 				$file_produk = $this->upload->data();

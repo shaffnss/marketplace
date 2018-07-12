@@ -127,7 +127,7 @@ function rupiah($angka){
 																		<div class="row">
 																			<div class="col-md-3">
 																				<label for="inputName">ID Produk</label>
-																				<p class="form-control"><?php echo $data->id_produk; ?></p>
+																				<p><?php echo $data->id_produk; ?></p>
 																			</div>
 																			<div class="col-md-9">
 																				<label for="inputName">Nama Produk</label>
