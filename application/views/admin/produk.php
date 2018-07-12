@@ -75,13 +75,14 @@ function rupiah($angka){
 									<th>Aksi</th>
 								</tr>
 							</thead>
+															<tbody>
 							<?php 
 							$no=1;
 							foreach ($produk as $data) {
 									# code...
 								
 								?>
-								<tbody>
+
 									<tr>
 										<td><?php echo $no ?></td>
 										<td><?php echo $data->nama_produk?></td>

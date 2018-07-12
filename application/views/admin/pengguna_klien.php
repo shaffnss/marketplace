@@ -25,37 +25,37 @@ $this->load->view('admin/head_admin');
 
 <!-- Main content -->
 <section class="content">
-<div class="row">
-      <div class="col-md-12">
-        <?php
-        $this->load->helper('form');
-        $error = $this->session->flashdata('error');
-        if($error)
-        {
-          ?>
-          <div class="alert alert-danger alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <?php echo $this->session->flashdata('error'); ?>                    
-          </div>
-        <?php } ?>
-        <?php  
-        $success = $this->session->flashdata('success');
-        if($success)
-        {
-          ?>
-          <div class="alert alert-success alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <?php echo $this->session->flashdata('success'); ?>
-          </div>
-        <?php } ?>
+  <div class="row">
+    <div class="col-md-12">
+      <?php
+      $this->load->helper('form');
+      $error = $this->session->flashdata('error');
+      if($error)
+      {
+        ?>
+        <div class="alert alert-danger alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <?php echo $this->session->flashdata('error'); ?>                    
+        </div>
+      <?php } ?>
+      <?php  
+      $success = $this->session->flashdata('success');
+      if($success)
+      {
+        ?>
+        <div class="alert alert-success alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <?php echo $this->session->flashdata('success'); ?>
+        </div>
+      <?php } ?>
 
-        <div class="row">
-          <div class="col-md-12">
-            <?php echo validation_errors('<div class="alert alert-danger alert-dismissable">', ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>'); ?>
-          </div>
+      <div class="row">
+        <div class="col-md-12">
+          <?php echo validation_errors('<div class="alert alert-danger alert-dismissable">', ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>'); ?>
         </div>
       </div>
     </div>
+  </div>
   
   <div class="row">
     <div class="col-md-12">
@@ -111,14 +111,13 @@ $this->load->view('admin/head_admin');
                 <th>Aksi</th>
               </tr>
             </thead>
-
-            <?php 
-            $no=1;
-            foreach ($klien as $data) {
+            <tbody>
+              <?php 
+              $no=1;
+              foreach ($klien as $data) {
                   # code...
 
-              ?>
-              <tbody>
+                ?>
                 <tr>
                   <td><?php echo $no ?></td>
                   <td><img src="<?php echo site_url('/assets/users/klien/').$data->foto ?>" onerror="this.src='<?php echo site_url('assets/users/anggota/index.png'); ?>'" class="img-responsive" style="height: 100px; width: 100px"></td>

@@ -66,13 +66,6 @@ $this->load->view('admin/head_admin');
                 </div>
               </div>
 
-              <!-- <div class="form-group">
-                <label for="inputEmail" class="col-sm-2 control-label">Instansi</label>
-                <div class="col-sm-8">
-                  <input type="text" class="form-control" name="instansi" placeholder="Instansi" value="<?php echo set_value("instansi") ?>" required>
-                </div>
-              </div>
- -->
               <div class="form-group">
                 <label for="inputExperience" class="col-sm-2 control-label">Password</label>
                 <div class="col-sm-8">

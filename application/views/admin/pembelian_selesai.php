@@ -41,15 +41,13 @@ function rupiah($angka){
                   <th>Status</th>
                 </tr>
               </thead>
-
-              <?php 
-               $no=1;
-              foreach ($pembelian as $item) { ?>
-              
-                <tbody>
+              <tbody>
+                <?php 
+                $no=1;
+                foreach ($pembelian as $item) { ?>
                   <tr>
                     <td><?php echo $no ?></td>
-                     <td><?php echo $item->kode_pembelian; ?></td>
+                    <td><?php echo $item->kode_pembelian; ?></td>
                     <td><?php echo $item->nama_users; ?></td>
                     <td><?php echo rupiah($item->total)?></td>
                     <td><?php echo $item->tgl_pembelian; ?></td>
@@ -59,8 +57,8 @@ function rupiah($angka){
                       <span class="label label-success">Selesai</span>
                     </td>
                   </tr>
+                  <?php $no++; } ?>
                 </tbody>
-                <?php $no++; } ?>
               </table>
             </div>
             <!-- /.box-body -->
