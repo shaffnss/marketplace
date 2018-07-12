@@ -112,14 +112,14 @@ $this->load->view('admin/head_admin');
 											<th>Upload File</th>
 										</tr>
 									</thead>
-									
-									<?php 
-									$no=1;
-									foreach ($perjanjian as $data) {
+									<tbody>
+										<?php 
+										$no=1;
+										foreach ($perjanjian as $data) {
 											# code...
-										if($data->status_perjanjian == "proses") {
-											?>
-											<tbody>
+											if($data->status_perjanjian == "proses") {
+												?>
+
 												<tr>
 													<td><?php echo $no?></td>
 													<td><?php echo $data->kode_pembelian ?></td>
@@ -204,14 +204,14 @@ $this->load->view('admin/head_admin');
 														<th>Upload File</th>
 													</tr>
 												</thead>
-
+														<tbody>
 												<?php 
 												$no=1;
 												foreach ($perjanjian as $data) {
 											# code...
 													if($data->status_perjanjian == "selesai") {
 														?>
-														<tbody>
+
 															<tr>
 																<td><?php echo $no?></td>
 																<td><?php echo $data->kode_pembelian ?></td>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 05, 2018 at 07:57 AM
+-- Generation Time: Jul 12, 2018 at 08:13 AM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -31,7 +31,15 @@ CREATE TABLE IF NOT EXISTS `bank` (
   `nama_bank` varchar(50) NOT NULL,
   `no_rekening` varchar(30) NOT NULL,
   `nama_pemilik` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bank`
+--
+
+INSERT INTO `bank` (`id_bank`, `nama_bank`, `no_rekening`, `nama_pemilik`) VALUES
+(1, 'BRI', '99883847561', 'Shafira Fi'),
+(2, 'BCA', '3882700125', 'Shafira Fitrianissa');
 
 -- --------------------------------------------------------
 
@@ -45,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `detail_anggota` (
   `ktm` varchar(20) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_anggota`
@@ -54,7 +62,8 @@ CREATE TABLE IF NOT EXISTS `detail_anggota` (
 INSERT INTO `detail_anggota` (`id_detail`, `id_users`, `ktm`, `created_at`, `updated_at`) VALUES
 (1, 45, 'ktm.jpg', '2018-07-02 07:59:53', NULL),
 (2, 49, 'ktm1.jpg', '2018-07-02 10:14:56', NULL),
-(3, 50, 'ktm2.jpg', '2018-07-02 10:31:27', NULL);
+(3, 50, 'ktm2.jpg', '2018-07-02 10:31:27', NULL),
+(4, 58, 'ktm7.jpg', '2018-07-11 10:05:46', NULL);
 
 -- --------------------------------------------------------
 
@@ -67,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `detail_pembelian` (
   `id_pembelian` int(11) NOT NULL,
   `id_produk` int(11) NOT NULL,
   `qty` int(11) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_pembelian`
@@ -75,9 +84,12 @@ CREATE TABLE IF NOT EXISTS `detail_pembelian` (
 
 INSERT INTO `detail_pembelian` (`id_detail_pembelian`, `id_pembelian`, `id_produk`, `qty`) VALUES
 (21, 21, 22, 1),
-(28, 30, 41, 1),
-(29, 31, 22, 1),
-(32, 34, 22, 1);
+(33, 35, 40, 1),
+(34, 36, 41, 1),
+(35, 36, 40, 1),
+(36, 37, 41, 1),
+(37, 38, 40, 1),
+(38, 39, 41, 1);
 
 -- --------------------------------------------------------
 
@@ -90,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `detail_produk` (
   `status` enum('diterima','ditolak','proses') NOT NULL DEFAULT 'proses',
   `id_tim` int(11) NOT NULL,
   `id_produk` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_produk`
@@ -103,9 +115,10 @@ INSERT INTO `detail_produk` (`id_detail_produk`, `status`, `id_tim`, `id_produk`
 (4, 'proses', 55, 1),
 (5, 'proses', 53, 1),
 (6, 'diterima', 53, 38),
-(7, 'ditolak', 53, 39),
+(7, 'proses', 53, 39),
 (8, 'diterima', 53, 40),
-(9, 'diterima', 53, 41);
+(9, 'ditolak', 53, 41),
+(10, 'ditolak', 57, 42);
 
 -- --------------------------------------------------------
 
@@ -118,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `detail_tim` (
   `id_tim` int(11) NOT NULL,
   `id_users` int(11) NOT NULL,
   `id_posisi` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_tim`
@@ -130,11 +143,9 @@ INSERT INTO `detail_tim` (`id_detail_tim`, `id_tim`, `id_users`, `id_posisi`) VA
 (9, 52, 13, 3),
 (11, 53, 16, 5),
 (13, 52, 36, 3),
-(19, 56, 16, 3),
-(20, 56, 36, 4),
-(22, 57, 13, 5),
-(28, 62, 50, 1),
-(29, 57, 50, 1);
+(22, 57, 13, 1),
+(29, 57, 50, 1),
+(30, 54, 13, 1);
 
 -- --------------------------------------------------------
 
@@ -148,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `forgot_password` (
   `id_users` int(11) NOT NULL,
   `created` datetime DEFAULT NULL,
   `expired` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `forgot_password`
@@ -182,7 +193,9 @@ INSERT INTO `forgot_password` (`id_forgot`, `token`, `id_users`, `created`, `exp
 (25, '7fcf5b43008ca04a668556450c7bb733', 38, '2018-05-26 16:32:00', '2018-05-26 18:32:00'),
 (26, '686e29bc9f8c608aba209742dda96885', 38, '2018-05-26 16:42:00', '2018-05-26 18:42:00'),
 (27, '3c9f9f4720662b1d1c3c69a440c57565', 38, '2018-05-26 16:45:00', '2018-05-26 18:45:00'),
-(28, 'c1c336441d6c4fd9220f7c3e118cb2ee', 42, '2018-06-05 16:13:00', '2018-06-05 18:13:00');
+(28, 'c1c336441d6c4fd9220f7c3e118cb2ee', 42, '2018-06-05 16:13:00', '2018-06-05 18:13:00'),
+(29, '2752866b016037a6f58f141d7885e36e', 50, '2018-07-05 19:16:00', '2018-07-05 21:16:00'),
+(30, 'ee0c3c76b09b6fca26c5c9478e6831c4', 50, '2018-07-10 20:30:00', '2018-07-10 22:30:00');
 
 -- --------------------------------------------------------
 
@@ -241,27 +254,26 @@ CREATE TABLE IF NOT EXISTS `pembelian` (
   `bukti_pembayaran` varchar(255) NOT NULL,
   `kode_pembelian` varchar(255) NOT NULL,
   `total` int(11) NOT NULL,
-  `id_bank` int(11) NOT NULL,
   `id_users` int(11) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pembelian`
 --
 
-INSERT INTO `pembelian` (`id_pembelian`, `tgl_pembelian`, `status_pembelian`, `bukti_pembayaran`, `kode_pembelian`, `total`, `id_bank`, `id_users`, `timestamp`) VALUES
-(20, '2018-06-24', 'proses', '', 'GM-Y2HAK0', 2147483647, 0, 14, '2018-06-24 10:37:57'),
-(21, '2018-06-25', 'proses', '', 'WB-H1XHL9', 100000, 0, 14, '2018-06-25 15:17:55'),
-(22, '2018-06-25', 'proses', '', 'WB-DMVR7U', 19383838, 0, 14, '2018-06-25 15:22:20'),
-(23, '2018-06-25', 'proses', '', 'WB-VDRLKG', 183475627, 0, 14, '2018-06-25 15:23:04'),
-(24, '2018-06-25', 'selesai', '161127012658-google-maps-dump-tower-large-169.jpg', 'AI-IWEJLD', 183485627, 0, 14, '2018-06-27 11:19:39'),
-(25, '2018-06-27', 'proses', '161127012658-google-maps-dump-tower-large-1691.jpg', 'WB-HX6FFX', 500000, 0, 14, '2018-07-03 04:29:52'),
-(30, '2018-07-02', 'proses', 'bukti_pembayarantrf_pelanggan_feriezshop_1505960757_517a8d319.jpg', 'WB-XTLYXI', 20000002, 0, 53, '2018-07-03 04:30:02'),
-(31, '2018-07-02', 'selesai', 'bukti_pembayarantrf_pelanggan_feriezshop_1505960757_517a8d3110.jpg', 'WB-SESKJC', 100000, 0, 53, '2018-07-02 14:35:07'),
-(32, '2018-07-02', 'selesai', 'bukti_pembayarantrf_pelanggan_feriezshop_1505960757_517a8d3111.jpg', 'WB-SGILZF', 50000001, 0, 53, '2018-07-02 14:43:38'),
-(33, '2018-07-03', 'selesai', 'bukti_pembayarantrf_pelanggan_feriezshop_1505960757_517a8d3112.jpg', 'WB-CVFKJL', 50000001, 0, 53, '2018-07-03 03:43:03'),
-(34, '2018-07-03', 'proses', '', 'WB-WTA4L1', 100000, 0, 53, '2018-07-03 04:30:51');
+INSERT INTO `pembelian` (`id_pembelian`, `tgl_pembelian`, `status_pembelian`, `bukti_pembayaran`, `kode_pembelian`, `total`, `id_users`, `timestamp`) VALUES
+(20, '2018-06-24', 'selesai', '', 'GM-Y2HAK0', 2147483647, 14, '2018-07-05 06:59:17'),
+(21, '2018-06-25', 'selesai', '', 'WB-H1XHL9', 100000, 14, '2018-07-05 06:59:22'),
+(22, '2018-06-25', 'selesai', '', 'WB-DMVR7U', 19383838, 14, '2018-07-05 06:59:28'),
+(23, '2018-06-25', 'selesai', '', 'WB-VDRLKG', 183475627, 14, '2018-07-05 06:59:35'),
+(24, '2018-06-25', 'selesai', '161127012658-google-maps-dump-tower-large-169.jpg', 'AI-IWEJLD', 183485627, 14, '2018-06-27 11:19:39'),
+(25, '2018-06-27', 'selesai', '161127012658-google-maps-dump-tower-large-1691.jpg', 'WB-HX6FFX', 500000, 14, '2018-07-05 16:45:51'),
+(35, '2018-07-05', 'selesai', '', 'WB-0SZOJX', 1000000, 54, '2018-07-11 06:54:27'),
+(36, '2018-07-05', 'selesai', '', 'WB-8KIXLT', 21000002, 54, '2018-07-11 06:45:32'),
+(37, '2018-07-05', 'selesai', 'perjanjian.pdf', 'WB-FVPUQN', 20000002, 54, '2018-07-05 16:50:40'),
+(38, '2018-07-11', 'proses', 'bukti_pembayarantrf_pelanggan_feriezshop_1505960757_517a8d3113.jpg', 'WB-TTSCBP', 1000000, 54, '2018-07-11 09:27:53'),
+(39, '2018-07-11', 'proses', 'bukti_pembayarantrf_pelanggan_feriezshop_1505960757_517a8d3114.jpg', 'WB-KOJ36C', 20000002, 54, '2018-07-11 09:29:34');
 
 -- --------------------------------------------------------
 
@@ -277,7 +289,7 @@ CREATE TABLE IF NOT EXISTS `perjanjian` (
   `id_pembelian` int(11) NOT NULL,
   `status_perjanjian` enum('proses','selesai') NOT NULL DEFAULT 'proses',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `perjanjian`
@@ -289,9 +301,12 @@ INSERT INTO `perjanjian` (`id_perjanjian`, `keterangan`, `file_perjanjian`, `id_
 (3, 'jabdjabdj', '', 1, 28, 'proses', '2018-07-02 09:58:06'),
 (4, 'mabdjabj', '', 1, 29, 'proses', '2018-07-02 10:01:02'),
 (5, 'abfja', 'perjanjian.pdf', 1, 30, 'proses', '2018-07-02 14:31:47'),
-(6, 'qewrw', '', 1, 31, 'proses', '2018-07-02 14:34:29'),
+(6, 'qewrw', 'perjanjian1.pdf', 1, 31, 'proses', '2018-07-05 07:33:36'),
 (7, 'sffe', '', 1, 32, 'proses', '2018-07-02 14:42:47'),
-(8, 'dgtjyy', '', 1, 33, 'proses', '2018-07-03 03:42:15');
+(8, 'dgtjyy', '', 1, 33, 'proses', '2018-07-03 03:42:15'),
+(9, 'dengan maintenance', 'perjanjian2.pdf', 1, 37, 'proses', '2018-07-11 07:05:44'),
+(10, 'jihjbjubj', '', 1, 38, 'proses', '2018-07-11 09:27:53'),
+(11, 'o', '', 1, 39, 'proses', '2018-07-11 09:29:34');
 
 -- --------------------------------------------------------
 
@@ -333,7 +348,7 @@ CREATE TABLE IF NOT EXISTS `produk` (
   `link_demo` varchar(255) NOT NULL,
   `id_users` int(11) NOT NULL,
   `id_kategori` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `produk`
@@ -341,8 +356,9 @@ CREATE TABLE IF NOT EXISTS `produk` (
 
 INSERT INTO `produk` (`id_produk`, `nama_produk`, `harga_produk`, `status`, `deskripsi_produk`, `file_produk`, `foto_produk`, `link_demo`, `id_users`, `id_kategori`) VALUES
 (22, 'sistem pkl', 100000, 'aktif', 'Sistem pkl untuk komsi', '', 'produk1528102020.PNG', 'www.facebook.com', 41, 1),
-(40, 'Sistem Toefl Terbaru', 1000000, 'aktif', 'Sistem Toelf                                                                                                                ', 'produk1530361838.zip', NULL, 'https://toefl.com', 13, 1),
-(41, 'sistem presensi kehadiran', 20000002, 'aktif', 'sistem presensi kehadiran', 'produk1530518960.zip', 'produk1530518960.PNG', 'www.facebook.com', 45, 1);
+(40, 'Sistem Toefl Terbaru', 1000000, 'nonaktif', 'Sistem Toelf                                                                                                                                            ', 'produk1530361838.zip', '8__halaman_admin.PNG', 'https://toefl.com', 54, 1),
+(41, 'sistem presensi kehadiran', 20000002, 'nonaktif', 'sistem presensi kehadiran', 'produk1530518960.zip', 'produk1530518960.PNG', 'www.facebook.com', 54, 1),
+(42, 'Sistem homecare', 10000000, 'nonaktif', 'Sistem homecare berbasis web', 'produk1530808234.zip', 'produk1530808234.PNG', 'http://melihatdunia.com/2017/10/31/forgot-password-php-ci/', 13, 1);
 
 -- --------------------------------------------------------
 
@@ -376,7 +392,7 @@ CREATE TABLE IF NOT EXISTS `tim` (
   `nama_tim` varchar(50) NOT NULL,
   `status` enum('aktif','nonaktif') NOT NULL,
   `status_tim` enum('individu','tim') NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tim`
@@ -387,14 +403,16 @@ INSERT INTO `tim` (`id_tim`, `nama_tim`, `status`, `status_tim`) VALUES
 (52, 'Hore', 'nonaktif', 'tim'),
 (53, 'KOMSI 15', 'aktif', 'tim'),
 (54, 'icon+', 'nonaktif', 'individu'),
-(55, 'anggota', 'nonaktif', 'individu'),
-(56, 'BCA', 'aktif', 'tim'),
+(55, 'anggota', 'nonaktif', 'tim'),
 (57, 'LAB SI', 'aktif', 'tim'),
 (58, 'HAYO', 'nonaktif', 'individu'),
 (59, 'Izul Fanriza', 'aktif', 'individu'),
-(60, 'shafira fitrianissa', 'aktif', 'individu'),
-(61, 'shafira fitrianissa', 'aktif', 'individu'),
-(62, 'shafira fitrianissa', 'aktif', 'individu');
+(63, 'Komsi', 'aktif', 'tim'),
+(64, 'Komsi', 'aktif', 'tim'),
+(65, 'y', 'aktif', 'individu'),
+(66, 'tim haye', 'aktif', 'tim'),
+(67, 'yu', 'aktif', 'individu'),
+(68, 'woy', 'aktif', 'tim');
 
 -- --------------------------------------------------------
 
@@ -416,22 +434,23 @@ CREATE TABLE IF NOT EXISTS `users` (
   `validasi` tinyint(1) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id_users`, `nama_users`, `id_roles`, `jenis_kelamin`, `no_telpon`, `email`, `instansi`, `status_users`, `password`, `foto`, `validasi`, `created_at`, `updated_at`) VALUES
-(13, 'Afif Imaduddin', 3, 'Pria', '08213456789', '', 'UGM', 'aktif', '$2y$10$xD2BkpEYssDjWTvhAJBziOBLYNf.3PmXCKqRNOOpUTNXYRWe81mn.', 'index.jpg', 1, '2018-07-02 15:16:44', '2018-07-02 15:16:44'),
-(14, 'Fadhilah Hera', 2, 'Wanita', '0856173813', 'hera@gmail.com', 'UGM', 'aktif', '$2y$10$xD2BkpEYssDjWTvhAJBziOBLYNf.3PmXCKqRNOOpUTNXYRWe81mn.', 'avatar.png', 1, '2018-07-01 04:43:37', '2018-07-01 04:43:37'),
-(15, 'Muhammad Gorby', 2, 'Wanita', '08945638183', 'gorby@gmail.com', 'SV', 'aktif', '$2y$10$6YxnKPOT9MlZo836obELw.SKZx5oCSCs/HAndsJPklP...', 'index13.png', 0, '2018-05-30 08:52:46', '2018-05-30 08:52:46'),
-(16, 'Fitriyanti', 3, 'Wanita', '08231646456', 'fitri@gmail.com', 'UGM', 'nonaktif', '$2y$10$hB5tGnTmyAT.8aFzN91w5eUNuoiV2JWVMf77yryLgkikVfc.vNKum', 'index.png', 0, '2018-07-02 10:22:10', '2018-07-02 10:22:10'),
-(27, 'superadmin', 4, 'Pria', '08561738132', 'superadmin@gmail.com', 'UGM', 'aktif', '$2y$10$Qs86bQGwyb7lPaBspQA2EOE.O4X38sgizsnAfti02R/tNieA08r2C', 'avatar.png', 1, '2018-07-02 11:14:26', '2018-07-02 11:14:26'),
+(13, 'Afif Imaduddin', 3, 'Pria', '08231646456', 'afif@gmail.com', 'UGM', 'aktif', '$2y$10$xD2BkpEYssDjWTvhAJBziOBLYNf.3PmXCKqRNOOpUTNXYRWe81mn.', 'index.jpg', 1, '2018-07-11 10:16:38', '2018-07-11 10:16:38'),
+(14, 'Fadhilah Hera', 2, 'Wanita', '0856173813', 'hera@gmail.com', 'UGM', 'nonaktif', '$2y$10$xD2BkpEYssDjWTvhAJBziOBLYNf.3PmXCKqRNOOpUTNXYRWe81mn.', 'avatar.png', 1, '2018-07-11 10:24:14', '2018-07-11 10:24:14'),
+(15, 'Muhammad Gorby', 2, 'Wanita', '08945638183', 'gorby@gmail.com', 'SV', 'nonaktif', '$2y$10$6YxnKPOT9MlZo836obELw.SKZx5oCSCs/HAndsJPklP...', 'index13.png', 0, '2018-07-11 10:24:21', '2018-07-11 10:24:21'),
+(16, 'Fitriyanti', 3, 'Wanita', '08231646456', 'fitri@gmail.com', 'UGM', 'aktif', '$2y$10$hB5tGnTmyAT.8aFzN91w5eUNuoiV2JWVMf77yryLgkikVfc.vNKum', 'index.png', 0, '2018-07-11 10:16:40', '2018-07-11 10:16:40'),
+(27, 'superadmin', 4, 'Pria', '08561738132', 'superadmin@gmail.com', 'UGM', 'aktif', '$2y$10$Qs86bQGwyb7lPaBspQA2EOE.O4X38sgizsnAfti02R/tNieA08r2C', 'avatar.png', 1, '2018-07-11 09:25:54', '2018-07-11 09:25:54'),
 (36, 'Fadli', 3, 'Pria', '08231646456', 'fadli@gmail.com', 'UGM', 'aktif', '$2y$10$6YxnKPOT9MlZo836obELw.SKZx5oCSCs/HAndsJPklPeZjkY/.fsC', 'index2.png', 0, '2018-07-01 09:51:58', NULL),
-(46, 'Pengelola', 1, 'Pria', '08231646456', 'pengelola@gmail.com', 'UGM', 'aktif', '$2y$10$KEio6/68TsLGH1qsbGC21eqaK6MBRuLN0sK73t2j3Uq/D61d0ojOq', 'foto2.jpg', 1, '2018-07-02 11:14:26', '2018-07-02 11:14:26'),
-(50, 'shafira fitrianissa', 3, 'Wanita', '08231646456', 'shafirafitrianissa02@gmail.com', 'UGM', 'aktif', '$2y$10$iSQiJciCy33778uK/IrKjuft5CrALGLvCyHdv6bZvtdbPQ0fbmFfi', NULL, 1, '2018-07-02 10:34:07', '2018-07-02 10:34:07'),
-(53, 'fira', 2, 'Wanita', '08231646456', 'shafira.fitrianissa@gmail.com', 'GAMA-SI', 'aktif', '$2y$10$opDSu28xehNc480iUcMWB.8k7ujcFoR6rEXB0fwDqbjtYh8geYk8e', NULL, 1, '2018-07-02 14:17:25', '2018-07-02 14:17:25');
+(46, 'Pengelola', 1, 'Pria', '08231646456', 'pengelola@gmail.com', 'UGM', 'aktif', '$2y$10$KEio6/68TsLGH1qsbGC21eqaK6MBRuLN0sK73t2j3Uq/D61d0ojOq', 'index1.png', 1, '2018-07-11 10:21:33', '2018-07-11 10:21:33'),
+(50, 'shafira fitrianissa', 3, 'Wanita', '08231646456', 'shafirafitrianissa02@gmail.com', 'UGM', 'aktif', '$2y$10$15Zb7DM4BGzdC2LOtgIz5.yeUBqa9RQovLKhQAuMa9mG9JpcaoAbi', NULL, 1, '2018-07-11 12:47:28', '2018-07-11 12:47:28'),
+(54, 'shafira fitrianissa', 2, 'Wanita', '08231646456', 'shafira.fitrianissa@gmail.com', 'toya', 'nonaktif', '$2y$10$eQtdlxcuaLeUzzlg0neMKeU4.rC5V229ufojng7fin.OEb5uOZkb2', NULL, 1, '2018-07-11 10:24:56', '2018-07-11 10:24:56'),
+(58, 'lutfi', 3, 'Pria', '08231646456', 'lutfi@gmail.com', NULL, 'nonaktif', '$2y$10$p7jyxBPky0T/nKW1vjIt6uQv4pQNCtd4McCgnQmH2wonTQNHCZB.O', 'foto5.jpg', 1, '2018-07-11 10:16:28', '2018-07-11 10:16:28');
 
 --
 -- Indexes for dumped tables
@@ -547,32 +566,32 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bank`
 --
 ALTER TABLE `bank`
-  MODIFY `id_bank` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_bank` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `detail_anggota`
 --
 ALTER TABLE `detail_anggota`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `detail_pembelian`
 --
 ALTER TABLE `detail_pembelian`
-  MODIFY `id_detail_pembelian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
+  MODIFY `id_detail_pembelian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `detail_produk`
 --
 ALTER TABLE `detail_produk`
-  MODIFY `id_detail_produk` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `id_detail_produk` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `detail_tim`
 --
 ALTER TABLE `detail_tim`
-  MODIFY `id_detail_tim` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
+  MODIFY `id_detail_tim` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `forgot_password`
 --
 ALTER TABLE `forgot_password`
-  MODIFY `id_forgot` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
+  MODIFY `id_forgot` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `kategori_perjanjian`
 --
@@ -587,12 +606,12 @@ ALTER TABLE `kategori_produk`
 -- AUTO_INCREMENT for table `pembelian`
 --
 ALTER TABLE `pembelian`
-  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
+  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT for table `perjanjian`
 --
 ALTER TABLE `perjanjian`
-  MODIFY `id_perjanjian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id_perjanjian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `posisi_tim`
 --
@@ -602,7 +621,7 @@ ALTER TABLE `posisi_tim`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT for table `roles`
 --
@@ -612,12 +631,12 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `tim`
 --
 ALTER TABLE `tim`
-  MODIFY `id_tim` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=63;
+  MODIFY `id_tim` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=69;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=54;
+  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=59;
 --
 -- Constraints for dumped tables
 --

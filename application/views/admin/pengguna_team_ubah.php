@@ -73,6 +73,7 @@ $this->load->view('admin/head_admin');
 									<th>Aksi</th>
 								</tr>
 							</thead>
+															<tbody>
 							<?php 
 							$no=1;
 							foreach ($anggotaTim as $data) {
@@ -80,7 +81,6 @@ $this->load->view('admin/head_admin');
 
 
 								?>
-								<tbody>
 									<tr>
 										<td><?php echo $no ?></td>
 										<td>

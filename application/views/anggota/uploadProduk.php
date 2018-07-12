@@ -101,7 +101,7 @@ function rupiah($angka){
                           <div class="box-body">
                             <input type="hidden" class="form-control" id="inputName" name="id_produk" value="<?php echo $data->id_produk; ?>" required="">   
                             <input type="hidden" name="nama_file" value="<?php echo $data->file_produk; ?>" >   
-                            <input type="hidden" name="nama_foto" value="<?php echo $data->foto_produk; ?>" >
+                            <input type="hidden" name="nama_foto" value="<?php echo $data->foto_produk; ?>" >   
 
                             <div class="form-group">
                               <label for="inputName">Nama Produk</label>

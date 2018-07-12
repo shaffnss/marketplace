@@ -38,6 +38,7 @@ $this->load->view('admin/head_admin');
                   <th>Aksi</th>
                 </tr>
                 </thead>
+                                <tbody>
 
                    <?php 
                    $no=1;
@@ -45,7 +46,7 @@ $this->load->view('admin/head_admin');
                   # code...
                   
                 ?>
-                <tbody>
+
                 <tr>
                   <td><?php echo $no ?></td>
                   <td><?php echo $item->nama_users; ?></td>

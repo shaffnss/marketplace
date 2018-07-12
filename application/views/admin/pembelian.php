@@ -42,14 +42,12 @@ function rupiah($angka){
                   <th>Aksi</th>
                 </tr>
               </thead>
-
-              <?php 
-              $no=1;
-              foreach ($pembelian as $item) { 
-         
-                ?>
-
-                <tbody>
+              <tbody>
+                <?php 
+                $no=1;
+                foreach ($pembelian as $item) { 
+                 
+                  ?>
                   <tr>
                     <td><?php echo $no ?></td>
                     <td><?php echo $item->kode_pembelian; ?></td>
@@ -111,44 +109,44 @@ function rupiah($angka){
                                 <p class="form-control" name="tgl_pembelian"><?php echo $item->tgl_pembelian; ?></p>
                               </div>
 
-                                <div class="form-group">
-                                  <label for="inputName">Bukti Pembayaran</label>
-                                  <?php if($item->bukti_pembayaran){ ?>
-																	<p><img src="<?php echo site_url('/assets/bukti pembayaran/'.$item->bukti_pembayaran); ?>" height='100px' width='100px'></p>
-                                  <!-- <p class="form-control" name="nama_produk"><?php //echo $item->bukti_pembayaran?></p> -->
-																	<?php }else{ ?>
-																	<p><span class="label label-warning">Belum upload bukti pembayaran</span></p>
-																	<?php } ?>
-                                </div>
+                              <div class="form-group">
+                                <label for="inputName">Bukti Pembayaran</label>
+                                <?php if($item->bukti_pembayaran){ ?>
+                                 <p><img src="<?php echo site_url('/assets/bukti pembayaran/'.$item->bukti_pembayaran); ?>" height='100px' width='100px'></p>
+                                 <!-- <p class="form-control" name="nama_produk"><?php //echo $item->bukti_pembayaran?></p> -->
+                               <?php }else{ ?>
+                                 <p><span class="label label-warning">Belum upload bukti pembayaran</span></p>
+                               <?php } ?>
+                             </div>
 
-                              </div>
-                            </div>
+                           </div>
+                         </div>
 
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                            </div>
-                          </form>
+                         <div class="modal-footer">
+                          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                         </div>
-                        <!-- /.modal-content -->
-                      </div>
-                      <!-- /.modal-dialog -->
+                      </form>
                     </div>
-                    <!-- /.modal -->
-                  </tbody>
-                  <?php $no++; } ?>
-                </table>
-              </div>
-              <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
+                    <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+                <?php $no++; } ?>
+              </tbody>
+            </table>
           </div>
+          <!-- /.box-body -->
         </div>
-      </section>
-      <!-- /.content -->
+        <!-- /.box -->
+      </div>
     </div>
-    <!-- /.content-wrapper -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 
 
-    <?php
-    $this->load->view('admin/foot_admin');
-    ?>
+<?php
+$this->load->view('admin/foot_admin');
+?>
