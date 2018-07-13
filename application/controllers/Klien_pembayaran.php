@@ -34,28 +34,6 @@ class Klien_pembayaran extends BaseController {
 		$data["perjanjians"]=$this->Klien_pembayaran_m->getPerjanjian();
 		$this->load->view('Klien/detail_pembayaran', $data);
 	}
-	
-	public function pembelian($id_produk) { //unggah bukti pembelian
-		$id_users = $this->session->userdata('userId'); //unggah per user
-		$get_kode = $this->db->join('kategori_produk', 'produk.id_kategori=kategori_produk.id_kategori')
-		->where('id_produk', $id_produk)->get('produk')->row(); //create kode pembelian
-		
-		$randomstring = random_string('alpha', 4); 
-		
-		//--INSERT DETAIL PEMBELIAN--
-		$data = array(
-			'tgl_pembelian'=>date('Y-m-d'),
-			'id_users'=>$id_users,
-			'status_pembelian'=>'proses',
-			'kode_pembelian'=>$get_kode->kode_jenis."-".$randomstring
-		);
-
-		 //insert data pembelian
-		$id_pembelian = $this->Klien_pembayaran_m->insertBukti($data);
-		$this->db->insert('detail_pembelian', array('id_pembelian'=>$id_pembelian, 'id_produk'=>$id_produk));
-		
-		redirect('Klien_pembayaran');
-	}
 
 	public function unggahPembayaran(){ //unggah detail pembelian 
 			$config['upload_path']          = './assets/bukti pembayaran/';
@@ -67,8 +45,6 @@ class Klien_pembayaran extends BaseController {
 			$id_kategori = $this->input->post('nama_perjanjian');
 			$id_pembelian = $this->input->post('id_pembelian');
 			$keterangan_perjanjian = $this->input->post('keterangan_perjanjian');
-			$bank = $this->input->post('bank');
-			$nominal = $this->input->post('nominal');
 
 			$this->load->library('upload', $config);
 			$this->upload->initialize($config);

@@ -33,7 +33,7 @@
 	</head>
 
 <!-- Navigation -->
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark fixed-top" style="background-color: #DD3F00;">
   <div class="container">
     <a class="navbar-brand" href="<?php echo site_url('Home') ?>" style="color=#000">VOKASI DEV</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,19 +53,19 @@
       <ul class="navbar-nav ml-auto">
 
 				<li class="nav-item">
-          <a class="nav-link" href="<?php echo site_url('ListProduk/keranjang_belanja')?>">Keranjang <span class="badge badge-notify"><?php echo count($this->cart->contents()); ?></span></a>
+          <a class="nav-link" href="<?php echo site_url('ListProduk/keranjang_belanja')?>" style="color: white;">Keranjang <span class="badge badge-notify"><?php echo count($this->cart->contents()); ?></span></a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo site_url('ListProduk')?>">Produk</a>
+          <a class="nav-link" href="<?php echo site_url('ListProduk')?>" style="color: white;">Produk</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo site_url('Login')?>">Login</a>
+          <a class="nav-link" href="<?php echo site_url('Login')?>" style="color: white;">Login</a>
         </li>
 
          <li class="nav-item">
-          <a class="nav-link" href="<?php echo site_url('Register')?>">Register</a>
+          <a class="nav-link" href="<?php echo site_url('Register')?>" style="color: white;">Register</a>
 					</li>
 					
 				<?php 
@@ -83,7 +83,7 @@
                 //Login Klien
         ?>
 				<li class="nav-item">
-          <a class="nav-link" href="<?php echo site_url('Klien_dashboard')?>"><?php echo $this->session->userdata('name'); ?></a>
+          <a class="nav-link" style="color: white;" href="<?php echo site_url('Klien_dashboard')?>"><?php echo $this->session->userdata('name'); ?></a>
 				</li>
 				<?php
             }elseif ($role == 3){

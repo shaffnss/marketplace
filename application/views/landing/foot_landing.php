@@ -1,5 +1,5 @@
  <!-- Footer -->
-    <footer class="py-5 bg-dark">
+    <footer class="py-5" style="background-color: #DD3F00;">
       <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy; VokasiDev 2018</p>
       </div>

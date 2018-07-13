@@ -56,7 +56,7 @@
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
 
-  <header class="main-header">
+  <header class="main-header" style="background-color: #DD3F00;">
       <!-- Logo -->
       <a class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->

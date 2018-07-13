@@ -67,6 +67,7 @@ class Klien_profile extends Basecontroller {
 		$this->db->where('id_users',$id_users);
 		$this->db->update('users',$klien);
 		$this->session->set_userdata('name', $nama_users);
+		$this->session->set_flashdata('success','Data profil berhasil diubah');
 		redirect('Klien_profile');
 	}
 
