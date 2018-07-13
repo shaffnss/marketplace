@@ -23,7 +23,6 @@ class Admin_produk extends BaseController {
 		$data["tambah_tim"]=$this->Admin_produk_model->getTeam();
 		$data["tambah_produk"]=$this->Admin_produk_model->getTeam();
 		$data["kategoris"]=$this->Admin_produk_model->getKategori();
-		
 		$this->load->view('admin/produkTambah',$data);
 	}  
 
@@ -87,6 +86,7 @@ class Admin_produk extends BaseController {
 			$deskripsi_produk = $this->input->post('deskripsi_produk', true);
 			$link_demo = $this->input->post('link_demo', true);
 			$nama_tim = $this->input->post('nama_tim', true);
+			
 			
 			$data = array(
 				'nama_produk'=>$nama_produk,

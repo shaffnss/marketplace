@@ -99,157 +99,168 @@ function rupiah($angka){
                 <td>
                   <a href="<?php echo $data->link_demo?>" type="button" class="btn btn-sm btn-primary" href><i class="fa fa-link" style="color: #fff"></i></a>
                 </td>
-              <!--   <td><span class="label label-success">Diterima</span></td> -->
+                <!--   <td><span class="label label-success">Diterima</span></td> -->
                 <td>
-                    <?php 
-                    if ($data->status_produk == "aktif") {
-                      echo '<span class="label label-success">Aktif</span>';
-                    }else{
-                      echo '<span class="label label-danger">Tidak Aktif</span>';
-                    }
-                    ?>
+                  <?php 
+                  if ($data->status_produk == "aktif") {
+                    echo '<span class="label label-success">Aktif</span>';
+                  }else{
+                    echo '<span class="label label-danger">Tidak Aktif</span>';
+                  }
+                  ?>
                 </td>
                 <td class="text-center">
-                    <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ubah-produk<?php echo $data->id_produk; ?>" onclick="ubah-produk"><i class="fa fa-edit"> Edit</i>
-                    </button>
-                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#lihat-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff"><i class="fa fa-eye"> Detail</i>
-                    </button>
-                    <a onclick="return confirm('apakah anda yakin ingin menolak produk ini?'); " href="<?php echo site_url('Admin_produk/ditolak/'.$data->id_detail_produk)?>" class="btn btn-sm btn-info" style="background: #d41912; border-color: #fff"><i class="fa fa-remove"></i> Tolak</a>
+                  <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ubah-produk<?php echo $data->id_produk; ?>" onclick="ubah-produk"><i class="fa fa-edit"> Edit</i>
+                  </button>
+                  <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#lihat-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff"><i class="fa fa-eye"> Detail</i>
+                  </button>
+                  <a onclick="return confirm('apakah anda yakin ingin menolak produk ini?'); " href="<?php echo site_url('Admin_produk/ditolak/'.$data->id_detail_produk)?>" class="btn btn-sm btn-info" style="background: #d41912; border-color: #fff"><i class="fa fa-remove"></i> Tolak</a>
                 </td>
-                </tr>
+              </tr>
 
-                <div class="modal fade" id="ubah-produk<?php echo $data->id_produk; ?>">
-                  <div class="modal-dialog">
+              <div class="modal fade" id="ubah-produk<?php echo $data->id_produk; ?>">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Ubah Data Produk Diterima</h4>
+                      </div>
+                      <div class="modal-body">
+                        <form action="<?php echo site_url('Admin_produk/editProduk'); ?>" method="POST" class="form-horizontal">
+                          <div class="box-body">
+                            <input type="hidden" class="form-control" id="inputName" name="id_produk" value="<?php echo $data->id_produk; ?>" required>   
+
+                            <div class="form-group">
+                              <label for="inputName">Nama Produk</label>
+                              <p><?php echo $data->nama_produk; ?></p>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="produk">Status</label>
+                              <div class="radio">
+                                <label>
+                                  <input <?php echo ($data->status_produk=='aktif' ? 'checked' : '') ?> type="radio" name="status_produk" id="optionsAktif" value="aktif" >Aktif
+                                </label>
+                                <label>
+                                  <input <?php echo ($data->status_produk=='nonaktif' ? 'checked' : '') ?> type="radio" name="status_produk" id="optionsTdkAktif" value="nonaktif">Tidak Aktif
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                          <input type="submit" class="btn btn-primary" value="Simpan">
+                        </div>
+                      </form>
+                    </div>
+                    <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+
+                <!-- Modal Detail Produk -->
+                <div class="modal fade" id="lihat-produk<?php echo $data->id_produk; ?>">
+                  <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span></button>
-                          <h4 class="modal-title">Ubah Data Produk Diterima</h4>
+                          <h4 class="modal-title">Detail <?php echo $data->nama_produk; ?></h4>
                         </div>
                         <div class="modal-body">
-                          <form action="<?php echo site_url('Admin_produk/editProduk'); ?>" method="POST" class="form-horizontal">
                             <div class="box-body">
-                              <input type="hidden" class="form-control" id="inputName" name="id_produk" value="<?php echo $data->id_produk; ?>" required>   
-
                               <div class="form-group">
-                                <label for="inputName">Nama Produk</label>
-                                <p><?php echo $data->nama_produk; ?></p>
+                                <div class="row">
+                                  <!-- <div class="col-md-3">
+                                    <label for="inputName">ID Produk</label>
+                                    <input type="hidden"><?php echo $data->id_produk; ?></input>
+                                  </div> -->
+                                  <div class="col-md-12">
+                                    <label for="inputName">Nama Produk</label>
+                                    <p readonly="" class="form-control" ><?php echo $data->nama_produk; ?></p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <label for="inputName">Harga Produk</label>
+                                    <p readonly="" class="form-control" ><?php echo rupiah($data->harga_produk)?></p>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <label for="inputName">Nama Tim</label>
+                                    <p readonly="" class="form-control" name="nama_tim"><?php echo $data->nama_tim; ?></p>
+                                  </div>
+                                </div>
                               </div>
 
                               <div class="form-group">
-                                <label for="produk">Status</label>
-                                <div class="radio">
-                                  <label>
-                                    <input <?php echo ($data->status_produk=='aktif' ? 'checked' : '') ?> type="radio" name="status_produk" id="optionsAktif" value="aktif" >Aktif
-                                  </label>
-                                  <label>
-                                    <input <?php echo ($data->status_produk=='nonaktif' ? 'checked' : '') ?> type="radio" name="status_produk" id="optionsTdkAktif" value="nonaktif">Tidak Aktif
-                                  </label>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <label for="inputName">Jenis Produk</label>
+                                    <p readonly="" class="form-control" ><?php echo $data->nama_kategori; ?></p>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <label for="inputName">Link Demo</label>
+                                    <p readonly="" class="form-control" href="<?php echo $data->link_demo?>">link demo</p>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          </div>
 
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                            <input type="submit" class="btn btn-primary" value="Simpan">
-                          </div>
-                        </form>
-                      </div>
-                      <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                  </div>
-                  <!-- /.modal -->
+                              <div class="form-group">
+                                <label for="inputName">Deskripsi Produk</label>
+                                <textarea readonly="" rows="5" class="form-control" name="nama_klien"><?php echo $data->deskripsi_produk; ?></textarea>
+                              </div>
 
-                  <!-- Modal Detail Produk -->
-                  <div class="modal fade" id="lihat-produk<?php echo $data->id_produk; ?>">
-                    <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">Detail <?php echo $data->nama_produk; ?></h4>
-                          </div>
-                          <div class="modal-body">
-                            <!--  <form action="<?php //echo site_url('Admin_pembelian/ubahPembelian') ?>" enctype="multipart/form-data" method="POST" class="form-horizontal"> -->
-                              <div class="box-body">
+                              <div class="form-group">
                                 <div class="form-group">
-                                  <label for="inputName">ID Produk</label>
-                                  <input type="text" class="form-control" id="inputName" name="id_produk" value="<?php echo $data->id_produk; ?>" required>
-                                </div>
-
-                                <div class="form-group">
-                                  <label for="inputName">Nama Produk</label>
-                                  <p class="form-control" name="nama_produk"><?php echo $data->nama_produk; ?></p>
-                                </div>
-
-                                <div class="form-group">
-                                  <label for="inputName">Jenis Produk</label>
-                                  <p class="form-control" name="nama_produk"><?php echo $data->nama_kategori; ?></p>
-                                </div>
-
-                                <div class="form-group">
-                                  <label for="inputName">Harga Produk</label>
-                                  <p class="form-control" name="harga_produk"><?php echo rupiah($data->harga_produk)?></p>
-                                </div>
-
-                                <div class="form-group">
-                                  <label for="inputName">Nama Tim</label>
-                                  <p class="form-control" name="nama_tim"><?php echo $data->nama_tim; ?></p>
-                                </div>
-
-                                <div class="form-group">
-                                  <label for="inputName">Deskripsi Produk</label>
-                                  <textarea readonly="" rows="5" class="form-control"> name="nama_klien"><?php echo $data->deskripsi_produk; ?></textarea>
-                                </div>
-
-                                  <div class="form-group">
-                                    <div class="form-group">
-                                      <div class="row">
-                                        <div class="col-md-6">
-                                          <label for="inputEmail">Foto Produk</label>
-                                          <?php if($data->foto_produk){ ?>
-                                          <p><img src="<?php echo site_url('/assets/produk/'); echo $data->foto_produk ?>" height='100px' width='100px'></p>
-                                          <?php } ?>
-                                        </div>
-                                        <div class="col-md-6">
-                                          <label for="inputEmail">File Produk</label>
-                                          <?php if($data->file_produk){ ?>
-                                          <p><a target="_blank" class="btn btn-success btn-sm" href="<?php echo site_url('assets/file_produk/'.$data->file_produk); ?>"><i class="fa fa-file"></i> Download File</a></p>
-                                          <?php } ?>
-                                        </div>
-                                      </div>
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                      <label for="inputEmail">Foto Produk</label>
+                                      <?php if($data->foto_produk){ ?>
+                                        <p><img src="<?php echo site_url('/assets/produk/'); echo $data->foto_produk ?>" height='100px' width='200px'></p>
+                                      <?php } ?>
                                     </div>
-                                  </div>                      
-                              </div>
+                                    <div class="col-md-6">
+                                      <label for="inputEmail">File Produk</label>
+                                      <?php if($data->file_produk){ ?>
+                                        <p><a target="_blank" class="btn btn-success btn-sm" href="<?php echo site_url('assets/file_produk/'.$data->file_produk); ?>"><i class="fa fa-file"></i> Download File</a></p>
+                                      <?php } ?>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>                        
                             </div>
+                          </div>
 
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                            </div>
-                          </form>
-                        </div>
-                        <!-- /.modal-content -->
-                      </div>
-                      <!-- /.modal-dialog -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                     </div>
-                    <!-- /.modal -->
-                    <?php 
-                    $no++; }
-                    ?>
-                  </tbody>
-                </table>
+                </div>
+                <!-- /.modal-content -->
               </div>
-              <!-- /.box-body -->
+              <!-- /.modal-dialog -->
             </div>
-            <!-- /.box --> 
-          </section>
-          <!-- /.content -->
-        </div>
-        <!-- /.content-wrapper -->
+            <!-- /.modal -->
+            <?php 
+            $no++; }
+            ?>
+          </tbody>
+        </table>
+      </div>
+      <!-- /.box-body -->
+    </div>
+    <!-- /.box --> 
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 
 
-        <?php
-        $this->load->view('admin/foot_admin');
-        ?>
+<?php
+$this->load->view('admin/foot_admin');
+?>

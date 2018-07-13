@@ -75,13 +75,13 @@ function rupiah($angka){
 									<th>Aksi</th>
 								</tr>
 							</thead>
-															<tbody>
-							<?php 
-							$no=1;
-							foreach ($produk as $data) {
+							<tbody>
+								<?php 
+								$no=1;
+								foreach ($produk as $data) {
 									# code...
-								
-								?>
+
+									?>
 
 									<tr>
 										<td><?php echo $no ?></td>
@@ -112,110 +112,110 @@ function rupiah($angka){
 										</td>
 									</tr>
 
-										<!-- Modal Detail Produk -->
-										<div class="modal fade" id="lihat-produk<?php echo $data->id_produk; ?>">
-											<div class="modal-dialog">
-												<div class="modal-content">
-													<div class="modal-header">
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-															<span aria-hidden="true">&times;</span></button>
-															<h4 class="modal-title">Detail <?php echo $data->nama_produk; ?></h4>
-														</div>
-														<div class="modal-body">
-																<div class="box-body">
-																	<div class="form-group">
-																		<div class="row">
-																			<div class="col-md-3">
-																				<label for="inputName">ID Produk</label>
-																				<p><?php echo $data->id_produk; ?></p>
-																			</div>
-																			<div class="col-md-9">
-																				<label for="inputName">Nama Produk</label>
-																				<p class="form-control" ><?php echo $data->nama_produk; ?></p>
-																			</div>
-																		</div>
+									<!-- Modal Detail Produk -->
+									<div class="modal fade" id="lihat-produk<?php echo $data->id_produk; ?>">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">&times;</span></button>
+														<h4 class="modal-title">Detail <?php echo $data->nama_produk; ?></h4>
+													</div>
+													<div class="modal-body">
+														<div class="box-body">
+															<div class="form-group">
+																<div class="row">
+																	<!-- <div class="col-md-3">
+																		<label for="inputName">ID Produk</label>
+																		<input type="hidden"><?php echo $data->id_produk; ?></input>
+																	</div> -->
+																	<div class="col-md-12">
+																		<label for="inputName">Nama Produk</label>
+																		<p readonly="" class="form-control" ><?php echo $data->nama_produk; ?></p>
 																	</div>
-																	<div class="form-group">
-																		<div class="row">
-																			<div class="col-md-6">
-																				<label for="inputName">Harga Produk</label>
-																				<p class="form-control" ><?php echo rupiah($data->harga_produk)?></p>
-																			</div>
-																			<div class="col-md-6">
-																				<label for="inputName">Nama Tim</label>
-																				<p class="form-control" name="nama_tim"><?php echo $data->nama_tim; ?></p>
-																			</div>
-																		</div>
+																</div>
+															</div>
+															<div class="form-group">
+																<div class="row">
+																	<div class="col-md-6">
+																		<label for="inputName">Harga Produk</label>
+																		<p readonly="" class="form-control" ><?php echo rupiah($data->harga_produk)?></p>
 																	</div>
-
-																	<div class="form-group">
-																		<div class="row">
-																			<div class="col-md-6">
-																				<label for="inputName">Jenis Produk</label>
-																				<p class="form-control" ><?php echo $data->nama_kategori; ?></p>
-																			</div>
-																			<div class="col-md-6">
-																				<label for="inputName">Link Demo</label>
-																				<p class="form-control" href="<?php echo $data->link_demo?>">link demo</p>
-																			</div>
-																		</div>
+																	<div class="col-md-6">
+																		<label for="inputName">Nama Tim</label>
+																		<p readonly="" class="form-control" name="nama_tim"><?php echo $data->nama_tim; ?></p>
 																	</div>
-
-																	<div class="form-group">
-																		<label for="inputName">Deskripsi Produk</label>
-																		<p class="form-control" name="nama_klien"><?php echo $data->deskripsi_produk; ?></p>
-																	</div>
-																	
-																	<div class="form-group">
-																		<div class="form-group">
-																			<div class="row">
-																				<div class="col-md-6">
-																					<label for="inputEmail">Foto Produk</label>
-																					<?php if($data->foto_produk){ ?>
-																					<p><img src="<?php echo site_url('/assets/produk/'); echo $data->foto_produk ?>" height='100px' width='100px'></p>
-																					<?php } ?>
-																				</div>
-																				<div class="col-md-6">
-																					<label for="inputEmail">File Produk</label>
-																					<?php if($data->file_produk){ ?>
-																					<p><a target="_blank" class="btn btn-success btn-sm" href="<?php echo site_url('assets/file_produk/'.$data->file_produk); ?>"><i class="fa fa-file"></i> Download File</a></p>
-																					<?php } ?>
-																				</div>
-																			</div>
-																		</div>
-																	</div>												
 																</div>
 															</div>
 
-															<div class="modal-footer">
-																<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+															<div class="form-group">
+																<div class="row">
+																	<div class="col-md-6">
+																		<label for="inputName">Jenis Produk</label>
+																		<p readonly="" class="form-control" ><?php echo $data->nama_kategori; ?></p>
+																	</div>
+																	<div class="col-md-6">
+																		<label for="inputName">Link Demo</label>
+																		<p readonly="" class="form-control" href="<?php echo $data->link_demo?>">link demo</p>
+																	</div>
+																</div>
 															</div>
-														</form>
+
+															<div class="form-group">
+																<label for="inputName">Deskripsi Produk</label>
+																<textarea readonly="" rows="5" class="form-control" name="nama_klien"><?php echo $data->deskripsi_produk; ?></textarea>
+															</div>
+
+															<div class="form-group">
+																<div class="form-group">
+																	<div class="row">
+																		<div class="col-md-6">
+																			<label for="inputEmail">Foto Produk</label>
+																			<?php if($data->foto_produk){ ?>
+																				<p><img src="<?php echo site_url('/assets/produk/'); echo $data->foto_produk ?>" height='100px' width='200px'></p>
+																			<?php } ?>
+																		</div>
+																		<div class="col-md-6">
+																			<label for="inputEmail">File Produk</label>
+																			<?php if($data->file_produk){ ?>
+																				<p><a target="_blank" class="btn btn-success btn-sm" href="<?php echo site_url('assets/file_produk/'.$data->file_produk); ?>"><i class="fa fa-file"></i> Download File</a></p>
+																			<?php } ?>
+																		</div>
+																	</div>
+																</div>
+															</div>												
+														</div>
 													</div>
-													<!-- /.modal-content -->
-												</div>
-												<!-- /.modal-dialog -->
+
+													<div class="modal-footer">
+														<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+													</div>
+												</form>
 											</div>
-											<!-- /.modal -->
-											<?php 
-											$no++; }
-											?>
-										</tbody>
-									</table>
-								</div>
-								<!-- /.box-body -->
-							</div>
-							<!-- /.box --> 
+											<!-- /.modal-content -->
+										</div>
+										<!-- /.modal-dialog -->
+									</div>
+									<!-- /.modal -->
+									<?php 
+									$no++; }
+									?>
+								</tbody>
+							</table>
 						</div>
-						<!-- /.col --> 
+						<!-- /.box-body -->
 					</div>
-					<!-- /.row --> 
-				</section>
-				<!-- /.content -->
+					<!-- /.box --> 
+				</div>
+				<!-- /.col --> 
 			</div>
-			<!-- /.content-wrapper -->
+			<!-- /.row --> 
+		</section>
+		<!-- /.content -->
+	</div>
+	<!-- /.content-wrapper -->
 
 
-			<?php
-			$this->load->view('admin/foot_admin');
-			?>
+	<?php
+	$this->load->view('admin/foot_admin');
+	?>

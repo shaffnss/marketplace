@@ -87,8 +87,8 @@ class ListProduk extends CI_Controller {
 				$id_produk = $item['id'];
 			}
 			
-			$get_kode = $this->db->join('kategori_produk', 'produk.id_kategori=kategori_produk.id_kategori')
-			->where('id_produk', $id_produk)->get('produk')->row();
+			// $get_kode = $this->db->join('kategori_produk', 'produk.id_kategori=kategori_produk.id_kategori')
+			// ->where('id_produk', $id_produk)->get('produk')->row();
 
 			$randomstring = random_string('alnum', 6);
 			
@@ -97,7 +97,7 @@ class ListProduk extends CI_Controller {
 				'tgl_pembelian' => date('Y-m-d'),
 				'total' => $total,
 				'id_users' => $this->session->userdata('userId'),
-				'kode_pembelian'=>$get_kode->kode_jenis."-".strtoupper($randomstring)
+				'kode_pembelian'=>"BY-".strtoupper($randomstring)
 			);
 			$id_pembelian = $this->listProduk_model->insertPembelian($data); 
 			//insert sekaligus get id_pembelian yang barusan dibuat

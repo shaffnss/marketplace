@@ -32,7 +32,7 @@ class Anggota_uploadProduk extends BaseController {
 		$config['max_size']             = 9000;
 		$config['max_width']            = 20000;
 		$config['max_height']           = 20000;
-		$config['file_name'] = "produk".time();
+		$config['file_name'] 			= "produk".time();
 
 		$this->load->library('upload', $config);
 		if( ! $this->upload->do_upload('foto_produk'))
@@ -52,7 +52,9 @@ class Anggota_uploadProduk extends BaseController {
 			$link_demo = $this->input->post('link_demo', true);
 			$id_user = $this->session->userdata('userId');
 			$id_team = $this->input->post('nama_tim');
-			// var_dump("lele");exit;
+			$get_kode = $this->db->where('id_kategori', $jenis_produk)->get('kategori_produk')->row(); //create kode pembelian
+			$randomstring = random_string('alpha', 4); 
+	
 			$data = array(
 				'nama_produk'=>$nama_produk,
 				'id_kategori' =>$jenis_produk,
@@ -60,19 +62,18 @@ class Anggota_uploadProduk extends BaseController {
 				'deskripsi_produk' => $deskripsi_produk,
 				'link_demo'	=> $link_demo,
 				'foto_produk' => $foto_produk,
-				'id_users' => $id_user
+				'id_users' => $id_user,
+				'kode_produk'=>$get_kode->kode_jenis."-".$randomstring
 			); 
 			
 			$config['upload_path']          = './assets/file_produk/';
-			$config['allowed_types']        = 'zip|rar';
+			$config['allowed_types']        = 'zip';
 			$config['max_size']             = 7000;
 			$this->load->library('upload', $config);
 			$this->upload->initialize($config);
 			
 			if( ! $this->upload->do_upload('file_produk')){
 				$errorp = 1;
-				var_dump($this->upload->display_errors());
-			exit;
 			}else{
 				$errorp = 0;
 				$file_produk = $this->upload->data();

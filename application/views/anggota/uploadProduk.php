@@ -29,6 +29,38 @@ function rupiah($angka){
 
 <!-- Main content -->
 <section class="content">
+<div class="row">
+      <div class="col-md-12">
+        <?php
+        $this->load->helper('form');
+        $error = $this->session->flashdata('error');
+        if($error)
+        {
+          ?>
+          <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <?php echo $this->session->flashdata('error'); ?>                    
+          </div>
+        <?php } ?>
+        <?php  
+        $success = $this->session->flashdata('success');
+        if($success)
+        {
+          ?>
+          <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <?php echo $this->session->flashdata('success'); ?>
+          </div>
+        <?php } ?>
+
+        <div class="row">
+          <div class="col-md-12">
+            <?php echo validation_errors('<div class="alert alert-danger alert-dismissable">', ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>'); ?>
+          </div>
+        </div>
+      </div>
+    </div>
+
   <div class="row">
     <div class="col-xs-12">
       <div class="box">
@@ -41,6 +73,7 @@ function rupiah($angka){
            <thead>
             <tr>
               <th>No</th>
+              <th>Kode Produk</th>
               <th>Nama Produk</th>
               <th>Jenis Produk</th>
               <th>Harga</th>
@@ -61,6 +94,7 @@ function rupiah($angka){
             <tbody>
               <tr>
                 <td><?php echo $no ?></td>
+                <td><?php echo $data->kode_produk ?></td>
                 <td><?php echo $data->nama_produk?></td>
                 <td><?php echo $data->nama_kategori?></td>
                 <td><?php echo rupiah($data->harga_produk)?></td>
@@ -99,9 +133,14 @@ function rupiah($angka){
                       <div class="modal-body">
                         <form action="<?php echo site_url('Anggota_uploadProduk/ubahProduk') ?>" enctype="multipart/form-data" method="POST" class="form-horizontal">
                           <div class="box-body">
-                            <input type="hidden" class="form-control" id="inputName" name="id_produk" value="<?php echo $data->id_produk; ?>" required="">   
+                            <input type="hidden" id="inputName" name="id_produk" value="<?php echo $data->id_produk; ?>" required="">   
                             <input type="hidden" name="nama_file" value="<?php echo $data->file_produk; ?>" >   
                             <input type="hidden" name="nama_foto" value="<?php echo $data->foto_produk; ?>" >   
+
+                            <div class="form-group">
+                              <label for="inputName">Kode Produk</label>
+                              <input type="" readonly="" class="form-control" id="inputName" name="kode_produk" value="<?php echo $data->kode_produk; ?>"></input>
+                            </div>
 
                             <div class="form-group">
                               <label for="inputName">Nama Produk</label>

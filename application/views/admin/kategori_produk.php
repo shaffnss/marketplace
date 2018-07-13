@@ -67,6 +67,11 @@ $this->load->view('admin/head_admin');
               <input type="text" class="form-control" name="nama_kategori" placeholder="Nama Kategori">
             </div>
 
+            <div class="form-group">
+              <label class="">Kode Kategori</label>
+              <input type="text" class="form-control" name="kode_jenis" placeholder="Kode Kategori">
+            </div>
+
           </div>
         </div>
 
@@ -89,7 +94,7 @@ $this->load->view('admin/head_admin');
     <div class="col-xs-12">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">Tabel Produk</h3>
+          <!-- <h3 class="box-title">Tabel Produk</h3> -->
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -98,6 +103,7 @@ $this->load->view('admin/head_admin');
               <tr>
                 <th>ID</th>
                 <th>Nama Kategori</th>
+                <th>Kode Kategori</th>
                 <th>Status</th>
                 <th>Aksi</th>
               </tr>
@@ -111,6 +117,7 @@ $this->load->view('admin/head_admin');
                 <tr>
                   <td><?php echo $no ?></td>
                   <td><?php echo $data->nama_kategori?></td>
+                  <td><?php echo $data->kode_jenis?></td>
                   <td>
                     <?php if($data->status_kategori=='aktif') {
                       ?>
@@ -125,6 +132,7 @@ $this->load->view('admin/head_admin');
                   </td>
                 </tr>
 
+                <!-- MODAL UBAH -->
                 <div class="modal fade" id="ubah-kategori<?php echo $data->id_kategori; ?>">
                   <div class="modal-dialog">
                     <div class="modal-content">
@@ -142,6 +150,11 @@ $this->load->view('admin/head_admin');
                               <div class="form-group">
                                 <label for="inputName">Nama Kategori</label>
                                 <input type="text" class="form-control" id="inputName" name="nama_kategori" value="<?php echo $data->nama_kategori; ?>" required>
+                              </div>
+
+                              <div class="form-group">
+                                <label for="inputName">Kode Kategori</label>
+                                <input type="text" class="form-control" id="inputName" name="kode_jenis" value="<?php echo $data->kode_jenis; ?>" required>
                               </div>
 
                               <div class="form-group">

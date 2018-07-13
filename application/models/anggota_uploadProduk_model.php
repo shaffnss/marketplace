@@ -2,8 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Anggota_uploadProduk_model extends CI_Model {
-	public function getUpload($id_user)
-	{
+	public function getUpload($id_user){
 		$this->db->select("*");
 		$this->db->select("detail_produk.status as status_produk");
 		$this->db->from("produk");
@@ -33,7 +32,7 @@ class Anggota_uploadProduk_model extends CI_Model {
 		->get("tim")->result();
 	}
 	
-	public function getKategori() {
+	public function getKategori(){
 		return $this->db->where('status_kategori', 'aktif')->get('kategori_produk')->result();
 	}
 
