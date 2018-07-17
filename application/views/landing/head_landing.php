@@ -51,15 +51,25 @@
 
     <div class="collapse navbar-collapse navbar-dark" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-
+				<?php
+				$role = $this->session->userdata('role');
+				if($role == 2){
+				?>
 				<li class="nav-item">
           <a class="nav-link" href="<?php echo site_url('ListProduk/keranjang_belanja')?>" style="color: white;">Keranjang <span class="badge badge-notify"><?php echo count($this->cart->contents()); ?></span></a>
         </li>
-
+				<?php
+				}
+				?>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo site_url('ListProduk')?>" style="color: white;">Produk</a>
         </li>
-
+				<?php
+					$role = $this->session->userdata('role');
+					$isLoggedIn = $this->session->userdata("isLoggedIn");
+					
+					if( $isLoggedIn == FALSE){
+				?>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo site_url('Login')?>" style="color: white;">Login</a>
         </li>
@@ -67,10 +77,9 @@
          <li class="nav-item">
           <a class="nav-link" href="<?php echo site_url('Register')?>" style="color: white;">Register</a>
 					</li>
+				<?php
+					}
 					
-				<?php 
-					$role = $this->session->userdata('role');
-					$isLoggedIn = $this->session->userdata("isLoggedIn");
 					if( $isLoggedIn == TRUE){
 						if($role == 1){
             //Login Admin
@@ -98,6 +107,9 @@
         ?>
 				<li class="nav-item">
           <a class="nav-link" href="<?php echo site_url('Admin_dashboard')?>"><?php echo $this->session->userdata('name'); ?></a>
+				</li>
+				<li class="nav-item">
+          <a class="nav-link" href="<?php echo site_url('Admin_dashboard')?>">Logout</a>
 				</li>
 				<?php
             }
