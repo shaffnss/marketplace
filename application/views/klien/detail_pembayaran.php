@@ -120,29 +120,11 @@ function rupiah($angka){
 									</div>
 								</div>
 
-								<!-- <div class="form-group">
-									<label for="inputName" class="col-sm-2 control-label">Nama Bank</label>
-									<div class="col-sm-8">
-										<select class="form-control" name="bank" required="" >
-											<option disabled selected="">--- Pilih Bank ---</option>
-											<option value="BRI">BRI</option>
-											<option value="BCA">BCA</option>
-											<option value="BCA">BNI</option>
-										</select>
-									</div>
-								</div> -->
-
-								<!-- <div class="form-group">
-									<label for="inputEmail" class="col-sm-2 control-label">Nominal</label>
-									<div class="col-sm-8">
-										<input type="number" class="form-control" name="nominal" placeholder="Masukkan Nominal" value="<?php echo set_value("instansi") ?>" required>
-									</div>
-								</div> -->
-
 								<div class="form-group">
 									<label class="col-sm-2 control-label">Upload Bukti Pembayaran</label>
 									<div class="col-sm-8">
 										<input type="file" name="bukti_pembayaran" required>
+										<p class="text-muted"><i>*Maksimal ukuran file 3 MB (tipe file .gif, .jpg, .png, .jpeg, .pdf)</i></p>
 									</div>
 								</div>
 							</div>

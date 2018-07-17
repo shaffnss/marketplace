@@ -14,6 +14,6 @@ class Klien_dashboard extends Basecontroller {
  
 	public function index()
 	{
-		$this->load->view('Klien/view_dasboard');
+		$this->load->view('klien/view_dasboard');
 	}
 }

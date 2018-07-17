@@ -32,6 +32,18 @@
     <div class="login-logo">
       <a href="<?php echo site_url('Home')?>"><b>VokasiDev</b><br>Login Internal</a>
     </div>
+    
+     <!-- Alert -->
+    <?php if ($this->session->flashdata('message')): ?>
+      <div class="alert alert-<?php echo $this->session->flashdata('style'); ?> fade-in">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong><?php echo $this->session->flashdata('alert'); ?></strong>&nbsp; 
+        </br><?php echo $this->session->flashdata('message'); ?>
+      </div>
+    <?php endif; ?>
+    
+    <!-- End Alert -->
+    
     <!-- /.login-logo -->
     <div class="login-box-body">
       <p class="login-box-msg">Masuk ke VokasiDev</p>
@@ -41,7 +53,7 @@
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="password" class="form-control" name="password" placeholder="Password">
+          <input type="password" class="form-control" name="password" placeholder="Kata Sandi">
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
       
@@ -52,7 +64,7 @@
       </div>
       </form>
       <br>
-      <p style="text-align: center;">Belum memiliki akun? Silahkan &nbsp;<a href="<?php echo site_url('RegisterAnggota') ?>">Register</a> &nbsp;disini</p>
+      <p style="text-align: center;">Belum memiliki akun? Silahkan &nbsp;<a href="<?php echo site_url('RegisterAnggota') ?>">Daftar</a> &nbsp;disini</p>
       <p style="text-align: center;"><a href="<?php echo site_url('Password') ?>">Lupa Password</a></p>
     </div>
     <!-- /.login-box-body -->

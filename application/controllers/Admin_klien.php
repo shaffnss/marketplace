@@ -11,14 +11,12 @@ class Admin_klien extends BaseController {
 		$this->isAdmin();
 	}
 
-	public function index()
-	{
+	public function index(){
 		$data["klien"]=$this->Admin_klien_model->getKlien();
 		$this->load->view('admin/pengguna_klien',$data);
 	}
 
-	public function tambah_klien()
-	{
+	public function tambah_klien(){
 		$data["error_upload"] = "";
 		$this->load->view('admin/pengguna_klien_tambah',$data);
 	}
@@ -76,7 +74,7 @@ class Admin_klien extends BaseController {
 		$this->Admin_klien_model->editKlien($data, $id_users);
 		$this->session->set_flashdata('success', 'Klien dinon-aktfikan.');
 		redirect('Admin_klien');
-}
+    }
 
 	// public function aktivasi_klien()
 	// {

@@ -6,27 +6,38 @@ class Klien_profile extends Basecontroller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model("Klien_profile_model");
+		$this->load->model("klien_profile_model");
 		$this->IsLoggedIn();
 		$this->isKlien();
 	}
 
 	public function index(){ //tampilan halaman profile
 		$id_users = $this->session->userdata('userId');
-		$data["profile"]=$this->Klien_profile_model->getProfile($id_users);
+		$data["profile"]=$this->klien_profile_model->getProfile($id_users);
 		$this->load->view('klien/view_profile',$data);
 	}
 
 	public function ubahKlien(){ //fungsi ubah data klien 
-		$config['upload_path']          = './assets/users/klien';
-		$config['allowed_types']        = 'gif|jpg|png|jpeg';
-		$config['max_size']             = 300;
-		$config['max_width']            = 1024;
-		$config['max_height']           = 768;
+		$config['upload_path']          = './assets/users/klien/';
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
+        $config['max_size']             = 3000;
+        $config['remove_spaces']        = true;
+        $config['max_width']            = 5024;
+        $config['max_height']           = 5068;
+        $config['file_name']            = 'klien'.time();
 		$this->load->library('upload', $config);
+		$this->upload->initialize($config);
 
-		if( ! $this->upload->do_upload('foto')) //jika tidak update foto 
-		{	
+		if( !$this->upload->do_upload('foto')){ //jika gagal update foto 
+		   if ( $_FILES['foto']['name']){ //kalo isi tapi syarat salah
+		       $this->session->set_flashdata('style','danger');
+	           $this->session->set_flashdata('alert','Gagal!');
+	           $this->session->set_flashdata('message','Foto profil anda gagal dirubah '.$this->upload->display_errors());
+		   }else{ //karena tidak diisi
+		       $this->session->set_flashdata('style','success');
+	           $this->session->set_flashdata('alert','Berhasil!');
+	           $this->session->set_flashdata('message','Data profil anda berhasil dirubah');
+		   }
 			$id_users = $this->input->post('id_users', true);
 			$nama_users = $this->input->post('nama_users', true);
 			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
@@ -41,7 +52,11 @@ class Klien_profile extends Basecontroller {
 				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
 			);
-		}else{ //jika update foto
+		}else{ //jika update foto dan berhasil
+		    $this->session->set_flashdata('style','success');
+	        $this->session->set_flashdata('alert','Berhasil!');
+	        $this->session->set_flashdata('message','Data profil anda berhasil dirubah');
+
 			$img = $this->upload->data();
 			$foto = $img['file_name'];
 			$id_users = $this->input->post('id_users', true);
@@ -67,13 +82,12 @@ class Klien_profile extends Basecontroller {
 		$this->db->where('id_users',$id_users);
 		$this->db->update('users',$klien);
 		$this->session->set_userdata('name', $nama_users);
-		$this->session->set_flashdata('success','Data profil berhasil diubah');
 		redirect('Klien_profile');
 	}
 
 	public function ubahPassword(){ //fungsi ubah password
 		$id_users=$this->session->userdata('userId');
-		$datas["profile"]=$this->Klien_profile_model->getProfile($id_users);	
+		$datas["profile"]=$this->klien_profile_model->getProfile($id_users);	
 		$passLama = $this->input->post('passwordLama');
 		$passBaru = password_hash($this->input->post('passwordBaru'), PASSWORD_DEFAULT);
 		$passRe = password_hash($this->input->post('re_password'), PASSWORD_DEFAULT);
@@ -84,7 +98,7 @@ class Klien_profile extends Basecontroller {
 
 		if ($this->form_validation->run() ==  FALSE) //jika salah
 		{
-			$datas["profile"]=$this->Klien_profile_model->getProfile($id_users);
+			$datas["profile"]=$this->klien_profile_model->getProfile($id_users);
 			$data['body'] = $this->load->view('klien/view_profile', $datas,'');
 			$this->load->view('klien/head_admin',$data);
 		}else{
@@ -95,9 +109,9 @@ class Klien_profile extends Basecontroller {
 				$this->db->set('password', $passBaru);
 				$this->db->where('id_users', $this->session->userdata('userId'));
 				$this->db->update('users');
-				echo "<script>alert('Password Berhasil Dirubah');document.location='../Klien_profile'</script>";
+				echo "<script>alert('Password Berhasil Dirubah');document.location='../klien_profile'</script>";
 			}else{
-				echo "<script>alert('Password Lama Anda Salah');document.location='../Klien_profile'</script>";
+				echo "<script>alert('Password Lama Anda Salah');document.location='../klien_profile'</script>";
 			}
 		}
 	}

@@ -23,8 +23,8 @@ class Register extends CI_Controller {
 			$cekEmail = $this->Register_model->cekEmail($email);
 			if($cekEmail->num_rows() > 0){
 				$this->session->set_flashdata('style','danger');
-				$this->session->set_flashdata('alert','Register Gagal');
-				$this->session->set_flashdata('message','Email sudah terdaftar');
+				$this->session->set_flashdata('alert','Registrasi Gagal');
+				$this->session->set_flashdata('message','Email yang anada gunakan telah terdaftar');
 				redirect('Register');
 			}
 			$this->form_validation->set_rules('nama','nama','required|trim');
@@ -62,6 +62,7 @@ class Register extends CI_Controller {
          		$config['mailtype'] = 'html';
          		$config['charset'] = 'iso-8859-1';
          		$config['wordwrap'] = 'TRUE';
+         		//$config['smtp_crypto'] = 'ssl';
          		$config['crlf'] = "\r\n";
          		$config['newline'] = "\r\n";
 
@@ -79,11 +80,11 @@ class Register extends CI_Controller {
 			   Selamat datang di VokasiDev
 			   <br/>
 			   Silahkan verifikasi akun anda untuk melanjutkan pembelian anda lakukan 
-			   <a href="'.site_url("Register/verifikasi/$encrypted_id").'">Login</a> dengan menggunakan:<br/>
+			   <a href="'.site_url("Register/verifikasi/$encrypted_id").'">Login</a> dengan menggunakan:<br>
 			   Email: '.$email.'<br/>
 			   Password: '.$this->input->post('password').'<br/>
-			   <br/>
-			   <br/	>
+			   <br>
+			   <br>
 			   Admin VokasiDev
 			   </body>
 			   </html>';// body email is end
@@ -92,13 +93,16 @@ class Register extends CI_Controller {
 			   $this->email->to($address);
 			   $this->email->subject($subject);
 			   $this->email->message($message);
-			   $this->email->send();
-
-			   $this->session->set_flashdata('style','info');
-			   $this->session->set_flashdata('alert','Silahkan Cek Email Anda');
-			   $this->session->set_flashdata('message','Verifikasi email anda agar dapat mengakses sistem');
-
-			   redirect('register');	
+			   if(! $this->email->send()){
+			      $this->session->set_flashdata('style','danger');
+			      $this->session->set_flashdata('alert','Registrasi berhasil!');
+			      $this->session->set_flashdata('message','Verifikasi email anda gagal terkirim, Silahkan hubungi admin!');
+			   }else{
+			      $this->session->set_flashdata('style','success');
+			      $this->session->set_flashdata('alert','Registrasi berhasil!');
+			      $this->session->set_flashdata('message','Silahkan cek email anda agar dapat mengakses sistem'); 
+			   }
+			   redirect('login');	
 			}
 		}else{
 			$this->load->view('register',$data,'');	
@@ -110,17 +114,10 @@ class Register extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->model('Register_model');
 		$this->Register_model->changeActiveState($key);
-  		// echo "Selamat kamu telah memverifikasi akun kamu";
-  		// echo "<br><br><a href='".site_url("login")."'>Kembali ke Menu Login</a>";
 
 		$this->session->set_flashdata('style','info');
 		$this->session->set_flashdata('alert','Silahkan Login');
 		$this->session->set_flashdata('message','Gunakan Email dan Password Terdaftar');
-
-		// $data['menu'] = $this->web_model->getMenu();
-		// $data['gantiWarna'] = $this->web_model->getWarna();
-		// $data['logo1'] = $this->web_model->getLogo1();
-		//$data['gantiWarnaTextMenu'] = $this->web_model->getWarna();
 
 		$this->load->view('login');
 	}

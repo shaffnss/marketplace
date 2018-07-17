@@ -56,6 +56,12 @@ class Admin_anggota_model extends CI_Model {
 		//$this->db->order_by("created_at");
 		return $this->db->get('users')->result();
 	}
-
+    
+    public function getInfo($id_users){
+        $this->db->select("email");
+        $this->db->from("users");
+        $this->db->where("id_users",$id_users);
+        return $this->db->get()->row()->email;
+    }
 
 }

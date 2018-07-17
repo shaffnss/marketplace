@@ -82,4 +82,10 @@ class Admin_team extends BaseController {
 		$this->db->delete('detail_tim');
 		redirect('Admin_team/ubah_team/'.$id_team);
 	}
+	
+	public function hapusTim($id_tim){
+	    $this->db->where('id_tim', $id_tim)->delete('tim');
+		$this->session->set_flashdata('success', 'Data jabatan berhasil dihapus.');
+		redirect('Admin_team');
+	}
 }

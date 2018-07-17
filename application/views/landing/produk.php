@@ -18,6 +18,7 @@ function rupiah($angka){
 
           <h1 class="my-4">Produk</h1>
           <div class="list-group">
+              <a href="<?php echo site_url('ListProduk/kategori/'.'') ?>" class="list-group-item" >All</a>
             <?php foreach ($kategoris as $kategori) : ?>
             <a href="<?php echo site_url('ListProduk/kategori/'.$kategori->id_kategori) ?>" class="list-group-item <?php echo ($this->uri->segment(3) == $kategori->id_kategori ? 'active' : '') ?>" ><?php echo $kategori->nama_kategori ?></a>
             <?php endforeach; ?>
@@ -62,9 +63,11 @@ function rupiah($angka){
 											<div class="col-md-8">
 												<a class="btn btn-light d-block border" href="<?php echo site_url('ListProduk/detail/'.$produk->id_produk)?>">Detail Produk</a>
 											</div>
+
 											<div class="col-md-4">
 												<button type="submit" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></button>
 											</div>
+
 										</div>
 									</div>
 									</form>

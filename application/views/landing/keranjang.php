@@ -54,8 +54,8 @@
 							</tr>
 						</tfoot>
 					</table>
-					<a href="<?php echo site_url('ListProduk/hapus/semua'); ?>" class="btn btn-danger">Kosongkan</a>
-					<a href="<?php echo site_url('ListProduk/bayar/semua'); ?>" class="btn btn-primary">Bayar</a>
+					<a href="<?php echo site_url('ListProduk/hapus/semua'); ?>" class="btn btn-danger">Kosongkan Keranjang</a>
+					<a href="<?php echo site_url('ListProduk/bayar/semua'); ?>" class="btn btn-primary">Bayar Semua</a>
 			</div> <!-- /container -->
 		</div>
 		<!-- /.col-lg-9 -->

@@ -29,20 +29,36 @@ class Anggota_uploadProduk extends BaseController {
 	public function inputProduk(){
 		$config['upload_path']          = './assets/produk/';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
-		$config['max_size']             = 9000;
-		$config['max_width']            = 20000;
-		$config['max_height']           = 20000;
+		$config['max_size']             = 2000;
+		$config['max_width']            = 5024;
+		$config['max_height']           = 5024;
 		$config['file_name'] 			= "produk".time();
-
+        
+        $error = '';
+        
 		$this->load->library('upload', $config);
-		if( ! $this->upload->do_upload('foto_produk'))
+		if( !$this->upload->do_upload('foto_produk'))
 		{
 			$this->session->set_flashdata('style','danger');
 			$this->session->set_flashdata('alert','Gagal upload');
-			$this->session->set_flashdata('message','resolusi atau ukuran foto melebihi batas!');
-
-			redirect('Anggota_uploadProduk/tambah_uploadProduk');
+			$this->session->set_flashdata('message','Foto produk gagal diunggah, silahkan cek tipe & ukuran file anda');
+           redirect('Anggota_uploadProduk/tambah_uploadProduk');
 		}else{
+		    $config['upload_path']          = './assets/file_produk/';
+			$config['allowed_types']        = 'zip';
+			$config['max_size']             = 7000;
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+			
+			if( ! $this->upload->do_upload('file_produk')){
+				$this->session->set_flashdata('style','danger');
+        		$this->session->set_flashdata('alert','Gagal upload');
+        		$this->session->set_flashdata('message','File Produk gagal diunggah, silahkan cek tipe & ukuran file anda');
+                redirect('Anggota_uploadProduk/tambah_uploadProduk');
+			}else{
+				$file_produk = $this->upload->data();
+				$data['file_produk'] = $file_produk['file_name'];
+			}
 			$img = $this->upload->data();
 			$foto_produk = $img['file_name'];
 			$nama_produk = $this->input->post('nama_produk', true);
@@ -65,21 +81,6 @@ class Anggota_uploadProduk extends BaseController {
 				'id_users' => $id_user,
 				'kode_produk'=>$get_kode->kode_jenis."-".$randomstring
 			); 
-			
-			$config['upload_path']          = './assets/file_produk/';
-			$config['allowed_types']        = 'zip';
-			$config['max_size']             = 7000;
-			$this->load->library('upload', $config);
-			$this->upload->initialize($config);
-			
-			if( ! $this->upload->do_upload('file_produk')){
-				$errorp = 1;
-			}else{
-				$errorp = 0;
-				$file_produk = $this->upload->data();
-				$data['file_produk'] = $file_produk['file_name'];
-			}
-			
 			$this->db->trans_start();
 			$this->db->insert('produk', $data);
 			$id_produk = $this->db->insert_id();
@@ -102,18 +103,14 @@ class Anggota_uploadProduk extends BaseController {
 				);
 				$this->db->insert('detail_produk', $data2);
 			}
-			
-			if($errorp){
-				$this->session->set_flashdata('message', 'Data produk berhasil ditambahkan, namun file produk gagal di upload');
-			}else{
-				$this->session->set_flashdata('message', 'Data produk berhasil ditambahkan');
-			}
+		    $this->session->set_flashdata('style','success');
+		    $this->session->set_flashdata('alert','Berhasil!');
+		    $this->session->set_flashdata('message','Data produk berhasil ditambahkan');
 			redirect('Anggota_uploadProduk');
 		}
 	}
 
-	public function ubahProduk()
-	{
+	public function ubahProduk(){
 		$config['upload_path']          = './assets/produk/';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
 		$config['max_size']             = 3000;
@@ -121,6 +118,7 @@ class Anggota_uploadProduk extends BaseController {
 		$config['max_height']           = 5068;
 
 		$this->load->library('upload', $config);
+		$error = '';
 
 		$id_produk= $this->input->post('id_produk', true);
 		$nama_produk = $this->input->post('nama_produk', true);
@@ -131,10 +129,13 @@ class Anggota_uploadProduk extends BaseController {
 		$foto_produk = $this->input->post('foto_produk', true);
 		$file_produk = $this->input->post('file_produk', true);
 
-		if( ! $this->upload->do_upload('foto_produk'))
-		{
+		if( !$this->upload->do_upload('foto_produk')){
+		    if ( $_FILES['foto_produk']['name']){ //kalo upload foto produk tapi syarat salah
+		        $error.= 'Foto Produk gagal diunggah, silahkan cek tipe & ukuran file anda';
+		        
+		   }
+		   
 			$data = array(
-				
 				'nama_produk'=>$nama_produk,
 				'id_kategori' =>$jenis_produk,
 				'harga_produk' => $harga_produk,
@@ -161,27 +162,33 @@ class Anggota_uploadProduk extends BaseController {
 		$this->load->library('upload', $config);
 		$this->upload->initialize($config);
 		
-		if( ! $this->upload->do_upload('file_produk'))
-		{
-			$errorp = 1;
-		}
-		else
-		{
+		if(!$this->upload->do_upload('file_produk')){
+			$errorp = 1; //pengecekan apabila file produk tidak diupload
+			if ( $_FILES['file_produk']['name']){ //kalo upload file produk tapi syarat salah
+		       $error.= 'File Produk gagal diunggah, silahkan cek tipe & ukuran file anda';
+		   }
+		   
+		}else{ //kalo upload file dan syarat terpenuhi
 			unlink('./assets/file_produk/'.$file_produk); //hapus file yang lama
-			$errorp = 0;
+			$errorp = 0; 
+			
+	        
 			$file_produk = $this->upload->data();
 			$data['file_produk'] = $file_produk['file_name'];
 		}
 		
-		$this->db->where('id_produk',$id_produk); //yg di update menjadi sesuai dengan id_produk
-		$this->db->update('produk', $data);
-
-		if($errorp){
-			$this->session->set_flashdata('message', 'Data produk berhasil diubah, namun file produk tidak di upload');
+		if($error){
+		    $this->session->set_flashdata('style','success');
+	        $this->session->set_flashdata('alert','Berhasil!');
+	        $this->session->set_flashdata('message','Data produk berhasil dirubah, namun '.$error);
 		}else{
-			$this->session->set_flashdata('message', 'Data produk berhasil diubah');
+		    $this->session->set_flashdata('style','success');
+	        $this->session->set_flashdata('alert','Berhasil!');
+	        $this->session->set_flashdata('message','Data produk berhasil dirubah');
 		}
 		
+		$this->db->where('id_produk',$id_produk); //yg di update menjadi sesuai dengan id_produk
+		$this->db->update('produk', $data);
 		redirect('Anggota_uploadProduk');
 	} 
 
@@ -189,8 +196,5 @@ class Anggota_uploadProduk extends BaseController {
 		$this->Anggota_uploadProduk_model->deleteUpload($id_produk);
 		redirect('Anggota_uploadProduk');
 	}	
-
-	
-
 }
 

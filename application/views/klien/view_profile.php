@@ -11,10 +11,22 @@ $this->load->view('klien/head_klien');
       <li><a href="<?php echo site_url('Klien_dashboard')?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       <li class="active"> Profile</a></li>
     </ol>
+  <div class="row">
+     <div class="col-md-12">
+ <!-- Alert -->
+    <?php if ($this->session->flashdata('message')): ?>
+      <div class="alert alert-<?php echo $this->session->flashdata('style'); ?> fade-in">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong><?php echo $this->session->flashdata('alert'); ?></strong>&nbsp; 
+        </br><?php echo $this->session->flashdata('message'); ?>
+      </div>
+    <?php endif; ?>
+    <!-- End Alert -->
+    </div>
+</div>
   </section>
 
   <?php 
-
   foreach ($profile as $data) {
                   # code...
     ?>
@@ -96,7 +108,6 @@ $this->load->view('klien/head_klien');
 
                <div class="form-group">
                 <label for="inputName" class="col-sm-2 control-label">Nama</label>
-
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="inputName" name="nama_users" value="<?php echo $data->nama_users; ?>">
                 </div>
@@ -104,7 +115,6 @@ $this->load->view('klien/head_klien');
 
               <div class="form-group">
                 <label class="col-sm-2 control-label">Jenis Kelamin</label> 
-
                 <div class="col-sm-10">       
                   <select class="form-control" name="jenis_kelamin">
                     <option value="Pria" <?php if($data->jenis_kelamin == "Pria") {echo "selected=selected";} ?>>Pria</option>
@@ -113,17 +123,8 @@ $this->load->view('klien/head_klien');
                 </div>
               </div>
 
-              <!-- <div class="form-group">
-                <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-
-                <div class="col-sm-10">
-                  <input type="email" class="form-control" name="email" value="<?php echo $data->email; ?>">
-                </div>
-              </div> -->
-
               <div class="form-group">
                 <label for="inputTelp" class="col-sm-2 control-label">No Telpon</label>
-
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="inputName" name="no_telpon" value="<?php echo $data->no_telpon; ?>">
                 </div>
@@ -131,7 +132,6 @@ $this->load->view('klien/head_klien');
 
               <div class="form-group">
                 <label for="inputTelp" class="col-sm-2 control-label">Instansi</label>
-
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="inputName" name="instansi" value="<?php echo $data->instansi; ?>">
                 </div>
@@ -139,9 +139,8 @@ $this->load->view('klien/head_klien');
 
               <div class="form-group">
                 <label class="col-sm-2 control-label">Upload Foto</label>
-
                 <div class="col-sm-10">
-                  <input type="file" name="foto" value="<?php echo $data->foto; ?>">
+                  <input type="file" name="foto">
                 </div>
               </div>
 

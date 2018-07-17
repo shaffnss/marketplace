@@ -32,21 +32,26 @@
     <div class="register-logo">
       <a href="<?php echo site_url('Home')?>"><b>VokasiDev</b></a>
     </div>
+    
+    <!-- Alert -->
+    <?php if ($this->session->flashdata('message')): ?>
+      <div class="alert alert-<?php echo $this->session->flashdata('style'); ?> fade-in">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong><?php echo $this->session->flashdata('alert'); ?></strong>&nbsp; 
+        </br><?php echo $this->session->flashdata('message'); ?>
+      </div>
+    <?php endif; ?>
+    <!-- End Alert -->
 
     <div class="register-box-body">
       <p class="login-box-msg">Daftar Akun Anggota</p>
       <?php 
       if(validation_errors() != false){
-        echo "<script>alert('Please recheck your data')</script>" ;
+        echo "<script>alert('Silahkan cek kembali ukuran berkas ktm/kartu kagama')</script>" ;
       }
       echo form_open_multipart('RegisterAnggota');
       ?>
-      <!-- <form action="<?php //echo site_url('Register')?>" method="post"> -->
-       <!--  <div class="form-group">
-          <label>Nomor Induk Mahasiswa</label><small style="color: #808080"> (*kosongkan jika anda alumni)</small>
-          <input type="text" class="form-control" placeholder="NIM" name="nim">
-          <span class="glyphicon glyphicon-briefcase form-control-feedback"></span>
-        </div> -->
+      
         <div class="form-group">
          <label>Nama Lengkap</label>
          <input type="text" class="form-control" placeholder="Nama Lengkap" name="nama" required="">
@@ -70,37 +75,26 @@
        <input type="email" class="form-control" placeholder="Alamat Email" name="email" required="">
        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
      </div>
-     <div class="form-group">
-      <label>Nama Instansi</label>
-      <input type="text" class="form-control" placeholder="Nama Instansi" name="instansi" required="">
-      <span class="glyphicon glyphicon-briefcase form-control-feedback"></span>
-    </div>
+
     <div class="form-group">
-      <label>Password</label>
-      <input type="password" class="form-control" placeholder="Password" name="password" required="">
+      <label>Kata Sandi</label>
+      <input type="password" class="form-control" placeholder="Kata Sandi" name="password" required="">
       <span class="glyphicon glyphicon-lock form-control-feedback"></span>
     </div>
     <div class="form-group">
       <label>Unggah File Scan KTM/Kartu KAGAMA</label>
       <input type="file" name="ktm" required>
+      <p class="text-muted"><i>*Maksimal ukuran file 5 MB (.pdf, .gif, .jpg, .png, .jpeg)</i></p>
     </div>
 
     <div class="row">
-        <!-- <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> I agree to the <a href="#">terms</a>
-            </label>
-          </div>
-        </div> -->
-        <!-- /.col -->
         <div class="col-xs-12">
-          <button type="submit" class="btn btn-primary btn-block btn-flat" value="register" name="register">Register</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat" value="register" name="register">Daftar</button>
         </div>
         <br>
         <br>
         <br>
-        <p style="text-align: center;">Sudah memiliki akun? Silahkan&nbsp<a href="<?php echo site_url('Login_anggota') ?>">Login</a> &nbsp;disini</p>
+        <p style="text-align: center;">Sudah memiliki akun? Silahkan&nbsp<a href="<?php echo site_url('Login_anggota') ?>">Masuk</a> &nbsp;disini</p>
         <!-- /.col -->
       </div>
       <?php echo form_close()?>

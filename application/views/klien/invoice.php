@@ -84,7 +84,8 @@ function rupiah($angka){
           <table class="table table-striped">
             <thead>
               <tr>
-                <th>Number</th>
+                <th>No</th>
+                <th>Product Code</th>
                 <th>Product Name</th>
                 <th>System Type</th>
                 <th>Price</th>
@@ -97,6 +98,7 @@ function rupiah($angka){
 						foreach ($invoices as $invoice) { ?>
               <tr>
                 <td><?php echo $no ?></td>
+                <td><?php echo $invoice->kode_produk ?></td>
                 <td><?php echo $invoice->nama_produk ?></td>
                 <td><?php echo $invoice->nama_kategori ?></td>
                 <td><?php echo rupiah($invoice->harga_produk)?></td>
@@ -132,7 +134,7 @@ function rupiah($angka){
                 <td><?php echo rupiah($invoices[0]->total) ?></td>
               </tr>
               <tr>
-                <th>Diskon</th>
+                <th>Discount</th>
                 <td>0</td>
               </tr>
               <tr>

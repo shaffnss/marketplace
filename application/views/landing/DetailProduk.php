@@ -34,7 +34,9 @@
 						<input type="hidden" name="nama" value="<?php echo $produks->nama_produk ?>">
 						<input type="hidden" name="harga" value="<?php echo $produks->harga_produk ?>">
 						<input type="hidden" name="gambar" value="<?php echo $produks->foto_produk ?>">
+
 						<button type="submit" class="btn btn-success">Beli Sekarang</button>
+
 					</div>
 				</form>
 			</div>   

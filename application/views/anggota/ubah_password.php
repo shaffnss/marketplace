@@ -11,6 +11,12 @@ $this->load->view('anggota/head_anggota');
 
   <!-- Main content -->
   <section class="content"> 
+  <div class="row">
+        <div class="col-md-12">
+        	<?php echo validation_errors('<div class="alert alert-danger alert-dismissable">', ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>'); ?>
+        </div>
+  </div>
+  
     <div class="row">
      <div class="col-md-12">
       <div class="box box-solid">

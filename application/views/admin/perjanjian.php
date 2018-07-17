@@ -17,38 +17,6 @@ $this->load->view('admin/head_admin');
 	<section class="content">
 		<div class="row">
 			<div class="col-md-12">
-				<?php
-				$this->load->helper('form');
-				$error = $this->session->flashdata('error');
-				if($error)
-				{
-					?>
-					<div class="alert alert-danger alert-dismissable">
-						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-						<?php echo $this->session->flashdata('error'); ?>                   
-					</div>
-				<?php } ?>
-				<?php  
-				$success = $this->session->flashdata('success');
-				if($success)
-				{
-					?>
-					<div class="alert alert-success alert-dismissable">
-						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-						<?php echo $this->session->flashdata('success'); ?>
-					</div>
-				<?php } ?>
-
-				<div class="row">
-					<div class="col-md-12">
-						<?php echo validation_errors('<div class="alert alert-danger alert-dismissable">', ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>'); ?>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-md-12">
 				<div class="callout callout-warning">
 					<h4>Lanjutkan Dengan Unggah File Perjanjian</h4>
 					
@@ -83,6 +51,7 @@ $this->load->view('admin/head_admin');
 				</div>
 			</div>
 		</div>
+
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="box">
@@ -145,12 +114,12 @@ $this->load->view('admin/head_admin');
 														<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#upload-file<?php echo $data->id_pembelian ?>"><i class="fa fa-upload"></i></button>
 													</td>
 												</tr>
-												
+
 												<!-- Modal Upload File-->
 												<div class="modal fade" id="upload-file<?php echo $data->id_pembelian ?>">
 													<div class="modal-dialog">
 														<div class="modal-content">
-															
+
 															<div class="modal-header">
 																<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 																	<span aria-hidden="true">&times;</span></button>
@@ -165,7 +134,7 @@ $this->load->view('admin/head_admin');
 																				<input type="file" name="file_perjanjian">
 																				<input type="hidden" name="id_pembelian" value="<?php echo $data->id_pembelian ?>">
 																			</div>
-																			<p class="text-muted"><i>*File harus berekstensi PDF dan maximal ukuran file 2 MB</i></p>
+																			<p class="text-muted"><i>*File harus berekstensi PDF dan maksimal ukuran file 5 MB</i></p>
 																		</div>
 																	</div>
 
@@ -173,13 +142,14 @@ $this->load->view('admin/head_admin');
 																		<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
 																		<input type="submit" name="Unggah" class="btn btn-warning" value="Unggah">
 																	</div>
-																</div>
-															</form>
+																</form>
+															</div>
+															<!-- /.modal-content -->
 														</div>
-														<!-- /.modal-content -->
+														<!-- /.modal-dialog -->
 													</div>
-													<!-- /.modal-dialog -->
 													<!-- /.modal -->
+
 													<?php $no++; }}?>
 												</tbody>
 											</table>
@@ -194,8 +164,8 @@ $this->load->view('admin/head_admin');
 												<thead>
 													<tr>
 														<th>No</th>
-														<th>Nama Klien</th>
 														<th>Kode Pembelian</th>
+														<th>Nama Klien</th>
 														<th>Nama Produk</th>
 														<th>Kategori Perjanjian</th>
 														<th>Keterangan</th>
@@ -204,18 +174,18 @@ $this->load->view('admin/head_admin');
 														<th>Upload File</th>
 													</tr>
 												</thead>
-														<tbody>
-												<?php 
-												$no=1;
-												foreach ($perjanjian as $data) {
+												<tbody>
+													<?php 
+													$no=1;
+													foreach ($perjanjian as $data) {
 											# code...
-													if($data->status_perjanjian == "selesai") {
-														?>
+														if($data->status_perjanjian == "selesai") {
+															?>
 
 															<tr>
 																<td><?php echo $no?></td>
 																<td><?php echo $data->kode_pembelian ?></td>
-																<td><?php echo $data->nama_users?></td>
+																<td><?php echo $data->nama_users ?></td>
 																<td><?php echo $data->nama_produk?></td>
 																<td><?php echo $data->nama_perjanjian?></td>
 																<td><?php echo $data->keterangan?></td>
@@ -237,7 +207,6 @@ $this->load->view('admin/head_admin');
 																	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#upload-file<?php echo $data->id_pembelian ?>"><i class="fa fa-upload"></i></button>
 																</td>
 															</tr>
-
 															<!-- Modal Upload File-->
 															<div class="modal fade" id="upload-file<?php echo $data->id_pembelian ?>">
 																<div class="modal-dialog">
@@ -265,12 +234,12 @@ $this->load->view('admin/head_admin');
 																					<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
 																					<input type="submit" name="Unggah" class="btn btn-warning" value="Unggah">
 																				</div>
-																			</div>
-																		</form>
+																			</form>
+																		</div>
+																		<!-- /.modal-content -->
 																	</div>
-																	<!-- /.modal-content -->
+																	<!-- /.modal-dialog -->
 																</div>
-																<!-- /.modal-dialog -->
 																<!-- /.modal -->
 																<?php $no++; }}?>
 															</tbody>
@@ -282,14 +251,16 @@ $this->load->view('admin/head_admin');
 											</div>
 											<!-- /.tab-content -->
 										</div>
+										<!-- /.box -->
 									</div>
+									<!-- /.col-xs-12 -->
 								</div>
-							</div>
-						</section>
-						<!-- /.content -->
-					</div>
-					<!-- /.content-wrapper -->
+								<!-- /.row -->
+							</section>
+							<!-- /.content -->
+						</div>
+						<!-- /.content-wrapper -->
 
-					<?php
-					$this->load->view('admin/foot_admin');
-					?>																				
+						<?php
+						$this->load->view('admin/foot_admin');
+						?>																				
