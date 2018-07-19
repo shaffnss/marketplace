@@ -30,7 +30,7 @@
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
-      <a href="<?php echo site_url('Home')?>"><b>VokasiDev</b><br>Login</a>
+      <a href="<?php echo site_url('Home')?>"><b>VokasiDev</b><br>Masuk</a>
     </div>
 
      <!-- Alert -->
@@ -54,7 +54,7 @@
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="password" class="form-control" name="password" placeholder="Password" required="">
+          <input type="password" class="form-control" name="password" placeholder="Kata Sandi" required="">
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
 

@@ -56,16 +56,16 @@
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
 
-  <header class="main-header" style="background-color: #DD3F00;">
+  <header class="main-header" >
       <!-- Logo -->
-      <a class="logo">
+      <a class="logo" style="background: #DD3F00;"> 
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>V</b>D</span>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><b>VokasiDev</b></span>
       </a>
       <!-- Header Navbar: style can be found in header.less -->
-      <nav class="navbar navbar-static-top">
+      <nav class="navbar navbar-static-top" style="background: #DD3F00;">
         <!-- Sidebar toggle button-->
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
           <span class="sr-only">Toggle navigation</span>

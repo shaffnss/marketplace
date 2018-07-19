@@ -41,8 +41,8 @@
         </br><?php echo $this->session->flashdata('message'); ?>
       </div>
     <?php endif; ?>
-    
     <!-- End Alert -->
+    
     <div class="register-box-body">
       <p class="login-box-msg">Daftar Akun Baru</p>
       <?php 
@@ -73,18 +73,18 @@
           <span class="glyphicon glyphicon-briefcase form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="password" class="form-control" placeholder="Password" name="password" required="">
+          <input type="password" class="form-control" placeholder="Kata Sandi" name="password" required="">
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
 
       <div class="row">
         <div class="col-xs-12">
-          <button type="submit" class="btn btn-primary btn-block btn-flat" value="register" name="register">Register</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat" value="register" name="register">Daftar</button>
         </div>
         <br>
         <br>
         <br>
-        <p style="text-align: center;">Sudah memiliki akun? Silahkan&nbsp<a href="<?php echo site_url('login') ?>">Login</a> &nbsp;disini</p>
+        <p style="text-align: center;">Sudah memiliki akun? Silahkan&nbsp<a href="<?php echo site_url('login') ?>">Masuk</a> &nbsp;disini</p>
         <!-- /.col -->
       </div>
       <?php echo form_close()?>

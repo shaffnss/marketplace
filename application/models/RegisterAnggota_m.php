@@ -2,7 +2,7 @@
 
 class RegisterAnggota_m extends CI_Model{
 
-	public function createAnggota($users, $ktm, $nim){
+	public function createAnggota($users, $ktm){
 		$this->db->trans_start();
 		$this->db->insert('users',$users);
 		$insert_id = $this->db->insert_id();
@@ -22,6 +22,16 @@ class RegisterAnggota_m extends CI_Model{
 		$insert_id = $this->db->insert_id();
 		$this->db->trans_complete();
 		return $insert_id;
+	}
+	
+	public function cekEmail($email){
+	$this->db->select('email');
+	$this->db->from('users');
+	$this->db->where('email',$email);
+
+	$query= $this->db->get();
+
+	return $query;
 	}
 
 

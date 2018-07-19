@@ -10,6 +10,21 @@ $this->load->model('Anggota_profile_model');
    <h1>Profil<small>Anggota</small></h1>
  </section>
 
+  <!-- Alert -->
+   <div class="row">
+       <div class="col-md-12">
+    <?php if ($this->session->flashdata('message')): ?>
+      <div class="alert alert-<?php echo $this->session->flashdata('style'); ?> fade-in">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong><?php echo $this->session->flashdata('alert'); ?></strong>&nbsp; 
+        </br><?php echo $this->session->flashdata('message'); ?>
+      </div>
+    <?php endif; ?>
+    </div>
+    </div>
+    <!-- End Alert -->
+
+
  <?php 
  foreach ($profile as $data) {
           # code...
@@ -17,37 +32,6 @@ $this->load->model('Anggota_profile_model');
 
   <!-- Main content -->
   <section class="content">
-    <div class="row">
-      <div class="col-md-12">
-        <?php
-        $this->load->helper('form');
-        $error = $this->session->flashdata('error');
-        if($error)
-        {
-          ?>
-          <div class="alert alert-danger alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <?php echo $this->session->flashdata('error'); ?>                    
-          </div>
-        <?php } ?>
-        <?php  
-        $success = $this->session->flashdata('success');
-        if($success)
-        {
-          ?>
-          <div class="alert alert-success alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <?php echo $this->session->flashdata('success'); ?>
-          </div>
-        <?php } ?>
-
-        <div class="row">
-          <div class="col-md-12">
-            <?php echo validation_errors('<div class="alert alert-danger alert-dismissable">', ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>'); ?>
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- /.Row End --> 
     <div class="row">
       <!-- Profile -->
@@ -86,12 +70,6 @@ $this->load->model('Anggota_profile_model');
           <strong><i class="fa fa-pencil margin-r-5"></i> Email</strong>
           <p class="text-muted">
             <?php echo $data->email?>
-          </p>
-          <hr>
-
-          <strong><i class="fa fa-map-marker margin-r-5"></i>Instansi</strong>
-          <p class="text-muted">
-            <?php echo $data->instansi?>
           </p>
           <hr>
 
@@ -142,29 +120,11 @@ $this->load->model('Anggota_profile_model');
                   </select>
                 </div>
 
-                <!-- <div class="form-group">
-                  <label for="inputEmail" class="">Email</label>
-                  <input type="email" class="form-control" name="email" value="<?php echo $data->email; ?>">
-                </div> -->
-
                 <div class="form-group">
                   <label for="inputTelp" class="">No Telpon</label>
                   <input type="text" class="form-control" id="inputName" name="no_telpon" value="<?php echo $data->no_telpon; ?>">
                 </div>
-
-                <div class="form-group">
-                  <label for="inputTelp" class="">Instansi</label>
-                  <input type="text" class="form-control" id="inputName" name="instansi" value="<?php echo $data->instansi; ?>">
-                </div>
-
-                <!--     <div class="form-group">
-                      <label>Status Mahasiswa</label>        
-                      <select class="form-control" name="posisi">
-                        <option value="mahasiswa" <?php// if($data->posisi == "mahasiswa") {echo "selected=selected";} ?>>Mahasiswa</option>
-                        <option value="alumni" <?php //if($data->posisi == "alumni") {echo "selected=selected";} ?>>Alumni</option>
-                      </select>
-                    </div>
-                  -->
+                
                   <div class="form-group">
                     <label class="">Upload Foto</label>
                     <input type="file" name="foto" value="<?php echo $data->foto; ?>">

@@ -178,11 +178,12 @@ function rupiah($angka){
                             <div class="box-body">
                               <div class="form-group">
                                 <div class="row">
-                                  <!-- <div class="col-md-3">
-                                    <label for="inputName">ID Produk</label>
-                                    <input type="hidden"><?php echo $data->id_produk; ?></input>
-                                  </div> -->
-                                  <div class="col-md-12">
+                                 <input type="hidden"<?php echo $data->id_produk; ?>></input>
+                                  <div class="col-md-3">
+                                    <label for="inputName">Kode Produk</label>
+                                    <p readonly="" class="form-control" ><?php echo $data->kode_produk; ?></p>
+                                  </div>
+                                  <div class="col-md-9">
                                     <label for="inputName">Nama Produk</label>
                                     <p readonly="" class="form-control" ><?php echo $data->nama_produk; ?></p>
                                   </div>

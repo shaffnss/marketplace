@@ -3,14 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Password extends CI_Controller {
 
-	function __construct()
-	{
+	function __construct(){
 		parent::__construct();
 		$this->load->model('m_user');
 	}
 
-	public function index()
-	{
+	public function index(){
 		$this->load->view('password_forgot');
 	}
 
@@ -18,9 +16,7 @@ class Password extends CI_Controller {
 		// $this->load->library('email');
 
 		date_default_timezone_set("Asia/jakarta");
-
 		$email = $this->input->post('email');
-
 		$rs = $this->m_user->getByEmail($email);
 
   // cek email ada atau engga
@@ -28,10 +24,8 @@ class Password extends CI_Controller {
 			$this->session->set_flashdata('style', 'danger');
 			$this->session->set_flashdata('alert', 'Email tidak ditemukan!');
 			$this->session->set_flashdata('message', 'Cek kembali email yang terdaftar.');
-
-			redirect ('password/forgot');
+			redirect ('password');
 		}
-
 		$user = $rs->row();
 
   // get id user
@@ -51,43 +45,49 @@ class Password extends CI_Controller {
 		if ($simpan > 0){
 
     // email link reset
-			$config['protocol'] = 'smtp';
-				$config['smtp_host'] = 'ssl://smtp.googlemail.com';
-				$config['smtp_port'] = 465;
-				$config['smtp_user'] = 'komsidev@gmail.com';
-         		$config['smtp_pass'] = 'Komsidev2018';  //senders password
-         		$config['mailtype'] = 'html';
-         		$config['charset'] = 'iso-8859-1';
-         		$config['wordwrap'] = 'TRUE';
-         		$config['crlf'] = "\r\n";
-         		$config['newline'] = "\r\n";
+    $config['protocol'] = 'smtp';
+	$config['smtp_host'] = 'premium47.web-hosting.com';
+	$config['smtp_port'] = 465;
+	$config['smtp_user'] = 'info@web.vokasidev.com';
+ 	$config['smtp_pass'] = '?_*@ekf%R,#-';  //senders password
+ 	$config['mailtype'] = 'html';
+ 	$config['charset'] = 'iso-8859-1';
+ 	$config['smtp_crypto'] = 'ssl';
+ 	$config['wordwrap'] = 'TRUE';
+ 	$config['crlf'] = "\r\n";
+ 	$config['newline'] = "\r\n";
 
     $this->load->library('email', $config);
     $this->email->initialize($config);
     $this->email->set_newline("\r\n");
+    
+    $address = $email; //penerima email
+	$subject = "Reset Password Akun "; // subject
+	$message = //body email is start
+	   '<html>
+	   <head> <h2> Pendaftaran Akun Klien VokasiDev </h2> </head>
+	   <body>
 
-    $this->email->from('komsidev@gmail.com', 'VokasiDev');
-    $this->email->to($email);
-    $this->email->subject('Reset Password');
-
-    $this->email->message("
-    	Token ini berlaku untuk 2 jam dari pengiriman token ini:
-    	Klik disini untuk reset password anda : http://localhost/marketplaceta/password/reset/token/".$tokenstring
-    );
-
-    // if (!$this->email->send()) {
-    // 	//echo $this->email->print_debugger();
-    // 	//exit;
-    // }
+	   Selamat datang di VokasiDev
+	   <br/>
+	   Silahkan klik link <a href="'.site_url("password/reset/token/$tokenstring").'">Reset</a> untuk reset password anda<br>
+	   Link ini hanya berlaku selema 2 jam setelah pengiriman email ini.
+	   <br>
+	   <br>
+	   Admin VokasiDev
+	   </body>
+	   </html>';// body email is end
+    $this->email->from('info@web.vokasidev.com', 'VokasiDev');
+    $this->email->to($address);
+    $this->email->subject($subject);
+    $this->email->message($message   );
     $this->email->send();
-
+    
     $this->session->set_flashdata('style', 'success');
     $this->session->set_flashdata('alert', 'Berhasil !');
     $this->session->set_flashdata('message', 'Silahkan cek email anda');
-
-    redirect ('password');
+    redirect ('login');
 }
-
 }
 
 public function reset(){ //mengecek apa token sudah expired atau belum
@@ -100,7 +100,6 @@ public function reset(){ //mengecek apa token sudah expired atau belum
 
   // cek token ada atau engga
 	if ($rs > 0){
-
 		$data = $cekToken->row();
 		$tokenExpired = $data->expired;
 		$timenow = date("Y-m-d H:i:s");
@@ -113,30 +112,27 @@ public function reset(){ //mengecek apa token sudah expired atau belum
 			$this->load->view('password_reset',$datatoken);
 
 		}else{
-
       // redirect form forgot
 			$this->session->set_flashdata('style', 'danger');
 			$this->session->set_flashdata('alert', 'Maaf, Token Anda Sudah Expired!');
 			$this->session->set_flashdata('message', 'Coba masukkan email anda kembali');
-
 			redirect ('password');
 		}
 	}else{
 		$this->session->set_flashdata('style', 'danger');
 		$this->session->set_flashdata('alert', 'Maaf, Token Anda Tidak Ditemukan!');
 		$this->session->set_flashdata('message', 'Coba masukkan email anda kembali');
-		redirect ('password/forgot');
+		redirect ('password');
 	}
 }
 
 public function kirim_reset(){ //untuk mengupdate password yang ada di database
-
 	$password = $this->input->post('password');
 	$token = $this->input->post('token');
 	$cekToken = $this->m_user->cekToken($token);
 	$data = $cekToken->row();
 	$id = $data->id_users;
-	// var_dump($id);
+	
   // ubah password
 	$data = array ('password'=>password_hash($password, PASSWORD_DEFAULT));
 	$simpan = $this->m_user->ubahData($id,$data);

@@ -19,39 +19,48 @@ class Anggota_profile extends BaseController {
 	}
 
 	public function ubahAnggota(){
-		$config['upload_path']          = './assets/users/anggota';
+		$config['upload_path']          = './assets/users/anggota/';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
-		$config['max_size']             = 300;
-		$config['max_width']            = 1024;
-		$config['max_height']           = 768;
-
+	    $config['max_size']             = 3000;
+        $config['remove_spaces']        = true;
+        $config['max_width']            = 5024;
+        $config['max_height']           = 5068;
+        
 		$this->load->library('upload', $config);
-
-		if( ! $this->upload->do_upload('foto')) //jika tidak update foto 
-		{	
+	    $this->upload->initialize($config);
+		if( !$this->upload->do_upload('foto')){ //jika gagal update foto 
+		   if ( $_FILES['foto']['name']){ //kalo isi tapi syarat salah
+		       $this->session->set_flashdata('style','danger');
+	           $this->session->set_flashdata('alert','Gagal!');
+	           $this->session->set_flashdata('message','Foto profil anda gagal dirubah '.$this->upload->display_errors());
+		   }else{ //karena tidak diisi
+		       $this->session->set_flashdata('style','success');
+	           $this->session->set_flashdata('alert','Berhasil!');
+	           $this->session->set_flashdata('message','Data profil anda berhasil dirubah');
+		   }
 			$id_users = $this->input->post('id_users', true);
 			$nama_users = $this->input->post('nama_users', true);
 			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
-			$instansi = $this->input->post('instansi', true);
 			$no_telpon = $this->input->post('no_telpon', true);
 			$anggota =  array(
 				"nama_users"=>$nama_users,
 				"jenis_kelamin"=>$jenis_kelamin,
-				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
 			);
 		}else{ //jika update foto
+		    $this->session->set_flashdata('style','success');
+	        $this->session->set_flashdata('alert','Berhasil!');
+	        $this->session->set_flashdata('message','Data profil anda berhasil dirubah');
+	        
 			$img = $this->upload->data();
 			$foto = $img['file_name'];
 			$id_users = $this->input->post('id_users', true);
 			$nama_users = $this->input->post('nama_users', true);
 			$jenis_kelamin = $this->input->post('jenis_kelamin', true);
-			$instansi = $this->input->post('instansi', true);
 			$no_telpon = $this->input->post('no_telpon', true);
 			$anggota =  array(
 				"nama_users"=>$nama_users,
 				"jenis_kelamin"=>$jenis_kelamin,
-				"instansi"=>$instansi,
 				"no_telpon"=>$no_telpon,
 				"foto"=> $foto
 			);

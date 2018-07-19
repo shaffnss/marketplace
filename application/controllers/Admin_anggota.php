@@ -81,66 +81,13 @@ class Admin_anggota extends BaseController {
 		$this->session->set_flashdata('success', 'Anggota dinon-aktfikan.');
 		redirect('Admin_anggota');
 	}
-
-
-	// public function ubahAnggota(){
-	// 	$config['upload_path']          = './assets/users/anggota';
-	// 	$config['allowed_types']        = 'gif|jpg|png|jpeg';
-	// 	$config['max_size']             = 300;
-	// 	$config['max_width']            = 1024;
-	// 	$config['max_height']           = 768;
-
-	// 	$this->load->library('upload', $config);
-	// 	if( ! $this->upload->do_upload('foto')) //jika tidak update foto 
-	// 	{	
-	// 		$id_users = $this->input->post('id_users', true);
-	// 		$nama_users = $this->input->post('nama_users', true);
-	// 		$jenis_kelamin = $this->input->post('jenis_kelamin', true);
-	// 		$instansi = $this->input->post('instansi', true);
-	// 		$no_telpon = $this->input->post('no_telpon', true);
-	// 		$email = $this->input->post('email', true);
-	// 		$status_users = $this->input->post('status_users', true);
-	// 		$anggota =  array(
-	// 			"id_roles"=>3,
-	// 			"id_users"=>$id_users,
-	// 			"nama_users"=>$nama_users,
-	// 			"jenis_kelamin"=>$jenis_kelamin,
-	// 			"instansi"=>$instansi,
-	// 			"no_telpon"=>$no_telpon,
-	// 			"email"=>$email,
-	// 			"status_users"=>$status_users,
-	// 		);
-	// 	}else{ //jika update foto
-	// 		$img = $this->upload->data();
-	// 		$foto = $img['file_name'];
-	// 		$id_users = $this->input->post('id_users', true);
-	// 		$nama_users = $this->input->post('nama_users', true);
-	// 		$jenis_kelamin = $this->input->post('jenis_kelamin', true);
-	// 		$instansi = $this->input->post('instansi', true);
-	// 		$no_telpon = $this->input->post('no_telpon', true);
-	// 		$email = $this->input->post('email', true);
-	// 		$password = $this->input->post('password', true);
-	// 		$status_users = $this->input->post('status_users', true);
-	// 		$anggota =  array(
-	// 			"id_roles"=>3,
-	// 			"id_users"=>$id_users,
-	// 			"nama_users"=>$nama_users,
-	// 			"jenis_kelamin"=>$jenis_kelamin,
-	// 			"instansi"=>$instansi,
-	// 			"no_telpon"=>$no_telpon,
-	// 			"email"=>$email,
-	// 			"status_users"=>$status_users,
-	// 			"foto"=> $foto
-	// 		);
-	// 	}
-	// 	$id_users= $this->input->post('id_users');
-	// 	$this->db->where('id_users',$id_users);
-	// 	$this->db->update('users',$anggota);
-	// 	$this->session->set_flashdata('success', 'Anggota dinon-aktfikan.');
-	// 	redirect('Admin_anggota');
-	// }
-
-	public function posisi_tim(){
+	
+	public function aktivasi_anggota(){
+		$data["aktivasi"]=$this->Admin_anggota_model->getAktivasi();
+		$this->load->view('admin/pengguna_anggota_baru', $data);
+	}
+    
+    public function posisi_tim(){
 		$data["posisi"]=$this->Admin_anggota_model->getPosisi();
 		$this->load->view('admin/pengguna_posisi_tim',$data);
 	}
@@ -171,12 +118,7 @@ class Admin_anggota extends BaseController {
 		$this->db->update('posisi_tim',$data);
 		redirect('Admin_anggota/posisi_tim');
 	}
-
-	public function aktivasi_anggota(){
-		$data["aktivasi"]=$this->Admin_anggota_model->getAktivasi();
-		$this->load->view('admin/pengguna_anggota_baru', $data);
-	}
-
+	
 	public function hapusPosisi($id_posisi) {
 		$this->db->where('id_posisi', $id_posisi)->delete('posisi_tim');
 		$this->session->set_flashdata('success', 'Data jabatan berhasil dihapus.');
@@ -186,10 +128,57 @@ class Admin_anggota extends BaseController {
 	public function aktifkan($id_users){
 		$result = $this->db->where('id_users',$id_users)
 		->update('users', array('status_users'=>'aktif'));
-		
-		if ($result == TRUE) $this->session->set_flashdata('success','Anggota berhasil diaktifkan');
-		else $this->session->set_flashdata('error','Anggota gagal diaktifkan');
-		
+        
+        $email= $this->Admin_anggota_model->getInfo($id_users);
+        
+		$this->load->helper(array('form','url'));
+
+		$config['protocol'] = 'smtp';
+		$config['smtp_host'] = 'ssl://smtp.googlemail.com';
+		$config['smtp_port'] = 465;
+		$config['smtp_user'] = 'komsidev@gmail.com';
+ 		$config['smtp_pass'] = 'Komsidev2018';  //senders password
+ 		$config['mailtype'] = 'html';
+ 		$config['charset'] = 'iso-8859-1';
+ 		$config['wordwrap'] = 'TRUE';
+ 		//$config['smtp_crypto'] = 'ssl';
+ 		$config['crlf'] = "\r\n";
+ 		$config['newline'] = "\r\n";
+
+ 		$this->load->library('email', $config);
+ 		$this->email->initialize($config);
+ 		$this->email->set_newline("\r\n");
+
+	    $address = $email; //penerima email
+	    $subject = "Verifikasi Akun Anggota"; // subject
+	    $message = //body email is start
+	   '<html>
+	   <head> <h2> Pendaftaran Akun Anggota VokasiDev </h2> </head>
+	   <body>
+
+	   Selamat datang di VokasiDev
+	   <br/>
+       Selamat akun anda telah aktif, silahkan <a href="'.site_url("LoginAnggota").'">login</a> ke akun anda.
+	   <br>
+	   <br>
+	   Admin VokasiDev
+	   </body>
+	   </html>';// body email is end
+
+	   $this->email->from('komsidev@gmail.com','VokasiDev'); //sender email
+	   $this->email->to($address);
+	   $this->email->subject($subject);
+	   $this->email->message($message);
+	   if(! $this->email->send()){
+	      $this->session->set_flashdata('style','success');
+	      $this->session->set_flashdata('alert','Aktivasi Berhasil!');
+	      $this->session->set_flashdata('message','Anggota berhasil diaktifkan');
+	   }else{
+	      $this->session->set_flashdata('style','danger');
+	      $this->session->set_flashdata('alert','Aktivasi gagal!');
+	      $this->session->set_flashdata('message','Anggota gagal diaktifkan'); 
+	   }
+
 		redirect('Admin_anggota');
 	}
 }

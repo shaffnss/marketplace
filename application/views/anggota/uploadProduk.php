@@ -4,7 +4,6 @@ function rupiah($angka){
 
   $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
   return $hasil_rupiah;
-
 }
 ?>
 
@@ -31,27 +30,15 @@ function rupiah($angka){
 <section class="content">
 <div class="row">
       <div class="col-md-12">
-        <?php
-        $this->load->helper('form');
-        $error = $this->session->flashdata('error');
-        if($error)
-        {
-          ?>
-          <div class="alert alert-danger alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <?php echo $this->session->flashdata('error'); ?>                    
-          </div>
-        <?php } ?>
-        <?php  
-        $success = $this->session->flashdata('success');
-        if($success)
-        {
-          ?>
-          <div class="alert alert-success alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <?php echo $this->session->flashdata('success'); ?>
-          </div>
-        <?php } ?>
+         <!-- Alert -->
+    <?php if ($this->session->flashdata('message')): ?>
+      <div class="alert alert-<?php echo $this->session->flashdata('style'); ?> fade-in">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong><?php echo $this->session->flashdata('alert'); ?></strong>&nbsp; 
+        </br><?php echo $this->session->flashdata('message'); ?>
+      </div>
+    <?php endif; ?>
+    <!-- End Alert -->
 
         <div class="row">
           <div class="col-md-12">
@@ -117,7 +104,9 @@ function rupiah($angka){
                 <td>
                   <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah-produk<?php echo $data->id_produk; ?>" style="background:#1a75ff; border-color:#fff" onclick="ubah-produk"><i class="fa fa-pencil">Edit</i>
                   </button>
+                  <?php if($data->status=='proses'){ ?>
                  <a onclick="return confirm('apakah anda yakin ingin menghapus produk ini?'); " href="<?php echo site_url('Anggota_uploadProduk/delete_upload/'.$data->id_produk)?>" class="btn btn-sm btn-info" style="background: #d41912; border-color: #fff"><i class="fa fa-remove"></i>Hapus</a>
+                  <?php } ?>
                 </td>
               </tr>
 
@@ -133,7 +122,7 @@ function rupiah($angka){
                       <div class="modal-body">
                         <form action="<?php echo site_url('Anggota_uploadProduk/ubahProduk') ?>" enctype="multipart/form-data" method="POST" class="form-horizontal">
                           <div class="box-body">
-                            <input type="hidden" id="inputName" name="id_produk" value="<?php echo $data->id_produk; ?>" required="">   
+                            <input type="hidden" id="inputName" name="id_produk" value="<?php echo $data->id_produk; ?>">   
                             <input type="hidden" name="nama_file" value="<?php echo $data->file_produk; ?>" >   
                             <input type="hidden" name="nama_foto" value="<?php echo $data->foto_produk; ?>" >   
 

@@ -63,6 +63,20 @@ $this->load->view('admin/head_admin');
 
   <!-- Main content -->
   <section class="content">
+       <div class="row">
+        <div class="col-md-12">
+         <!-- Alert -->
+    <?php if ($this->session->flashdata('message')): ?>
+      <div class="alert alert-<?php echo $this->session->flashdata('style'); ?> fade-in">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong><?php echo $this->session->flashdata('alert'); ?></strong>&nbsp; 
+        </br><?php echo $this->session->flashdata('message'); ?>
+      </div>
+    <?php endif; ?>
+    <!-- End Alert -->
+    </div>
+    </div>
+      
     <div class="row">
       <div class="col-xs-12">
         <div class="box">
@@ -110,7 +124,8 @@ $this->load->view('admin/head_admin');
                     <?php }?>
                   </td>
                   <td>
-                    <a class="btn btn-sm btn-warning" href="<?php echo site_url('Admin_team/ubah_team/').$data->idTim?>"><i class="fa fa-edit"></i></a>
+                    <a href="<?php echo site_url('Admin_team/ubah_team/').$data->idTim?>" class="btn btn-warning glyphicon glyphicon-edit"></a>
+                    <a onclick="return confirm('Apakah Anda yakin ingin menghapus Tim ini?');" class="btn btn-danger glyphicon glyphicon-remove" href="<?php echo site_url('Admin_team/hapusTim/'.$data->id_tim); ?>"></a>
                   </td>
                 </tr>
                 <?php $no++; } ?>

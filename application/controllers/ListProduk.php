@@ -42,7 +42,7 @@ class ListProduk extends CI_Controller {
 		
 		//bila login
 		if($isLoggedIn) {
-			$this->load->view('Klien/keranjang', $data);
+			$this->load->view('klien/keranjang', $data);
 		}else{ //jika tidak login
 			$this->load->view('landing/keranjang',$data);
 		}
@@ -86,9 +86,6 @@ class ListProduk extends CI_Controller {
 				$total += $item['subtotal'];
 				$id_produk = $item['id'];
 			}
-			
-			// $get_kode = $this->db->join('kategori_produk', 'produk.id_kategori=kategori_produk.id_kategori')
-			// ->where('id_produk', $id_produk)->get('produk')->row();
 
 			$randomstring = random_string('alnum', 6);
 			
@@ -130,9 +127,6 @@ class ListProduk extends CI_Controller {
 			$cart = $this->cart->contents();
 			$cart = $cart[$rowid];
 			$total = 0;
-			
-			$get_kode = $this->db->join('kategori_produk', 'produk.id_kategori=kategori_produk.id_kategori')
-			->where('id_produk', $cart['id'])->get('produk')->row();
 
 			$randomstring = random_string('alnum', 6);
 			
@@ -141,7 +135,7 @@ class ListProduk extends CI_Controller {
 				'tgl_pembelian' => date('Y-m-d'),
 				'total' => $cart['price'],
 				'id_users' => $this->session->userdata('userId'),
-				'kode_pembelian'=>$get_kode->kode_jenis."-".strtoupper($randomstring)
+				'kode_pembelian'=>"BY-".strtoupper($randomstring)
 			);
 			$id_pembelian = $this->listProduk_model->insertPembelian($data); 
 			//insert sekaligus get id_pembelian yang barusan dibuat

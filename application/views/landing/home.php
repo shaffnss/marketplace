@@ -31,7 +31,7 @@ $this->load->view('landing/head_landing');
 
     <!-- Page Content -->
     <div class="container marketing" style="padding-left: 15px; padding-right: 15px; padding-top: 70px; padding-bottom: 70px">
-      <h1 class="text-center">Our Products</h1>
+      <h1 class="text-center">KELEBIHAN</h1>
       <div class="row" style="padding-top: 30px">
         <div class="col-lg-4">
           <center>
@@ -78,7 +78,7 @@ $this->load->view('landing/head_landing');
     </div>
     <!-- Contact Details Column -->
     <div class="col-lg-4 mb-4">
-      <h3>Contact Details</h3>
+      <h3>INFORMASI KAMI</h3>
       <p>
         Sekolah Vokasi
         <br>Universitas Gadjah Mada

@@ -75,7 +75,7 @@ class Admin_perjanjian extends BaseController {
 			$data = array(
 				'id_pembelian'=>$id_pembelian,
 				'file_perjanjian'=>$file_perjanjian,
-				'status_perjanjian'=>'selesai',
+				'status_perjanjian'=>'selesai'
 			); 
 
 			$id_perjanjian = $this->Admin_perjanjian_model->insertPerjanjian($data, $id_pembelian);

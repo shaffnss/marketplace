@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2018 at 10:40 AM
+-- Generation Time: Jul 13, 2018 at 03:04 PM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -79,18 +79,15 @@ CREATE TABLE IF NOT EXISTS `detail_pembelian` (
   `id_pembelian` int(11) NOT NULL,
   `id_produk` int(11) NOT NULL,
   `qty` int(11) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_pembelian`
 --
 
 INSERT INTO `detail_pembelian` (`id_detail_pembelian`, `id_pembelian`, `id_produk`, `qty`) VALUES
-(1, 26, 45, 1),
-(2, 27, 44, 1),
-(3, 28, 45, 1),
-(4, 29, 45, 1),
-(5, 30, 46, 1);
+(12, 37, 55, 1),
+(13, 38, 55, 1);
 
 -- --------------------------------------------------------
 
@@ -103,33 +100,15 @@ CREATE TABLE IF NOT EXISTS `detail_produk` (
   `status` enum('diterima','ditolak','proses') NOT NULL DEFAULT 'proses',
   `id_tim` int(11) NOT NULL,
   `id_produk` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_produk`
 --
 
 INSERT INTO `detail_produk` (`id_detail_produk`, `status`, `id_tim`, `id_produk`) VALUES
-(1, 'ditolak', 51, 1),
-(2, 'proses', 52, 2),
-(3, 'proses', 55, 1),
-(4, 'proses', 55, 1),
-(5, 'proses', 53, 1),
-(6, 'proses', 53, 38),
-(7, 'proses', 53, 39),
-(8, 'ditolak', 53, 40),
-(9, 'ditolak', 53, 41),
-(10, 'ditolak', 57, 42),
-(11, 'proses', 70, 44),
-(12, 'diterima', 54, 45),
-(13, 'proses', 71, 46),
-(14, 'proses', 71, 47),
-(15, 'proses', 71, 48),
-(16, 'proses', 71, 49),
-(17, 'proses', 71, 50),
-(18, 'proses', 71, 51),
-(19, 'proses', 71, 47),
-(20, 'proses', 71, 48);
+(1, 'diterima', 71, 55),
+(2, 'diterima', 54, 56);
 
 -- --------------------------------------------------------
 
@@ -142,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `detail_tim` (
   `id_tim` int(11) NOT NULL,
   `id_users` int(11) NOT NULL,
   `id_posisi` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_tim`
@@ -155,8 +134,7 @@ INSERT INTO `detail_tim` (`id_detail_tim`, `id_tim`, `id_users`, `id_posisi`) VA
 (34, 54, 61, 1),
 (35, 54, 60, 2),
 (36, 54, 16, 5),
-(37, 54, 36, 4),
-(38, 54, 58, 3);
+(37, 54, 36, 4);
 
 -- --------------------------------------------------------
 
@@ -267,24 +245,15 @@ CREATE TABLE IF NOT EXISTS `pembelian` (
   `total` int(11) NOT NULL,
   `id_users` int(11) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pembelian`
 --
 
 INSERT INTO `pembelian` (`id_pembelian`, `tgl_pembelian`, `status_pembelian`, `bukti_pembayaran`, `kode_pembelian`, `total`, `id_users`, `timestamp`) VALUES
-(20, '2018-06-24', 'selesai', '', 'GM-Y2HAK0', 2147483647, 14, '2018-07-05 06:59:17'),
-(21, '2018-06-25', 'selesai', '', 'WB-H1XHL9', 100000, 14, '2018-07-05 06:59:22'),
-(22, '2018-06-25', 'selesai', '', 'WB-DMVR7U', 19383838, 14, '2018-07-05 06:59:28'),
-(23, '2018-06-25', 'selesai', '', 'WB-VDRLKG', 183475627, 14, '2018-07-05 06:59:35'),
-(24, '2018-06-25', 'selesai', '161127012658-google-maps-dump-tower-large-169.jpg', 'AI-IWEJLD', 183485627, 14, '2018-06-27 11:19:39'),
-(25, '2018-06-27', 'selesai', '161127012658-google-maps-dump-tower-large-1691.jpg', 'WB-HX6FFX', 500000, 14, '2018-07-05 16:45:51'),
-(26, '2018-07-13', 'proses', '', 'WB-H6IMTI', 30000000, 14, '2018-07-13 05:34:56'),
-(27, '2018-07-13', 'proses', '', 'WB-9S3A72', 20000000, 14, '2018-07-13 07:00:53'),
-(28, '2018-07-13', 'proses', '', 'WB-BPLWFY', 30000000, 14, '2018-07-13 07:01:16'),
-(29, '2018-07-13', 'proses', '', 'WB-HNZLKS', 30000000, 14, '2018-07-13 07:03:52'),
-(30, '2018-07-13', 'proses', '', 'BY-PYLGJ2', 40000000, 14, '2018-07-13 07:04:00');
+(37, '2018-07-13', 'proses', '', 'BY-FASTHQ', 30000000, 14, '2018-07-13 10:45:00'),
+(38, '2018-07-13', 'proses', '', 'BY-8TQIJR', 30000000, 14, '2018-07-13 11:13:10');
 
 -- --------------------------------------------------------
 
@@ -300,24 +269,7 @@ CREATE TABLE IF NOT EXISTS `perjanjian` (
   `id_pembelian` int(11) NOT NULL,
   `status_perjanjian` enum('proses','selesai') NOT NULL DEFAULT 'proses',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `perjanjian`
---
-
-INSERT INTO `perjanjian` (`id_perjanjian`, `keterangan`, `file_perjanjian`, `id_kategori`, `id_pembelian`, `status_perjanjian`, `created_at`) VALUES
-(1, 'sertakan maintenance', '386086_20172_uts__20180521134015.pdf', 1, 26, 'proses', '2018-07-02 07:45:24'),
-(2, 'dengan maintenance', '386086_20172_uts__20180517140630.pdf', 1, 27, 'proses', '2018-07-02 07:56:36'),
-(3, 'jabdjabdj', '', 1, 28, 'proses', '2018-07-02 09:58:06'),
-(4, 'mabdjabj', '', 1, 29, 'proses', '2018-07-02 10:01:02'),
-(5, 'abfja', 'perjanjian.pdf', 1, 30, 'proses', '2018-07-02 14:31:47'),
-(6, 'qewrw', 'perjanjian1.pdf', 1, 31, 'proses', '2018-07-05 07:33:36'),
-(7, 'sffe', '', 1, 32, 'proses', '2018-07-02 14:42:47'),
-(8, 'dgtjyy', '', 1, 33, 'proses', '2018-07-03 03:42:15'),
-(9, 'dengan maintenance', 'perjanjian2.pdf', 1, 37, 'proses', '2018-07-11 07:05:44'),
-(10, 'jihjbjubj', '', 1, 38, 'proses', '2018-07-11 09:27:53'),
-(11, 'o', '', 1, 39, 'proses', '2018-07-11 09:29:34');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -360,21 +312,15 @@ CREATE TABLE IF NOT EXISTS `produk` (
   `kode_produk` varchar(50) NOT NULL,
   `id_users` int(11) NOT NULL,
   `id_kategori` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `produk`
 --
 
 INSERT INTO `produk` (`id_produk`, `nama_produk`, `harga_produk`, `status`, `deskripsi_produk`, `file_produk`, `foto_produk`, `link_demo`, `kode_produk`, `id_users`, `id_kategori`) VALUES
-(40, 'Sistem Toefl Terbaru', 1000000, 'nonaktif', 'Sistem Toelf                                                                                                                                            ', 'produk1530361838.zip', '8__halaman_admin.PNG', 'https://toefl.com', '', 54, 1),
-(41, 'sistem presensi kehadiran', 20000002, 'nonaktif', 'sistem presensi kehadiran', 'produk1530518960.zip', 'produk1530518960.PNG', 'www.facebook.com', '', 54, 1),
-(42, 'Sistem homecare', 10000000, 'nonaktif', 'Sistem homecare berbasis web', 'produk1530808234.zip', 'produk1530808234.PNG', 'http://melihatdunia.com/2017/10/31/forgot-password-php-ci/', '', 13, 1),
-(44, 'Sistem English Test', 20000000, 'aktif', ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris accumsan non lorem at elementum. Mauris volutpat felis nisl, at vestibulum lorem ullamcorper ut. Curabitur in quam sodales justo cursus vulputate eu ut eros. Ut feugiat nulla non lacinia fri', '', 'produk1531380158.JPG', 'http://english.vokasidev.com/', '', 60, 1),
-(45, 'Sistem Informasi Pendaftaran Pondok Pesantren', 30000000, 'aktif', ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris accumsan non lorem at elementum. Mauris volutpat felis nisl, at vestibulum lorem ullamcorper ut. Curabitur in quam sodales justo cursus vulputate eu ut eros. Ut feugiat nulla non lacinia fringilla. Morbi dictum metus eget ornare tempor. Proin imperdiet malesuada scelerisque. Proin quam quam, elementum ac enim sed, dictum efficitur justo. Vestibulum vulputate erat mattis quam commodo iaculis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque vitae erat nulla.\r\n\r\nNullam finibus nunc massa, sed iaculis lectus placerat sit amet. Fusce euismod, massa ut elementum commodo, eros felis pretium metus, quis consequat felis leo in turpis. Sed eget nunc at ante dapibus finibus eu sit amet nisl. Fusce varius arcu ac ligula viverra iaculis. Fusce mattis accumsan ornare. Aliquam quis maximus augue. Ut a gravida lacus, fermentum ullamcorper odio. Suspendisse et ipsum eget ligula dictum lacinia nec in tellus. Nam facilisis, dui vitae imperdiet imperdiet, libero dui accumsan eros, sit amet pulvinar odio leo et libero. Praesent at ipsum leo. Donec id consequat nisi. Aenean dictum magna a laoreet ultrices.                             ', '', 'produk1531381115.JPG', 'http://ponpes.vokasidev.com/TA/', '', 61, 1),
-(46, 'Sistem Presensi dan Penilaian Magang', 40000000, 'aktif', 'Aenean rhoncus, ex vel cursus varius, metus massa vulputate augue, non tempor elit diam nec erat. Sed aliquam mi a leo posuere dapibus vitae et eros. Duis ut posuere libero. Donec blandit dui non quam feugiat, sit amet viverra velit pharetra. Morbi facili                                                        ', '', 'js(1).JPG', 'http://178.128.102.128:8000/login', '', 61, 1),
-(47, 'wewrwtw', 100000, 'nonaktif', 'snkgnkwgrerg', 'produk1531469314.zip', 'produk1531469314.JPG', 'www.facebook.com', 'MA-JeKo', 61, 3),
-(48, 'wnkfnwkn', 1000000, 'nonaktif', 'sbgreh', 'produk1531469349.zip', 'produk1531469349.JPG', 'www', 'WB-yVYt', 61, 1);
+(55, 'Sistem English Test', 30000000, 'aktif', '\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu magna a velit efficitur volutpat vitae eu lorem. Nullam lacinia lacinia urna, nec pharetra ex. Suspendisse porta faucibus ligula, ut maximus quam bibendum iaculis. Donec eget dignissim urna. Praesent felis eros, elementum eu auctor eget, tincidunt et eros. Vivamus in sagittis quam. Maecenas maximus velit ac lorem porta, eu accumsan tortor rutrum. ', 'produk1531473851.zip', 'produk1531473851.JPG', 'http://english.vokasidev.com/', 'WB-vndA', 61, 1),
+(56, 'Sistem Informasi Pendaftaran Pondok Pesantren', 40000000, 'aktif', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu magna a velit efficitur volutpat vitae eu lorem. Nullam lacinia lacinia urna, nec pharetra ex. Suspendisse porta faucibus ligula, ut maximus quam bibendum iaculis. Donec eget dignissim urna. Praesent felis eros, elementum eu auctor eget, tincidunt et eros. Vivamus in sagittis quam. Maecenas maximus velit ac lorem porta, eu accumsan tortor rutrum. ', 'produk1531473927.zip', 'produk1531473927.JPG', 'http://ponpes.vokasidev.com/TA/', 'WB-krXK', 61, 1);
 
 -- --------------------------------------------------------
 
@@ -453,7 +399,6 @@ INSERT INTO `users` (`id_users`, `nama_users`, `id_roles`, `jenis_kelamin`, `no_
 (27, 'superadmin', 4, 'Pria', '08561738132', 'superadmin@gmail.com', 'UGM', 'aktif', '$2y$10$Qs86bQGwyb7lPaBspQA2EOE.O4X38sgizsnAfti02R/tNieA08r2C', 'avatar.png', 1, '2018-07-11 09:25:54', '2018-07-11 09:25:54'),
 (36, 'Fadli', 3, 'Pria', '08231646456', 'fadli@gmail.com', 'UGM', 'aktif', '$2y$10$6YxnKPOT9MlZo836obELw.SKZx5oCSCs/HAndsJPklPeZjkY/.fsC', 'index2.png', 0, '2018-07-01 09:51:58', NULL),
 (46, 'Pengelola', 1, 'Pria', '08231646456', 'pengelola@gmail.com', 'UGM', 'aktif', '$2y$10$KEio6/68TsLGH1qsbGC21eqaK6MBRuLN0sK73t2j3Uq/D61d0ojOq', 'index1.png', 1, '2018-07-11 10:21:33', '2018-07-11 10:21:33'),
-(58, 'lutfi', 3, 'Pria', '08231646456', 'lutfi@gmail.com', NULL, 'nonaktif', '$2y$10$p7jyxBPky0T/nKW1vjIt6uQv4pQNCtd4McCgnQmH2wonTQNHCZB.O', 'foto5.jpg', 1, '2018-07-11 10:16:28', '2018-07-11 10:16:28'),
 (60, 'shafira fitrianissa', 3, 'Wanita', '08231646456', 'shafirafitrianissa02@gmail.com', 'UGM', 'aktif', '$2y$10$X2Bl60VDXRDIfM/03h3HY.l2vgBJ1BW1vHlSJKshzp.Iar5ateuYC', NULL, 1, '2018-07-12 07:21:39', '2018-07-12 07:21:39'),
 (61, 'afif imaduddin', 3, 'Wanita', '082316464561', 'afifimaduddin2104@gmail.com', 'UGM', 'aktif', '$2y$10$QvV1crzOZpenkJjpC8UXRe6Q8dtEzXyYTmZ259c1.8VHwq0eEIlvK', NULL, 1, '2018-07-13 08:39:24', '2018-07-13 08:39:24');
 
@@ -581,17 +526,17 @@ ALTER TABLE `detail_anggota`
 -- AUTO_INCREMENT for table `detail_pembelian`
 --
 ALTER TABLE `detail_pembelian`
-  MODIFY `id_detail_pembelian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id_detail_pembelian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `detail_produk`
 --
 ALTER TABLE `detail_produk`
-  MODIFY `id_detail_produk` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+  MODIFY `id_detail_produk` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `detail_tim`
 --
 ALTER TABLE `detail_tim`
-  MODIFY `id_detail_tim` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
+  MODIFY `id_detail_tim` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT for table `forgot_password`
 --
@@ -611,12 +556,12 @@ ALTER TABLE `kategori_produk`
 -- AUTO_INCREMENT for table `pembelian`
 --
 ALTER TABLE `pembelian`
-  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `perjanjian`
 --
 ALTER TABLE `perjanjian`
-  MODIFY `id_perjanjian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `id_perjanjian` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `posisi_tim`
 --
@@ -626,7 +571,7 @@ ALTER TABLE `posisi_tim`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=49;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=57;
 --
 -- AUTO_INCREMENT for table `roles`
 --

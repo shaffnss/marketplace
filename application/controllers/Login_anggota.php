@@ -82,7 +82,7 @@
 						'roleText'=>$res->nama_roles,
 						'email'=>$res->email,
 						'name'=>$res->nama_users,
-						'foto'=>$res->foto_users,
+						'foto'=>$res->foto,
 						'isLoggedIn' => TRUE
 						);
 						
