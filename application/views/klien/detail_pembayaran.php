@@ -21,21 +21,22 @@ function rupiah($angka){
 		</ol>
 	</section>
 
-	<div class="container" style="padding-top: 20px">
+	<!--<div class="container" style="padding-top: 20px">
 			<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo"><i class="fa fa-info"></i> Informasi Perjanjian</button>
-	</div>
+	</div>-->
 
-	<div id="demo" class="collapse" style="padding-top: 10px">
+	<!--<div id="demo" class="collapse" style="padding-top: 10px">-->
+	<div style="padding-top: 10px">
 		<div class="col-lg-12">
 			<div class="alert alert-info"> 
 				<h4>Informasi mengenai <strong>jenis perjanjian</strong> untuk pengisian form pembayaran dibawah</h4> 
 				<p>Pemilihan jenis perjanjian berguna untuk menentukan tipe pembelian yang klien inginkan dengan keterangan sebagai berikut :</p>
 				<table border="3" style="border-color: transparent; border-radius: 5px;" class="table table-sm table borderless"> 
-					<tr style="height: 10px;"> 
+					<tr> 
 						<td style="width: 6%"><h5> Beli Lepas</h5></td> 
 						<td style="width: 62%"><h5> Beli lepas merupakan perjanjian dimana ketika telah melakukan pembayaran dan penyerahan, produk sepenuhnya menjadi milik klien </h5></td> 
 					</tr> 
-					<tr style="height: 30px"> 
+					<tr> 
 						<td><h5>Trial</h5></td> 
 						<td><h5> Trial merupakan perjanjian dimana ketika telah melakukan pembayaran dan penyerahan, produk hanya dapat digunakan oleh klien sesuai dengan periode penggunaan yang telah disepakati </h5></td> 
 					</tr> 
@@ -105,7 +106,6 @@ function rupiah($angka){
 									<div class="col-sm-8">
 										<input type="hidden" name="id_pembelian" value="<?php echo $this->uri->segment(3) ?>">
 										<select class="form-control" name="nama_perjanjian">
-											<option disabled selected="">--- Pilih Jenis Perjanjian ---</option>
 											<?php foreach ($perjanjians as $perjanjian) { ?>
 												<option value="<?php echo $perjanjian->id_kategori ?>"><?php echo $perjanjian->nama_perjanjian?></option>
 											<?php } ?>
@@ -116,7 +116,7 @@ function rupiah($angka){
 								<div class="form-group">
 									<label for="inputName" class="col-sm-2 control-label">Keterangan Perjanjian</label>
 									<div class="col-sm-8">
-										<textarea class="form-control" rows="5" id="inputExperience" placeholder="Keterangan" name="keterangan_perjanjian" maxLength="255" required=""></textarea>
+										<textarea class="form-control" rows="5" id="inputExperience" placeholder="Keterangan" name="keterangan_perjanjian" maxLength="255" ></textarea>
 									</div>
 								</div>
 

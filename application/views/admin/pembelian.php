@@ -53,7 +53,7 @@ function rupiah($angka){
                     <td><?php echo $item->kode_pembelian; ?></td>
                     <td><?php echo $item->nama_users; ?></td>
                     <td><?php echo rupiah($item->total)?></td>
-                    <td><?php echo $item->tgl_pembelian; ?></td>
+                    <td><?php echo date("d F Y", strtotime($item->tgl_pembelian)); ?></td>
                     <td><?php if(!empty($item->bukti_pembayaran)) { ?><a target="_blank" href="<?php echo site_url("assets/bukti pembayaran/" . $item->bukti_pembayaran) ?>" ><i class="fa fa-file fa-2x"></i></a><?php }else{echo "-";} ?></td>
                     <td>
                       <span class="label label-warning">Proses</span>
@@ -62,8 +62,12 @@ function rupiah($angka){
                       <div>
                         <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#detail-pembelian<?php echo $item->id_pembelian; ?>" style="background:#1a75ff; border-color:#fff" onclick="detail-produk"><i class="fa fa-eye"></i>
                         </button>
+												<?php if(!empty($item->bukti_pembayaran)) { ?>
                         <a href="<?php echo site_url('Admin_pembelian/ubahStatus/'.$item->id_pembelian)?>" class="btn btn-sm btn-success"><i class="fa fa-check"></i> Selesai</a>
-                      </div>
+												<?php }else{ ?>
+                        <a onclick="return confirm('Apakah Anda yakin akan membatalkan pembelian ini?');" href="<?php echo site_url('Admin_pembelian/batalPembelian/'.$item->id_pembelian)?>" class="btn btn-sm btn-danger"><i class="fa fa-close"></i></a>
+												<?php } ?>
+											</div>
                     </td>
                   </tr>
 

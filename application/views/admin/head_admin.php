@@ -138,6 +138,7 @@
       <ul class="treeview-menu">
         <li class=""><a href="<?php echo site_url('Admin_pembelian')?>"><i class="fa fa-list-alt"></i>Pembelian Diproses</a></li>
         <li><a href="<?php echo site_url('Admin_pembelian/pembelianSelesai')?>"><i class="fa fa-check"></i>Pembelian Selesai</a></li>
+        <li><a href="<?php echo site_url('Admin_pembelian/pembelianBatal')?>"><i class="fa fa-check"></i>Pembelian Dibatalkan</a></li>
         <li><a href="<?php echo site_url('Admin_perjanjian') ?>"><i class="fa fa-list-alt"></i>Perjanjian Pembelian</a></li>
       </ul>
     </li>

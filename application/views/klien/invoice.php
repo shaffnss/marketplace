@@ -42,8 +42,7 @@ function rupiah($angka){
       </div>
       <!-- /.col -->
     </div>
-
-
+		
       <!-- info row -->
       <div class="row invoice-info">
         <div class="col-sm-4 invoice-col">
@@ -134,12 +133,8 @@ function rupiah($angka){
                 <td><?php echo rupiah($invoices[0]->total) ?></td>
               </tr>
               <tr>
-                <th>Discount</th>
-                <td>0</td>
-              </tr>
-              <tr>
-                <th>Total:</th>
-                <td><?php echo rupiah($invoices[0]->total) ?></td>
+                <th>Status</th>
+                <td style="padding-top: 12px;"><label style="font-size: 20px; " class="label label-success"><?php echo strtoupper($invoices[0]->status_pembelian) ?></label></td>
               </tr>
             </table>
           </div>

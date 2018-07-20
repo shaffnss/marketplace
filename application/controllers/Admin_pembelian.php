@@ -21,12 +21,26 @@ class Admin_pembelian extends BaseController {
 			'status_pembelian' => 'selesai'
 		);
 		$this->Admin_pembelian_model->ubahStatus($id_pembelian,$data);
-		$this->session->set_flashdata('success', 'Pembelian telah diterima');
+		$this->session->set_flashdata('success', 'Pembelian telah diterima, silahkan hubungi klien yang bersangkutan untuk konfirmasi pembayaran');
 		redirect('Admin_perjanjian');
+	}
+	
+	public function batalPembelian($id_pembelian){
+		$data = array(
+			'status_pembelian' => 'batal'
+		);
+		$this->Admin_pembelian_model->ubahStatus($id_pembelian,$data);
+		$this->session->set_flashdata('success', 'Pembelian telah diterima');
+		redirect('Admin_pembelian/pembelianBatal');
 	}
 
 	public function pembelianSelesai(){
 		$data["pembelian"]=$this->Admin_pembelian_model->getPembelianSelesai();
 		$this->load->view('admin/pembelian_selesai',$data);
+	}
+	
+	public function pembelianBatal(){
+		$data["pembelian"]=$this->Admin_pembelian_model->getPembelianDibatalkan();
+		$this->load->view('admin/pembelian_batal',$data);
 	}
 }

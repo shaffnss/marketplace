@@ -1,12 +1,12 @@
 LIST REVISI 
 
 MAS FIRMA : 
-- Kalau klien belum upload bukti, seharusnya gak bisa diklik selesai pembelian dong.
-- seharusnya dari admin bisa mengcancel atau mengubah status pembelian menjadi "batal"
+- [DONE] Kalau klien belum upload bukti, seharusnya gak bisa diklik selesai pembelian dong.
+- [DONE] seharusnya dari admin bisa mengcancel atau mengubah status pembelian menjadi "batal"
 - 
 
 MBAK FAIZAH : 
-- Harusnya ada invoice sebelum dan invoice lunas
+- [DONE] Harusnya ada invoice sebelum dan invoice lunas
 - harusnya data yang ditampilkan bukan data dummy
 - harusnya ada fitur "HOW TO" untuk alur, sekedar informasi kepada klien terhadap alur untuk pembelian produk
 - 

@@ -111,6 +111,7 @@
 													</td>
 													<td><?php if($data->file_perjanjian){ ?><a href="<?php echo site_url().'assets/file_perjanjian/'.$data->file_perjanjian ?>" target="_blank"><i class="fa fa-file-pdf-o fa-2x" style="color:black"></i></a><?php }else{echo '-';} ?></td>
 													<td>
+														<a title="Hubungi Klien" href="https://wa.me/62<?php echo (int)$data->no_telpon?>?text=Saya%20tertarik%20untuk%20membeli%20mobil%20Anda" class="btn btn-success"><i class="fa fa-whatsapp"></i></a>
 														<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#upload-file<?php echo $data->id_pembelian ?>"><i class="fa fa-upload"></i></button>
 													</td>
 												</tr>
