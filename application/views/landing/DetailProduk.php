@@ -1,5 +1,12 @@
 <?php
 	$this->load->view('landing/head_landing');
+	
+	function rupiah($angka){
+
+	$hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+	return $hasil_rupiah;
+
+}
 ?>
 
 <!-- Page Content -->
@@ -24,6 +31,9 @@
 				<div class="card-body">
 					<h3 class="card-title"><?php echo $produks->nama_produk ?>
 					<a target="_blank" href="<?php echo $produks->link_demo ?>" class="btn btn-primary float-right">Lihat Demo</a></h3>
+					<p class="card-text"><?php echo rupiah($produks->harga_produk) ?> <b>[Beli Lepas]</b> | <?php echo rupiah($produks->harga_produk*0.6) ?> <b>[Trial]</b> (Diskon 40%)</p>
+					<p class="small text-muted"><strong>Beli Lepas</strong> | Perjanjian dimana ketika telah melakukan pembayaran dan penyerahan, produk sepenuhnya menjadi milik klien <br><strong>Trial</strong> | Perjanjian dimana ketika telah melakukan pembayaran dan penyerahan, produk hanya dapat digunakan oleh klien sesuai dengan periode penggunaan yang telah disepakati</p>
+					<label><b>Deskripsi</b></label>
 					<p class="card-text"><?php echo $produks->deskripsi_produk ?> </p>
 				</div>
 				

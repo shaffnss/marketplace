@@ -27,18 +27,18 @@ function rupiah($angka){
 
 	<!--<div id="demo" class="collapse" style="padding-top: 10px">-->
 	<div style="padding-top: 10px">
-		<div class="col-lg-12">
+		<div class="col-md-12">
 			<div class="alert alert-info"> 
 				<h4>Informasi mengenai <strong>jenis perjanjian</strong> untuk pengisian form pembayaran dibawah</h4> 
 				<p>Pemilihan jenis perjanjian berguna untuk menentukan tipe pembelian yang klien inginkan dengan keterangan sebagai berikut :</p>
 				<table border="3" style="border-color: transparent; border-radius: 5px;" class="table table-sm table borderless"> 
 					<tr> 
-						<td style="width: 6%"><h5> Beli Lepas</h5></td> 
-						<td style="width: 62%"><h5> Beli lepas merupakan perjanjian dimana ketika telah melakukan pembayaran dan penyerahan, produk sepenuhnya menjadi milik klien </h5></td> 
+						<td style="width: 6%">Beli Lepas</td> 
+						<td style="width: 62%">Beli lepas merupakan perjanjian dimana ketika telah melakukan pembayaran dan penyerahan, produk sepenuhnya menjadi milik klien</td> 
 					</tr> 
 					<tr> 
-						<td><h5>Trial</h5></td> 
-						<td><h5> Trial merupakan perjanjian dimana ketika telah melakukan pembayaran dan penyerahan, produk hanya dapat digunakan oleh klien sesuai dengan periode penggunaan yang telah disepakati </h5></td> 
+						<td>Trial</td> 
+						<td>Trial merupakan perjanjian dimana ketika telah melakukan pembayaran dan penyerahan, produk hanya dapat digunakan oleh klien sesuai dengan periode penggunaan yang telah disepakati </td> 
 					</tr> 
 					<br> 
 				</table> 
@@ -77,7 +77,7 @@ function rupiah($angka){
 											<td><?php echo $no ?></td>
 											<td><?php echo $pembayaran->nama_produk ?></td>
 											<td><?php echo $pembayaran->nama_kategori ?></td>
-											<td><?php echo rupiah($pembayaran->harga_produk)?></td>
+											<td><?php echo rupiah($pembayaran->harga_produk)?> <b>(Beli Lepas)</b><br><?php echo rupiah($pembayaran->harga_produk*0.6)?> <b>(Trial)</b></td>
 										</tr>
 									</tbody>
 									<?php $no++; }?>
