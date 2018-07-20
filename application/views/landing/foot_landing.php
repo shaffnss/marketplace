@@ -5,7 +5,6 @@
       </div>
       <!-- /.container -->
     </footer>
-
     <!-- Bootstrap core JavaScript -->
     <script src="<?php echo base_url('Landing/vendor/jquery/jquery.min.js') ?>"></script>
     <script src="<?php echo base_url('Landing/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>

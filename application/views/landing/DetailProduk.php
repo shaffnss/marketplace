@@ -33,6 +33,8 @@
 					<a target="_blank" href="<?php echo $produks->link_demo ?>" class="btn btn-primary float-right">Lihat Demo</a></h3>
 					<p class="card-text"><?php echo rupiah($produks->harga_produk) ?> <b>[Beli Lepas]</b> | <?php echo rupiah($produks->harga_produk*0.6) ?> <b>[Trial]</b> (Diskon 40%)</p>
 					<p class="small text-muted"><strong>Beli Lepas</strong> | Perjanjian dimana ketika telah melakukan pembayaran dan penyerahan, produk sepenuhnya menjadi milik klien <br><strong>Trial</strong> | Perjanjian dimana ketika telah melakukan pembayaran dan penyerahan, produk hanya dapat digunakan oleh klien sesuai dengan periode penggunaan yang telah disepakati</p>
+					<label><b>Kategori Produk</b></label>
+					<p class="card-text"><?php echo $produks->nama_kategori ?> </p>
 					<label><b>Deskripsi</b></label>
 					<p class="card-text"><?php echo $produks->deskripsi_produk ?> </p>
 				</div>
